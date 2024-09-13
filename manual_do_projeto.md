@@ -1,4 +1,5 @@
 ﻿# Projeto - Rede Social de Desenvolvedores De Jogos
+# Manual do Projeto
 
 ## Sumário
 - [Padrões](#Padrões)
