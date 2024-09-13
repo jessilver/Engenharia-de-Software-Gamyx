@@ -146,18 +146,18 @@ Sempre que for rodar o proejto é obrigatotório serguir a instrução abaixo, c
 
 4. **Importando repositório**
 
-- Abra seu gerenciador de arquivos e clique no seu disco local.
+- Abra seu gerenciador de arquivos e clique no seu disco local.<br>
 ![image](https://github.com/user-attachments/assets/bf563192-8981-4380-946a-715b98761d3d)
-- Localize a pasta **xampp** e clique nela.
+- Localize a pasta **xampp** e clique nela.<br>
 ![image](https://github.com/user-attachments/assets/b88014c6-3ca0-4f53-a4ca-ca8dc62b5641)
-- Localize a pasta **htdocs** e clique nela.
+- Localize a pasta **htdocs** e clique nela.<br>
 ![image](https://github.com/user-attachments/assets/b384c7e7-3ea6-4336-b485-e92f58e19e59)
-- Pode apagar todes esses arquivos, são apenas para exemplo de uso.
+- Pode apagar todes esses arquivos, são apenas para exemplo de uso.<br>
 ![image](https://github.com/user-attachments/assets/16a39baa-d73b-4069-8b76-031facc1acc7)
 - Clique com o botão direito e selecione a opção **Abrir no terminal**, com terminal aberto digite o comando: code .
-- Execute o comando, ele vai abrir o VS Code já com a pasta aberta.
+- Execute o comando, ele vai abrir o VS Code já com a pasta aberta.<br>
 ![image](https://github.com/user-attachments/assets/87922f41-19cc-460c-aeaf-5a1a1384351b)
-- Aperte Ctrl+j para abrir o terminal do vse abra o Git Bash.
+- Aperte Ctrl+j para abrir o terminal do vse abra o Git Bash.<br>
 ![image](https://github.com/user-attachments/assets/86e6801b-5ce9-4355-ac23-65bd4e01dba8)
 - Execute o seguinte código para clonar o repositório github na sua pasta.
  ```bash
