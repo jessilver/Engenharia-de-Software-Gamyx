@@ -1,14 +1,14 @@
 ﻿# Projeto - Rede Social de Desenvolvedores De Jogos
 
 ## Sumario
-- [Padrôes](#padroes)
+- [Padrôes](#Padrões)
 - [Tags](#tags)
 - [Como Iniciar o Projeto](#como-iniciar-o-projeto)
 - [Criar uma Nova Branch para uma Feature](#criar-uma-nova-branch-para-uma-feature)
 - [Realizar um Push](#realizar-um-push)
 - [Fazendo o Pull Request](#fazendo-o-pull-request)
 
-# Padroes
+# Padrões
 <small>[voltar para o Sumário](#sumario)</small><br>
 
 ## Padrões de Nomeação de Branches (Ramos)
