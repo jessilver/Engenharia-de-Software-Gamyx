@@ -173,6 +173,13 @@ Sempre que for rodar o proejto é obrigatotório serguir a instrução abaixo, c
 2. Com o phpMyAdmin aberto, clique em tema e selecione bootstrap (OPCIONAL)
 ![image](https://github.com/user-attachments/assets/6eb682ae-0416-4881-b9e6-d0f49a2592a8)
 
+3. Clique no banco de dados **test**
+![image](https://github.com/user-attachments/assets/07ddfea7-c2d5-4cba-b9ab-caf058db79f2)
+
+4. Preencha o compo **Nome da Tabela** e clique em **Criar**
+![image](https://github.com/user-attachments/assets/b1ff17be-0a95-420d-a264-4de7f327cf99)
+
+
 ## Video para Melhor visualizacao
 
 ...
