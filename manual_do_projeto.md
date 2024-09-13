@@ -1,6 +1,12 @@
 ﻿# Projeto - Rede Social de Desenvolvedores De Jogos
 # Manual do Projeto
 
+## Navegação
+
+- [Home](https://github.com/jessilver/Engenharia-de-Software-Gamyx/blob/docs/readme/README.md)
+- [Iterações](https://github.com/jessilver/Engenharia-de-Software-Gamyx/blob/docs/readme/iteracoes.md)
+- [Planejementos](https://github.com/jessilver/Engenharia-de-Software-Gamyx/blob/docs/readme/planejamentos.md)
+
 ## Sumário
 - [Padrões](#Padrões)
 - [Tags](#tags)
