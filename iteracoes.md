@@ -3,7 +3,7 @@
 ## Sumario
 
 - [it1](#iteracao-01)
-  - [feat/cadastro-de-usuario](#User-Story)
+  - [feat/cadastro-de-usuario](#Cadastro-de-Usuário)
 
 # Iterações
 <small>[voltar para o Sumário](#sumario)</small><br>
