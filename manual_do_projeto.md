@@ -135,7 +135,7 @@ Seguir a [Semantic Versioning (SemVer)](https://semver.org/):
 2. **Instalando XAMPP**
 Se já estiver com XAMPP instalado, pule para: Iniciando o XAMPP.
 
-- Clique em [Download XAMPP](https://www.apachefriends.org/pt_br/index.html) e faça o download do XAMPP.
+- Clique em [Download XAMPP](https://www.apachefriends.org/pt_br/index.html) e faça o download e instale o XAMPP.
 
 3. **Importando repositório**
 
