@@ -171,7 +171,7 @@ Sempre que for rodar o proejto é obrigatotório serguir a instrução abaixo, c
 ![image](https://github.com/user-attachments/assets/53fffc93-523e-47ed-b30b-4869b0d9e3d5)
 
 2. Com o phpMyAdmin aberto, clique em tema e selecione bootstrap (OPCIONAL)
-![image](https://github.com/user-attachments/assets/0729295b-5ce2-47f0-98d1-fc58c7f6b12e)
+![image](https://github.com/user-attachments/assets/6eb682ae-0416-4881-b9e6-d0f49a2592a8)
 
 ## Video para Melhor visualizacao
 
