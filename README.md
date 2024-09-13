@@ -2,7 +2,7 @@
 
 ## Navegação
 
-- Iterações
+- [Iterações](https://github.com/jessilver/Engenharia-de-Software-Gamyx/blob/docs/readme/iteracoes.md)
 - Manual do Projeto
 - Planejementos
 
