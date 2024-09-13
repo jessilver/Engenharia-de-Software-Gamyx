@@ -1,7 +1,7 @@
 ﻿# Projeto - Rede Social de Desenvolvedores De Jogos
 
 ## Sumario
-- [Padrôes](#Padrões)
+- [Padrões](#Padrões)
 - [Tags](#tags)
 - [Como Iniciar o Projeto](#como-iniciar-o-projeto)
 - [Criar uma Nova Branch para uma Feature](#criar-uma-nova-branch-para-uma-feature)
