@@ -2,13 +2,13 @@
 
 ## Sumario
 
-- [it1](#iteracao-01)
+- [Iteração 01](#Iteração-01)
   - [feat/cadastro-de-usuario](#Cadastro-de-Usuário)
 
 # Iterações
 <small>[voltar para o Sumário](#sumario)</small><br>
 
-# Iteracao 01
+# Iteração 01
 
 ## Valor: 
 Entregar funcionalidades básicas de interação de usuário, incluindo cadastro, login, acesso ao perfil e visualização de perfil de outros usuários.
