@@ -138,7 +138,11 @@ Se já estiver com XAMPP instalado, pule para: [Iniciando o XAMPP](#Iniciando-o-
 - Clique em [Download XAMPP](https://www.apachefriends.org/pt_br/index.html) e faça o download e instale o XAMPP.
 
 3. **Iniciando o XAMPP**
+Sempre que for rodar o proejto é obrigatotório serguir a instrução abaixo, caso contrário o projeto não ira rodar!
 - Após instalado, na barra de perquisa do seu computador perquise por XAMPP e abra o aplicativo
+- Com o Painel de Controle aberto, clique no botão de **Start** dos módulos de Apache e MySQL
+![image](https://github.com/user-attachments/assets/f814c75a-1c83-4182-884f-d9792c834ea4)
+
 
 4. **Importando repositório**
 
