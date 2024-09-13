@@ -133,11 +133,14 @@ Seguir a [Semantic Versioning (SemVer)](https://semver.org/):
    - Se não estiver instaldo: [Git](https://git-scm.com/downloads)
 
 2. **Instalando XAMPP**
-Se já estiver com XAMPP instalado, pule para: Iniciando o XAMPP.
+Se já estiver com XAMPP instalado, pule para: [Iniciando o XAMPP](#Iniciando-o-XAMPP)
 
 - Clique em [Download XAMPP](https://www.apachefriends.org/pt_br/index.html) e faça o download e instale o XAMPP.
 
-3. **Importando repositório**
+3. **Iniciando o XAMPP**
+- Após instalado, na barra de perquisa do seu computador perquise por XAMPP e abra o aplicativo
+
+4. **Importando repositório**
 
    - Em um local de sua preferência cria uma nova parte com o nome que preferir
    - Abra essa pasta com o VS Code (Ou outro editor, mas este tutorial é usando o vs)
