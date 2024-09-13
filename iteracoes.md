@@ -14,10 +14,12 @@ Entregar funcionalidades básicas de interação de usuário, incluindo cadastro
 
 ## Features:
 
-### Cadastro de Usuário
+# Cadastro de Usuário
 ```bash
-feat/nome-da-funcionalidade
+feat/cadastro-de-usuário
 ```
+
+## User Story:
 
 Como um novo usuário, quero me cadastrar no sistema para criar uma conta e poder acessar as funcionalidades disponíveis.
 
@@ -26,6 +28,9 @@ Critérios de Aceitação:
 - O sistema deve validar os dados inseridos e exibir mensagens de erro apropriadas.
 - O usuário deve receber uma confirmação de cadastro bem-sucedido.
 
+## Template:
+
+![Singin](https://github.com/user-attachments/assets/a75e88b4-7413-4a30-a021-f71a2ac02ec4)
 
 
 
