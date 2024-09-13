@@ -2,12 +2,12 @@
 
 ## Sumario
 
-- [Planejamentos](#planejamentos)
+- [Planejamentos](#planejamento-iteracaoo-01)
 
 # Planejamentos
 <small>[voltar para o Sumário](#sumario)</small><br>
 
-# Planejamento Iteração 01
+# Planejamento Iteracaoo 01
 
 ## Valor da Sprint: 
 Entregar funcionalidades básicas de interação de usuário, incluindo cadastro, login, acesso ao perfil e visualização de perfil de outros usuários.
