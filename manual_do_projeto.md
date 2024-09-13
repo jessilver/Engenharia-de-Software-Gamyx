@@ -147,7 +147,7 @@ Sempre que for rodar o proejto é obrigatotório serguir a instrução abaixo, c
 4. **Importando repositório**
 
 - Abra seu gerenciador de arquivos e clique no seu disco local.
-![image](https://github.com/user-attachments/assets/2c69ee45-1d2e-419b-8054-ccde08f30287)
+![image](https://github.com/user-attachments/assets/bf563192-8981-4380-946a-715b98761d3d)
 - Localize a pasta **xampp** e clique nela.
 ![image](https://github.com/user-attachments/assets/b88014c6-3ca0-4f53-a4ca-ca8dc62b5641)
 - Localize a pasta **htdocs** e clique nela.
