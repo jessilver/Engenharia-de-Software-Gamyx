@@ -1,13 +1,13 @@
 ﻿# Projeto - Rede Social de Desenvolvedores De Jogos
 
-## Sumario
+## Sumário
 
 - [Informações Acadêmicas](#Informações-Acadêmicas)
 - [Sobre o Projeto](#sobre-o-projeto)
 - [Vídeo do projeto funcionando](#vídeo-do-projeto-funcionando)
 
 ## Informações Acadêmicas
-<small>[voltar para o Sumário](#sumario)</small><br>
+<small>[voltar para o Sumário](#Sumário)</small><br>
 
 - Universidade Federal do Tocantins
 - Curso de Bacharelado em Ciência da Computação
@@ -22,7 +22,7 @@
 - Jonatas de Sousa Madeira
 
 ## Sobre o Projeto
-<small>[voltar para o Sumário](#sumario)</small><br>
+<small>[voltar para o Sumário](#Sumário)</small><br>
 
 Este projeto foi desenvolvido utilizando XAMPP 3.3.0,PHP, HTML, CSS, Java Script, BOOTSTRAP 4, Git, e GitHub. O objetivo é criar uma aplicação web cuja funcionalidade é [ ... ], seguindo boas práticas de versionamento de código e organização de projetos.
 
@@ -39,6 +39,6 @@ Este projeto foi desenvolvido utilizando XAMPP 3.3.0,PHP, HTML, CSS, Java Script
 - **Gitflow:** Modelo de ramificação para organização do desenvolvimento. 
 
 ## Vídeo do projeto funcionando
-<small>[voltar para o Sumário](#sumario)</small><br>
+<small>[voltar para o Sumário](#Sumário)</small><br>
 
 ...
