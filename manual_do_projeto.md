@@ -179,6 +179,19 @@ Sempre que for rodar o proejto é obrigatotório serguir a instrução abaixo, c
 4. Preencha o compo **Nome da Tabela** e clique em **Criar**
 ![image](https://github.com/user-attachments/assets/d7dd9019-9a85-4cff-9924-9e01e7ef5964)
 
+5. Esses campos destacados são os nomes qeu você dará para cada coluna, sendo a primeira sempre o id
+![image](https://github.com/user-attachments/assets/fe6985c0-298c-4e1b-bebb-2daafc956a9f)
+
+6. Configurando id:
+- Selecione a opção **A.I** (Auto Increment) e precha os outros campos conforme necessidade
+![image](https://github.com/user-attachments/assets/34c123b1-867e-4743-99c1-671a4b866aa8)
+
+7. Após preencher os outros campos, clique em **Colação** e procure por **utf8_general_ci**
+![image](https://github.com/user-attachments/assets/8f068fc8-e1a1-406f-9124-18447bec07eb)
+
+8. Clique em salvar
+![image](https://github.com/user-attachments/assets/ce2a73aa-0315-4e7a-8402-beb650cd77fb)
+
 ## Video para Melhor visualizacao
 
 ...
