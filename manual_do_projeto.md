@@ -1,6 +1,6 @@
 ﻿# Projeto - Rede Social de Desenvolvedores De Jogos
 
-## Sumario
+## Sumário
 - [Padrões](#Padrões)
 - [Tags](#tags)
 - [Como Iniciar o Projeto](#como-iniciar-o-projeto)
@@ -9,7 +9,7 @@
 - [Fazendo o Pull Request](#fazendo-o-pull-request)
 
 # Padrões
-<small>[voltar para o Sumário](#sumario)</small><br>
+<small>[voltar para o Sumário](#Sumário)</small><br>
 
 ## Padrões de Nomeação de Branches (Ramos)
 - Funcionalidade nova:
@@ -103,14 +103,14 @@ Seguir a [Semantic Versioning (SemVer)](https://semver.org/):
   ```
 
 # Tags
-<small>[voltar para o Sumário](#sumario)</small><br>
+<small>[voltar para o Sumário](#Sumário)</small><br>
 
 - R01 --> Requisito funcional número 01
 - NF01 --> Requisito não funcional número 01
 - P01/01 --> Planejamento número 01, parte 01
 
 # Como Iniciar o Projeto
-<small>[voltar para o Sumário](#sumario)</small><br>
+<small>[voltar para o Sumário](#Sumário)</small><br>
 
 **Lembrando que tem um vídeo no final para melhor visualização: [Ir para o vídeo](#video-para-melhor-visualizacao)**
 
@@ -123,7 +123,7 @@ Seguir a [Semantic Versioning (SemVer)](https://semver.org/):
 ...
 
 ## Criar uma Nova Branch para uma Feature
-<small>[voltar para o Sumário](#sumario)</small><br>
+<small>[voltar para o Sumário](#Sumário)</small><br>
 
 ### **OBSERVAÇÃO IMPORTANTE!:**
 
@@ -151,7 +151,7 @@ Para criar uma nova branch para desenvolver uma feature, siga os passos abaixo:
    ```
 
 ## Realizar um Push
-<small>[voltar para o Sumário](#sumario)</small><br>
+<small>[voltar para o Sumário](#Sumário)</small><br>
 
 Após ter realizado as alterações na sua branch, siga os passos para enviar as mudanças ao repositório remoto:
 
@@ -175,7 +175,7 @@ Exemplo:
    ```
 
 ## Fazendo o Pull Request
-<small>[voltar para o Sumário](#sumario)</small><br>
+<small>[voltar para o Sumário](#Sumário)</small><br>
 
 1. Na pagina inicial do projeto no Git Hub: Engenharia-de-Software
    - Clique em `Pull requests`
