@@ -2,12 +2,12 @@
 
 ## Sumario
 
-- [Planejamentos](#planejamento-iteracaoo-01)
+- [Planejamentos](#planejamento-iteracao-01)
 
 # Planejamentos
 <small>[voltar para o Sumário](#sumario)</small><br>
 
-# Planejamento Iteracaoo 01
+# Planejamento Iteracao 01
 
 ## Valor da Sprint: 
 Entregar funcionalidades básicas de interação de usuário, incluindo cadastro, login, acesso ao perfil e visualização de perfil de outros usuários.
@@ -72,10 +72,5 @@ Critérios de Aceitação:
 - Tarefa 1: Design da interface de visualização de perfil de outros usuários.
 - Tarefa 2: Implementação da lógica de busca e visualização de perfis.
 
-## Iteração 01:
-
-Valor: Criar interações de cadastro, login, acesso ao perfil e visualização do perfil de outros usuários.
-
-### Features:
 
 
