@@ -1,5 +1,11 @@
 ﻿# Projeto - Rede Social de Desenvolvedores De Jogos
 
+## Navegação
+
+- Iterações
+- Manual do Projeto
+- Planejementos
+
 ## Sumário
 
 - [Informações Acadêmicas](#Informações-Acadêmicas)
