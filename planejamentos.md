@@ -2,7 +2,7 @@
 
 ## Sumario
 
-- [Planejamentos](#planejamento-iteracao-01)
+- [P1](#planejamento-iteracao-01)
 
 # Planejamentos
 <small>[voltar para o Sumário](#sumario)</small><br>
