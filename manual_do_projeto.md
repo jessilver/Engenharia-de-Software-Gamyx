@@ -153,7 +153,7 @@ Para criar uma nova branch para desenvolver uma feature, siga os passos abaixo:
    git pull origin develop
    ```
 
-3. Crie uma nova branch utilizando o padrão de nomenclatura definido: [Padrões de Nomeação de Branchea](Padrões-de-Nomeação-de-Branches)
+3. Crie uma nova branch utilizando o padrão de nomenclatura definido: [Padrões de Nomeação de Branchea](#Padrões-de-Nomeação-de-Branches)
    ```bash
    git checkout -b Feat/issue-numero-da-issue-descricao-da-issue
    ```
