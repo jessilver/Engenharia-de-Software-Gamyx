@@ -174,11 +174,10 @@ Sempre que for rodar o proejto é obrigatotório serguir a instrução abaixo, c
 ![image](https://github.com/user-attachments/assets/6eb682ae-0416-4881-b9e6-d0f49a2592a8)
 
 3. Clique no banco de dados **test**
-![image](https://github.com/user-attachments/assets/07ddfea7-c2d5-4cba-b9ab-caf058db79f2)
+![image](https://github.com/user-attachments/assets/fade66c8-ff6f-4a26-ae4c-1a5607227132)
 
 4. Preencha o compo **Nome da Tabela** e clique em **Criar**
-![image](https://github.com/user-attachments/assets/b1ff17be-0a95-420d-a264-4de7f327cf99)
-
+![image](https://github.com/user-attachments/assets/d7dd9019-9a85-4cff-9924-9e01e7ef5964)
 
 ## Video para Melhor visualizacao
 
