@@ -1,6 +1,6 @@
 ﻿# Projeto - Rede Social de Desenvolvedores De Jogos
 
-## Sumario
+## Sumário
 
 - [Iteração 01](#Iteração-01)
   - [feat/cadastro-de-usuario](#Cadastro-de-Usuário)
@@ -9,7 +9,7 @@
   - [feat/vizualizar-perfil-de-outros-usuarios](#Visualização-de-Perfil-de-Outros-Usuários)
 
 # Iteração 01
-<small>[voltar para o Sumário](#sumario)</small><br>
+<small>[voltar para o Sumário](#Sumário)</small><br>
 
 ## Valor: 
 Entregar funcionalidades básicas de interação de usuário, incluindo cadastro, login, acesso ao perfil e visualização de perfil de outros usuários.
@@ -17,7 +17,7 @@ Entregar funcionalidades básicas de interação de usuário, incluindo cadastro
 ## Features:
 
 # Cadastro de Usuário
-<small>[voltar para o Sumário](#sumario)</small><br>
+<small>[voltar para o Sumário](#Sumário)</small><br>
 
 
 ## Resposável:
@@ -48,7 +48,7 @@ Critérios de Aceitação:
 - Tarefa 4: Implementação do envio de confirmação de cadastro.
 
 # Login de Usuário
-<small>[voltar para o Sumário](#sumario)</small><br>
+<small>[voltar para o Sumário](#Sumário)</small><br>
 
 ## Resposável:
 Gabriel Fernandes Zamora
@@ -78,7 +78,7 @@ Critérios de Aceitação:
 - Tarefa 3: Implementação de mensagens de erro para login.
 
 # Acesso ao Perfil
-<small>[voltar para o Sumário](#sumario)</small><br>
+<small>[voltar para o Sumário](#Sumário)</small><br>
 
 ## Resposável:
 Jessé Eliseu Nunes Da Silva
@@ -107,7 +107,7 @@ Critérios de Aceitação:
 - Tarefa 2: Implementação da lógica para exibir informações do perfil.
 
 # Visualização de Perfil de Outros Usuários
-<small>[voltar para o Sumário](#sumario)</small><br>
+<small>[voltar para o Sumário](#Sumário)</small><br>
 
 ## Resposável:
 Arthur Lima Duarte
