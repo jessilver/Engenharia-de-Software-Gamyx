@@ -247,33 +247,8 @@ Critérios de Aceitação:
 
 Valor: Criar interações de cadastro, login, acesso ao perfil e visualização do perfil de outros usuários.
 
-## P1/1: Criação de User Stories
+### Features:
 
-### Objetivo:  
-Criar User Stories para auxiliar a prototipação do projeto.
-
-### Tarefas:
-
-- [Criar User Stories da tela de login - **Gabriel Fernandes Zamora**](https://trello.com/c/cIQusWVB/12-s-01-bck-01-criar-user-stories-da-tela-de-login)
-- [Criar User Stories da tela de cadastro - **Jônatas De Sousa Madeira**](https://trello.com/c/hrh2PH6P/6-s-01-bck-02-criar-user-stories-da-tela-de-cadastro)
-- [Criar User Stories da tela de perfil do usuário - **Jesse Eliseu Nunes Da Silva**](https://trello.com/c/5BZ8f5qM/7-s-01-bck-03-criar-user-stories-da-tela-de-perfil-do-usu%C3%A1rio)
-- [Criar User Stories da tela de visualizar de perfil de outros usuários - **Arthur Lima Duarte**](https://trello.com/c/osUO3Rlt/8-s-01-bck-04-criar-user-stories-da-tela-de-visualizar-de-perfil-de-outros-usu%C3%A1rios)
-
-## P1/2: Prototipação do projeto.
-
-### Objetivos:  
-Criação dos protótipos das telas para auxiliar o desenvolvimento e apresentar para o cliente
-
-### Tarefas:
-
-- [Criar protótipo da tela de login - **Gabriel Fernandes Zamora**](https://trello.com/c/Ip9GwK6n/10-s-02-bck-01-criar-prot%C3%B3tipo-da-tela-de-login)
-  ![Login](https://github.com/user-attachments/assets/8c408522-d68f-411f-9814-91ed6aabea8e)
-- [Criar protótipo da tela de cadastro - **Jônatas De Sousa Madeira**](https://trello.com/c/Kp6HxBxV/11-s-02-bck-02-criar-prot%C3%B3tipo-da-tela-de-cadastroo)
-  ![Singin](https://github.com/user-attachments/assets/a75e88b4-7413-4a30-a021-f71a2ac02ec4)
-- [Criar protótipo da tela de perfil do usuário - **Jesse Eliseu Nunes Da Silva**](https://trello.com/c/Tp2EiiqJ/12-s-02-bck-03-criar-prot%C3%B3tipo-da-tela-de-perfil-do-usu%C3%A1rio)
-  ![UserProfile](https://github.com/user-attachments/assets/3014d4ff-645b-4ae1-8114-a9f011623615)
-- [Criar protótipo da tela de visualizar de perfil de outros usuários - **Arthur Lima Duarte**](https://trello.com/c/tgOBSy8p/13-s-02-bck-04-criar-prot%C3%B3tipo-da-tela-de-visualizar-de-perfil-de-outros-usu%C3%A1rios)
-  ![Perfil dos usuarios](https://github.com/user-attachments/assets/df1e91d1-0975-4662-867a-314e33bc7f6c)
 
 # Como Iniciar o Projeto
 <small>[voltar para o Sumário](#sumario)</small><br>
