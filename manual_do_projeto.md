@@ -124,7 +124,27 @@ Seguir a [Semantic Versioning (SemVer)](https://semver.org/):
 
 ## Configurando o Ambiente
 
-...
+1. **Certifique-se que o Git instalado:**
+
+   - No seu cmd execute o seguinte coamndo:
+   ```bash
+     git --version
+   ```
+   - Se não estiver instaldo: [Git](https://git-scm.com/downloads)
+
+2. **Instalando XAMPP**
+Se já estiver com XAMPP instalado, pule para: Iniciando o XAMPP.
+
+- Clique em [Download XAMPP](https://www.apachefriends.org/pt_br/index.html) e faça o download do XAMPP.
+
+3. **Importando repositório**
+
+   - Em um local de sua preferência cria uma nova parte com o nome que preferir
+   - Abra essa pasta com o VS Code (Ou outro editor, mas este tutorial é usando o vs)
+   - Abra o Git Bash do vs code e digite o seguinte codigo:
+   ```bash
+     git clone https://github.com/jessilver/Engenharia-de-Software-Gamyx.git
+   ```
 
 ## Video para Melhor visualizacao
 
