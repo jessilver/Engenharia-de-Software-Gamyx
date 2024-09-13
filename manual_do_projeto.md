@@ -155,7 +155,7 @@ Para criar uma nova branch para desenvolver uma feature, siga os passos abaixo:
 
 3. Crie uma nova branch utilizando o padrão de nomenclatura definido: [Padrões de Nomeação de Branchea](#Padrões-de-Nomeação-de-Branches)
    ```bash
-   git checkout -b Feat/issue-numero-da-issue-descricao-da-issue
+   git checkout -b nome-da-branch
    ```
 
 ## Realizar um Push
@@ -168,18 +168,18 @@ Após ter realizado as alterações na sua branch, siga os passos para enviar as
    git add .
    ```
 
-2. Faça um commit com uma mensagem clara e descritiva:
+2. Faça um commit com uma mensagem clara e descritiva, utilizando o padrão de nomenclatura definido: [Padrões de Commits](#Padrões-de-Commits)
    ```bash
-   git commit -m "Descrição clara das alterações realizadas"
+   git commit -m "nome-do-commit"
    ```
 
 3. Envie (push) as mudanças para a sua branch no GitHub:
    ```bash
-   git push origin Feat/issue-numero-da-issue-descricao-da-issue
+   git push origin nome-da-sua-branch
    ```
 Exemplo:
    ```bash
-   git push origin Feat/issue-01-correcao-de-bugs
+   git push origin feat/cadastro-de-usuario
    ```
 
 ## Fazendo o Pull Request
