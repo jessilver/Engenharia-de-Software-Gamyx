@@ -3,7 +3,7 @@
 ## Navegação
 
 - [Iterações](https://github.com/jessilver/Engenharia-de-Software-Gamyx/blob/docs/readme/iteracoes.md)
-- Manual do Projeto
+- [Manual do Projeto](https://github.com/jessilver/Engenharia-de-Software-Gamyx/blob/docs/readme/manual_do_projeto.md)
 - Planejementos
 
 ## Sumário
