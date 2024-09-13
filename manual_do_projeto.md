@@ -11,6 +11,7 @@
 - [Padrões](#Padrões)
 - [Tags](#tags)
 - [Como Iniciar o Projeto](#como-iniciar-o-projeto)
+- Como conectar com o banco de dados
 - [Criar uma Nova Branch para uma Feature](#criar-uma-nova-branch-para-uma-feature)
 - [Realizar um Push](#realizar-um-push)
 - [Fazendo o Pull Request](#fazendo-o-pull-request)
@@ -112,9 +113,9 @@ Seguir a [Semantic Versioning (SemVer)](https://semver.org/):
 # Tags
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
-- R01 --> Requisito funcional número 01
-- NF01 --> Requisito não funcional número 01
-- P01/01 --> Planejamento número 01, parte 01
+- R1 --> Requisito funcional número 01
+- NF1 --> Requisito não funcional número 01
+- P1/1 --> Planejamento número 01, parte 01
 
 # Como Iniciar o Projeto
 <small>[voltar para o Sumário](#Sumário)</small><br>
@@ -129,7 +130,7 @@ Seguir a [Semantic Versioning (SemVer)](https://semver.org/):
 
 ...
 
-## Criar uma Nova Branch para uma Feature
+## Criar uma Nova Branch
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
 ### **OBSERVAÇÃO IMPORTANTE!:**
@@ -152,7 +153,7 @@ Para criar uma nova branch para desenvolver uma feature, siga os passos abaixo:
    git pull origin develop
    ```
 
-3. Crie uma nova branch para a `feature` utilizando o padrão de nomenclatura definido:
+3. Crie uma nova branch utilizando o padrão de nomenclatura definido: [Padrões de Nomeação de Branchea](Padrões-de-Nomeação-de-Branches-(Ramos))
    ```bash
    git checkout -b Feat/issue-numero-da-issue-descricao-da-issue
    ```
