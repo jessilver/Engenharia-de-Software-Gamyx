@@ -4,6 +4,9 @@
 
 - [Iteração 01](#Iteração-01)
   - [feat/cadastro-de-usuario](#Cadastro-de-Usuário)
+  - [feat/login-de-usuario](#Login-de-Usuário)
+  - [feat/acesso-ao-perfil](#Acesso-ao-Perfil)
+  - [feat/vizualizar-perfil-de-outros-usuarios](#Visualização-de-Perfil-de-Outros-Usuários)
 
 # Iteração 01
 <small>[voltar para o Sumário](#sumario)</small><br>
