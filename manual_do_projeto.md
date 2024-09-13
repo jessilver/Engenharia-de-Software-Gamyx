@@ -11,7 +11,7 @@
 - [Padrões](#Padrões)
 - [Tags](#tags)
 - [Como Iniciar o Projeto](#como-iniciar-o-projeto)
-- Como conectar com o banco de dados
+- [Como conectar com o banco de dados](#Como-conectar-com-o-banco-de-dados)
 - [Criar uma Nova Branch para uma Feature](#criar-uma-nova-branch-para-uma-feature)
 - [Realizar um Push](#realizar-um-push)
 - [Fazendo o Pull Request](#fazendo-o-pull-request)
@@ -163,7 +163,14 @@ Sempre que for rodar o proejto é obrigatotório serguir a instrução abaixo, c
  ```bash
    git clone https://github.com/jessilver/Engenharia-de-Software-Gamyx.git
  ```
+- Já pode fechar tudo e iniciar seu projeto
 
+# Como conectar com o banco de dados
+
+1. Abra o aplicativo do xamppe em seguida na opção **admin** do MySQL
+![image](https://github.com/user-attachments/assets/53fffc93-523e-47ed-b30b-4869b0d9e3d5)
+
+2. 
 
 ## Video para Melhor visualizacao
 
