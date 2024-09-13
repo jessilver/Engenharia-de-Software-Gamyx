@@ -2,11 +2,11 @@
 
 ## Sumario
 
-- [Informações Acadêmicas](#informacoes-academicas)
+- [Informações Acadêmicas](#Informações-Acadêmicas)
 - [Sobre o Projeto](#sobre-o-projeto)
-- [Video do projeto funcionando](#video-do-projeto-funcionando)
+- [Vídeo do projeto funcionando](#vídeo-do-projeto-funcionando)
 
-## Informacoes Academicas
+## Informações Acadêmicas
 <small>[voltar para o Sumário](#sumario)</small><br>
 
 - Universidade Federal do Tocantins
@@ -38,13 +38,7 @@ Este projeto foi desenvolvido utilizando XAMPP 3.3.0,PHP, HTML, CSS, Java Script
 - **GitHub:** Hospedagem do repositório remoto.
 - **Gitflow:** Modelo de ramificação para organização do desenvolvimento. 
 
-## Video do projeto funcionando
+## Vídeo do projeto funcionando
 <small>[voltar para o Sumário](#sumario)</small><br>
 
 ...
-
-
-Valor: Criar interações de cadastro, login, acesso ao perfil e visualização do perfil de outros usuários.
-
-### Features:
-
