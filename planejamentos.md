@@ -1,11 +1,11 @@
 ﻿# Projeto - Rede Social de Desenvolvedores De Jogos
 
-## Sumario
+## Sumário
 
 - [P1](#planejamento-iteração-01)
 
 # Planejamentos
-<small>[voltar para o Sumário](#sumario)</small><br>
+<small>[voltar para o Sumário](#Sumário)</small><br>
 
 # Planejamento Iteração 01
 
