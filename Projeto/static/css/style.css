@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#cadastroUsuarioBody{
+    height: 100%;
+    width: 100%;
+    background-color: #0D1117;
+    color: #FFFFFF;
+}
+
+#cadastroUsuarioBody form{
+    padding: 25px;
+}
+
+#cadastroUsuarioBody input {
+    background-color: #0D1117 !important;
+    border: 1px solid #282F39;
+}
+
+.titulosCards h2{
+    color: #FFFFFF !important;
+    font-family: "ABeeZee", sans-serif;
+    font-style: normal;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+#sectionCadastroUsuario {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 60px;
+    flex-direction: column;
+}
+
+#headerCadastroUsuario{
+    margin-top: 2%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#headerCadastroUsuario img{
+    width: 90px;
+    height: 90px;
+}
+
+#headerCadastroUsuario h2 {
+    font-family: 'Poppins', Poppins, sans-serif;
+    font-size: 30px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+#divFormCadastroUsuario {
+    display: flex;
+    margin-top: 1%;
+    width: 550px;
+    min-height: 450px;
+    background-color: #151C25;
+    color: #FFFFFF;
+    padding: 20px;
+}
+
+.titulosCards {
+    text-align: center;
+    padding-bottom: 10px;
+    width: 100%;
+    margin-top: 3%;
+    border-bottom: solid 7px #FFFFFF;
+}
+
+.btn-cadastrar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    color: #FFFFFF;
+    width: 60%;
+    height: 40px;
+    background-color: #26A641;
+}
