@@ -20,7 +20,7 @@
             <div class="titulosCards">
                 <h2 class="text-body-secondary">Cadastro de Usuário</h2>
             </div>
-            <form action="">
+            <form action="" id="formCadastroUsuario">
                 <div class="mb-3">
                     <label for="emailUsuario" class="form-label">Email:</label>
                     <input type="email" class="form-control" id="emailUsuario">
@@ -46,11 +46,14 @@
                     <input type="text" class="form-control" id="linkPortfolio">
                 </div>
 
-                <button type="button" class="btn btn-cadastrar">Cadastrar-se</button>
+                <button type="button" class="btn btn-cadastrar" onclick="validaDadosCadastroUsuario()">Cadastrar-se</button>
 
             </form>
         </div>
     </section>
     
+    <script src="static/js/scripts.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </body>
 </html>
