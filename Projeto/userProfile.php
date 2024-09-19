@@ -11,6 +11,7 @@
 <body id="userProfileBody">
 
     <section id="userProfileSection">
+        
         <div class="userProfileContainer">
             <div class="userProfileInfo">
                 <div class="userProfileCapa">
@@ -25,7 +26,7 @@
                         <h1 class="h1AUser">@user - 42 projects</h1>
                         <div class="h1AboutUserDiv">
                             <h1 class="h1AboutUser">My name is user, this is ny first time developing</h1>
-                            <h1 class="h1AboutUserVerMais"> ...Ver mais</h1>
+                            <h1 class="h1AboutUserVerMais" data-toggle="modal" data-target="#sobreModal"> ...mais</h1>
                         </div>
                     </div>
                 </div>
@@ -76,6 +77,21 @@
         <hr class="userHr">
 
     </section>
+
+    <!-- Modal -->
+    <div class="modal fade " id="sobreModal" tabindex="-1" role="dialog" aria-labelledby="sobreModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content sobreModalClass" >
+                <div class="modal-header">
+                    <h5 class="modal-title" id="sobreModalLongTitle">Sobre</h5>
+                    <i class="fa-solid fa-xmark closeButton" data-dismiss="modal"></i>
+                </div>
+                <div class="modal-body">
+                    <p class="pNormalText">My name is user, this is ny first time developing</p>
+                </div>      
+            </div>
+        </div>
+    </div>
     
     <!-- <script src="static/js/scripts.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

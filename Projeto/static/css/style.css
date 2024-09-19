@@ -5,6 +5,10 @@
 body{
     background-color: #0D1117;
 }
+
+h1{
+    cursor:default;
+}
 /* Barra de rolagem */
 ::-webkit-scrollbar {
     width: 10px; /* Largura da barra de rolagem */
@@ -210,5 +214,32 @@ body{
     font-size: 16px;
     font-weight:lighter; 
     width: 300px; 
+    transition: all 0.3s ease; 
     color: rgba(255, 255, 255, 0.5);
+}
+
+.h1AboutUserVerMais:hover{
+    color: rgb(255, 255, 255);
+    transition: all 0.3s ease; 
+    cursor:pointer;
+}
+
+.pNormalText{
+    margin: 0;
+    font-family: 'ABeeZee', sans-serif; 
+    font-size: 15px;
+    font-weight:lighter; 
+    width: 350px; 
+    overflow: hidden; 
+}
+
+.sobreModalClass{
+    background-color: #0D1117 !important;
+    color: white;
+    max-width: calc(100vh - 200px);
+}
+
+.closeButton{
+    margin: auto 0;
+    cursor: pointer;
 }
