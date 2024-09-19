@@ -229,14 +229,13 @@ h1{
     font-family: 'ABeeZee', sans-serif; 
     font-size: 15px;
     font-weight:lighter; 
-    width: 350px; 
     overflow: hidden; 
 }
 
 .sobreModalClass{
     background-color: #0D1117 !important;
     color: white;
-    max-width: calc(100vh - 200px);
+    height: calc(100vh - 150px);
 }
 
 .closeButton{
