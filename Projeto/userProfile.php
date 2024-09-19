@@ -39,10 +39,13 @@
             </div>
             <div class="projectList">
                 <?php
-                for($i=0;$i<=10;$i++){
+                for($i=0;$i<=20;$i++){
                     print('
                         <div class="projectItem">
-            
+                            <div class="projectFoto">
+
+                            </div>
+                            <h1 class="h1AUser" style = "margin-bottom: 16px;">Project Name</h1>
                         </div>
                     ');
                 }
@@ -57,13 +60,13 @@
             </div>
             <div class="amigosList">
             <?php
-                for($i=0;$i<=100;$i++){
+                for($i=0;$i<=20;$i++){
                     print('
                         <div class="amigosItem">
                             <div class="amigosFoto">
 
                             </div>
-                            <h1 class="h1AUser">Friend Name</h1>
+                            <h1 class="h1AUser" style = "margin-bottom: 16px;">Friend Name</h1>
                         </div>
                     ');
                 }
