@@ -8,28 +8,34 @@
     <title>Perfil de X | Gamyx</title>
 </head>
 <body>
+    <!-- Imagens links:
+        public/imagens/placeholder.jpg
+        ./Projeto/GAMYX.png
+    -->
     <div class="visualizeProfilesScreen">
-        <header class="banner">
+        <header class="bannerContainer">
             <img 
-                src="placeholder.jpg" 
+                src="" 
                 alt="Banner do perfil do usuário X"
                 class="bannerImage"
             />
         </header>
         <main>
             <section class="profileInfoContainer">
-                <img 
-                    src="./Projeto/GAMYX.png"
-                    alt="Imagem de perfil do usuário X"
-                    class="profileImage"
-                />
+                <div class="profileImageContainer">
+                    <img 
+                        src=""
+                        alt="Imagem de perfil do usuário X"
+                        class="profileImage"
+                    />
+                </div>
                 <div class="profileInfo">
                     <h1>Nome do perfil</h1>
                     <span>@arroba_do_usuario</span>
                     <p class="userDescription">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis dicta doloribus molestiae voluptate numquam, totam eos, corporis illum maxime inventore qui? Distinctio voluptatem voluptatibus nisi cumque pariatur accusantium iusto sequi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam ea esse nesciunt culpa laboriosam dignissimos, quo repudiandae ut sapiente dolores odio soluta impedit veniam, explicabo alias nam quibusdam enim similique!</p>
                     <div class="profileInfoIcons">
-                        <span><i class="fa-regular fa-folder"></i> 42 projetos •</span>
-                        <span><i class="fa-solid fa-heart"></i> 2 Seguidores</span>
+                        <span><i class="fa-regular fa-folder"></i> 42 projetos • </span>
+                        <span><i class="fa-solid fa-heart" id="heartIcon"></i> 2 Seguidores</span>
                     </div>
                 </div>
             </section>
@@ -40,43 +46,17 @@
                     <li class="projectItem">
                         <img 
                             src=""
-                            alt="Imagem"
-                            class="projectImage"
-                        />
-                    </li>
-                    <li class="projectItem">
-                        <img 
-                            src=""
-                            alt="Imagem"
-                            class="projectImage"
-                        />
-                    </li>
-                    <li class="projectItem">
-                        <img 
-                            src=""
-                            alt="Imagem"
-                            class="projectImage"
-                        />
-                    </li>
-                    <li class="projectItem">
-                        <img 
-                            src=""
-                            alt="Imagem"
-                            class="projectImage"
-                        />
-                    </li>
-                    <li class="projectItem">
-                        <img 
-                            src=""
-                            alt="Imagem"
+                            alt="Este projeto não tem imagem."
                             class="projectImage"
                         />
                     </li>
                 </ul>
             </section>
         </main>
-        <footer></footer>
     </div>
+
+    <script src="./js/script.js"></script>
 </body>
 </html>
 
+<?php

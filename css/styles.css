@@ -25,18 +25,18 @@ body{
     margin: var(--margem-padrao);
 }
 /* Header  */
-.banner{
+.bannerContainer{
     background-color: var(--cor-cinza-escuro);
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: var(--borda-arredondada-padrao);
    
-    height: 250px; /* Ajustar */
+    max-height: 270px; /* Ajustar */
 }
 .bannerImage{
     width: 100%;
-    height: 100%;
+    max-height: 270px;
     border-radius: var(--borda-arredondada-padrao);
 }
 /* Main  */
@@ -47,11 +47,18 @@ body{
     margin: var(--margem-padrao) 0;
     flex-wrap: wrap;
 }
-.profileImage{
+.profileImageContainer{
     background-color: var(--cor-cinza-escuro);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 220px;
     height: 220px;
     border-radius: 50%;
+}
+.profileImage{
+    max-width: 220px;
+    max-height: 220px;
 }
 .profileInfo{
     display: flex;
@@ -88,7 +95,23 @@ hr{
 }
 .projectItem{
     background-color: var(--cor-cinza-escuro);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 380px;
     height: 210px;
     border-radius: var(--borda-arredondada-padrao);
+}
+/* Extras  */
+.noBanner{
+    width: 270px;
+    height: 270px;
+    padding: 30px;
+}
+.noProfile{
+    width: 140px;
+    height: 140px;
+}
+.apertado{
+    color: rgb(143, 14, 14);
 }
