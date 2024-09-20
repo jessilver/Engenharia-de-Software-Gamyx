@@ -8,68 +8,68 @@
     <title>Perfil de X | Gamyx</title>
 </head>
 <body>
-    <div class="container-tela-visualizar-perfis">
+    <div class="visualizeProfilesScreen">
         <header class="banner">
             <img 
                 src="placeholder.jpg" 
                 alt="Banner do perfil do usuário X"
-                class="imagem-banner"
+                class="bannerImage"
             />
         </header>
         <main>
-            <section class="container-informacoes-perfil">
+            <section class="profileInfoContainer">
                 <img 
                     src="./Projeto/GAMYX.png"
                     alt="Imagem de perfil do usuário X"
-                    class="imagem-perfil"
+                    class="profileImage"
                 />
-                <div class="informacoes-perfil">
+                <div class="profileInfo">
                     <h1>Nome do perfil</h1>
                     <span>@arroba_do_usuario</span>
-                    <p class="descricao-usuario">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis dicta doloribus molestiae voluptate numquam, totam eos, corporis illum maxime inventore qui? Distinctio voluptatem voluptatibus nisi cumque pariatur accusantium iusto sequi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam ea esse nesciunt culpa laboriosam dignissimos, quo repudiandae ut sapiente dolores odio soluta impedit veniam, explicabo alias nam quibusdam enim similique!</p>
-                    <div class="informacoes-perfil-icones">
+                    <p class="userDescription">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis dicta doloribus molestiae voluptate numquam, totam eos, corporis illum maxime inventore qui? Distinctio voluptatem voluptatibus nisi cumque pariatur accusantium iusto sequi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam ea esse nesciunt culpa laboriosam dignissimos, quo repudiandae ut sapiente dolores odio soluta impedit veniam, explicabo alias nam quibusdam enim similique!</p>
+                    <div class="profileInfoIcons">
                         <span><i class="fa-regular fa-folder"></i> 42 projetos •</span>
                         <span><i class="fa-solid fa-heart"></i> 2 Seguidores</span>
                     </div>
                 </div>
             </section>
             <hr/>
-            <h1 class="titulo-projetos">Projetos</h1>
-            <section class="container-projetos">
-                <ul class="lista-projetos">
-                    <li class="item-projeto">
+            <h1 class="projectsTitle">Projetos</h1>
+            <section class="projectsContainer">
+                <ul class="projectsList">
+                    <li class="projectItem">
                         <img 
                             src=""
                             alt="Imagem"
-                            class="imagem-projeto"
+                            class="projectImage"
                         />
                     </li>
-                    <li class="item-projeto">
+                    <li class="projectItem">
                         <img 
                             src=""
                             alt="Imagem"
-                            class="imagem-projeto"
+                            class="projectImage"
                         />
                     </li>
-                    <li class="item-projeto">
+                    <li class="projectItem">
                         <img 
                             src=""
                             alt="Imagem"
-                            class="imagem-projeto"
+                            class="projectImage"
                         />
                     </li>
-                    <li class="item-projeto">
+                    <li class="projectItem">
                         <img 
                             src=""
                             alt="Imagem"
-                            class="imagem-projeto"
+                            class="projectImage"
                         />
                     </li>
-                    <li class="item-projeto">
+                    <li class="projectItem">
                         <img 
                             src=""
                             alt="Imagem"
-                            class="imagem-projeto"
+                            class="projectImage"
                         />
                     </li>
                 </ul>
