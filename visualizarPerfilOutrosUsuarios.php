@@ -1,3 +1,7 @@
+<?php
+    require "./Projeto/index.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/styles.css"/>
-    <title>Perfil de X | Gamyx</title>
+    <title>Perfil de <?php echo $_SESSION['user']['nome']; ?> | Gamyx</title>
 </head>
 <body>
     <!-- Imagens links:
@@ -13,29 +17,36 @@
         ./Projeto/GAMYX.png
     -->
     <div class="visualizeProfilesScreen">
+        <input type="text" placeholder="Procurar usuário" class="userSearchInput"/> 
         <header class="bannerContainer">
             <img 
                 src="" 
-                alt="Banner do perfil do usuário X"
+                alt="Banner do perfil do usuário <?php echo $_SESSION['user']['nome']; ?>"
                 class="bannerImage"
             />
         </header>
-        <main>
+        <main class="mainContent">
             <section class="profileInfoContainer">
                 <div class="profileImageContainer">
                     <img 
                         src=""
-                        alt="Imagem de perfil do usuário X"
+                        alt="Imagem de perfil do usuário <?php echo $_SESSION['user']['nome']; ?>"
                         class="profileImage"
                     />
                 </div>
                 <div class="profileInfo">
-                    <h1>Nome do perfil</h1>
-                    <span>@arroba_do_usuario</span>
-                    <p class="userDescription">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis dicta doloribus molestiae voluptate numquam, totam eos, corporis illum maxime inventore qui? Distinctio voluptatem voluptatibus nisi cumque pariatur accusantium iusto sequi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam ea esse nesciunt culpa laboriosam dignissimos, quo repudiandae ut sapiente dolores odio soluta impedit veniam, explicabo alias nam quibusdam enim similique!</p>
+                    <h1>
+                        <?php echo $_SESSION['user']['nome']; ?>
+                    </h1>
+                    <span>
+                        <?php echo $_SESSION['user']['arroba']; ?>
+                    </span>
+                    <p class="userAbout">
+                        <?php echo $_SESSION['user']['about']; ?>
+                    </p>
                     <div class="profileInfoIcons">
-                        <span><i class="fa-regular fa-folder"></i> 42 projetos • </span>
-                        <span><i class="fa-solid fa-heart" id="heartIcon"></i> 2 Seguidores</span>
+                        <span><i class="fa-regular fa-folder"></i> 0 projetos • </span>
+                        <span><i class="fa-solid fa-heart" id="heartIcon"></i> 0 Seguidores</span>
                     </div>
                 </div>
             </section>
@@ -58,5 +69,3 @@
     <script src="./js/script.js"></script>
 </body>
 </html>
-
-<?php

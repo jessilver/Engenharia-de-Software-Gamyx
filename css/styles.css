@@ -22,7 +22,26 @@ body{
     font-family: var(--fonte-padrao);
 }
 .visualizeProfilesScreen{
-    margin: var(--margem-padrao);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 var(--margem-padrao);
+}
+.userSearchInput{
+    background-color: var(--cor-cinza-escuro);
+    align-self: flex-end;
+    color: var(--cor-texto);
+    font-family: var(--fonte-padrao);
+    margin: 20px 0;
+    padding: 12px 240px 12px 12px;
+    border: 1px solid var(--cor-cinza-claro);
+    border-radius: var(--borda-arredondada-padrao);
+}
+.userSearchInput::placeholder{
+    color: var(--cor-cinza-claro);
+    font-size: 14px;
+    font-style: italic;
 }
 /* Header  */
 .bannerContainer{
@@ -32,6 +51,7 @@ body{
     align-items: center;
     border-radius: var(--borda-arredondada-padrao);
    
+    min-width: 100%;
     max-height: 270px; /* Ajustar */
 }
 .bannerImage{
@@ -40,6 +60,9 @@ body{
     border-radius: var(--borda-arredondada-padrao);
 }
 /* Main  */
+.mainContent{
+    width: 100%;
+}
 /* Informações perfil  */
 .profileInfoContainer{
     display: flex;
@@ -70,7 +93,7 @@ body{
 .profileInfoIcons{
     font-size: 20px;
 }
-.userDescription{
+.userAbout{
     text-align: justify;
 }
 hr{
