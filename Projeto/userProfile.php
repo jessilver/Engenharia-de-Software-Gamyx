@@ -6,9 +6,21 @@
     <title>Meu Perfil</title>
     <?php
         require('linkrel.php');
+
+        session_start(); // Inicia a sessão
+
+        
     ?>
 </head>
 <body id="userProfileBody">
+
+    <?php
+        if (isset($_SESSION['user'])) {
+            echo "Bem-vindo, " . $_SESSION['user']['nome'] . "!";
+        } else {
+            echo "Você não está logado.";
+        }
+    ?>
 
     <section id="userProfileSection">
         
@@ -22,10 +34,10 @@
 
                     </div>
                     <div class="userProfileDados">
-                        <h1 class="h1UserName">User Name</h1>
-                        <h1 class="h1AUser">@user - 42 projects</h1>
+                        <h1 class="h1UserName"><?php echo $_SESSION['user']['nome']; ?></h1>
+                        <h1 class="h1AUser"><?php echo $_SESSION['user']['arroba']; ?> - <?php echo count($_SESSION['user']['projects']); ?> projects</h1>
                         <div class="h1AboutUserDiv">
-                            <h1 class="h1AboutUser">My name is user, this is ny first time developing</h1>
+                            <h1 class="h1AboutUser"><?php echo $_SESSION['user']['about']; ?></h1>
                             <h1 class="h1AboutUserVerMais" data-toggle="modal" data-target="#sobreModal"> ...mais</h1>
                         </div>
                     </div>
@@ -40,15 +52,15 @@
             </div>
             <div class="projectList">
                 <?php
-                for($i=0;$i<=20;$i++){
-                    print('
-                        <div class="projectItem">
-                            <div class="projectFoto">
+                foreach ($_SESSION['user']['projects'] as $projeto) {
+                    print("
+                        <div class='projectItem'>
+                            <div class='projectFoto'>
 
                             </div>
-                            <h1 class="h1AUser" style = "margin-bottom: 16px;">Project Name</h1>
+                            <h1 class='h1AUser' style = 'margin-bottom: 16px;'>$projeto</h1>
                         </div>
-                    ');
+                    ");
                 }
                 ?>
             </div>
@@ -61,15 +73,15 @@
             </div>
             <div class="amigosList">
             <?php
-                for($i=0;$i<=20;$i++){
-                    print('
-                        <div class="amigosItem">
-                            <div class="amigosFoto">
+                foreach ($_SESSION['user']['friends'] as $amigo){
+                    print("
+                        <div class='amigosItem'>
+                            <div class='amigosFoto'>
 
                             </div>
-                            <h1 class="h1AUser" style = "margin-bottom: 16px;">Friend Name</h1>
+                            <h1 class='h1AUser' style = 'margin-bottom: 16px;'>$amigo</h1>
                         </div>
-                    ');
+                    ");
                 }
                 ?>
             </div>
@@ -87,13 +99,13 @@
                     <i class="fa-solid fa-xmark closeButton" data-dismiss="modal"></i>
                 </div>
                 <div class="modal-body">
-                    <p class="pNormalText">My name is user, this is ny first time developing</p>
+                    <p class="pNormalText"><?php echo $_SESSION['user']['about']; ?></p>
                 </div>      
             </div>
         </div>
     </div>
     
-    <!-- <script src="static/js/scripts.js"></script> -->
+    <script src="static/js/scripts.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
