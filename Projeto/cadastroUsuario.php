@@ -55,7 +55,7 @@
                     <input type="text" name="portfolioUser" class="form-control" id="linkPortfolio">
                 </div>
 
-                <button type="submit" class="btn btn-cadastrar" onclick="validaDadosCadastroUsuario()">Cadastrar-se</button>
+                <button type="submit" class="btn btn-cadastrar" onclick="validaDadosCadastroUsuario()"><a href="login.php">Cadastrar-se</a> </button>
 
             </form>
         </div>
