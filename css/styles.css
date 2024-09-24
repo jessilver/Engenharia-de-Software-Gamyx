@@ -28,9 +28,11 @@ body{
     align-items: center;
     margin: 0 var(--margem-padrao);
 }
+.userSearchForm{
+    align-self: flex-end;
+}
 .userSearchInput{
     background-color: var(--cor-cinza-escuro);
-    align-self: flex-end;
     color: var(--cor-texto);
     font-family: var(--fonte-padrao);
     margin: 20px 0;
@@ -42,6 +44,13 @@ body{
     color: var(--cor-cinza-claro);
     font-size: 14px;
     font-style: italic;
+}
+.userSearchSubmit{
+    background-color: var(--cor-cinza-claro);
+    padding: 12px;
+    border: none;
+    border-radius: var(--borda-arredondada-padrao);
+    color: var(--cor-texto);
 }
 /* Header  */
 .bannerContainer{

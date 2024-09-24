@@ -1,5 +1,34 @@
 <?php
     require "./Projeto/index.php";
+
+    // Lógica de busca de usuários
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['search_query'])) {
+        $searchQuery = $_POST['search_query'];
+        try {
+            // Conexão com o banco de dados
+            $pdo = new PDO('mysql:dbname='.DB_NAME.';host='.DB_HOST, DB_USER, DB_PASS);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+            // Consulta ao banco de dados (busca por nome, arroba ou email)
+            $stmt = $pdo->prepare("SELECT * FROM usuario WHERE nome LIKE :searchQuery OR arroba LIKE :searchQuery OR email LIKE :searchQuery");
+            $stmt->execute(['searchQuery' => "%$searchQuery%"]);
+
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($user) {
+                // Atualiza os dados para serem exibidos
+                $usuarioExibido = $user;
+            } else {
+                echo "<script>console.log('Nenhum usuário encontrado.')</script>";
+                // Exibe o próprio usuário da sessão caso não encontre nada
+                $usuarioExibido = $_SESSION['user'];
+            }
+        } catch (PDOException $e) {
+            echo "Erro: " . $e->getMessage();
+        }
+    } else {
+        // Exibe o próprio usuário da sessão se não houver pesquisa
+        $usuarioExibido = $_SESSION['user'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +38,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./css/styles.css"/>
-    <title>Perfil de <?php echo $_SESSION['user']['nome']; ?> | Gamyx</title>
+    <title>Perfil de <?php echo $usuarioExibido['nome']; ?> | Gamyx</title>
 </head>
 <body>
     <!-- Imagens links:
@@ -17,11 +46,14 @@
         ./Projeto/GAMYX.png
     -->
     <div class="visualizeProfilesScreen">
-        <input type="text" placeholder="Procurar usuário" class="userSearchInput"/> 
+        <form action="" method="POST" class="userSearchForm">
+            <input type="text" placeholder="Procurar usuário" class="userSearchInput" name="search_query"/> 
+            <button type="submit" class="userSearchSubmit">Buscar</button>
+        </form>
         <header class="bannerContainer">
             <img 
                 src="" 
-                alt="Banner do perfil do usuário <?php echo $_SESSION['user']['nome']; ?>"
+                alt="Banner do perfil do usuário <?php echo $usuarioExibido['nome']; ?>"
                 class="bannerImage"
             />
         </header>
@@ -30,23 +62,23 @@
                 <div class="profileImageContainer">
                     <img 
                         src=""
-                        alt="Imagem de perfil do usuário <?php echo $_SESSION['user']['nome']; ?>"
+                        alt="Imagem de perfil do usuário <?php echo $usuarioExibido['nome']; ?>"
                         class="profileImage"
                     />
                 </div>
                 <div class="profileInfo">
                     <h1>
-                        <?php echo $_SESSION['user']['nome']; ?>
+                        <?php echo $usuarioExibido['nome']; ?>
                     </h1>
                     <span>
-                        <?php echo $_SESSION['user']['arroba']; ?>
+                        <?php echo $usuarioExibido['arroba']; ?>
                     </span>
                     <p class="userAbout">
-                        <?php echo $_SESSION['user']['about']; ?>
+                        <?php echo $usuarioExibido['about']; ?>
                     </p>
                     <div class="profileInfoIcons">
-                        <span><i class="fa-regular fa-folder"></i> 0 projetos • </span>
-                        <span><i class="fa-solid fa-heart" id="heartIcon"></i> 0 Seguidores</span>
+                        <i class="fa-regular fa-folder"></i><span> 0 projetos • </span>
+                        <i class="fa-solid fa-heart" id="heartIcon"></i><span id="spanHeartIcon"> 0 Likes</span>
                     </div>
                 </div>
             </section>
