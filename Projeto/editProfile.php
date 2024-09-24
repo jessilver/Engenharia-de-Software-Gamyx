@@ -3,27 +3,18 @@
     require 'config.php';
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $email = $_POST['email'];
-        $nomeUsuario = $_POST['nomeUsuario'];
-        $senha = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $linkPortfolio = $_POST['portfolioUser'];
 
-        $uniqueName = '@' . strtolower(str_replace(' ', '', $nomeUsuario));
+        $uniqueName = $_POST['uniqueName'];
+        $about = $_POST['about'];
+        $linkPortfolio = $_POST['linkPortfolio'];
 
         $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-        $stmt = $conn->prepare("INSERT INTO usuario (email, uniqueName, nomeUsuario, senha, urlPortfolio) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssss", $email, $uniqueName, $nomeUsuario, $senha, $linkPortfolio);
-
-        // if ($stmt->execute()) {
-        //     // echo "Novo registro criado com sucesso!";
-        // } else {
-        //     echo "Erro: " . $stmt->error;
-        // }
+        $stmt = $conn->prepare("UPDATE usuario SET about = ?, urlPortfolio = ? WHERE uniqueName = ?");
+        $stmt->bind_param("sss",$about, $linkPortfolio,$uniqueName);
 
         if ($stmt->execute()) {
-            header('Location: login.php');
-            exit();
+            
         } else {
             echo "Erro: " . $stmt->error;
         }
@@ -35,6 +26,8 @@
                 $nomeUsuario = $row['nomeUsuario'];
                 
                 session_start();
+
+                $_SESSION=[];
 
                 $_SESSION['userLogado'] = [
                     'nome' => $row['nomeUsuario'],
@@ -49,15 +42,10 @@
             echo "Erro na consulta: " . $conn->error;
         }
 
-        header('Location: userProfile.php');
+        header("Location: userProfile.php");
         
-        
-        // Fechar a consulta e a conexão
         $stmt->close();
         $conn->close();
-        // header('login.php');
-        // header('Location: userProfile.php');
-        // exit();
     }
 
 ?>
