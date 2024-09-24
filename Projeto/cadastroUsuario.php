@@ -32,30 +32,30 @@
             <form action="criarUsuario.php" method="POST" id="formCadastroUsuario">
                 <div class="mb-3">
                     <label for="emailUsuario" class="form-label">Email:</label>
-                    <input type="email" name="email" class="form-control" id="emailUsuario">
+                    <input type="email" required name="email" class="form-control" id="emailUsuario">
                 </div>
 
                 <div class="mb-3">
                     <label for="nomeDeUsuario" class="form-label">Nome de Usuário:</label>
-                    <input type="text" name="nomeUsuario" class="form-control" id="nomeDeUsuario">
+                    <input type="text" required name="nomeUsuario" class="form-control" id="nomeDeUsuario">
                 </div>
 
                 <div class="mb-3">
                     <label for="password1" class="form-label">Senha:</label>
-                    <input type="password" name="password" class="form-control" id="password1">
+                    <input type="password" required name="password" class="form-control" id="password1">
                 </div>
 
                 <div class="mb-3">
                     <label for="password2" class="form-label">Confirme sua senha:</label>
-                    <input type="password" class="form-control" id="password2">
+                    <input type="password" required onchange="validaSenha()" class="form-control" id="password2">
                 </div>
 
                 <div class="mb-4">
                     <label for="linkPortfolio" class="form-label">URL para portfólio pessoal (e.g., GitHub, itch.io):</label>
-                    <input type="text" name="portfolioUser" class="form-control" id="linkPortfolio">
+                    <input type="text" required name="portfolioUser" class="form-control" id="linkPortfolio">
                 </div>
 
-                <button type="submit" class="btn btn-cadastrar" onclick="validaDadosCadastroUsuario()">Cadastrar-se</button>
+                <button type="submit" class="btn btn-cadastrar">Cadastrar-se</button>
 
             </form>
         </div>
