@@ -23,7 +23,7 @@
 
         if ($stmt->execute()) {
             // header('Location: userProfile.php');
-            exit();
+            // exit();
         } else {
             echo "Erro: " . $stmt->error;
         }
