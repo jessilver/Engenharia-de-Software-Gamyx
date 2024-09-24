@@ -3,11 +3,29 @@
 /*                                           UserProfile                                              */
 /* ================================================================================================== */
 
+#userProfileBody{
+    height: 100%;
+    width: 100%;
+    background-color: #0D1117;
+    color: #FFFFFF;
+}
+
+#userProfileBody input {
+    background-color: #0D1117 !important;
+    border: 1px solid #282F39;
+    color: #FFFFFF;
+}
+
 #userProfileSection{
     margin: 0 auto;
     height: 100%;
     width: calc(100vw - 200px);
 
+}
+
+.editProfileModalClass{
+    background-color: #151C25 !important;
+    color: #FFFFFF !important;
 }
 
 
@@ -209,4 +227,30 @@
 .closeButton{
     margin: auto 0;
     cursor: pointer;
+}
+
+.profileButtons{
+    height: fit-content;
+    margin: auto 0;
+    display: flex;
+}
+
+.userProfileDados{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.editProfile{
+    width: 170px !important;
+    height: 40px !important;
+    border-radius: 20px !important;
+    background-color: #151C25 !important;
+    margin-right: 9px;
+}
+.viewProjects{
+    width: 170px !important;
+    height: 40px !important;
+    border-radius: 20px !important;
+    background-color: #151C25 !important;
 }

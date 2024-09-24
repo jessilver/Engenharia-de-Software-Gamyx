@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,20 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Perfil</title>
     <?php
+        require 'config.php';
         require('linkrel.php');
-
-        session_start(); // Inicia a sessão
-
-        
     ?>
 </head>
 <body id="userProfileBody">
 
     <?php
-        if (isset($_SESSION['user'])) {
-            echo "Bem-vindo, " . $_SESSION['user']['nome'] . "!";
-        } else {
-            echo "Você não está logado.";
+        if (!isset($_SESSION['userLogado'])) {
+            header("Location: criarUsuario.php");
         }
     ?>
 
@@ -34,11 +32,15 @@
 
                     </div>
                     <div class="userProfileDados">
-                        <h1 class="h1UserName"><?php echo $_SESSION['user']['nome']; ?></h1>
-                        <h1 class="h1AUser"><?php echo $_SESSION['user']['arroba']; ?> - <?php echo count($_SESSION['user']['projects']); ?> projects</h1>
+                        <h1 class="h1UserName"><?php echo $_SESSION['userLogado']['nome']; ?></h1>
+                        <h1 class="h1AUser"><?php echo $_SESSION['userLogado']['arroba']; ?> - <?php echo count($_SESSION['userLogado']['projects']); ?> projects</h1>
                         <div class="h1AboutUserDiv">
-                            <h1 class="h1AboutUser"><?php echo $_SESSION['user']['about']; ?></h1>
+                            <h1 class="h1AboutUser"><?php echo $_SESSION['userLogado']['about']; ?></h1>
                             <h1 class="h1AboutUserVerMais" data-toggle="modal" data-target="#sobreModal"> ...mais</h1>
+                        </div>
+                        <div class="profileButtons">
+                            <button class="btn editProfile" data-toggle="modal" data-target="#editProfileModal"><h1 class="h1AUser">edit profile</h1></button>
+                            <button class="btn viewProjects"><h1 class="h1AUser">projects</h1></button>
                         </div>
                     </div>
                 </div>
@@ -52,7 +54,7 @@
             </div>
             <div class="projectList">
                 <?php
-                foreach ($_SESSION['user']['projects'] as $projeto) {
+                foreach ($_SESSION['userLogado']['projects'] as $projeto) {
                     print("
                         <div class='projectItem'>
                             <div class='projectFoto'>
@@ -73,7 +75,7 @@
             </div>
             <div class="amigosList">
             <?php
-                foreach ($_SESSION['user']['friends'] as $amigo){
+                foreach ($_SESSION['userLogado']['friends'] as $amigo){
                     print("
                         <div class='amigosItem'>
                             <div class='amigosFoto'>
@@ -99,7 +101,43 @@
                     <i class="fa-solid fa-xmark closeButton" data-dismiss="modal"></i>
                 </div>
                 <div class="modal-body">
-                    <p class="pNormalText"><?php echo $_SESSION['user']['about']; ?></p>
+                    <p class="pNormalText"><?php echo $_SESSION['userLogado']['about']; ?></p>
+                </div>      
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade " id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content editProfileModalClass" >
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editProfileModalLongTitle">Edit profile</h5>
+                    <i class="fa-solid fa-xmark closeButton" data-dismiss="modal"></i>
+                </div>
+                <div class="modal-body">
+                    <form action="editProfile.php" method="POST" id="formEditProfile">
+                        <input type="hidden" name="uniqueName" class="form-control" id="uniqueName" value="<?php echo $_SESSION['userLogado']['arroba']; ?>">
+
+                        <div class="mb-3">
+                            <label for="about" class="form-label">Sobre você:</label>
+                            <input type="text" name="about" class="form-control" id="about" value="<?php echo $_SESSION['userLogado']['about']; ?>">
+                        </div>
+                
+                        <div class="mb-3">
+                            <label for="linkPortfolio" class="form-label">URL para portfólio pessoal (e.g., GitHub, itch.io):</label>
+                            <input type="text" name="linkPortfolio" class="form-control" id="linkPortfolio" value="<?php echo $_SESSION['userLogado']['urlPortfolio']; ?>">
+                        </div>
+
+                        <button type="submit" class="btn btn-cadastrar">Salvar</button>
+
+                    </form>
+                    <form action="" method="POST" id="formDeleteAccount">
+                        <input type="hidden" name="uniqueName" class="form-control" id="uniqueName" value="<?php echo $_SESSION['userLogado']['arroba']; ?>">
+
+                        <button type="submit" class="btn btn-danger">Deletar conta</button>
+
+                    </form>
                 </div>      
             </div>
         </div>
