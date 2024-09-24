@@ -15,7 +15,6 @@
 
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($user) {
-                // Atualiza os dados para serem exibidos
                 $usuarioExibido = $user;
             } else {
                 echo "<script>console.log('Nenhum usuário encontrado.')</script>";
@@ -26,7 +25,6 @@
             echo "Erro: " . $e->getMessage();
         }
     } else {
-        // Exibe o próprio usuário da sessão se não houver pesquisa
         $usuarioExibido = $_SESSION['user'];
     }
 ?>
@@ -37,14 +35,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./css/styles.css"/>
+    <link rel="stylesheet" href="./css/visualizarPerfilOutrosUsuarios.css"/>
     <title>Perfil de <?php echo $usuarioExibido['nome']; ?> | Gamyx</title>
 </head>
 <body>
-    <!-- Imagens links:
-        public/imagens/placeholder.jpg
-        ./Projeto/GAMYX.png
-    -->
     <div class="visualizeProfilesScreen">
         <form action="" method="POST" class="userSearchForm">
             <input type="text" placeholder="Procurar usuário" class="userSearchInput" name="search_query"/> 
@@ -52,7 +46,11 @@
         </form>
         <header class="bannerContainer">
             <img 
-                src="" 
+                src=<?php 
+                        $link = "public/imagens/banners/imagem-banner-" . $usuarioExibido['nome'] . ".jpg";
+                        $caminho = file_exists($link) ? $link : "semImagem";
+                        echo $caminho;
+                    ?>
                 alt="Banner do perfil do usuário <?php echo $usuarioExibido['nome']; ?>"
                 class="bannerImage"
             />
@@ -61,7 +59,11 @@
             <section class="profileInfoContainer">
                 <div class="profileImageContainer">
                     <img 
-                        src=""
+                        src=<?php 
+                                $link = "public/imagens/perfil/imagem-perfil-" . $usuarioExibido['nome'] . ".jpg";
+                                $caminho = file_exists($link) ? $link : "semImagem";
+                                echo $caminho;
+                            ?>
                         alt="Imagem de perfil do usuário <?php echo $usuarioExibido['nome']; ?>"
                         class="profileImage"
                     />
@@ -82,7 +84,7 @@
                     </div>
                 </div>
             </section>
-            <hr/>
+            <hr class="bar"/>
             <h1 class="projectsTitle">Projetos</h1>
             <section class="projectsContainer">
                 <ul class="projectsList">
@@ -95,7 +97,18 @@
                     </li>
                 </ul>
             </section>
+            <hr class="bar"/>
         </main>
+        <div class="userProfileAmigos">
+            <div class="amigosSearch">
+                <h1 class="h1AUser">Meus amigos</h1>
+            </div>
+            <div class="amigosList">
+            
+            </div>
+        </div>
+        </div>
+
     </div>
 
     <script src="./js/script.js"></script>
