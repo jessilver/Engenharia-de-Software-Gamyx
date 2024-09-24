@@ -6,6 +6,7 @@
         $email = $_POST['email'];
         $nomeUsuario = $_POST['nomeUsuario'];
         $senha = $_POST['password'];
+        $senha = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $linkPortfolio = $_POST['portfolioUser'];
 
         $uniqueName = '@' . strtolower(str_replace(' ', '', $nomeUsuario));
@@ -17,8 +18,15 @@
         $stmt = $conn->prepare("INSERT INTO usuario (email, uniqueName, nomeUsuario, senha, urlPortfolio) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param("sssss", $email, $uniqueName, $nomeUsuario, $senhaHash, $linkPortfolio);
 
+        // if ($stmt->execute()) {
+        //     // echo "Novo registro criado com sucesso!";
+        // } else {
+        //     echo "Erro: " . $stmt->error;
+        // }
+
         if ($stmt->execute()) {
-            echo "Novo registro criado com sucesso!";
+            header('Location: userProfile.php');
+            exit();
         } else {
             echo "Erro: " . $stmt->error;
         }
@@ -44,9 +52,13 @@
             echo "Erro na consulta: " . $conn->error;
         }
         
+        
         // Fechar a consulta e a conexão
         $stmt->close();
         $conn->close();
+        // header('login.php');
+        // header('Location: userProfile.php');
+        // exit();
     }
 
 ?>
