@@ -23,8 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $senhaBanco->fetch();
     $senhaBanco->close();
 
-    // 
-
+    
+    // Comparação da senha criptografada com a senha passada pelo usuario
     if(password_verify($password, $hashSenha)) {
         $stmt = $conn->prepare("SELECT id, nomeUsuario, email FROM usuario WHERE (email = ? OR nomeUsuario = ?)");
 
