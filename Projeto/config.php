@@ -43,9 +43,11 @@ function createTable($dbName,$tableName,$tableCollums){
 
 $colunasUsuario = "
     id INT AUTO_INCREMENT PRIMARY KEY,
+    uniqueName VARCHAR(100) NOT NULL UNIQUE,
     email VARCHAR(100) NOT NULL UNIQUE,
     nomeUsuario VARCHAR(100) NOT NULL,
     senha VARCHAR(100) NOT NULL,
+    about VARCHAR(500),
     urlPortfolio VARCHAR(100) NOT NULL
 ";
 

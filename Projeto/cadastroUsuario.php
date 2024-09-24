@@ -61,7 +61,7 @@
         </div>
     </section>
     
-    <script src="static/js/scripts.js"></script>
+    <script src="static/js/script.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </body>
