@@ -13,5 +13,5 @@ if ($conn->connect_error) {
 $sql = "SELECT id, nomeUsuario, email, urlPortfolio FROM usuario";
 $result = $conn->query($sql);
 
-$conn->close(); // Fechar a conexão
+$conn->close(); 
 ?>
