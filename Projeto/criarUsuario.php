@@ -21,7 +21,7 @@
         // }
 
         if ($stmt->execute()) {
-            header('Location: userProfile.php');
+            header('Location: login.php');
             exit();
         } else {
             echo "Erro: " . $stmt->error;

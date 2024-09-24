@@ -4,6 +4,7 @@ require 'config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_or_username = $_POST['email'];
+ 
     $password = $_POST['password'];
 
     // Conectar ao banco de dados
@@ -14,11 +15,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     //Consulta SQL para verificar os dados
-    $stmt = $conn->prepare("SELECT id, nomeUsuario, email FROM usuario WHERE (email = ? OR nomeUsuario = ?) AND senha = ?");
-    $stmt->bind_param("sss", $email_or_username, $email_or_username, $password);
+    
+    $senhaBanco = $conn->prepare("SELECT senha FROM usuario WHERE (email = ? OR nomeUsuario = ?)");
+    $senhaBanco->bind_param("ss", $email_or_username, $email_or_username);
+    $senhaBanco->execute();
+    $senhaBanco->bind_result($hashSenha);
+    $senhaBanco->fetch();
+    $senhaBanco->close();
 
-    $stmt->execute();
-    $result = $stmt->get_result();
+    // 
+
+    if(password_verify($password, $hashSenha)) {
+        $stmt = $conn->prepare("SELECT id, nomeUsuario, email FROM usuario WHERE (email = ? OR nomeUsuario = ?)");
+
+        $stmt->bind_param("ss", $email_or_username, $email_or_username);
+    
+
+        $stmt->execute();
+        $result = $stmt->get_result();
+    } else {
+        echo "Senha incorretos.";
+    }
 
     if ($result->num_rows > 0) {
         // Usuário encontrado, salvar dados na sessão
