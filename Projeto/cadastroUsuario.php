@@ -1,12 +1,21 @@
+<?php 
+    require 'config.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="static/css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
     <title>Cadastre-se</title>
+    <?php
+        require('linkrel.php');
+
+        session_start(); // Inicia a sessão
+
+        
+    ?>
 </head>
 <body id="cadastroUsuarioBody">
 
@@ -20,20 +29,20 @@
             <div class="titulosCards">
                 <h2 class="text-body-secondary">Cadastro de Usuário</h2>
             </div>
-            <form action="" id="formCadastroUsuario">
+            <form action="criarUsuario.php" method="POST" id="formCadastroUsuario">
                 <div class="mb-3">
                     <label for="emailUsuario" class="form-label">Email:</label>
-                    <input type="email" class="form-control" id="emailUsuario">
+                    <input type="email" name="email" class="form-control" id="emailUsuario">
                 </div>
 
                 <div class="mb-3">
                     <label for="nomeDeUsuario" class="form-label">Nome de Usuário:</label>
-                    <input type="text" class="form-control" id="nomeDeUsuario">
+                    <input type="text" name="nomeUsuario" class="form-control" id="nomeDeUsuario">
                 </div>
 
                 <div class="mb-3">
                     <label for="password1" class="form-label">Senha:</label>
-                    <input type="password" class="form-control" id="password1">
+                    <input type="password" name="password" class="form-control" id="password1">
                 </div>
 
                 <div class="mb-3">
@@ -43,10 +52,10 @@
 
                 <div class="mb-4">
                     <label for="linkPortfolio" class="form-label">URL para portfólio pessoal (e.g., GitHub, itch.io):</label>
-                    <input type="text" class="form-control" id="linkPortfolio">
+                    <input type="text" name="portfolioUser" class="form-control" id="linkPortfolio">
                 </div>
 
-                <button type="button" class="btn btn-cadastrar" onclick="validaDadosCadastroUsuario()">Cadastrar-se</button>
+                <button type="submit" class="btn btn-cadastrar" onclick="validaDadosCadastroUsuario()">Cadastrar-se</button>
 
             </form>
         </div>
