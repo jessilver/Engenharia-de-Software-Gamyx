@@ -2,7 +2,9 @@
 require 'config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id = $_POST['id'];
+    $uniqueName = $_POST['uniqueName'];
+
+    echo $uniqueName;
 
     $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
@@ -10,12 +12,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Conexão falhou: " . $conn->connect_error);
     }
 
-    //Deletar o usuário pelo ID
-    $stmt = $conn->prepare("DELETE FROM usuario WHERE id = ?");
-    $stmt->bind_param("i", $id);
+    //Deletar o usuário pelo uniqueName
+    $stmt = $conn->prepare("DELETE FROM usuario WHERE uniqueName = ?");
+    $stmt->bind_param("s", $uniqueName);
 
     if ($stmt->execute()) {
         echo "Usuário deletado com sucesso!";
+        header('Location: login.php');
     } else {
         echo "Erro ao deletar: " . $stmt->error;
     }

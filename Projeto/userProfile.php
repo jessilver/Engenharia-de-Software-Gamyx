@@ -135,7 +135,7 @@
                         <button type="submit" class="btn btn-cadastrar">Salvar</button>
 
                     </form>
-                    <form action="" method="POST" id="formDeleteAccount">
+                    <form action="deleteUsuario.php" method="POST" id="formDeleteAccount">
                         <input type="hidden" name="uniqueName" class="form-control" id="uniqueName" value="<?php echo $_SESSION['userLogado']['arroba']; ?>">
 
                         <button type="submit" class="btn btn-danger">Deletar conta</button>

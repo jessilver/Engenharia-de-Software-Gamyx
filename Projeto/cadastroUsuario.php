@@ -52,6 +52,9 @@
                 <button type="submit" class="btn btn-cadastrar">Cadastrar-se</button>
 
             </form>
+            <div class="other-options">
+                <p>Já possui uma conta? <a href="login.php" class="bold-link">Entre agora</a></p>
+            </div>
         </div>
     </section>
     

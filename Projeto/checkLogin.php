@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Comparação da senha criptografada com a senha passada pelo usuario
     if(password_verify($password, $hashSenha)) {
-        $stmt = $conn->prepare("SELECT id, nomeUsuario, email FROM usuario WHERE (email = ? OR nomeUsuario = ?)");
+        $stmt = $conn->prepare("SELECT * FROM usuario WHERE (email = ? OR nomeUsuario = ?)");
 
         $stmt->bind_param("ss", $email_or_username, $email_or_username);
     
