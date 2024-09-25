@@ -1,16 +1,16 @@
 <?php
     session_start();
+
+    require_once "config.php";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Perfil</title>
+    <link rel="stylesheet" href="static/css/userProfile.css">
     <?php
-        require 'config.php';
         require('linkrel.php');
-    ?>
+        ?>
+    <title>Meu Perfil</title>
 </head>
 <body id="userProfileBody">
 
@@ -21,7 +21,10 @@
     ?>
 
     <section id="userProfileSection">
-        
+        <form action="pesquisaUsuario.php" method="POST" class="userSearchForm">
+            <input type="text" placeholder="Procurar usuário" class="userSearchInput" name="search_query"/> 
+            <button type="submit" class="userSearchSubmit">Buscar</button>
+        </form>
         <div class="userProfileContainer">
             <div class="userProfileInfo">
                 <div class="userProfileCapa">
@@ -132,7 +135,7 @@
                         <button type="submit" class="btn btn-cadastrar">Salvar</button>
 
                     </form>
-                    <form action="" method="POST" id="formDeleteAccount">
+                    <form action="deleteUsuario.php" method="POST" id="formDeleteAccount">
                         <input type="hidden" name="uniqueName" class="form-control" id="uniqueName" value="<?php echo $_SESSION['userLogado']['arroba']; ?>">
 
                         <button type="submit" class="btn btn-danger">Deletar conta</button>
