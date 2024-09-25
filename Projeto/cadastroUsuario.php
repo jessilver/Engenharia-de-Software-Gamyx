@@ -5,17 +5,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Cadastre-se</title>
+    <link rel="stylesheet" href="static/css/cadastro.css">
     <?php
         require('linkrel.php');
-
-        session_start(); // Inicia a sessão
-
-        
-    ?>
+        ?>
+    <title>Cadastre-se</title>
 </head>
 <body id="cadastroUsuarioBody">
 

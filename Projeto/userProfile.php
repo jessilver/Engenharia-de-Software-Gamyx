@@ -2,43 +2,15 @@
     session_start();
 
     require_once "config.php";
-
-    // Lógica de busca de usuários
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['search_query'])) {
-        $searchQuery = $_POST['search_query'];
-        try {
-            // Conexão com o banco de dados
-            $pdo = new PDO('mysql:dbname='.DB_NAME.';host='.DB_HOST, DB_USER, DB_PASS);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            
-            // Consulta ao banco de dados (busca por nome, arroba ou email)
-            $stmt = $pdo->prepare("SELECT * FROM usuario WHERE nomeUsuario LIKE :searchQuery OR uniqueName LIKE :searchQuery OR email LIKE :searchQuery");
-            $stmt->execute(['searchQuery' => "%$searchQuery%"]);
-
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($user) {
-                $usuarioExibido = $user;
-                header("Location: visualizarPerfilOutrosUsuarios.php");
-                exit();
-            } else {
-                echo "<script>console.log('Nenhum usuário encontrado.')</script>";
-            }
-        } catch (PDOException $e) {
-            echo "Erro: " . $e->getMessage();
-        }
-    } else {
-        
-    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Perfil</title>
+    <link rel="stylesheet" href="static/css/userProfile.css">
     <?php
         require('linkrel.php');
-    ?>
+        ?>
+    <title>Meu Perfil</title>
 </head>
 <body id="userProfileBody">
 
@@ -49,7 +21,7 @@
     ?>
 
     <section id="userProfileSection">
-        <form action="" method="POST" class="userSearchForm">
+        <form action="pesquisaUsuario.php" method="POST" class="userSearchForm">
             <input type="text" placeholder="Procurar usuário" class="userSearchInput" name="search_query"/> 
             <button type="submit" class="userSearchSubmit">Buscar</button>
         </form>
