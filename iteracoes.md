@@ -14,6 +14,7 @@
   - [feat/login-de-usuario](#Login-de-Usuário)
   - [feat/acesso-ao-perfil](#Acesso-ao-Perfil)
   - [feat/vizualizar-perfil-de-outros-usuarios](#Visualização-de-Perfil-de-Outros-Usuários)
+  - [adicionais](#Adicionais)
 
 # Iteração 01
 <small>[voltar para o Sumário](#Sumário)</small><br>
@@ -140,6 +141,18 @@ Critérios de Aceitação:
 - Tarefa 1: Design da interface de visualização de perfil de outros usuários.
 - Tarefa 2: Implementação da lógica de busca e visualização de perfis.
 
+# Adicionais
+## Jônatas De Sousa Madeira
+- **Create**: Cria um novo usuário na tabela.
+  
+## Arthur Lima Duarte
+- **Read**: Faz uma pesquisa no banco por usuário.
 
+## Jessé Eliseu Nunes Da Silva
+- **Update**: Editar perfil de usuário.
+- Configuração do banco de dados.
+
+## Gabriel Fernandes Zamora
+- **Delete**: Deletar perfil de usuário.
 
 
