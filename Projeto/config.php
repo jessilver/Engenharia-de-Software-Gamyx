@@ -54,5 +54,30 @@ $colunasUsuario = "
 createDatabase(DB_NAME);
 createTable(DB_NAME,"usuario",$colunasUsuario);
 
+function insertUser($pdo, $uniqueName, $email, $nomeUsuario, $senha, $about, $urlPortfolio) {
+    try {
+        $sql = "INSERT INTO usuario (uniqueName, email, nomeUsuario, senha, about, urlPortfolio) 
+                VALUES (:uniqueName, :email, :nomeUsuario, :senha, :about, :urlPortfolio)";
+        
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':uniqueName', $uniqueName);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':nomeUsuario', $nomeUsuario);
+        $stmt->bindParam(':senha', $senha);
+        $stmt->bindParam(':about', $about);
+        $stmt->bindParam(':urlPortfolio', $urlPortfolio);
+        
+        $stmt->execute();
+    } catch (PDOException $e) {
+        // echo "<script>console.log('Usuario já inserido')</script>";
+    }
+}
+
+// Adicionando novos usuários
+$pdo = new PDO('mysql:dbname='.DB_NAME.';host='.DB_HOST, DB_USER, DB_PASS);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+insertUser($pdo, 'mariaGamer', 'maria@example.com', 'Maria', 'senhaSegura123', 'Eu sou a Maria e adoro jogos de aventura.', 'https://portfolio.maria.com');
+insertUser($pdo, 'carlosDev', 'carlos@example.com', 'Carlos', 'senhaSegura456',  'Carlos, desenvolvedor e amante de programação.', 'https://portfolio.carlos.com');
 
 ?>

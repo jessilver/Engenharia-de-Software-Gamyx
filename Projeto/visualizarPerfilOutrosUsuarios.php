@@ -10,7 +10,7 @@
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
             // Consulta ao banco de dados (busca por nome, arroba ou email)
-            $stmt = $pdo->prepare("SELECT * FROM usuario WHERE nome LIKE :searchQuery OR arroba LIKE :searchQuery OR email LIKE :searchQuery");
+            $stmt = $pdo->prepare("SELECT * FROM usuario WHERE nomeUsuario LIKE :searchQuery OR uniqueName LIKE :searchQuery OR email LIKE :searchQuery");
             $stmt->execute(['searchQuery' => "%$searchQuery%"]);
 
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -19,13 +19,15 @@
             } else {
                 echo "<script>console.log('Nenhum usuário encontrado.')</script>";
                 // Exibe o próprio usuário da sessão caso não encontre nada
-                $usuarioExibido = $_SESSION['user'];
+                header("Location: userProfile.php");
+                exit();
             }
         } catch (PDOException $e) {
             echo "Erro: " . $e->getMessage();
         }
     } else {
-        $usuarioExibido = $_SESSION['user'];
+        header("Location: userProfile.php");
+        exit();
     }
 ?>
 
@@ -36,7 +38,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./static/css"/>
-    <title>Perfil de <?php echo $usuarioExibido['nome']; ?> | Gamyx</title>
+    <title>Perfil de <?php echo $usuarioExibido['nomeUsuario']; ?> | Gamyx</title>
 </head>
 <body>
     <div class="visualizeProfilesScreen">
@@ -47,11 +49,11 @@
         <header class="bannerContainer">
             <img 
                 src=<?php 
-                        $link = "./static/img/banners/imagem-banner-" . $usuarioExibido['nome'] . ".jpg";
+                        $link = "./static/img/banners/imagem-banner-" . $usuarioExibido['nomeUsuario'] . ".jpg";
                         $caminho = file_exists($link) ? $link : "semImagem";
                         echo $caminho;
                     ?>
-                alt="Banner do perfil do usuário <?php echo $usuarioExibido['nome']; ?>"
+                alt="Banner do perfil do usuário <?php echo $usuarioExibido['nomeUsuario']; ?>"
                 class="bannerImage"
             />
         </header>
@@ -60,20 +62,20 @@
                 <div class="profileImageContainer">
                     <img 
                         src=<?php 
-                                $link = "./static/img/perfil/imagem-perfil-" . $usuarioExibido['nome'] . ".jpg";
+                                $link = "./static/img/perfil/imagem-perfil-" . $usuarioExibido['nomeUsuario'] . ".jpg";
                                 $caminho = file_exists($link) ? $link : "semImagem";
                                 echo $caminho;
                             ?>
-                        alt="Imagem de perfil do usuário <?php echo $usuarioExibido['nome']; ?>"
+                        alt="Imagem de perfil do usuário <?php echo $usuarioExibido['nomeUsuario']; ?>"
                         class="profileImage"
                     />
                 </div>
                 <div class="profileInfo">
                     <h1>
-                        <?php echo $usuarioExibido['nome']; ?>
+                        <?php echo $usuarioExibido['nomeUsuario']; ?>
                     </h1>
                     <span>
-                        <?php echo $usuarioExibido['arroba']; ?>
+                        <?php echo $usuarioExibido['uniqueName']; ?>
                     </span>
                     <p class="userAbout">
                         <?php echo $usuarioExibido['about']; ?>

@@ -27,8 +27,28 @@
     background-color: #151C25 !important;
     color: #FFFFFF !important;
 }
-
-
+/* Barra de input */
+.userSearchInput{
+    background-color: #151C25;
+    color: #fff;
+    font-family: "ABeeZee", sans-serif;
+    margin: 20px 0;
+    padding: 12px 240px 12px 12px;
+    border: 1px solid #57626F;
+    border-radius: 12px;
+}
+.userSearchInput::placeholder{
+    color: #57626F;
+    font-size: 14px;
+    font-style: italic;
+}
+.userSearchSubmit{
+    background-color: #57626F;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+}
 .userProfileContainer{
     display: flex;
     align-items: center;

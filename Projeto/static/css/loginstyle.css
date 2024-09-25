@@ -1,0 +1,145 @@
+/* ================================================================================================== */
+/*                                              Login                                                */
+/* ================================================================================================== */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #0D1117;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.login-box {
+    background-color: #151C25;
+    padding: 40px;
+    border: 1px solid #282F39;
+    border-radius: 5px;
+    text-align: center;
+    width: 500px; /* Largura ajustada */
+    height: 548px; /* Altura ajustada */
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #fff;
+}
+
+p {
+    color: #ffffff;
+}
+
+.login-box {
+    background-color: #151C25;
+    padding: 30px;
+    border: 1px solid #282F39;
+    border-radius: 5px;
+    text-align: center;
+    width: 400px;
+    height: auto; /* Ajuste automático da altura */
+}
+
+.login-form {
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    text-align: left;
+    margin-bottom: 5px;
+    color: #ddd;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #282F39;
+    border-radius: 5px;
+    background-color: #0D1117;
+    color: #fff;
+}
+
+button {
+    padding: 12px;
+    background-color: #26A641;
+    border: 1px solid #006D32;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218336;
+}
+
+.password-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.forgot-password,
+.other-options a {
+    color: #0179DF; /* Mesma cor para os links */
+    text-decoration: none; /* Sem sublinhado por padrão */
+}
+
+.forgot-password:hover,
+.other-options a:hover {
+    text-decoration: underline; /* Sublinhado ao passar o mouse */
+    color: #0179DF; /* Manter a cor ao passar o mouse */
+}
+
+/* Caixa de opções de login */
+.other-options {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #151C25;
+    border-radius: 5px;
+    border: 1px solid #282F39;
+    width: 400px;
+}
+
+.other-options p {
+    margin-top: 5px;
+    color: #fff;
+}
+
+.bold-link {
+    font-weight: bold;
+}

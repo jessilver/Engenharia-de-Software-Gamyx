@@ -29,7 +29,7 @@ body{
     margin: 0 var(--margem-padrao);
 }
 .userSearchForm{
-    align-self: flex-end;
+    align-self: flex-start;
 }
 .userSearchInput{
     background-color: var(--cor-cinza-escuro);
