@@ -38,13 +38,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if ($result->num_rows > 0) {
-        // Usuário encontrado, salvar dados na sessão
         $user = $result->fetch_assoc();
         
-        // $_SESSION['user_id'] = $user['id'];
-        // $_SESSION['user_name'] = $user['nomeUsuario'];
-        // $_SESSION['user_email'] = $user['email'];
-
         $_SESSION['userLogado'] = [
             'nome' => $user['nomeUsuario'],
             'arroba' => $user['uniqueName'], 
@@ -55,7 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             'about' => $user['about'] ?? 'Sobre mim não disponível.'
         ];
 
-        // Redirecionar para a página de perfil
         header("Location: userProfile.php");
         exit();
     } else {
@@ -64,6 +58,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $stmt->close();
-    $conn->close(); // Fechar a conexão
+    $conn->close();
 }
 ?>
