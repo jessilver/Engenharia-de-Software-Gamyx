@@ -90,3 +90,26 @@
     height: 40px !important;
     background-color: #26A641 !important;
 }
+
+.forgot-password,
+.other-options a {
+    color: #0179DF; /* Mesma cor para os links */
+    text-decoration: none; /* Sem sublinhado por padrão */
+}
+
+.forgot-password:hover,
+.other-options a:hover {
+    text-decoration: underline; /* Sublinhado ao passar o mouse */
+    color: #0179DF; /* Manter a cor ao passar o mouse */
+}
+
+/* Caixa de opções de login */
+.other-options {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.other-options p {
+    margin-top: 5px;
+    color: #fff;
+}
