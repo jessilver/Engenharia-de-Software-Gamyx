@@ -1,5 +1,5 @@
 <?php
-    require "./Projeto/index.php";
+    require "index.php";
 
     // Lógica de busca de usuários
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['search_query'])) {
@@ -35,7 +35,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./css/visualizarPerfilOutrosUsuarios.css"/>
+    <link rel="stylesheet" href="./static/css"/>
     <title>Perfil de <?php echo $usuarioExibido['nome']; ?> | Gamyx</title>
 </head>
 <body>
@@ -47,7 +47,7 @@
         <header class="bannerContainer">
             <img 
                 src=<?php 
-                        $link = "public/imagens/banners/imagem-banner-" . $usuarioExibido['nome'] . ".jpg";
+                        $link = "./static/img/banners/imagem-banner-" . $usuarioExibido['nome'] . ".jpg";
                         $caminho = file_exists($link) ? $link : "semImagem";
                         echo $caminho;
                     ?>
@@ -60,7 +60,7 @@
                 <div class="profileImageContainer">
                     <img 
                         src=<?php 
-                                $link = "public/imagens/perfil/imagem-perfil-" . $usuarioExibido['nome'] . ".jpg";
+                                $link = "./static/img/perfil/imagem-perfil-" . $usuarioExibido['nome'] . ".jpg";
                                 $caminho = file_exists($link) ? $link : "semImagem";
                                 echo $caminho;
                             ?>
@@ -111,6 +111,6 @@
 
     </div>
 
-    <script src="./js/script.js"></script>
+    <script src="./static/js/visualizarPerfilOutrosUsuarios.js"></script>
 </body>
 </html>
