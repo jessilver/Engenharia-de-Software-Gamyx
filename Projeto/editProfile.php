@@ -14,32 +14,30 @@
         $stmt->bind_param("sss",$about, $linkPortfolio,$uniqueName);
 
         if ($stmt->execute()) {
-            
+            $result = $stmt->get_result();
+    
+            if ($result) {
+                    $row = $result->fetch_assoc();
+                    $nomeUsuario = $row['nomeUsuario'];
+                    
+                    session_start();
+    
+                    $_SESSION=[];
+    
+                    $_SESSION['userLogado'] = [
+                        'nome' => $row['nomeUsuario'],
+                        'arroba' => $row['uniqueName'], 
+                        'email' => $row['email'],
+                        'projects' => [], 
+                        'friends' => [], 
+                        'urlPortfolio' => $row['urlPortfolio'],
+                        'about' => $row['about'] ?? 'Sobre mim não disponível.'
+                    ];
+            } else {
+                echo "Erro na consulta: " . $conn->error;
+            }
         } else {
             echo "Erro: " . $stmt->error;
-        }
-
-        $result = $conn->query("SELECT * FROM usuario"); 
-
-        if ($result) {
-                $row = $result->fetch_assoc();
-                $nomeUsuario = $row['nomeUsuario'];
-                
-                session_start();
-
-                $_SESSION=[];
-
-                $_SESSION['userLogado'] = [
-                    'nome' => $row['nomeUsuario'],
-                    'arroba' => $row['uniqueName'], 
-                    'email' => $row['email'],
-                    'projects' => [], 
-                    'friends' => [], 
-                    'urlPortfolio' => $row['urlPortfolio'],
-                    'about' => $row['about'] ?? 'Sobre mim não disponível.'
-                ];
-        } else {
-            echo "Erro na consulta: " . $conn->error;
         }
 
         header("Location: userProfile.php");
