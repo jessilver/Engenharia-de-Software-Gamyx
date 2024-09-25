@@ -90,9 +90,8 @@ Permitir que o usuário logado possa criar, visualizar, editar e deletar um proj
 ### Como um usuário logado, quero criar um novo projeto no sistema.
 
 Critérios de Aceitação:
-- O sistema deve permitir que o usuário insira dados como nome do prpjeto, sobre e link do projeto (github ou itch.io).
+- O sistema deve permitir que o usuário insira dados como nome do projeto, descrição e link do projeto (github ou itch.io).
 - O usuário deve receber uma confirmação de criação bem-sucedida.
-- Login de Usuário
 
 ### Como um usuário logado, quero acessar e visualizar meu projeto.
 
