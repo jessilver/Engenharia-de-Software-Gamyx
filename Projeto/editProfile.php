@@ -1,5 +1,5 @@
 <?php 
-
+    session_start();
     require 'config.php';
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -14,27 +14,29 @@
         $stmt->bind_param("sss",$about, $linkPortfolio,$uniqueName);
 
         if ($stmt->execute()) {
-            $result = $stmt->get_result();
+            
+            $stmt2 = $conn->prepare("SELECT * FROM usuario WHERE uniqueName = ?");
     
-            if ($result) {
-                    $row = $result->fetch_assoc();
-                    $nomeUsuario = $row['nomeUsuario'];
-                    
-                    session_start();
-    
-                    $_SESSION=[];
-    
-                    $_SESSION['userLogado'] = [
-                        'nome' => $row['nomeUsuario'],
-                        'arroba' => $row['uniqueName'], 
-                        'email' => $row['email'],
-                        'projects' => [], 
-                        'friends' => [], 
-                        'urlPortfolio' => $row['urlPortfolio'],
-                        'about' => $row['about'] ?? 'Sobre mim não disponível.'
-                    ];
-            } else {
-                echo "Erro na consulta: " . $conn->error;
+            $stmt2->bind_param("s", $uniqueName);
+        
+            $stmt2->execute();
+            $result = $stmt2->get_result();
+        
+            print_r( $result);
+            if ($result->num_rows > 0) {
+                $user = $result->fetch_assoc();
+                print_r( $user);
+                session_unset(); 
+                
+                $_SESSION['userLogado'] = [
+                    'nome' => $user['nomeUsuario'],
+                    'arroba' => $user['uniqueName'], 
+                    'email' => $user['email'],
+                    'projects' => [], 
+                    'friends' => [], 
+                    'urlPortfolio' => $user['urlPortfolio'],
+                    'about' => $user['about'] ?? 'Sobre mim não disponível.'
+                ];
             }
         } else {
             echo "Erro: " . $stmt->error;
