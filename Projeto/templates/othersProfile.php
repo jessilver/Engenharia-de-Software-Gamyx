@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require "config.php";  
+    require "../config.php";  
 ?>
 
 <!DOCTYPE html>
@@ -9,20 +9,20 @@
     <?php
         require('linkrel.php');
     ?>
-    <link rel="stylesheet" href="static/css/othersProfile.css"/>
+    <link rel="stylesheet" href="../static/css/othersProfile.css"/>
     <title>Perfil de <?php echo $_SESSION['userSearched']['nome']; ?> | Gamyx</title>
 
 </head>
 <body>
     <div class="visualizeProfilesScreen">
-        <form action="pesquisaUsuario.php" method="POST" class="userSearchForm">
+        <form action="../views/pesquisaUsuario.php" method="POST" class="userSearchForm">
             <input type="text" placeholder="Procurar usuário" class="userSearchInput" name="search_query"/> 
             <button type="submit" class="userSearchSubmit">Buscar</button>
         </form>
         <header class="bannerContainer">
             <img 
                 src=<?php 
-                        $link = "./static/img/banners/imagem-banner-" . $_SESSION['userSearched']['nome'] . ".jpg";
+                        $link = "../static/img/banners/imagem-banner-" . $_SESSION['userSearched']['nome'] . ".jpg";
                         $caminho = file_exists($link) ? $link : "semImagem";
                         echo $caminho;
                     ?>
@@ -35,7 +35,7 @@
                 <div class="profileImageContainer">
                     <img 
                         src=<?php 
-                                $link = "./static/img/perfil/imagem-perfil-" . $_SESSION['userSearched']['nome'] . ".jpg";
+                                $link = "../static/img/perfil/imagem-perfil-" . $_SESSION['userSearched']['nome'] . ".jpg";
                                 $caminho = file_exists($link) ? $link : "semImagem";
                                 echo $caminho;
                             ?>
@@ -86,6 +86,6 @@
 
     </div>
 
-    <script src="./static/js/visualizarPerfilOutrosUsuarios.js"></script>
+    <script src="../static/js/visualizarPerfilOutrosUsuarios.js"></script>
 </body>
 </html>

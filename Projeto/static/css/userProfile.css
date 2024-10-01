@@ -179,7 +179,6 @@
 }
 
 .h1UserName{
-    margin: 0;
     font-family: 'ABeeZee', sans-serif; 
     font-size: 40px;
     font-weight: normal;
@@ -187,7 +186,6 @@
 }
 
 .h1AUser{
-    margin: 0;
     font-family: 'ABeeZee', sans-serif; 
     font-size: 20px;
     font-weight:normal;
@@ -201,11 +199,11 @@
 }
 
 .h1AboutUser{
-    margin: 0;
     font-family: 'ABeeZee', sans-serif; 
     font-size: 18px;
     font-weight: normal; 
-    width: 350px; 
+    width: auto;
+    max-width: 350px; 
     background: linear-gradient(to right, white 70%, transparent); 
     -webkit-background-clip: text; 
     -webkit-text-fill-color: transparent; 
@@ -214,7 +212,6 @@
 }
 
 .h1AboutUserVerMais{
-    margin: 0;
     margin-left: 15px;
     font-family: 'ABeeZee', sans-serif; 
     font-size: 16px;
@@ -231,7 +228,6 @@
 }
 
 .pNormalText{
-    margin: 0;
     font-family: 'ABeeZee', sans-serif; 
     font-size: 15px;
     font-weight:lighter; 
@@ -284,4 +280,39 @@
     width: 60% !important;
     height: 40px !important;
     background-color: #26A641 !important;
+}
+
+/* edit project */
+
+.editProjectModalClass{
+    background-color: #151C25 !important;
+    color: #FFFFFF !important;
+}
+
+.edtiPh1{
+    margin: 0 0 16px 0;
+    font-family: 'ABeeZee', sans-serif; 
+    font-size: 16px;
+    font-weight:lighter; 
+    width: fit-content; 
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.previewTrojectImg{
+    margin: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.projectCapa{
+    width: 360px;
+    height: 167px;
+}
+
+#userProfileBody textarea {
+    background-color: #0D1117 !important;
+    border: 1px solid #282F39;
+    color: #FFFFFF;
 }

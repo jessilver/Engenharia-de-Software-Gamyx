@@ -1,12 +1,14 @@
 <?php 
     session_start();
-    require 'config.php';
+    require '../config.php';
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $uniqueName = $_POST['uniqueName'];
         $about = $_POST['about'];
         $linkPortfolio = $_POST['linkPortfolio'];
+
+        echo $about.'<br>';
 
         $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
@@ -42,7 +44,7 @@
             echo "Erro: " . $stmt->error;
         }
 
-        header("Location: userProfile.php");
+        header("Location: ../templates/userProfile.php");
         
         $stmt->close();
         $conn->close();

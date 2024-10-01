@@ -1,5 +1,5 @@
 <?php
-require 'config.php';
+require '../config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $uniqueName = $_POST['uniqueName'];
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         echo "Usuário deletado com sucesso!";
-        header('Location: login.php');
+        header('Location: ../templates/login.php');
     } else {
         echo "Erro ao deletar: " . $stmt->error;
     }
