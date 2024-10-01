@@ -9,6 +9,7 @@
     <?php
         require('linkrel.php');
     ?>
+    <link rel="stylesheet" href="static/css/variaveis.css"/>
     <link rel="stylesheet" href="static/css/othersProfile.css"/>
     <title>Perfil de <?php echo $_SESSION['userSearched']['nome']; ?> | Gamyx</title>
 
@@ -19,7 +20,7 @@
             <input type="text" placeholder="Procurar usuário" class="userSearchInput" name="search_query"/> 
             <button type="submit" class="userSearchSubmit">Buscar</button>
         </form>
-        <header class="bannerContainer">
+        <header class="bannerContainer rounded">
             <img 
                 src=<?php 
                         $link = "./static/img/banners/imagem-banner-" . $_SESSION['userSearched']['nome'] . ".jpg";
@@ -27,7 +28,7 @@
                         echo $caminho;
                     ?>
                 alt="Banner do perfil do usuário <?php echo $_SESSION['userSearched']['nome']; ?>"
-                class="bannerImage"
+                class="bannerImage rounded"
             />
         </header>
         <main class="mainContent">
@@ -61,9 +62,9 @@
             </section>
             <hr class="bar"/>
             <h1 class="projectsTitle">Projetos</h1>
-            <section class="projectsContainer">
+            <section class="projectsContainer rounded">
                 <ul class="projectsList">
-                    <li class="projectItem">
+                    <li class="projectItem rounded">
                         <img 
                             src=""
                             alt="Este projeto não tem imagem."

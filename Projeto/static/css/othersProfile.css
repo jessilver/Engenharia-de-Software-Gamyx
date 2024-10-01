@@ -1,21 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap');
 /* Reset  */
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-/* Variáveis  */
-:root{
-    --cor-fundo: #0D1117;
-    --cor-fundo-projetos: #0B0E13;
-    --cor-cinza-escuro: #151C25;
-    --cor-cinza-claro: #57626F;
-    --cor-texto: #fff;
-    --fonte-padrao: "ABeeZee", sans-serif;
-    --margem-padrao: 36px;
-    --borda-arredondada-padrao: 12px;
-}
 body{
     background-color: var(--cor-fundo);
     color: var(--cor-texto);
@@ -58,7 +42,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: var(--borda-arredondada-padrao);
    
     min-width: 100%;
     max-height: 270px; /* Ajustar */
@@ -66,7 +49,6 @@ body{
 .bannerImage{
     width: 100%;
     max-height: 270px;
-    border-radius: var(--borda-arredondada-padrao);
 }
 /* Main  */
 .mainContent{
@@ -118,7 +100,6 @@ body{
 }
 .projectsContainer{
     background-color: var(--cor-fundo-projetos);
-    border-radius: var(--borda-arredondada-padrao);
     min-height: 250px;
 }
 .projectsList{
@@ -135,7 +116,6 @@ body{
     align-items: center;
     width: 380px;
     height: 210px;
-    border-radius: var(--borda-arredondada-padrao);
 }
 /* Amigos */
 .userProfileAmigos{
