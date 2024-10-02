@@ -6,6 +6,8 @@ const DB_NAME = 'gamyx';
 const DB_USER = 'root';
 const DB_PASS = '';
 
+$conn = new PDO(DB_DSN, DB_USER, DB_PASS);
+
 function createDatabase($dbName){
     try {
         $conn = new PDO(DB_DSN, DB_USER, DB_PASS);
@@ -49,6 +51,15 @@ $colunasUsuario = "
     senha VARCHAR(100) NOT NULL,
     about VARCHAR(500),
     urlPortfolio VARCHAR(100) NOT NULL
+";
+
+$colunasProjetoUsuario = "
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nomeProjeto VARCHAR(100) NOT NULL,
+    descricaoProjeto VARCHAR(500),
+    linkDownload VARCHAR(100) NOT NULL,
+    sistemasOperacionaisSuportados VARCHAR(100) NOT NULL,
+    fotoCapa
 ";
 
 createDatabase(DB_NAME);

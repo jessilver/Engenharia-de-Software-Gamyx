@@ -20,7 +20,7 @@
         <h2 class="text-body-secondary">Cadastrar Novo Projeto</h2>
     </div>
 
-    <form action="" id="formCadastrarProjeto">
+    <form action="backendCadastrarProjeto.php" method="POST" id="formCadastrarProjeto">
 
         <div class="mb-3 mt-3">
             <label for="nomeProjeto" class="form-label">Nome do projeto:</label>
@@ -42,21 +42,21 @@
             
 
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="windows" id="sistemaWindowsCheckbox">
+                <input class="form-check-input" name="windows" type="checkbox" value="windows" id="sistemaWindowsCheckbox">
                 <label class="form-check-label" for="sistemaWindowsCheckbox">
                     Windows
                 </label>
             </div>
 
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="linux" id="sistemaLinuxCheckbox">
+                <input class="form-check-input" name="linux" type="checkbox" value="linux" id="sistemaLinuxCheckbox">
                 <label class="form-check-label" for="sistemaLinuxCheckbox">
                     Linux
                 </label>
             </div>
 
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="mac" id="sistemaMacCheckbox">
+                <input class="form-check-input" name="mac" type="checkbox" value="mac" id="sistemaMacCheckbox">
                 <label class="form-check-label" for="sistemaMacCheckbox">
                     Mac
                 </label>
