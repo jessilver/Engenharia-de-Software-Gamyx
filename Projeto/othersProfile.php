@@ -2,10 +2,6 @@
     session_start();
     require "config.php";  
 ?>
-
-<?php include 'menu.php'; 
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +14,9 @@
 
 </head>
 <body>
+    <?php 
+        include 'menu.php'; 
+    ?>
     <div class="visualizeProfilesScreen">
         <form action="pesquisaUsuario.php" method="POST" class="userSearchForm">
             <input type="text" placeholder="Procurar usuário" class="userSearchInput" name="search_query"/> 

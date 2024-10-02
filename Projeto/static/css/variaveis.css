@@ -15,3 +15,12 @@
     --margem-padrao: 36px;
     --borda-arredondada-padrao: 12px;
 }
+@media (max-width: 1048px){
+    .creatorCardContainer{
+        display: none;
+    }
+    .projectImage{
+        width: 350px !important;
+        height: 120px !important;
+    }
+}

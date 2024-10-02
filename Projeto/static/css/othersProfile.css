@@ -10,7 +10,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0 var(--margem-padrao);
+    margin: 0 100px;
 }
 .userSearchForm{
     align-self: flex-start;

@@ -4,21 +4,38 @@ body{
 .viewProjectScreen{
     display: flex;
     justify-content: center;
-    gap: 160px;
-    margin: var(--margem-padrao);
-    margin-bottom: 0;
+    gap: 60px;
     color: var(--cor-texto);
     font-family: var(--fonte-padrao), sans-serif;
-    height: 100vh;
+    margin: 36px 100px;
 }
 /* Projeto  */
 .projectContainer{
     background-color: var(--cor-cinza-escuro);
-    min-height: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     border: 1px solid var(--cor-cinza-borda);
-    overflow-y: scroll;
-
-    width: 1200px;  /*mudar*/
+    height: 1000px;
+    padding: 12px 24px;
+}
+.projectTitle{
+    font-size: 24px;
+    font-weight: bold;
+}
+.lower{
+    font-weight: normal;
+}
+.projectCategory{
+    font-size: 12px;
+}
+.projectImage{
+    width: 700px;
+    height: 240px;
+}
+.projectRepContainer{
+    background-color: var(--cor-fundo-projetos);
+    padding: 8px;
 }
 /* Card do criador  */
 .creatorCardContainer{
@@ -26,9 +43,10 @@ body{
     position: sticky;
     top: 36px; 
     background-color: var(--cor-cinza-escuro);
-    max-width: 363px;
-    max-height: 55vh;
+    max-height: 60vh;
     border: 1px solid var(--cor-cinza-borda);
+    
+    overflow: auto;
 }
 .creatorCardInfo{
     display: flex;
@@ -44,7 +62,7 @@ body{
     padding: 8px;
 }
 .cardInfoIcons{
-    font-size: 22px;
+    font-size: 20px;
 }
 .userAbout{
     text-align: justify;

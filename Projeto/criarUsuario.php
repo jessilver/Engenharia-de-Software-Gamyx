@@ -24,5 +24,5 @@
         $stmt->close();
         $conn->close();
     }
-
+    header('Location: login.php');
 ?>

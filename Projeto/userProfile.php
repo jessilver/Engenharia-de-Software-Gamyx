@@ -3,10 +3,6 @@
 
     require_once "config.php";
 ?>
-
-<?php include 'menu.php'; 
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -17,13 +13,14 @@
     <title>Meu Perfil</title>
 </head>
 <body id="userProfileBody">
-
     <?php
         if (!isset($_SESSION['userLogado'])) {
             header("Location: criarUsuario.php");
         }
     ?>
-
+    <?php 
+        include 'menu.php'; 
+    ?>
     <section id="userProfileSection">
         <form action="pesquisaUsuario.php" method="POST" class="userSearchForm">
             <input type="text" placeholder="Procurar usuário" class="userSearchInput" name="search_query"/> 
@@ -31,7 +28,7 @@
         </form>
         <div class="userProfileContainer">
             <div class="userProfileInfo">
-                <div class="userProfileCapa">
+                <div class="userProfileCapa rounded">
                 
                 </div>
                 <div class="userProfilePerfil">
