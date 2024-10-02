@@ -45,5 +45,14 @@ if (isset($_SESSION['login_error'])) {
             <p>Novo no Gamyx? <a href="cadastroUsuario.php" class="bold-link">Criar uma nova conta</a></p>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('error')) {
+                alert('Login ou Senha incorreta. Por favor, tente novamente.');
+            }
+        });
+    </script>
 </body>
 </html>
