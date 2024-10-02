@@ -105,6 +105,12 @@
     color: #FFF;
 }
 
+#descricaoProjeto {
+    background-color: #0D1117;
+    color: #FFF;
+    height: 100px;
+}
+
 #previewFotoCapa{
     display: flex;
     flex-direction: column;

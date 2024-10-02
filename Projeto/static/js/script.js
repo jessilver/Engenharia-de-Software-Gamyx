@@ -32,3 +32,30 @@ formularioCadastro.addEventListener('change', (event) => {
         senha2.setCustomValidity('');
     }
 });
+
+function previewImagemSelecionada(){
+    const inputImagem = document.getElementById('formFile');
+    const campoImagemPreview = document.getElementById('imagemFotoCapa');
+    const file = inputImagem.files[0]; // Acessa o primeiro arquivo selecionado
+
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            campoImagemPreview.src = e.target.result; // Define a URL da imagem
+        }
+
+        reader.readAsDataURL(file); // Lê o arquivo como uma URL base64
+    }
+}
+
+// function verificaCheckboxCadastrarProjeto(){
+//     // document.getElementById('meuFormulario').addEventListener('submit', function(event) {
+//     const form = document.getElementById('formCadastrarProjeto');
+//     const checkbox = document.getElementById('termos');
+//     if (!checkbox.checked) {
+//         form.preventDefault(); // Impede o envio do formulário
+//         alert('Você deve selecionar ao menos um.');
+//     }
+//     // });
+// }

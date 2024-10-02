@@ -29,7 +29,7 @@
 
         <div class="mb-3">
             <label for="descricaoProjeto" class="form-label">Descrição:</label>
-            <input type="text" style="height: 70px;" required name="descricaoProjeto" class="form-control" id="descricaoProjeto">
+            <textarea required name="descricaoProjeto" class="form-control" id="descricaoProjeto"></textarea>
         </div>
 
         <div class="mb-3">
@@ -67,7 +67,7 @@
             <label for="formFile" class="form-label">Foto de capa:</label>
             <div class="input-group">
                 <button class="btn btn-secondary custom-btn" type="button">Upload</button>
-                <input type="file" class="form-control" id="formFile">
+                <input type="file" onchange="previewImagemSelecionada()" class="form-control" id="formFile" accept="image/*">
             </div>
         </div>
 
@@ -77,7 +77,15 @@
             <img src="static/img/imagem do sexo.png" alt="Preview da foto de capa selecionada"  class="img-fluid" id="imagemFotoCapa">
         </div>
 
+        
+
     </form>
+
+    <div class="titulosCards mb-2">
+        <!-- <h2 class="text-body-secondary">Cadastrar Novo Projeto</h2> -->
+    </div>
+
+    <button type="submit" class="btn btn-cadastrar mt-3">Cadastrar Projeto</button>
  </section>
 
 </body>
