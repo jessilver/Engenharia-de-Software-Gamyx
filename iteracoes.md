@@ -149,6 +149,8 @@ Critérios de Aceitação:
 - Tarefa 2: Implementação da lógica de busca e visualização de perfis.
 
 # Adicionais it1
+<small>[voltar para o Sumário](#Sumário)</small><br>
+
 ## Jônatas De Sousa Madeira
 - **Create**: Cria um novo usuário na tabela.
   
@@ -281,6 +283,7 @@ Critérios de Aceitação:
 - Tarefa 2: Implementação do envio da confirmação de deleção.
 
 # Adicionais it2
+<small>[voltar para o Sumário](#Sumário)</small><br>
   
 ## Gabriel Fernandes Zamora
 - **Menu**: Implementação da barra de menu lateral
