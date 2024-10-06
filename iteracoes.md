@@ -290,5 +290,8 @@ Critérios de Aceitação:
 
 ![MenuLateral](https://github.com/user-attachments/assets/e53a8ef4-444b-48ff-94d2-31aede58ae09)
 
+![exemplo](https://github.com/user-attachments/assets/84968a81-992d-4e82-b3d5-e8342c8fc94a)
+
+
 
 
