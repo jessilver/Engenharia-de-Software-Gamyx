@@ -14,13 +14,13 @@
   - [feat/login-de-usuario](#Login-de-Usuário)
   - [feat/acesso-ao-perfil](#Acesso-ao-Perfil)
   - [feat/vizualizar-perfil-de-outros-usuarios](#Visualização-de-Perfil-de-Outros-Usuários)
-  - [adicionais](#Adicionais)
+  - [adicionais-it1](#Adicionais-it1)
 - [Iteração 02](#Iteração-02)
   - [feat/cadastro-de-projeto](#Cadastro-de-Projeto)
-  - [feat/login-de-usuario](#Login-de-Usuário)
-  - [feat/acesso-ao-perfil](#Acesso-ao-Perfil)
-  - [feat/vizualizar-perfil-de-outros-usuarios](#Visualização-de-Perfil-de-Outros-Usuários)
-  - [adicionais](#Adicionais)
+  - [feat/aceaso-ao-projeto](#Acesso-ao-projeto)
+  - [feat/editar-projeto](#Editar-projeto)
+  - [feat/deletar-projeto](#Deletar-projeto)
+  - [adicionais-it2](#Adicionais-it2)
 
 # Iteração 01
 <small>[voltar para o Sumário](#Sumário)</small><br>
@@ -148,7 +148,7 @@ Critérios de Aceitação:
 - Tarefa 1: Design da interface de visualização de perfil de outros usuários.
 - Tarefa 2: Implementação da lógica de busca e visualização de perfis.
 
-# Adicionais
+# Adicionais it1
 ## Jônatas De Sousa Madeira
 - **Create**: Cria um novo usuário na tabela.
   
@@ -213,7 +213,7 @@ feat/view-project
 Critérios de Aceitação:
 - O usuário deve ser redirecionado para sua página de visualização do projeto.
 - O usuário deve ter a opção de editar as informações do projeto.
-- 
+
 ## Template:
 
 ![VisualizarProjeto](https://github.com/user-attachments/assets/76fa98cd-6026-4100-b8ee-6b93179474e0)
@@ -280,7 +280,7 @@ Critérios de Aceitação:
 - Tarefa 1: Design da interface de perfil.
 - Tarefa 2: Implementação do envio da confirmação de deleção.
 
-# Adicionais
+# Adicionais it2
   
 ## Gabriel Fernandes Zamora
 - **Menu**: Implementação da barra de menu lateral
