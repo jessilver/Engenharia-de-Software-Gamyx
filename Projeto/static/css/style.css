@@ -2,7 +2,6 @@
 /*                                              Geral                                                 */
 /* ================================================================================================== */
 
-
 /* Barra de rolagem */
 ::-webkit-scrollbar {
     width: 10px; /* Largura da barra de rolagem */
@@ -25,7 +24,6 @@
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.5); /* Cor do scroll quando o mouse está sobre ele */
 }@import url('https://fonts.googleapis.com/css2?family=ABeeZee&display=swap');
-
 
 .text-area {
     width: 100% !important;
