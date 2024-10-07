@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'config.php';
+require '../config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_or_username = $_POST['email'];
@@ -40,14 +40,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 'about' => $user['about'] ?? 'Sobre mim não disponível.'
             ];
 
-            header("Location: userProfile.php");
+            header("Location: ../templates/userProfile.php");
             exit();
         } else {
             header("Location: login.php?error=1");
             exit();
         }
     } else {
-        header("Location: login.php?error=1");
+        echo "Senha incorretos.";
+    }
+
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+        session_unset(); 
+        $_SESSION['userLogado'] = [
+            'nome' => $user['nomeUsuario'],
+            'arroba' => $user['uniqueName'], 
+            'email' => $user['email'],
+            'projects' => [], 
+            'friends' => [], 
+            'urlPortfolio' => $user['urlPortfolio'],
+            'about' => $user['about'] ?? 'Sobre mim não disponível.'
+        ];
+
+        header("Location: ../templates/userProfile.php");
         exit();
     }
 

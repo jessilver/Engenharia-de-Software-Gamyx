@@ -1,11 +1,11 @@
 <?php 
-    require 'config.php';
+    require '../config.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="stylesheet" href="static/css/cadastro.css">
+    <link rel="stylesheet" href="../static/css/cadastro.css">
     <?php
         require('linkrel.php');
         ?>
@@ -15,7 +15,7 @@
 
     <section id="sectionCadastroUsuario">
         <header id="headerCadastroUsuario">
-            <img src="static/img/GAMYX.png" alt="Logo do Gamyx">
+            <img src="../static/img/GAMYX.png" alt="Logo do Gamyx">
             <h2>Bem Vindo</h2>
         </header>
 
@@ -23,7 +23,7 @@
             <div class="titulosCards">
                 <h2 class="text-body-secondary">Cadastro de Usuário</h2>
             </div>
-            <form action="criarUsuario.php" method="POST" id="formCadastroUsuario">
+            <form action="../views/criarUsuario.php" method="POST" id="formCadastroUsuario">
                 <div class="mb-3">
                     <label for="emailUsuario" class="form-label">Email:</label>
                     <input type="email" required name="email" class="form-control" id="emailUsuario">
@@ -41,7 +41,7 @@
 
                 <div class="mb-3">
                     <label for="password2" class="form-label">Confirme sua senha:</label>
-                    <input type="password" required onchange="validaSenha()" class="form-control" id="password2">
+                    <input type="password" required class="form-control" id="password2">
                 </div>
 
                 <div class="mb-4">
@@ -58,7 +58,7 @@
         </div>
     </section>
     
-    <script src="static/js/script.js"></script>
+    <script src="../static/js/script.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </body>

@@ -25,3 +25,10 @@
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.5); /* Cor do scroll quando o mouse está sobre ele */
 }@import url('https://fonts.googleapis.com/css2?family=ABeeZee&display=swap');
+
+
+.text-area {
+    width: 100% !important;
+    min-height: 100px !important;
+    resize: none !important;
+}

@@ -1,6 +1,6 @@
 <?php 
 
-    require 'config.php';
+    require '../config.php';
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $email = $_POST['email'];
@@ -16,7 +16,7 @@
         $stmt->bind_param("sssss", $email, $uniqueName, $nomeUsuario, $senha, $linkPortfolio);
 
         if ($stmt->execute()) {
-            header('Location: login.php');
+            header('Location: ../templates/login.php');
             exit();
         } else {
             echo "Erro: " . $stmt->error;

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/css/menu-style.css">
+    <link rel="stylesheet" href="../static/css/menu-style.css">
 </head>
 <body>
     <button id="menu-btn">☰</button>
@@ -17,6 +17,6 @@
         <a href="login.php">Deslogar</a>
     </div>
 
-    <script src="static/js/menu-script.js"></script> <!-- Link para o JS -->
+    <script src="../static/js/menu-script.js"></script> <!-- Link para o JS -->
 </body>
 </html>

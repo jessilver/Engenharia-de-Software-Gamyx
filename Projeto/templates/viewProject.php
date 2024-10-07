@@ -6,20 +6,20 @@
     <?php
         require('linkrel.php');
     ?>
-    <link rel="stylesheet" href="static/css/variaveis.css"/>
-    <link rel="stylesheet" href="./static/css/viewProject.css"/>
+    <link rel="stylesheet" href="../static/css/variaveis.css"/>
+    <link rel="stylesheet" href="../static/css/viewProject.css"/>
     <title>Projeto | Gamyx</title>
 </head>
 <body>
     <?php 
-        include 'menu.php'; 
+        include '../menu.php'; 
     ?>
     <div class="viewProjectScreen">
         <main class="projectContainer rounded">
             <span class="projectTitle">Projeto Game Jam Waihuku</span>
             <div class="imageContainer">
                 <img 
-                    src="./static/img/banners/imagem-banner-Carlos.jpg"
+                    src="../static/img/banners/imagem-banner-Carlos.jpg"
                     alt=""
                     class="projectImage"
                 />
@@ -37,7 +37,7 @@
             <div class="creatorCardInfo">
                 <div>
                     <img
-                        src="./static/img/perfil/imagem-perfil-Mario.jpg"
+                        src="../static/img/perfil/imagem-perfil-Mario.jpg"
                         alt="Imagem de perfil do usuário"
                         class="profileImage"
                     />
