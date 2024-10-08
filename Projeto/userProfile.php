@@ -60,8 +60,8 @@
                         </div>
                         <h1 class="h1AUser"><i class="fa-regular fa-folder"></i> <?php echo count($_SESSION['userLogado']['projects']); ?> projects - <i class="fa-solid fa-heart" id="heartIcon"></i> <?php echo count($_SESSION['userLogado']['projects']); ?> likes </h1>
                         <div class="profileButtons">
-                            <button class="btn editProfile" data-toggle="modal" data-target="#editProfileModal"><h1 class="h1AUser">edit profile</h1></button>
-                            <button class="btn viewProjects" data-toggle="modal" data-target="#editProjectModal"><h1 class="h1AUser">projects</h1></button>
+                            <button class="btn editProfile" data-toggle="modal" data-target="#editProfileModal"><h1 class="h1AUser">Edit Profile</h1></button>
+                            <button class="btn viewProjects" onclick="window.location.href='cadastrarProjeto.php';"><h1 class="h1AUser">New Project</h1></button>
                         </div>
                         
                     </div>
