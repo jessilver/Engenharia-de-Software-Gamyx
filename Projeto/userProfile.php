@@ -42,8 +42,8 @@
                             <h1 class="h1AboutUserVerMais" data-toggle="modal" data-target="#sobreModal"> ...mais</h1>
                         </div>
                         <div class="profileButtons">
-                            <button class="btn editProfile" data-toggle="modal" data-target="#editProfileModal"><h1 class="h1AUser">edit profile</h1></button>
-                            <button class="btn viewProjects"><h1 class="h1AUser">projects</h1></button>
+                            <button class="btn editProfile" data-toggle="modal" data-target="#editProfileModal"><h1 class="h1AUser">Edit Profile</h1></button>
+                            <button class="btn viewProjects" onclick="window.location.href='cadastrarProjeto.php';"><h1 class="h1AUser">New Project</h1></button>
                         </div>
                     </div>
                 </div>
