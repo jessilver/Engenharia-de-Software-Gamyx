@@ -28,7 +28,7 @@ if (isset($_SESSION['login_error'])) {
         <div class="login-box">
             <div class="login-form">
                 <form action="../views/checkLogin.php" method="POST">
-                    <label for="email">Email</label>
+                    <label for="email">Email ou Usuário</label>
                     <input type="text" id="email" name="email" required>
 
                     <div class="password-container">

@@ -30,42 +30,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($result->num_rows > 0) {
             $user = $result->fetch_assoc();
+            // Definir os dados de sessão
             $_SESSION['userLogado'] = [
                 'nome' => $user['nomeUsuario'],
                 'arroba' => $user['uniqueName'],
                 'email' => $user['email'],
-                'projects' => [],
+                'projects' => [], // A lista de projetos pode ser preenchida mais tarde
                 'friends' => [],
                 'urlPortfolio' => $user['urlPortfolio'],
                 'about' => $user['about'] ?? 'Sobre mim não disponível.'
             ];
 
+            // Redirecionar para a página de perfil
             header("Location: ../templates/userProfile.php");
             exit();
-        } else {
-            header("Location: login.php?error=1");
-            exit();
         }
-    } else {
-        echo "Senha incorretos.";
     }
 
-    if ($result->num_rows > 0) {
-        $user = $result->fetch_assoc();
-        session_unset(); 
-        $_SESSION['userLogado'] = [
-            'nome' => $user['nomeUsuario'],
-            'arroba' => $user['uniqueName'], 
-            'email' => $user['email'],
-            'projects' => [], 
-            'friends' => [], 
-            'urlPortfolio' => $user['urlPortfolio'],
-            'about' => $user['about'] ?? 'Sobre mim não disponível.'
-        ];
-
-        header("Location: ../templates/userProfile.php");
-        exit();
-    }
+    // Se o login falhar (usuário ou senha incorretos), redirecionar para o login com erro
+    header("Location: ../templates/login.php");
+    exit();
 
     $stmt->close();
     $conn->close();
