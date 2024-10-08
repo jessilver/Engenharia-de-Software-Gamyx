@@ -1,12 +1,12 @@
 <?php
     session_start();
 
-    require_once "../config.php";
+    require_once "config.php";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="stylesheet" href="../static/css/userProfile.css">
+    <link rel="stylesheet" href="./static/css/userProfile.css">
     <?php
         require('linkrel.php');
         ?>
@@ -19,10 +19,10 @@
         }
     ?>
     <?php 
-        include '../menu.php'; 
+        include 'menu.php'; 
     ?>
     <section id="userProfileSection">
-        <form action="../views/pesquisaUsuario.php" method="POST" class="userSearchForm">
+        <form action="pesquisaUsuario.php" method="POST" class="userSearchForm">
             <input type="text" placeholder="Procurar usuário" class="userSearchInput" name="search_query"/> 
             <button type="submit" class="userSearchSubmit">Buscar</button>
         </form>
@@ -43,7 +43,7 @@
                     <div class="userProfileFoto">
                         <img 
                             src=<?php 
-                                    $link = "../static/img/perfil/imagem-perfil-" . $_SESSION['userLogado']['nome'] . ".jpg";
+                                    $link = "./static/img/perfil/imagem-perfil-" . $_SESSION['userLogado']['nome'] . ".jpg";
                                     $caminho = file_exists($link) ? $link : "semImagem";
                                     echo $caminho;
                                 ?>
@@ -90,7 +90,7 @@
                 <a href="viewProject.php">
                     <div class="card-projeto rounded">
                         <img 
-                            src="../static/img/tetris.png"
+                            src="./static/img/tetris.png"
                             alt="Este projeto não tem imagem."
                             class="projectImage"
                         />                          
@@ -147,7 +147,7 @@
                     <i class="fa-solid fa-xmark closeButton" data-dismiss="modal"></i>
                 </div>
                 <div class="modal-body">
-                    <form action="../views/editProfile.php" method="POST" id="formEditProfile">
+                    <form action="editProfile.php" method="POST" id="formEditProfile">
                         <input type="hidden" name="uniqueName" class="form-control" id="uniqueName" value="<?php echo $_SESSION['userLogado']['arroba']; ?>">
 
                         <div class="mb-3">
@@ -164,7 +164,7 @@
                         <button type="submit" class="btn btn-cadastrar">Salvar</button>
 
                     </form>
-                    <form action="../views/deleteUsuario.php" method="POST" id="formDeleteAccount">
+                    <form action="deleteUsuario.php" method="POST" id="formDeleteAccount">
                         <input type="hidden" name="uniqueName" class="form-control" id="uniqueName" value="<?php echo $_SESSION['userLogado']['arroba']; ?>">
 
                         <button type="submit" class="btn btn-danger">Deletar conta</button>
@@ -184,7 +184,7 @@
                     <i class="fa-solid fa-xmark closeButton" data-dismiss="modal"></i>
                 </div>
                 <div class="modal-body">
-                    <form action="../views/editProject.php" method="POST" id="formeditProject">
+                    <form action="editProject.php" method="POST" id="formeditProject">
                         <input type="hidden" name="uniqueName" class="form-control" id="uniqueName" value="<?php echo $_SESSION['userLogado']['arroba']; ?>">
 
                         <div class="mb-3">

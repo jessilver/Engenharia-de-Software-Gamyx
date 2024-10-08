@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../config.php';
+require 'config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_or_username = $_POST['email'];
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 'about' => $user['about'] ?? 'Sobre mim não disponível.'
             ];
 
-            header("Location: ../templates/userProfile.php");
+            header("Location: userProfile.php");
             exit();
         } else {
             header("Location: login.php?error=1");
@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             'about' => $user['about'] ?? 'Sobre mim não disponível.'
         ];
 
-        header("Location: ../templates/userProfile.php");
+        header("Location: userProfile.php");
         exit();
     }
 

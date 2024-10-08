@@ -9,4 +9,4 @@
 <script src="https://kit.fontawesome.com/278bb2ddaf.js" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="../static/css/style.css">
+<link rel="stylesheet" href="./static/css/style.css">

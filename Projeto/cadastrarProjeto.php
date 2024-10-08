@@ -1,13 +1,13 @@
 <?php 
-    require '../config.php';
+    require 'config.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/cadastro.css">
-    <link rel="stylesheet" href="../static/css/cadastrarProjeto.css">
+    <link rel="stylesheet" href="./static/css/cadastro.css">
+    <link rel="stylesheet" href="./static/css/cadastrarProjeto.css">
     <?php
         require('linkrel.php');
     ?>
@@ -20,7 +20,7 @@
         <h2 class="text-body-secondary">Cadastrar Novo Projeto</h2>
     </div>
 
-    <form action="../views/backendCadastrarProjeto.php" method="POST" id="formCadastrarProjeto">
+    <form action="backendCadastrarProjeto.php" method="POST" id="formCadastrarProjeto">
 
         <div class="mb-3 mt-3">
             <label for="nomeProjeto" class="form-label">Nome do projeto:</label>
@@ -74,7 +74,7 @@
         
         <label for="previewFotoCapa" class="form-label">Preview:</label>
         <div class="mb-3" id="previewFotoCapa">
-            <img src="../static/img/tetris.png" alt="Preview da foto de capa selecionada"  class="img-fluid" id="imagemFotoCapa">
+            <img src="./static/img/tetris.png" alt="Preview da foto de capa selecionada"  class="img-fluid" id="imagemFotoCapa">
         </div>
 
         
