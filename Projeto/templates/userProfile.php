@@ -1,6 +1,5 @@
 <?php
     session_start();
-
     require_once "../config.php";
 ?>
 <!DOCTYPE html>
@@ -179,12 +178,12 @@
 
                         <div class="mb-3">
                             <label for="projectName" class="form-label">Nome do projeto:</label>
-                            <input type="text" name="projectName" class="form-control" id="projectName" value="">
+                            <input type="text" name="nomeProjeto" class="form-control" id="projectName" value="">
                         </div>
                 
                         <div class="mb-3">
                             <label for="projectDesc" class="form-label">Descrição do projeto:</label>
-                            <textarea class="form-control" name="projectDesc" id="projectDesc" rows="5"></textarea>
+                            <textarea class="form-control" name="descricaoProjeto" id="projectDesc" rows="5"></textarea>
                         </div>
 
                         <div class="mb-3">
@@ -211,7 +210,7 @@
 
                         <div class="mb-3">
                             <label for="projectDowl" class="form-label">Link para dowload:</label>
-                            <input type="text" name="projectDowl" class="form-control" id="projectDowl" value="">
+                            <input type="text" name="linkDownload" class="form-control" id="projectDowl" value="">
                         </div>
 
                         <div class="mb-3">

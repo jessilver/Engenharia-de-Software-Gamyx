@@ -27,10 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Comparação da senha criptografada com a senha passada pelo usuario
     if(password_verify($password, $hashSenha)) {
         $stmt = $conn->prepare("SELECT * FROM usuario WHERE (email = ? OR nomeUsuario = ?)");
-
         $stmt->bind_param("ss", $email_or_username, $email_or_username);
-    
-
         $stmt->execute();
         $result = $stmt->get_result();
     } else {
@@ -40,11 +37,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
         session_unset(); 
+
+        $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+
+        $stmt = $conn->prepare("SELECT nomeProjeto FROM projetosUsuario WHERE usuario_id = ?");
+        $stmt->bind_param("s", $user['id']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $projects = $result->fetch_assoc();
+
+        $projects = $projects ?? [];
+
         $_SESSION['userLogado'] = [
             'nome' => $user['nomeUsuario'],
             'arroba' => $user['uniqueName'], 
             'email' => $user['email'],
-            'projects' => [], 
+            'projects' => $projects, 
             'friends' => [], 
             'urlPortfolio' => $user['urlPortfolio'],
             'about' => $user['about'] ?? 'Sobre mim não disponível.'

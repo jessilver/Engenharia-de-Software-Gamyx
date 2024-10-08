@@ -6,6 +6,8 @@ const DB_NAME = 'gamyx';
 const DB_USER = 'root';
 const DB_PASS = '';
 
+$conn = new PDO(DB_DSN, DB_USER, DB_PASS);
+
 function createDatabase($dbName){
     try {
         $conn = new PDO(DB_DSN, DB_USER, DB_PASS);
@@ -51,8 +53,20 @@ $colunasUsuario = "
     urlPortfolio VARCHAR(100) NOT NULL
 ";
 
+$colunasProjetoUsuario = "
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nomeProjeto VARCHAR(100) NOT NULL,
+    descricaoProjeto VARCHAR(500),
+    linkDownload VARCHAR(100) NOT NULL,
+    sistemasOperacionaisSuportados VARCHAR(100) NOT NULL,
+    fotoCapa VARCHAR(500) NOT NULL,
+    usuario_id INT NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE
+";
+
 createDatabase(DB_NAME);
 createTable(DB_NAME,"usuario",$colunasUsuario);
+createTable(DB_NAME,"projetosUsuario",$colunasProjetoUsuario);
 
 function insertUser($pdo, $uniqueName, $email, $nomeUsuario, $senha, $about, $urlPortfolio) {
     try {
