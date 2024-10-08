@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../config.php';
+require 'config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_or_username = $_POST['email'];
@@ -30,26 +30,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($result->num_rows > 0) {
             $user = $result->fetch_assoc();
-            // Definir os dados de sessão
             $_SESSION['userLogado'] = [
                 'nome' => $user['nomeUsuario'],
                 'arroba' => $user['uniqueName'],
                 'email' => $user['email'],
-                'projects' => [], // A lista de projetos pode ser preenchida mais tarde
+                'projects' => [],
                 'friends' => [],
                 'urlPortfolio' => $user['urlPortfolio'],
                 'about' => $user['about'] ?? 'Sobre mim não disponível.'
             ];
 
-            // Redirecionar para a página de perfil
-            header("Location: ../templates/userProfile.php");
+            header("Location: userProfile.php");
+            exit();
+        } else {
+            header("Location: login.php?error=1");
             exit();
         }
+    } else {
+        echo "Senha incorretos.";
     }
 
-    // Se o login falhar (usuário ou senha incorretos), redirecionar para o login com erro
-    header("Location: ../templates/login.php");
-    exit();
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+        session_unset(); 
+        $_SESSION['userLogado'] = [
+            'nome' => $user['nomeUsuario'],
+            'arroba' => $user['uniqueName'], 
+            'email' => $user['email'],
+            'projects' => [], 
+            'friends' => [], 
+            'urlPortfolio' => $user['urlPortfolio'],
+            'about' => $user['about'] ?? 'Sobre mim não disponível.'
+        ];
+
+        header("Location: userProfile.php");
+        exit();
+    }
 
     $stmt->close();
     $conn->close();

@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    require_once "../config.php";
+    require_once "config.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,20 +11,20 @@
     <?php
         require('linkrel.php');
     ?>
-    <link rel="stylesheet" href="../static/css/variaveis.css"/>
-    <link rel="stylesheet" href="../static/css/viewProject.css"/>
+    <link rel="stylesheet" href="./static/css/variaveis.css"/>
+    <link rel="stylesheet" href="./static/css/viewProject.css"/>
     <title>Projeto | Gamyx</title>
 </head>
 <body>
     <?php 
-        include '../menu.php'; 
+        include 'menu.php'; 
     ?>
     <div class="viewProjectScreen">
         <main class="projectContainer rounded">
             <span class="projectTitle">Projeto Game Jam Waihuku</span>
             <div class="imageContainer">
                 <img 
-                    src="../static/img/tetris.png"
+                    src="./static/img/tetris.png"
                     alt=""
                     class="projectImage"
                 />
@@ -43,7 +43,7 @@
                 <div>
                     <img 
                         src=<?php 
-                                $link = "../static/img/perfil/imagem-perfil-" . $_SESSION['userSearched']['nome'] . ".jpg";
+                                $link = "./static/img/perfil/imagem-perfil-" . $_SESSION['userSearched']['nome'] . ".jpg";
                                 $caminho = file_exists($link) ? $link : "semImagem";
                                 echo $caminho;
                             ?>
