@@ -71,10 +71,10 @@
         <hr class="userHr">
         <div class="userProfileProjects">
             <div class="projectsSearch">
-                <h1 class="h1AUser">Meus projetos</h1>
+                <h1 class="h1AUser my-3">Meus projetos</h1>
                 <i class="fa-solid fa-magnifying-glass" style="margin-left: 20px;color: white; font-size: 15px;"></i>
             </div>
-            <div class="projectList">
+            <div class="lista-cards-projeto">
                 <?php
                 foreach ($_SESSION['userLogado']['projects'] as $projeto) {
                     print("
@@ -86,7 +86,16 @@
                         </div>
                     ");
                 }
-                ?>
+                ?>             
+                <a href="viewProject.php">
+                    <div class="card-projeto rounded">
+                        <img 
+                            src="../static/img/tetris.png"
+                            alt="Este projeto não tem imagem."
+                            class="projectImage"
+                        />                          
+                    </div>
+                </a>
             </div>
         </div>
         <hr class="userHr">

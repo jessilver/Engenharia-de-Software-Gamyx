@@ -102,21 +102,6 @@ body{
     background-color: var(--cor-fundo-projetos);
     min-height: 250px;
 }
-.projectsList{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 36px;
-    list-style: none;
-    padding: 20px;
-}
-.projectItem{
-    background-color: var(--cor-cinza-escuro);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 380px;
-    height: 210px;
-}
 /* Amigos */
 .userProfileAmigos{
     display: flex;

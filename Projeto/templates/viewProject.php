@@ -1,3 +1,8 @@
+<?php
+    session_start();
+
+    require_once "../config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +24,7 @@
             <span class="projectTitle">Projeto Game Jam Waihuku</span>
             <div class="imageContainer">
                 <img 
-                    src="../static/img/banners/imagem-banner-Carlos.jpg"
+                    src="../static/img/tetris.png"
                     alt=""
                     class="projectImage"
                 />
@@ -36,20 +41,24 @@
         <section class="creatorCardContainer rounded">
             <div class="creatorCardInfo">
                 <div>
-                    <img
-                        src="../static/img/perfil/imagem-perfil-Mario.jpg"
-                        alt="Imagem de perfil do usuário"
+                    <img 
+                        src=<?php 
+                                $link = "../static/img/perfil/imagem-perfil-" . $_SESSION['userSearched']['nome'] . ".jpg";
+                                $caminho = file_exists($link) ? $link : "semImagem";
+                                echo $caminho;
+                            ?>
+                        alt="Imagem de perfil do usuário <?php echo $_SESSION['userSearched']['nome']; ?>"
                         class="profileImage"
                     />
-                    <h4>Nome_do_usuario</h4>
-                    <p>@arroba_user</p>
+                    <h4><?php echo $_SESSION['userSearched']['nome']; ?></h4>
+                    <p><?php echo $_SESSION['userSearched']['arroba']; ?></p>
                 </div>
                 <div class="cardInfoIcons">
                     <i class="fa-regular fa-folder"></i><span> 0 projetos • </span>
                     <i class="fa-solid fa-heart" id="heartIcon"></i><span id="spanHeartIcon"> 0 Likes</span>
                 </div>
                 <div>
-                    <p class="userAbout">Aqui vai a descrição do usuário, não o texto completo mas uma ideia para dar um exemplo, acho que vou colocar um texto grande e ver como o container se comporta hummmmmm...</p>
+                    <p class="userAbout"><?php echo $_SESSION['userSearched']['about']; ?></p>
                 </div>
             </div>
         </section>

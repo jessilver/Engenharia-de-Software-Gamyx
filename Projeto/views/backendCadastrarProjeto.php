@@ -1,6 +1,6 @@
 <?php 
 
-    require 'config.php';
+    require '../config.php';
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);

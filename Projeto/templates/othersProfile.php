@@ -65,21 +65,23 @@
             <hr class="bar"/>
             <h1 class="projectsTitle">Projetos</h1>
             <section class="projectsContainer rounded">
-                <ul class="projectsList">
-                    <li class="projectItem rounded">
-                        <img 
-                            src=""
-                            alt="Este projeto não tem imagem."
-                            class="projectImage"
-                        />
-                    </li>
-                </ul>
+                <div class="lista-cards-projeto">
+                    <a href="viewProject.php">
+                        <div class="card-projeto rounded">
+                            <img 
+                                src=""
+                                alt="Este projeto não tem imagem."
+                                class="projectImage"
+                            />                          
+                        </div>
+                    </a>
+                </div>
             </section>
             <hr class="bar"/>
         </main>
         <div class="userProfileAmigos">
             <div class="amigosSearch">
-                <h1 class="h1AUser">Meus amigos</h1>
+                <h1 class="h1AUser">Amigos</h1>
             </div>
             <div class="amigosList">
             
