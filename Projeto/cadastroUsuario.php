@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="static/css/cadastro.css">
     <?php
         require('linkrel.php');
-        ?>
+    ?>
     <title>Cadastre-se</title>
 </head>
 <body id="cadastroUsuarioBody">
