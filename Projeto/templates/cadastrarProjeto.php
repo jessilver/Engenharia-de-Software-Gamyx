@@ -67,7 +67,7 @@
             <label for="formFile" class="form-label">Foto de capa:</label>
             <div class="input-group">
                 <button class="btn btn-secondary custom-btn" type="button">Upload</button>
-                <input type="file" onchange="previewImagemSelecionada()" class="form-control" id="formFile" accept="image/*">
+                <input type="file" onchange="previewImagemSelecionada()" class="form-control" name="imagemCapaProjeto" id="formFile" accept="image/*">
             </div>
         </div>
 
@@ -78,6 +78,7 @@
         </div>
 
         
+        <button type="submit" class="btn btn-cadastrar mt-3">Cadastrar Projeto</button>
 
     </form>
 
@@ -85,7 +86,6 @@
         <!-- <h2 class="text-body-secondary">Cadastrar Novo Projeto</h2> -->
     </div>
 
-    <button type="submit" class="btn btn-cadastrar mt-3">Cadastrar Projeto</button>
  </section>
 
 </body>
