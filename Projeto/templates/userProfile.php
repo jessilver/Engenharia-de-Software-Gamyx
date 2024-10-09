@@ -87,7 +87,7 @@
                 <i class="fa-solid fa-magnifying-glass" style="margin-left: 20px;color: white; font-size: 15px;"></i>
             </div>
         <!-- Projetos do usuário  -->
-        <div class="lista-cards-projeto">
+        <div class="lista-cards-projeto" style="width: 100%; display: flex; gap: 60px;">
                 <?php
                 if (isset($_SESSION['userLogado']['projects']) && is_array($_SESSION['userLogado']['projects'])) {
                     foreach ($_SESSION['userLogado']['projects'] as $projeto) {
