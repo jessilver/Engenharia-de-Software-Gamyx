@@ -37,7 +37,7 @@
             $criadorArroba = htmlspecialchars($criador['uniqueName']);
             $criadorAbout = htmlspecialchars($criador['about']);
             } else {
-                echo "<p>Projeto não encontrado.</p>";
+                // header("Location: viewProject.php?id=6" . $projetoId);
                 exit();
             }
         } else {

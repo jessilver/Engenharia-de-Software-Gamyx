@@ -27,13 +27,16 @@
         </form>
         <div class="userProfileContainer">
             <div class="userProfileInfo">
-                <div class="userProfileCapa rounded">
+                        
+                        <div class="userProfileCapa rounded" style="width: 100%; object-fit: cover; overflow: hidden;">
                     <img 
-                        src=<?php 
-                                $link = "./static/img/banners/imagem-banner-" . $_SESSION['userLogado']['nome'] . ".jpg";
-                                $caminho = file_exists($link) ? $link : "semImagem";
-                                echo $caminho;
-                            ?>
+                        src="../static/img/tetris.png"
+                        <?php 
+                            // $link = "./static/img/banners/imagem-banner-" . $_SESSION['userLogado']['nome'] . ".jpg";
+                            // $caminho = file_exists($link) ? $link : "semImagem";
+                            // echo $caminho;
+                        ?>
+                        style="width: 100%;"
                         alt="Banner do perfil do usuário <?php echo $_SESSION['userLogado']['nome']; ?>"
                         class="bannerImage"
                     />
@@ -87,7 +90,7 @@
                 <i class="fa-solid fa-magnifying-glass" style="margin-left: 20px;color: white; font-size: 15px;"></i>
             </div>
         <!-- Projetos do usuário  -->
-        <div class="lista-cards-projeto">
+        <div class="lista-cards-projeto" style="width: 100%; display: flex; gap: 60px;">
                 <?php
                 if (isset($_SESSION['userLogado']['projects']) && is_array($_SESSION['userLogado']['projects'])) {
                     foreach ($_SESSION['userLogado']['projects'] as $projeto) {
@@ -183,7 +186,7 @@
     </div>
 
     <!-- <script src="../static/js/script.js"></script> -->
-    <script src="./static/js/semImagem.js" defer></script>
+    <script src="../static/js/semImagem.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
