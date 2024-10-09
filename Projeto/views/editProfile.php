@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    require 'config.php';
+    require '../config.php';
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
@@ -44,7 +44,7 @@
             echo "Erro: " . $stmt->error;
         }
 
-        header("Location: userProfile.php");
+        header("Location: ../templates/userProfile.php");
         
         $stmt->close();
         $conn->close();

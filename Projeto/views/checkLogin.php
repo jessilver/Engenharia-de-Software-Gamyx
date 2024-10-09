@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'config.php';
+require '../config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_or_username = $_POST['email'];
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
             $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     
-            $stmt2 = $conn->prepare("SELECT nomeProjeto, fotoCapa FROM projetosUsuario WHERE usuario_id = ?");
+            $stmt2 = $conn->prepare("SELECT nomeProjeto, fotoCapa, id FROM projetosUsuario WHERE usuario_id = ?");
             $stmt2->bind_param("i", $user['id']);
             $stmt2->execute();
             $result = $stmt2->get_result();
@@ -45,6 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if($result){
                 while ($project = $result->fetch_assoc()) {
                     $projectsArray[] = [
+                        'id' => $project['id'],
                         'nomeProjeto' => $project['nomeProjeto'],
                         'fotoCapa' => $project['fotoCapa'],
                     ];
@@ -54,6 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt2->close();
             
             $_SESSION['userLogado'] = [
+                'id' => $user['id'],
                 'nome' => $user['nomeUsuario'],
                 'arroba' => $user['uniqueName'],
                 'email' => $user['email'],
@@ -65,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../templates/userProfile.php");
             exit();
         } else {
-            header("Location: login.php?error=1");
+            header("Location: ../templates/login.php?error=1");
             exit();
         }
     } else {

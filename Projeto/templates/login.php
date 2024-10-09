@@ -13,13 +13,13 @@ if (isset($_SESSION['login_error'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Gamyx</title>
-    <link rel="stylesheet" href="./static/css/loginstyle.css">
+    <link rel="stylesheet" href="../static/css/loginstyle.css">
 </head>
 <body>
     <div class="login-container">
         <!-- Logo e Título -->
         <div class="login-header">
-            <img src="./static/img/GAMYX.png" alt="Logo" class="logo">
+            <img src="../static/img/GAMYX.png" alt="Logo" class="logo">
             <h1>BEM VINDO</h1>
             <p>Login para o Gamyx</p>
         </div>
@@ -27,7 +27,7 @@ if (isset($_SESSION['login_error'])) {
         <!-- Caixa de login -->
         <div class="login-box">
             <div class="login-form">
-                <form action="checkLogin.php" method="POST">
+                <form action="../views/checkLogin.php" method="POST">
                     <label for="email">Email ou Usuário</label>
                     <input type="text" id="email" name="email" required>
 

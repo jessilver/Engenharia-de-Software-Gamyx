@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="stylesheet" href="./static/css/userProfile.css">
+    <link rel="stylesheet" href="../static/css/userProfile.css">
     <?php
         require('linkrel.php');
         ?>
@@ -21,7 +21,7 @@
         include 'menu.php'; 
     ?>
     <section id="userProfileSection">
-        <form action="pesquisaUsuario.php" method="POST" class="userSearchForm">
+        <form action="../views/pesquisaUsuario.php" method="POST" class="userSearchForm">
             <input type="text" placeholder="Procurar usuário" class="userSearchInput" name="search_query"/> 
             <button type="submit" class="userSearchSubmit">Buscar</button>
         </form>
@@ -94,12 +94,15 @@
 
                         $nomeProjeto = $projeto['nomeProjeto'] ?? 'Nome não disponível';
                         $fotoCapa = $projeto['fotoCapa'] ?? 'default-placeholder.png'; // Define uma imagem padrão se não houver
+                        $linkProjeto = $projeto['id']; // Garante a URL segura
                 
                         print("
                             <div class='projectItem'>
-                                <div class='projectFoto'>
-                                    <img src='../static/img/capasProjetos/$fotoCapa' alt='$nomeProjeto'>
-                                </div>
+                                <a href='viewProject.php?id=$linkProjeto'>
+                                    <div class='projectFoto'>
+                                        <img src='../static/img/capasProjetos/$fotoCapa' alt='$nomeProjeto'>
+                                    </div>
+                                </a>
                                 <h1 class='h1AUser' style='margin-bottom: 16px;'>$nomeProjeto</h1>
                             </div>
                         ");
@@ -108,6 +111,8 @@
                     echo "<p>Nenhum projeto encontrado.</p>"; // Mensagem se não houver projetos
                 }
             ?>
+            
+            </a>
 
         </div>
 
@@ -149,7 +154,7 @@
                     <i class="fa-solid fa-xmark closeButton" data-dismiss="modal"></i>
                 </div>
                 <div class="modal-body">
-                    <form action="editProfile.php" method="POST" id="formEditProfile">
+                    <form action="../views/editProfile.php" method="POST" id="formEditProfile">
                         <input type="hidden" name="uniqueName" class="form-control" id="uniqueName" value="<?php echo $_SESSION['userLogado']['arroba']; ?>">
 
                         <div class="mb-3">
@@ -166,7 +171,7 @@
                         <button type="submit" class="btn btn-cadastrar">Salvar</button>
 
                     </form>
-                    <form action="deleteUsuario.php" method="POST" id="formDeleteAccount">
+                    <form action="../views/deleteUsuario.php" method="POST" id="formDeleteAccount">
                         <input type="hidden" name="uniqueName" class="form-control" id="uniqueName" value="<?php echo $_SESSION['userLogado']['arroba']; ?>">
 
                         <button type="submit" class="btn btn-danger">Deletar conta</button>
@@ -177,71 +182,6 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade " id="editProjectModal" tabindex="-1" role="dialog" aria-labelledby="editProjectModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content editProjectModalClass" >
-                <div class="modal-header">
-                    <h5 class="modal-title mx-auto" id="editProjectModalLongTitle">Edit project</h5>
-                    <i class="fa-solid fa-xmark closeButton" data-dismiss="modal"></i>
-                </div>
-                <div class="modal-body">
-                    <form action="editProject.php" method="POST" id="formeditProject">
-                        <input type="hidden" name="uniqueName" class="form-control" id="uniqueName" value="<?php echo $_SESSION['userLogado']['arroba']; ?>">
-
-                        <div class="mb-3">
-                            <label for="projectName" class="form-label">Nome do projeto:</label>
-                            <input type="text" name="nomeProjeto" class="form-control" id="projectName" value="">
-                        </div>
-                
-                        <div class="mb-3">
-                            <label for="projectDesc" class="form-label">Descrição do projeto:</label>
-                            <textarea class="form-control" name="descricaoProjeto" id="projectDesc" rows="5"></textarea>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="projectOs" class="form-label">Sistemas operacionais suportados:</label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="switches[]" value="Windows" id="Windows">
-                                    <label class="form-check-label" for="Windows">
-                                        Windows
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="switches[]" value="Linux" id="Linux">
-                                    <label class="form-check-label" for="Linux">
-                                        Linux
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="switches[]" value="Mac" id="Mac">
-                                    <label class="form-check-label" for="Mac">
-                                        Mac
-                                    </label>
-                                </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="projectDowl" class="form-label">Link para dowload:</label>
-                            <input type="text" name="linkDownload" class="form-control" id="projectDowl" value="">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="projectImg" class="form-label">Foto de capa:</label>
-                            <input type="file" name="projectImg" class="form-control" id="projectImg" value="" accept=".png, .jpg, .jpeg">
-                        </div>
-                        <div class="previewTrojectImg">
-                            <h1 class="edtiPh1 mx-auto">Preview:</h1>
-                            <img class="projectCapa" src="" alt="">
-                        </div>
-                        <button type="submit" class="btn btn-cadastrar">Salvar</button>
-
-                    </form>
-                </div>      
-            </div>
-        </div>
-    </div>
-    
     <!-- <script src="../static/js/script.js"></script> -->
     <script src="./static/js/semImagem.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

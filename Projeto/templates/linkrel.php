@@ -10,5 +10,4 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="../static/css/style.css">
-<script src="static/js/script.js"></script>
-<link rel="stylesheet" href="static/css/style.css">
+<script src="../static/js/script.js"></script>

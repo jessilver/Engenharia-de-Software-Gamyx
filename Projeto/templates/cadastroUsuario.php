@@ -1,11 +1,11 @@
 <?php 
-    require 'config.php';
+    require '../config.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="stylesheet" href="./static/css/cadastro.css">
+    <link rel="stylesheet" href="../static/css/cadastro.css">
     <?php
         require('linkrel.php');
     ?>
@@ -23,7 +23,7 @@
             <div class="titulosCards">
                 <h2 class="text-body-secondary">Cadastro de Usuário</h2>
             </div>
-            <form action="criarUsuario.php" method="POST" id="formCadastroUsuario">
+            <form action="../views/criarUsuario.php" method="POST" id="formCadastroUsuario">
                 <div class="mb-3">
                     <label for="emailUsuario" class="form-label">Email:</label>
                     <input type="email" required name="email" class="form-control" id="emailUsuario">

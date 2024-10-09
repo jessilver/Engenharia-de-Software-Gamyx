@@ -1,5 +1,6 @@
 <?php
-require_once "config.php"; // Inclui a conexão com o banco de dados
+session_start(); // Certifique-se de que a sessão está iniciada
+require_once "../config.php"; // Inclui a conexão com o banco de dados
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $projectId = $_POST['projectId']; // Obtém o ID do projeto do formulário
@@ -17,7 +18,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Executa a consulta
             if ($stmt->execute()) {
                 echo "Projeto excluído com sucesso!";
-                header("Location: userProfile.php");
+
+                // Obtém o ID do usuário logado da sessão
+                $usuarioId = $_SESSION['userLogado']['id'];
+
+                // Busca os projetos atualizados do usuário
+                $stmt2 = $pdo->prepare("SELECT nomeProjeto, fotoCapa, id FROM projetosUsuario WHERE usuario_id = ?");
+                $stmt2->bindParam(1, $usuarioId, PDO::PARAM_INT);
+                $stmt2->execute();
+
+                $projectsArray = [];
+                while ($project = $stmt2->fetch(PDO::FETCH_ASSOC)) {
+                    $projectsArray[] = [
+                        'id' => $project['id'],
+                        'nomeProjeto' => $project['nomeProjeto'],
+                        'fotoCapa' => $project['fotoCapa'],
+                    ];
+                }
+
+                $stmt2->closeCursor();
+
+                // Atualiza os dados do usuário na sessão
+                $_SESSION['userLogado']['projects'] = $projectsArray;
+
+                header("Location: ../templates/userProfile.php");
+                exit(); // Para garantir que o script não continue executando
             } else {
                 echo "Erro ao excluir o projeto.";
             }

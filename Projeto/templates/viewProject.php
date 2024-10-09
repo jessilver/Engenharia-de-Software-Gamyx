@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    require_once "config.php";
+    require_once "../config.php";
     
     // Resgatando o projeto pelo ID
     if (isset($_GET['id'])) {
@@ -53,8 +53,8 @@
     <?php
         require('linkrel.php');
     ?>
-    <link rel="stylesheet" href="./static/css/variaveis.css"/>
-    <link rel="stylesheet" href="./static/css/viewProject.css"/>
+    <link rel="stylesheet" href="../static/css/variaveis.css"/>
+    <link rel="stylesheet" href="../static/css/viewProject.css"/>
     <title><?php echo $nomeProjeto ?> | Gamyx</title>
 </head>
 <body>
@@ -63,21 +63,19 @@
     ?>
     <div class="viewProjectScreen">
         <main class="projectContainer rounded">
-            <span class="projectTitle"><?php echo $nomeProjeto ?></span>
         <div class="containerBotoes">    <span class="projectTitle"><?php echo $nomeProjeto  ?></span>
             <?php if ($_SESSION['userLogado']['id'] === $usuarioId) : ?>
     <div class="btn-container">
-        <form action="editproject.php" method="GET">
-            <input type="hidden" name="projectId" value="<?php echo $projetoId; ?>" />
-            <button type="submit" class="btn-editar">
-                <img src="static/img/pincel.png" alt="Editar projeto" class="btn-icon">
-                </button>
-        </form>
+     
+            <button class="btn-editar" data-toggle="modal" data-target="#editProjectModal">
+                <img src="../static/img/pincel.png" alt="Editar projeto" class="btn-icon">
+            </button>
+       
             
-        <form action="deleteproject.php" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este projeto?');">
+        <form action="../views/deleteproject.php" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este projeto?');">
             <input type="hidden" name="projectId" value="<?php echo $projetoId; ?>" />
             <button type="submit" class="btn-excluir">
-                <img src="static/img/lixo.png" alt="Excluir projeto" class="btn-icon">
+                <img src="../static/img/lixo.png" alt="Excluir projeto" class="btn-icon">
                 </button>
         </form>
     </div>
@@ -85,7 +83,7 @@
 </div>
             <div class="imageContainer">
                 <img 
-                    src="<?php echo $fotoCapa ?>"
+                    src="../static/img/capasProjetos/<?php echo $fotoCapa ?>"
                     alt=""
                     class="projectImage"
                 />
@@ -110,7 +108,7 @@
                 <div>
                     <img 
                         src=<?php 
-                                $link = "./static/img/perfil/imagem-perfil-" . $criadorNome . ".jpg";
+                                $link = "../static/img/perfil/imagem-perfil-" . $criadorNome . ".jpg";
                                 $caminho = file_exists($link) ? $link : "semImagem";
                                 echo $caminho;
                             ?>
@@ -130,7 +128,81 @@
             </div>
         </section>
     </div>
+
     
+    <!-- Modal -->
+    <div class="modal fade " id="editProjectModal" tabindex="-1" role="dialog" aria-labelledby="editProjectModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content editProjectModalClass" >
+                <div class="modal-header">
+                    <h5 class="modal-title mx-auto" id="editProjectModalLongTitle">Edit project</h5>
+                    <i class="fa-solid fa-xmark closeButton" data-dismiss="modal"></i>
+                </div>
+                <div class="modal-body">
+                    <form action="../views/editProject.php" method="POST" id="formeditProject">$usuarioId 
+                    <input type="hidden" name="projectId" value="<?php echo $projetoId; ?>" />
+                    <input type="hidden" name="userId" value="<?php echo $usuarioId; ?>" />
+
+                        <div class="mb-3">
+                            <label for="projectName" class="form-label">Nome do projeto:</label>
+                            <input type="text" name="nomeProjeto" class="form-control" id="projectName" value="<?php echo $nomeProjeto  ?>">
+                        </div>
+                
+                        <div class="mb-3">
+                            <label for="projectDesc" class="form-label">Descrição do projeto:</label>
+                            <textarea class="form-control" name="descricaoProjeto" id="projectDesc" rows="5"><?php echo $descricaoProjeto ?></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="projectOs" class="form-label">Sistemas operacionais suportados:</label>
+                            <div class="form-check">
+                                <input class="form-check-input" name="windows" type="checkbox" value="windows" id="sistemaWindowsCheckbox">
+                                <label class="form-check-label" for="sistemaWindowsCheckbox">
+                                    Windows
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" name="linux" type="checkbox" value="linux" id="sistemaLinuxCheckbox">
+                                <label class="form-check-label" for="sistemaLinuxCheckbox">
+                                    Linux
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" name="mac" type="checkbox" value="mac" id="sistemaMacCheckbox">
+                                <label class="form-check-label" for="sistemaMacCheckbox">
+                                    Mac
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="projectDowl" class="form-label">Link para dowload:</label>
+                            <input type="text" name="linkDownload" class="form-control" id="projectDowl" value="<?php echo $linkDownload; ?>">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="projectImg" class="form-label">Foto de capa:</label>
+                            <input type="file" name="imagemCapaProjeto" class="form-control" onchange="previewImagemSelecionada()" id="formFile" value="<?php echo $fotoCapa ?>" accept=".png, .jpg, .jpeg">
+                        </div>
+                        <div class="previewTrojectImg">
+                            <h1 class="edtiPh1 mx-auto">Preview:</h1>
+                            <img id="imagemFotoCapa" class="projectCapa" src="../static/img/capasProjetos/<?php echo $fotoCapa ?>" alt="">
+                        </div>
+                        <button type="submit" class="btn btn-cadastrar">Salvar</button>
+
+                    </form>
+                </div>      
+            </div>
+        </div>
+    </div>
+    
+    
+    <script src="../static/js/semImagem.js" defer></script>
     <script src="./static/js/semImagem.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

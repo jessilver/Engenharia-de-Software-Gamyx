@@ -44,11 +44,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($stmt->execute()) {
 
                     $stmt = $conn->prepare("SELECT * FROM usuario WHERE id = ?");
-                    $stmt->bind_param("s", $usuarioId);
+                    $stmt->bind_param("i", $usuarioId);
                     $stmt->execute();
                     $result = $stmt->get_result();
 
-                    $stmt2 = $conn->prepare("SELECT nomeProjeto, fotoCapa FROM projetosUsuario WHERE usuario_id = ?");
+                    $stmt2 = $conn->prepare("SELECT nomeProjeto, fotoCapa, id FROM projetosUsuario WHERE usuario_id = ?");
                     $stmt2->bind_param("i", $usuarioId);
                     $stmt2->execute();
                     $result = $stmt2->get_result();
@@ -59,6 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     if($result){
                         while ($project = $result->fetch_assoc()) {
                             $projectsArray[] = [
+                                'id' => $project['id'],
                                 'nomeProjeto' => $project['nomeProjeto'],
                                 'fotoCapa' => $project['fotoCapa'],
                             ];
@@ -71,6 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     session_unset(); 
                     $_SESSION['userLogado'] = [
+                        'id' => $user['id'],
                         'nome' => $user['nome'],
                         'arroba' => $user['arroba'],
                         'email' => $user['email'],
