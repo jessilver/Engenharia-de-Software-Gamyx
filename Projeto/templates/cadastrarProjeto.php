@@ -74,7 +74,7 @@
         
         <label for="previewFotoCapa" class="form-label">Preview:</label>
         <div class="mb-3" id="previewFotoCapa">
-            <img src="static/img/imagem do sexo.png" alt="Preview da foto de capa selecionada"  class="img-fluid" id="imagemFotoCapa">
+            <img src="../static/img/tetris.png" alt="Preview da foto de capa selecionada"  class="img-fluid" id="imagemFotoCapa">
         </div>
 
         
