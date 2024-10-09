@@ -32,12 +32,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Inicializa $nomeArquivo como o nome da foto atual
     $nomeArquivo = $fotoAtual;
-
     // Verifica se uma nova imagem foi enviada
-    if (isset($_FILES['imagemCapaProjeto']) && $_FILES['imagemCapaProjeto']['error'] == 0) {
-        $imagemCapa = $_FILES['imagemCapaProjeto'];
+    if (isset($_FILES['CapaProjeto']) && $_FILES['CapaProjeto']['error'] == 0) {
+        $imagemCapa = $_FILES['CapaProjeto'];
         $nomeArquivo = basename($imagemCapa['name']) . '_' . $_SESSION['userLogado']['arroba'];
         $caminhoArquivo = $diretorioDestino . $nomeArquivo;
+
+        print('img');
 
         if (!move_uploaded_file($imagemCapa['tmp_name'], $caminhoArquivo)) {
             echo "Erro ao mover o arquivo.";
