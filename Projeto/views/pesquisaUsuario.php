@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../config.php';
+require 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['search_query'])) {
     $searchQuery = $_POST['search_query'];
@@ -32,18 +32,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['search_query'])) {
 
             echo $_SESSION['userSearched']['nome'];
 
-            header("Location: ../templates/othersProfile.php");
+            header("Location: othersProfile.php");
 
         } else {
             echo "<script>console.log('Nenhum usuário encontrado.')</script>";
-            header("Location: ../templates/userProfile.php");
+            header("Location: userProfile.php");
             exit();
         }
     } catch (PDOException $e) {
         echo "Erro: " . $e->getMessage();
     }
 } else {
-    header("Location: ../templates/userProfile.php");
+    header("Location: userProfile.php");
 }
 
 ?>

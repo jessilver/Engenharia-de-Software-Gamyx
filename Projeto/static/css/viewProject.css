@@ -1,0 +1,126 @@
+body{
+    background-color: var(--cor-fundo);
+}
+.viewProjectScreen{
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    color: var(--cor-texto);
+    font-family: var(--fonte-padrao), sans-serif;
+    margin: 36px 100px;
+}
+/* Projeto  */
+.projectContainer{
+    background-color: var(--cor-cinza-escuro);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border: 1px solid var(--cor-cinza-borda);
+    height: 1000px;
+    padding: 12px 24px;
+}
+.projectTitle{
+    font-size: 24px;
+    font-weight: bold;
+}
+.lower{
+    font-weight: normal;
+}
+.projectCategory{
+    font-size: 12px;
+}
+.projectImage{
+    width: 700px;
+    height: 240px;
+}
+.projectRepContainer{
+    background-color: var(--cor-fundo-projetos);
+    padding: 8px;
+}
+/* Card do criador  */
+.creatorCardContainer{
+    cursor: pointer;
+    position: sticky;
+    top: 36px; 
+    background-color: var(--cor-cinza-escuro);
+    max-width: 25%;
+    max-height: 50vh;
+    border: 1px solid var(--cor-cinza-borda);
+    
+    overflow: auto;
+}
+.creatorCardInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    padding: 12px 42px;
+}
+.profileImage{
+    width: 160px;
+    border-radius: 50%;
+    padding: 8px;
+}
+.cardInfoIcons{
+    font-size: 20px;
+}
+.userAbout{
+    margin-top: 14px;
+}
+
+/* Estilo para a div que contém os botões */
+.btn-container {
+    display: flex;
+    gap: 10px; /* Espaçamento entre os botões */
+    margin-top: 20px; /* Margem superior para afastar dos outros elementos */
+}
+
+/* Estilo do botão de editar */
+.btn-editar {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    border: 2px solid #005EFF;
+    background: #7CACFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Estilo do botão de excluir */
+.btn-excluir {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    border: 2px solid #F00;
+    background: #251515;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Estilo do ícone dentro dos botões */
+.btn-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Estilos hover para interações com o mouse */
+.btn-editar:hover {
+    background-color: #005EFF;
+}
+
+.btn-excluir:hover {
+    background-color: #FF0000;
+}
+
+.containerBotoes {   
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

@@ -5,28 +5,29 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="stylesheet" href="../static/css/userProfile.css">
+    <link rel="stylesheet" href="./static/css/userProfile.css">
     <?php
         require('linkrel.php');
         ?>
     <title>Meu Perfil</title>
 </head>
 <body id="userProfileBody">
-
     <?php
         if (!isset($_SESSION['userLogado'])) {
             header("Location: criarUsuario.php");
         }
     ?>
-
+    <?php 
+        include 'menu.php'; 
+    ?>
     <section id="userProfileSection">
-        <form action="../views/pesquisaUsuario.php" method="POST" class="userSearchForm">
+        <form action="pesquisaUsuario.php" method="POST" class="userSearchForm">
             <input type="text" placeholder="Procurar usuário" class="userSearchInput" name="search_query"/> 
             <button type="submit" class="userSearchSubmit">Buscar</button>
         </form>
         <div class="userProfileContainer">
             <div class="userProfileInfo">
-                <div class="userProfileCapa">
+                <div class="userProfileCapa rounded">
                     <img 
                         src=<?php 
                                 $link = "./static/img/banners/imagem-banner-" . $_SESSION['userLogado']['nome'] . ".jpg";
@@ -41,7 +42,7 @@
                     <div class="userProfileFoto">
                         <img 
                             src=<?php 
-                                    $link = "../static/img/perfil/imagem-perfil-" . $_SESSION['userLogado']['nome'] . ".jpg";
+                                    $link = "./static/img/perfil/imagem-perfil-" . $_SESSION['userLogado']['nome'] . ".jpg";
                                     $caminho = file_exists($link) ? $link : "semImagem";
                                     echo $caminho;
                                 ?>
@@ -71,8 +72,8 @@
                             likes 
                         </h1>
                         <div class="profileButtons">
-                            <button class="btn editProfile" data-toggle="modal" data-target="#editProfileModal"><h1 class="h1AUser">edit profile</h1></button>
-                            <button class="btn viewProjects" data-toggle="modal" data-target="#editProjectModal"><h1 class="h1AUser">projects</h1></button>
+                            <button class="btn editProfile" data-toggle="modal" data-target="#editProfileModal"><h1 class="h1AUser">Edit Profile</h1></button>
+                            <button class="btn viewProjects" onclick="window.location.href='cadastrarProjeto.php';"><h1 class="h1AUser">New Project</h1></button>
                         </div>
                         
                     </div>
@@ -82,16 +83,17 @@
         <hr class="userHr">
         <div class="userProfileProjects">
             <div class="projectsSearch">
-                <h1 class="h1AUser">Meus projetos</h1>
+                <h1 class="h1AUser my-3">Meus projetos</h1>
                 <i class="fa-solid fa-magnifying-glass" style="margin-left: 20px;color: white; font-size: 15px;"></i>
             </div>
-            <div class="projectList">
+        <!-- Projetos do usuário  -->
+        <div class="lista-cards-projeto">
                 <?php
                 if (isset($_SESSION['userLogado']['projects']) && is_array($_SESSION['userLogado']['projects'])) {
                     foreach ($_SESSION['userLogado']['projects'] as $projeto) {
 
                         $nomeProjeto = $projeto['nomeProjeto'] ?? 'Nome não disponível';
-                        $fotoCapa = $projeto['fotoCapa'] ?? 'imagem-padrao.png'; // Define uma imagem padrão se não houver
+                        $fotoCapa = $projeto['fotoCapa'] ?? 'default-placeholder.png'; // Define uma imagem padrão se não houver
                 
                         print("
                             <div class='projectItem'>
@@ -105,8 +107,10 @@
                 } else {
                     echo "<p>Nenhum projeto encontrado.</p>"; // Mensagem se não houver projetos
                 }
-                ?>
-            </div>
+            ?>
+
+        </div>
+
         </div>
         <hr class="userHr">
         <div class="userProfileAmigos">
@@ -115,18 +119,6 @@
                 <i class="fa-solid fa-magnifying-glass" style="margin-left: 20px;color: white; font-size: 15px;"></i>
             </div>
             <div class="amigosList">
-            <?php
-                foreach ($_SESSION['userLogado']['friends'] as $amigo){
-                    print("
-                        <div class='amigosItem'>
-                            <div class='amigosFoto'>
-
-                            </div>
-                            <h1 class='h1AUser' style = 'margin-bottom: 16px;'>$amigo</h1>
-                        </div>
-                    ");
-                }
-                ?>
             </div>
         </div>
         <hr class="userHr">
@@ -157,7 +149,7 @@
                     <i class="fa-solid fa-xmark closeButton" data-dismiss="modal"></i>
                 </div>
                 <div class="modal-body">
-                    <form action="../views/editProfile.php" method="POST" id="formEditProfile">
+                    <form action="editProfile.php" method="POST" id="formEditProfile">
                         <input type="hidden" name="uniqueName" class="form-control" id="uniqueName" value="<?php echo $_SESSION['userLogado']['arroba']; ?>">
 
                         <div class="mb-3">
@@ -174,7 +166,7 @@
                         <button type="submit" class="btn btn-cadastrar">Salvar</button>
 
                     </form>
-                    <form action="../views/deleteUsuario.php" method="POST" id="formDeleteAccount">
+                    <form action="deleteUsuario.php" method="POST" id="formDeleteAccount">
                         <input type="hidden" name="uniqueName" class="form-control" id="uniqueName" value="<?php echo $_SESSION['userLogado']['arroba']; ?>">
 
                         <button type="submit" class="btn btn-danger">Deletar conta</button>
@@ -194,7 +186,7 @@
                     <i class="fa-solid fa-xmark closeButton" data-dismiss="modal"></i>
                 </div>
                 <div class="modal-body">
-                    <form action="../views/editProject.php" method="POST" id="formeditProject">
+                    <form action="editProject.php" method="POST" id="formeditProject">
                         <input type="hidden" name="uniqueName" class="form-control" id="uniqueName" value="<?php echo $_SESSION['userLogado']['arroba']; ?>">
 
                         <div class="mb-3">
@@ -250,9 +242,11 @@
         </div>
     </div>
     
-    <script src="static/js/scripts.js"></script>
+    <!-- <script src="../static/js/script.js"></script> -->
+    <script src="./static/js/semImagem.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
+
