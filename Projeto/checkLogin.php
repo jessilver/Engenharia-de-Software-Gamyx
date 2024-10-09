@@ -31,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result->num_rows > 0) {
             $user = $result->fetch_assoc();
             $_SESSION['userLogado'] = [
+                'id' => $user['id'],
                 'nome' => $user['nomeUsuario'],
                 'arroba' => $user['uniqueName'],
                 'email' => $user['email'],

@@ -1,24 +1,31 @@
 <?php
-session_start();
+require_once "config.php"; // Inclui a conexão com o banco de dados
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $projectToDelete = $_POST['project_name'];
+    $projectId = $_POST['projectId']; // Obtém o ID do projeto do formulário
 
-    if (isset($_SESSION['userLogado']['projects'])) {
-        // Procura o projeto na lista de projetos do usuário e remove-o
-        $key = array_search($projectToDelete, $_SESSION['userLogado']['projects']);
-        if ($key !== false) {
-            unset($_SESSION['userLogado']['projects'][$key]);
-            // Redirecionar para o perfil do usuário após a exclusão
-            header("Location: userProfile.php");
-            exit();
+    try {
+        // Verifica se o ID foi fornecido
+        if (!empty($projectId)) {
+            // Prepara a declaração SQL para excluir o projeto
+            $sql = "DELETE FROM projetosUsuario WHERE id = :id";
+            $stmt = $pdo->prepare($sql);
+
+            // Liga o valor do ID do projeto ao parâmetro da consulta SQL
+            $stmt->bindParam(':id', $projectId, PDO::PARAM_INT);
+
+            // Executa a consulta
+            if ($stmt->execute()) {
+                echo "Projeto excluído com sucesso!";
+                header("Location: userProfile.php");
+            } else {
+                echo "Erro ao excluir o projeto.";
+            }
         } else {
-            echo "Projeto não encontrado.";
+            echo "ID do projeto não fornecido.";
         }
-    } else {
-        echo "Você não tem nenhum projeto cadastrado.";
+    } catch (PDOException $e) {
+        echo "Erro: " . $e->getMessage();
     }
-} else {
-    header("Location: userProfile.php");
-    exit();
 }
+?>
