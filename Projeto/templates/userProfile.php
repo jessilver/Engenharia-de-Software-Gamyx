@@ -27,13 +27,16 @@
         </form>
         <div class="userProfileContainer">
             <div class="userProfileInfo">
-                <div class="userProfileCapa rounded">
+                        
+                        <div class="userProfileCapa rounded" style="width: 100%; object-fit: cover; overflow: hidden;">
                     <img 
-                        src=<?php 
-                                $link = "./static/img/banners/imagem-banner-" . $_SESSION['userLogado']['nome'] . ".jpg";
-                                $caminho = file_exists($link) ? $link : "semImagem";
-                                echo $caminho;
-                            ?>
+                        src="../static/img/tetris.png"
+                        <?php 
+                            // $link = "./static/img/banners/imagem-banner-" . $_SESSION['userLogado']['nome'] . ".jpg";
+                            // $caminho = file_exists($link) ? $link : "semImagem";
+                            // echo $caminho;
+                        ?>
+                        style="width: 100%;"
                         alt="Banner do perfil do usuário <?php echo $_SESSION['userLogado']['nome']; ?>"
                         class="bannerImage"
                     />
