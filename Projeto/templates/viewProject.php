@@ -63,6 +63,7 @@
     ?>
     <div class="viewProjectScreen">
         <main class="projectContainer rounded">
+            <span class="projectTitle"><?php echo $nomeProjeto ?></span>
         <div class="containerBotoes">    <span class="projectTitle"><?php echo $nomeProjeto  ?></span>
             <?php if ($_SESSION['userLogado']['id'] === $usuarioId) : ?>
     <div class="btn-container">
