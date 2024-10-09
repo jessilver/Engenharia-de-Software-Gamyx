@@ -66,15 +66,8 @@
             <h1 class="projectsTitle">Projetos</h1>
             <section class="projectsContainer rounded">
                 <div class="lista-cards-projeto">
-                    <a href="viewProject.php">
-                        <div class="card-projeto rounded">
-                            <img 
-                                src=""
-                                alt="Este projeto não tem imagem."
-                                class="projectImage"
-                            />                          
-                        </div>
-                    </a>
+                    <!-- Os outros usuários ainda não foram populados com projetos  -->
+                     <p>Este usuário ainda não possui projetos.</p>
                 </div>
             </section>
             <hr class="bar"/>
@@ -94,3 +87,15 @@
     <script src="./static/js/semImagem.js" defer></script>
 </body>
 </html>
+
+<!-- 
+    <a href="viewProject.php">
+        <div class="card-projeto rounded">
+            <img 
+                src="./static/img/tetris.png"
+                alt="Este projeto não tem imagem."
+                class="projectImage"
+            />                          
+        </div>
+    </a>
+-->

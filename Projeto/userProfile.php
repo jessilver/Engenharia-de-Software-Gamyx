@@ -74,29 +74,44 @@
                 <h1 class="h1AUser my-3">Meus projetos</h1>
                 <i class="fa-solid fa-magnifying-glass" style="margin-left: 20px;color: white; font-size: 15px;"></i>
             </div>
-            <div class="lista-cards-projeto">
+        <!-- Projetos do usuário  -->
+        <div class="lista-cards-projeto">
                 <?php
-                foreach ($_SESSION['userLogado']['projects'] as $projeto) {
-                    print("
-                        <div class='projectItem'>
-                            <div class='projectFoto'>
+                    require "pesquisaProjeto.php"; // Verifique se a pesquisa está correta
 
-                            </div>
-                            <h1 class='h1AUser' style = 'margin-bottom: 16px;'>$projeto</h1>
-                        </div>
-                    ");
+                    if (!empty($projetos) && is_array($projetos)) { // Confirma que a variável $projetos está preenchida e é um array
+                        foreach ($projetos as $projeto) {
+                            // Pegue os dados do projeto com proteção contra XSS
+                            $nomeProjeto = htmlspecialchars($projeto['nomeProjeto']);
+                            $fotoCapa = htmlspecialchars($projeto['fotoCapa']);
+                            $linkProjeto = "viewProject.php?id=" . urlencode($projeto['id']); // Garante a URL segura
+
+                            // Verifica se há uma imagem para o projeto
+                            if (empty($fotoCapa)) {
+                                $fotoCapa = 'static/img/default-placeholder.png'; // Substitui por uma imagem padrão caso não tenha
+                            }
+                        ?>
+                            <a href="<?php echo $linkProjeto; ?>">
+                                <div class="card-projeto rounded">
+                                    <img 
+                                        src="<?php echo $fotoCapa; ?>" 
+                                        alt="Este projeto não tem imagem." 
+                                        class="projectImage"
+                                    />
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?php echo $nomeProjeto; ?></h5>
+                                    </div>
+                                </div>
+                            </a>
+                    <?php
+                    }
+                } else {
+                    echo "<p>Este usuário não tem projetos para exibir.</p>"; // Mensagem de erro mais clara
                 }
-                ?>             
-                <a href="viewProject.php">
-                    <div class="card-projeto rounded">
-                        <img 
-                            src="./static/img/tetris.png"
-                            alt="Este projeto não tem imagem."
-                            class="projectImage"
-                        />                          
-                    </div>
-                </a>
-            </div>
+            ?>
+
+        </div>
+
         </div>
         <hr class="userHr">
         <div class="userProfileAmigos">
@@ -105,18 +120,6 @@
                 <i class="fa-solid fa-magnifying-glass" style="margin-left: 20px;color: white; font-size: 15px;"></i>
             </div>
             <div class="amigosList">
-            <?php
-                foreach ($_SESSION['userLogado']['friends'] as $amigo){
-                    print("
-                        <div class='amigosItem'>
-                            <div class='amigosFoto'>
-
-                            </div>
-                            <h1 class='h1AUser' style = 'margin-bottom: 16px;'>$amigo</h1>
-                        </div>
-                    ");
-                }
-                ?>
             </div>
         </div>
         <hr class="userHr">
@@ -241,6 +244,7 @@
     </div>
     
     <!-- <script src="../static/js/script.js"></script> -->
+    <script src="./static/js/semImagem.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

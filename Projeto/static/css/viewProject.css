@@ -68,3 +68,59 @@ body{
 .userAbout{
     margin-top: 14px;
 }
+
+/* Estilo para a div que contém os botões */
+.btn-container {
+    display: flex;
+    gap: 10px; /* Espaçamento entre os botões */
+    margin-top: 20px; /* Margem superior para afastar dos outros elementos */
+}
+
+/* Estilo do botão de editar */
+.btn-editar {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    border: 2px solid #005EFF;
+    background: #7CACFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Estilo do botão de excluir */
+.btn-excluir {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    border: 2px solid #F00;
+    background: #251515;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Estilo do ícone dentro dos botões */
+.btn-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Estilos hover para interações com o mouse */
+.btn-editar:hover {
+    background-color: #005EFF;
+}
+
+.btn-excluir:hover {
+    background-color: #FF0000;
+}
+
+.containerBotoes {   
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
