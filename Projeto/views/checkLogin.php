@@ -40,24 +40,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-        $stmt = $conn->prepare("SELECT nomeProjeto FROM projetosUsuario WHERE usuario_id = ?");
-        $stmt->bind_param("s", $user['id']);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $projects = $result->fetch_assoc();
+        $stmt2 = $conn->prepare("SELECT nomeProjeto, fotoCapa FROM projetosUsuario WHERE usuario_id = ?");
+        $stmt2->bind_param("i", $user['id']);
+        $stmt2->execute();
+        $result = $stmt2->get_result();
 
-        $projects = $projects ?? [];
+        $projectsArray = [];
 
+
+        if($result){
+            while ($project = $result->fetch_assoc()) {
+                $projectsArray[] = [
+                    'nomeProjeto' => $project['nomeProjeto'],
+                    'fotoCapa' => $project['fotoCapa'],
+                ];
+            }
+        }
+
+        $stmt2->close();
+        
         $_SESSION['userLogado'] = [
             'nome' => $user['nomeUsuario'],
-            'arroba' => $user['uniqueName'], 
+            'arroba' => $user['uniqueName'],
             'email' => $user['email'],
-            'projects' => $projects, 
-            'friends' => [], 
+            'projects' => $projectsArray, 
+            'friends' => [],
             'urlPortfolio' => $user['urlPortfolio'],
             'about' => $user['about'] ?? 'Sobre mim não disponível.'
         ];
-
         header("Location: ../templates/userProfile.php");
         exit();
     } else {

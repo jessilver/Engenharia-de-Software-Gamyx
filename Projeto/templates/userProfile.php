@@ -56,7 +56,20 @@
                             <h1 class="h1AboutUser"><?php echo $_SESSION['userLogado']['about']; ?></h1>
                             <h1 class="h1AboutUserVerMais" data-toggle="modal" data-target="#sobreModal"> ...mais</h1>
                         </div>
-                        <h1 class="h1AUser"><i class="fa-regular fa-folder"></i> <?php echo count($_SESSION['userLogado']['projects']); ?> projects - <i class="fa-solid fa-heart" id="heartIcon"></i> <?php echo count($_SESSION['userLogado']['projects']); ?> likes </h1>
+                        <h1 class="h1AUser">
+                            <i class="fa-regular fa-folder"></i> 
+                            <?php 
+                                $projectsCount = isset($_SESSION['userLogado']['projects']) && is_array($_SESSION['userLogado']['projects']) ? count($_SESSION['userLogado']['projects']) : 0;
+                                echo $projectsCount; 
+                            ?>
+                            projects - 
+                            <i class="fa-solid fa-heart" id="heartIcon"></i> 
+                            <?php 
+                                $projectsCount = isset($_SESSION['userLogado']['projects']) && is_array($_SESSION['userLogado']['projects']) ? count($_SESSION['userLogado']['projects']) : 0;
+                                echo $projectsCount; 
+                            ?>
+                            likes 
+                        </h1>
                         <div class="profileButtons">
                             <button class="btn editProfile" data-toggle="modal" data-target="#editProfileModal"><h1 class="h1AUser">edit profile</h1></button>
                             <button class="btn viewProjects" data-toggle="modal" data-target="#editProjectModal"><h1 class="h1AUser">projects</h1></button>
@@ -74,15 +87,23 @@
             </div>
             <div class="projectList">
                 <?php
-                foreach ($_SESSION['userLogado']['projects'] as $projeto) {
-                    print("
-                        <div class='projectItem'>
-                            <div class='projectFoto'>
+                if (isset($_SESSION['userLogado']['projects']) && is_array($_SESSION['userLogado']['projects'])) {
+                    foreach ($_SESSION['userLogado']['projects'] as $projeto) {
 
+                        $nomeProjeto = $projeto['nomeProjeto'] ?? 'Nome não disponível';
+                        $fotoCapa = $projeto['fotoCapa'] ?? 'imagem-padrao.png'; // Define uma imagem padrão se não houver
+                
+                        print("
+                            <div class='projectItem'>
+                                <div class='projectFoto'>
+                                    <img src='../static/img/capasProjetos/$fotoCapa' alt='$nomeProjeto'>
+                                </div>
+                                <h1 class='h1AUser' style='margin-bottom: 16px;'>$nomeProjeto</h1>
                             </div>
-                            <h1 class='h1AUser' style = 'margin-bottom: 16px;'>$projeto</h1>
-                        </div>
-                    ");
+                        ");
+                    }
+                } else {
+                    echo "<p>Nenhum projeto encontrado.</p>"; // Mensagem se não houver projetos
                 }
                 ?>
             </div>

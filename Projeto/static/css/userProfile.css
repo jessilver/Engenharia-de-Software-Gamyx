@@ -130,6 +130,12 @@
     background-color: #151C25;
 }
 
+.projectFoto img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .userProfileAmigos{
     display: flex;
     align-items: start;
