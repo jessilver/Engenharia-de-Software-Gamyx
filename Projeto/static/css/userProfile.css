@@ -16,6 +16,12 @@
     color: #FFFFFF;
 }
 
+#userProfileBody textarea {
+    background-color: #0D1117 !important;
+    border: 1px solid #282F39;
+    color: #FFFFFF;
+}
+
 #userProfileSection{
     margin: 0 auto;
     height: 100%;
@@ -65,11 +71,9 @@
 }
 
 .userProfileCapa{
-    margin-top: 50px;
     width: calc(100vw - 200px);
-    height: 225px;
+    height: 270px;
     background-color: #151C25;
-    border-radius: 20px;
 }
 
 .userProfilePerfil{
@@ -82,6 +86,9 @@
 }
 .userProfileFoto{
     background-color: #151C25;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 172px;
     width: 172px;
     margin-right: 19px;
@@ -128,6 +135,12 @@
     margin-bottom: 16px;
     border-radius: 20px;
     background-color: #151C25;
+}
+
+.projectFoto img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .userProfileAmigos{
@@ -179,7 +192,6 @@
 }
 
 .h1UserName{
-    margin: 0;
     font-family: 'ABeeZee', sans-serif; 
     font-size: 40px;
     font-weight: normal;
@@ -187,7 +199,6 @@
 }
 
 .h1AUser{
-    margin: 0;
     font-family: 'ABeeZee', sans-serif; 
     font-size: 20px;
     font-weight:normal;
@@ -201,11 +212,11 @@
 }
 
 .h1AboutUser{
-    margin: 0;
     font-family: 'ABeeZee', sans-serif; 
     font-size: 18px;
     font-weight: normal; 
-    width: 350px; 
+    width: auto;
+    max-width: 350px; 
     background: linear-gradient(to right, white 70%, transparent); 
     -webkit-background-clip: text; 
     -webkit-text-fill-color: transparent; 
@@ -214,7 +225,6 @@
 }
 
 .h1AboutUserVerMais{
-    margin: 0;
     margin-left: 15px;
     font-family: 'ABeeZee', sans-serif; 
     font-size: 16px;
@@ -231,7 +241,6 @@
 }
 
 .pNormalText{
-    margin: 0;
     font-family: 'ABeeZee', sans-serif; 
     font-size: 15px;
     font-weight:lighter; 
@@ -284,4 +293,10 @@
     width: 60% !important;
     height: 40px !important;
     background-color: #26A641 !important;
+}
+
+/* Extras  */
+.noProfile{
+    width: 120px;
+    height: 120px;
 }

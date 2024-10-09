@@ -136,7 +136,7 @@ Critérios de Aceitação:
 ### Deletar projeto
 
 - Tarefa 1: Design da interface de perfil.
-- Tarefa 3: Implementação do envio da confirmação de deleção.
+- Tarefa 2: Implementação do envio da confirmação de deleção.
 
 
 

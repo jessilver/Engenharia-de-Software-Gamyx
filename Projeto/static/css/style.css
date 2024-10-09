@@ -2,7 +2,6 @@
 /*                                              Geral                                                 */
 /* ================================================================================================== */
 
-
 /* Barra de rolagem */
 ::-webkit-scrollbar {
     width: 10px; /* Largura da barra de rolagem */
@@ -25,3 +24,42 @@
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.5); /* Cor do scroll quando o mouse está sobre ele */
 }@import url('https://fonts.googleapis.com/css2?family=ABeeZee&display=swap');
+
+.text-area {
+    width: 100% !important;
+    min-height: 100px !important;
+    resize: none !important;
+}
+/* ================================================================================================== */
+/*                                        CADASTRAR NOVO PROJETO                                                */
+/* ================================================================================================== */
+
+#bodyCadastrarProjeto{
+    background-color: #0D1117;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 36px;
+    padding: 20px;
+}
+.card-projeto{
+    background-color: #151C25;
+    display: flex;
+    justify-content: center;
+}
+
+#imagemFotoCapa {
+    width: 693px;
+    height: 219px;
+}
+
+.btn-cadastrar {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+    color: #FFFFFF !important;
+    width: 60% !important;
+    height: 40px !important;
+    background-color: #26A641 !important;
+}

@@ -14,7 +14,13 @@
   - [feat/login-de-usuario](#Login-de-Usuário)
   - [feat/acesso-ao-perfil](#Acesso-ao-Perfil)
   - [feat/vizualizar-perfil-de-outros-usuarios](#Visualização-de-Perfil-de-Outros-Usuários)
-  - [adicionais](#Adicionais)
+  - [adicionais-it1](#Adicionais-it1)
+- [Iteração 02](#Iteração-02)
+  - [feat/cadastro-de-projeto](#Cadastro-de-Projeto)
+  - [feat/aceaso-ao-projeto](#Acesso-ao-projeto)
+  - [feat/editar-projeto](#Editar-projeto)
+  - [feat/deletar-projeto](#Deletar-projeto)
+  - [adicionais-it2](#Adicionais-it2)
 
 # Iteração 01
 <small>[voltar para o Sumário](#Sumário)</small><br>
@@ -141,7 +147,9 @@ Critérios de Aceitação:
 - Tarefa 1: Design da interface de visualização de perfil de outros usuários.
 - Tarefa 2: Implementação da lógica de busca e visualização de perfis.
 
-# Adicionais
+# Adicionais it1
+<small>[voltar para o Sumário](#Sumário)</small><br>
+
 ## Jônatas De Sousa Madeira
 - **Create**: Cria um novo usuário na tabela.
   
@@ -152,7 +160,137 @@ Critérios de Aceitação:
 - **Update**: Editar perfil de usuário.
 - Configuração do banco de dados.
 
+# Iteração 02
+<small>[voltar para o Sumário](#Sumário)</small><br>
+
+## Valor: 
+Permitir que o usuário logado possa criar, visualizar, editar e deletar um projeto
+
+## Features:
+
+# Cadastro de Projeto
+<small>[voltar para o Sumário](#Sumário)</small><br>
+
+
+## Resposável:
+Jônatas De Sousa Madeira
+
+```bash
+feat/cadastro-de-usuario
+```
+
+## User Story:
+
+### Como um usuário logado, quero criar um novo projeto no sistema.
+
+Critérios de Aceitação:
+- O sistema deve permitir que o usuário insira dados como nome do projeto, descrição e link do projeto (github ou itch.io).
+- O usuário deve receber uma confirmação de criação bem-sucedida.
+
+## Template:
+
+![CadastrarProjeto](https://github.com/user-attachments/assets/8b3db6e3-2667-4173-8709-21c8d630ca56)
+
+## Tarefas:
+
+- Tarefa 1: Design da interface de criação do projeto.
+- Tarefa 2: Implementação da lógica de backend para processamento de dados.
+- Tarefa 3: Implementação do envio da confirmação de criação.
+
+# Acesso ao projeto
+<small>[voltar para o Sumário](#Sumário)</small><br>
+
+## Resposável:
+Arthur Lima Duarte
+
+```bash
+feat/view-project
+```
+
+## User Story:
+
+### Como um usuário logado, quero acessar e visualizar meu projeto.
+
+Critérios de Aceitação:
+- O usuário deve ser redirecionado para sua página de visualização do projeto.
+- O usuário deve ter a opção de editar as informações do projeto.
+
+## Template:
+
+![VisualizarProjeto](https://github.com/user-attachments/assets/76fa98cd-6026-4100-b8ee-6b93179474e0)
+
+## Tarefas:
+
+- Tarefa 1: Design da interface de perfil.
+- Tarefa 2: Implementação da lógica para exibir informações do projeto.
+
+# Editar projeto
+<small>[voltar para o Sumário](#Sumário)</small><br>
+
+## Resposável:
+Jessé Eliseu Nunes Da Silva
+
+```bash
+feat/edit-project
+```
+
+## User Story:
+
+### Como um usuário logado, quero editar um projeto existente.
+
+Critérios de Aceitação:
+- O usuário deve ser capaz de alterar informações do projeto.
+- Confirmação de salvar alterações.
+- O usuário deve receber feedback com a confirmação de alteração
+
+## Template:
+
+![EditarProjeto](https://github.com/user-attachments/assets/c57868aa-724c-4b7c-9cb1-b1dcce01b216)
+
+## Tarefas:
+
+- Tarefa 1: Design da interface de perfil.
+- Tarefa 2: Implementação da lógica para exibir informações existentes do projeto.
+- Tarefa 3: Implementação da lógica de backend para processamento de dados.
+- Tarefa 4: Implementação do envio da confirmação de alterações.
+
+# Deletar projeto
+<small>[voltar para o Sumário](#Sumário)</small><br>
+
+## Resposável:
+Gabriel Fernandes Zamora
+
+```bash
+feat/login-do-usuario
+```
+
+## User Story:
+
+### Como um usuário logado, quero deletar um projeto existente.
+
+Critérios de Aceitação:
+- O usuário deve ser capaz de deletar um projeto.
+- Confirmação de deletar projeto.
+- O usuário deve receber feedback com a confirmação de deleção.
+
+## Template:
+
+
+## Tarefas:
+
+- Tarefa 1: Design da interface de perfil.
+- Tarefa 2: Implementação do envio da confirmação de deleção.
+
+# Adicionais it2
+<small>[voltar para o Sumário](#Sumário)</small><br>
+  
 ## Gabriel Fernandes Zamora
-- **Delete**: Deletar perfil de usuário.
+- **Menu**: Implementação da barra de menu lateral
+
+![MenuLateral](https://github.com/user-attachments/assets/e53a8ef4-444b-48ff-94d2-31aede58ae09)
+
+![exemplo](https://github.com/user-attachments/assets/84968a81-992d-4e82-b3d5-e8342c8fc94a)
+
+
 
 
