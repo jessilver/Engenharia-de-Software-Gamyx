@@ -64,6 +64,25 @@
     <div class="viewProjectScreen">
         <main class="projectContainer rounded">
             <span class="projectTitle"><?php echo $nomeProjeto ?></span>
+        <div class="containerBotoes">    <span class="projectTitle"><?php echo $nomeProjeto  ?></span>
+            <?php if ($_SESSION['userLogado']['id'] === $usuarioId) : ?>
+    <div class="btn-container">
+        <form action="editproject.php" method="GET">
+            <input type="hidden" name="projectId" value="<?php echo $projetoId; ?>" />
+            <button type="submit" class="btn-editar">
+                <img src="static/img/pincel.png" alt="Editar projeto" class="btn-icon">
+                </button>
+        </form>
+            
+        <form action="deleteproject.php" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este projeto?');">
+            <input type="hidden" name="projectId" value="<?php echo $projetoId; ?>" />
+            <button type="submit" class="btn-excluir">
+                <img src="static/img/lixo.png" alt="Excluir projeto" class="btn-icon">
+                </button>
+        </form>
+    </div>
+<?php endif; ?>
+</div>
             <div class="imageContainer">
                 <img 
                     src="<?php echo $fotoCapa ?>"

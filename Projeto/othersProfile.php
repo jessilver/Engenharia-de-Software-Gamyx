@@ -67,6 +67,7 @@
             <section class="projectsContainer rounded">
                 <div class="lista-cards-projeto">
                     <!-- Os outros usuários ainda não foram populados com projetos  -->
+                     <p>Este usuário ainda não possui projetos.</p>
                 </div>
             </section>
             <hr class="bar"/>
