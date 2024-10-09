@@ -62,6 +62,17 @@
     border: 1px solid white;
 }
 
+.btn-cadastrar {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+    color: #FFFFFF !important;
+    width: 60% !important;
+    height: 40px !important;
+    background-color: #26A641 !important;
+}
+
 #formFile::-webkit-file-upload-button{
     background-color: #2B3035;
     color: #FFF;

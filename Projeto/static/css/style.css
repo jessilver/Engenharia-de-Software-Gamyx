@@ -30,12 +30,12 @@
     min-height: 100px !important;
     resize: none !important;
 }
-/*
-    Estilos dos cards de projeto, usado por userProfile e othersProfile
+/* ================================================================================================== */
+/*                                        CADASTRAR NOVO PROJETO                                                */
+/* ================================================================================================== */
 
-    */
-.lista-cards-projeto{
-    background-color: #0B0E13;
+#bodyCadastrarProjeto{
+    background-color: #0D1117;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -46,26 +46,20 @@
     background-color: #151C25;
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 380px;
-    height: 210px;
-    border: 1px solid #282F39;
-    font-family: "ABeeZee", sans-serif;
-    color: #fff;
-    text-decoration: none !important;
-    overflow: hidden;
 }
-.card-projeto:hover{
-    cursor: pointer;
-    animation-name: aumentar-e-diminuir;
-    animation-duration: 0.8s;
-    animation-fill-mode: forwards;
+
+#imagemFotoCapa {
+    width: 693px;
+    height: 219px;
 }
-@keyframes aumentar-e-diminuir{
-    from{
-        transform: scale(1);
-    }
-    to{
-        transform: scale(1.25);
-    }
+
+.btn-cadastrar {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+    color: #FFFFFF !important;
+    width: 60% !important;
+    height: 40px !important;
+    background-color: #26A641 !important;
 }
