@@ -15,7 +15,7 @@
 
     <section id="sectionCadastroUsuario">
         <header id="headerCadastroUsuario">
-            <img src="./static/img/GAMYX.png" alt="Logo do Gamyx">
+            <img src="../static/img/GAMYX.png" alt="Logo do Gamyx">
             <h2>Bem Vindo</h2>
         </header>
 

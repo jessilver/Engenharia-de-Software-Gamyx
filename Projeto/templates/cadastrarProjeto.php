@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/cadastrarProjeto.css">
+    <link rel="stylesheet" href="../static/css/cadastro.css">
     <?php
         require('linkrel.php');
     ?>
@@ -74,7 +75,7 @@
         
         <label for="previewFotoCapa" class="form-label">Preview:</label>
         <div class="mb-3" id="previewFotoCapa">
-            <img src="static/img/imagem do sexo.png" alt="Preview da foto de capa selecionada"  class="img-fluid" id="imagemFotoCapa">
+            <img src="../static/img/tetris.png" alt="Preview da foto de capa selecionada"  class="img-fluid" id="imagemFotoCapa">
         </div>
 
         

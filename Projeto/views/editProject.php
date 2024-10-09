@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 'about' => $user['about'] ?? 'Sobre mim não disponível.'
             ];
 
-            header('Location: ../templates/viewProject.php?id=1');
+            header("Location: ../templates/viewProject.php?id=$projectId");
             exit();
         } else {
             echo "Erro ao atualizar projeto: " . $stmt->error;
