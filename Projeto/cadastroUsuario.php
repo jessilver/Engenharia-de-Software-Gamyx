@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="stylesheet" href="static/css/cadastro.css">
+    <link rel="stylesheet" href="./static/css/cadastro.css">
     <?php
         require('linkrel.php');
     ?>
@@ -15,7 +15,7 @@
 
     <section id="sectionCadastroUsuario">
         <header id="headerCadastroUsuario">
-            <img src="static/img/GAMYX.png" alt="Logo do Gamyx">
+            <img src="./static/img/GAMYX.png" alt="Logo do Gamyx">
             <h2>Bem Vindo</h2>
         </header>
 
@@ -41,7 +41,7 @@
 
                 <div class="mb-3">
                     <label for="password2" class="form-label">Confirme sua senha:</label>
-                    <input type="password" required onchange="validaSenha()" class="form-control" id="password2">
+                    <input type="password" required class="form-control" id="password2">
                 </div>
 
                 <div class="mb-4">
@@ -58,7 +58,7 @@
         </div>
     </section>
     
-    <script src="static/js/script.js"></script>
+    <script src="./static/js/script.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </body>
