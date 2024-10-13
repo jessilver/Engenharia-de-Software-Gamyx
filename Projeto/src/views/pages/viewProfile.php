@@ -1,15 +1,5 @@
-<?php
-    require_once "../config.php";
-?>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
+<?php $render('header');?>
     <link rel="stylesheet" href="../static/css/userProfile.css">
-    <?php
-        require('linkrel.php');
-        ?>
-    <title>Meu Perfil</title>
-</head>
 <body id="userProfileBody">
     
     <?php 
@@ -40,8 +30,8 @@
                     <div class="userProfileFoto">
                         <img 
                             src=<?php 
-                                    $link = "./static/img/perfil/imagem-perfil-" . $user[0]['nomeUsuario'] . ".jpg";
-                                    $caminho = file_exists($link) ? $link : "semImagem";
+                                    $link = "../static/img/perfil/imagem-perfil-" . $user[0]['nomeUsuario'] . ".jpg";
+                                    $caminho = file_exists($link) ? $link : "sem-imagem.png";
                                     echo $caminho;
                                 ?>
                             alt="Imagem de perfil do usuário <?= $user[0]['nomeUsuario']; ?>"
@@ -58,13 +48,13 @@
                         <h1 class="h1AUser">
                             <i class="fa-regular fa-folder"></i> 
                             <?php 
-                                $projectsCount = isset($user['projects']) && is_array($user['projects']) ? count($user['projects']) : 0;
+                                $projectsCount = $projects ? count($projects) : 0;
                                 echo $projectsCount; 
                             ?>
                             projects - 
                             <i class="fa-solid fa-heart" id="heartIcon"></i> 
                             <?php 
-                                $projectsCount = isset($user['projects']) && is_array($user['projects']) ? count($user['projects']) : 0;
+                                $projectsCount = $projects ? count($projects) : 0;
                                 echo $projectsCount; 
                             ?>
                             likes 
@@ -84,36 +74,29 @@
                 <h1 class="h1AUser my-3">Meus projetos</h1>
                 <i class="fa-solid fa-magnifying-glass" style="margin-left: 20px;color: white; font-size: 15px;"></i>
             </div>
-        <!-- Projetos do usuário  -->
-        <div class="lista-cards-projeto" style="width: 100%; display: flex; gap: 60px;">
-                <?php
-                if (isset($user['projects']) && is_array($user['projects'])) {
-                    foreach ($user['projects'] as $projeto) {
-
-                        $nomeProjeto = $projeto['nomeProjeto'] ?? 'Nome não disponível';
-                        $fotoCapa = $projeto['fotoCapa'] ?? 'default-placeholder.png'; // Define uma imagem padrão se não houver
-                        $linkProjeto = $projeto['id']; // Garante a URL segura
-                
-                        print("
-                            <div class='projectItem'>
-                                <a href='viewProject.php?id=$linkProjeto'>
-                                    <div class='projectFoto'>
-                                        <img src='../static/img/capasProjetos/$fotoCapa' alt='$nomeProjeto'>
-                                    </div>
-                                </a>
-                                <h1 class='h1AUser' style='margin-bottom: 16px;'>$nomeProjeto</h1>
-                            </div>
-                        ");
-                    }
-                } else {
-                    echo "<p>Nenhum projeto encontrado.</p>"; // Mensagem se não houver projetos
-                }
-            ?>
-            
-            </a>
-
-        </div>
-
+        <!-- Projetos do usuário -->
+            <div class="lista-cards-projeto" style="width: 100%; display: flex; gap: 60px;">
+                <?php if (count($projects) > 0) : ?>
+                    <?php foreach ($projects as $projeto) : ?>
+                        <?php 
+                            $nomeProjeto = $projeto['nomeProjeto'] ?? 'Nome não disponível';
+                            $fotoCapa = $projeto['fotoCapa'] ?? 'default-placeholder.png';
+                            $linkProjeto = $projeto['id'];
+                        ?>
+                        
+                        <div class='projectItem'>
+                            <a href= "<?=$base?>/perfil/<?=$linkProjeto?>">
+                                <div class='projectFoto'>
+                                    <img src='../static/img/capasProjetos/<?= $fotoCapa ?>' alt='<?= $nomeProjeto ?>'> 
+                                </div>
+                            </a>
+                            <h1 class='h1AUser' style='margin-bottom: 16px;'><?= $nomeProjeto ?></h1>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <p>Nenhum projeto encontrado.</p>
+                <?php endif; ?>
+            </div>
         </div>
         <hr class="userHr">
         <div class="userProfileAmigos">
@@ -179,12 +162,6 @@
             </div>
         </div>
     </div>
-
-    <!-- <script src="../static/js/script.js"></script> -->
-    <script src="../static/js/semImagem.js" defer></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
-</html>
+<?php $render('footer');?>
 

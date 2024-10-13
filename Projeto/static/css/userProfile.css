@@ -264,6 +264,15 @@
     display: flex;
 }
 
+.profileImage{
+    width: 100%;
+    height: 100%;
+    max-width: 220px;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 .userProfileDados{
     height: 100%;
     display: flex;
