@@ -124,13 +124,18 @@ Seguir a [Semantic Versioning (SemVer)](https://semver.org/):
 
 ## Configurando o Ambiente
 
-1. **Certifique-se que o Git instalado:**
+1. **Certifique-se que o Git e o Composer estejam instalados:**
 
    - No seu cmd execute o seguinte coamndo:
    ```bash
      git --version
    ```
    - Se não estiver instaldo: [Git](https://git-scm.com/downloads)
+   - No seu cmd execute o seguinte coamndo:
+   ```bash
+     composer --version
+   ```
+   - Se não estiver instaldo: [Composer](https://getcomposer.org/Composer-Setup.exe)
 
 2. **Instalando XAMPP**
 Se já estiver com XAMPP instalado, pule para: [Iniciando o XAMPP](#Iniciando-o-XAMPP)
