@@ -12,6 +12,7 @@
 - [Tags](#tags)
 - [Como Iniciar o Projeto](#como-iniciar-o-projeto)
 - [Instalando dependências com o Composer](#Instalando-dependências-com-o-Composer)
+- [Biblioteca Hydrahon](#Biblioteca-Hydrahon)
 - [Criar uma Nova Branch para uma Feature](#criar-uma-nova-branch-para-uma-feature)
 - [Realizar um Push](#realizar-um-push)
 - [Fazendo o Pull Request](#fazendo-o-pull-request)
@@ -188,6 +189,11 @@ O **autoload** no PHP é uma funcionalidade que permite carregar automaticamente
 - **Facilidade de Manutenção**: Ao utilizar um autoloader, se você precisar mover ou renomear classes, a manutenção se torna mais simples, pois você não precisa atualizar todos os arquivos que incluem as classes.
 
 - **Conformidade com PSR**: Usar autoloading, especialmente seguindo o padrão PSR-4, facilita a interoperabilidade entre bibliotecas e frameworks PHP, tornando seu código mais compatível com outros projetos.
+
+## Biblioteca Hydrahon
+<small>[voltar para o Sumário](#Sumário)</small><br>
+
+[Documentação](https://github.com/ClanCats/Hydrahon.git)
 
 ## Video para Melhor visualizacao
 
