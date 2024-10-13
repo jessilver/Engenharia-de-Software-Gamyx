@@ -1,5 +1,7 @@
 <?php $render('header');?>
-    <link rel="stylesheet" href="../static/css/userProfile.css">
+
+<link rel="stylesheet" href="../static/css/userProfile.css">
+
 <body id="userProfileBody">
     
     <?php 
