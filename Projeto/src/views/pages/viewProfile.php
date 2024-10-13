@@ -1,5 +1,4 @@
 <?php
-    session_start();
     require_once "../config.php";
 ?>
 <!DOCTYPE html>
@@ -12,11 +11,7 @@
     <title>Meu Perfil</title>
 </head>
 <body id="userProfileBody">
-    <?php
-        if (!isset($_SESSION['userLogado'])) {
-            header("Location: criarUsuario.php");
-        }
-    ?>
+    
     <?php 
         include 'menu.php'; 
     ?>
@@ -37,7 +32,7 @@
                             // echo $caminho;
                         ?>
                         style="width: 100%;"
-                        alt="Banner do perfil do usuário <?php echo $_SESSION['userLogado']['nome']; ?>"
+                        alt="Banner do perfil do usuário <?= $user[0]['nomeUsuario']; ?>"
                         class="bannerImage"
                     />
                 </div>
@@ -45,31 +40,31 @@
                     <div class="userProfileFoto">
                         <img 
                             src=<?php 
-                                    $link = "./static/img/perfil/imagem-perfil-" . $_SESSION['userLogado']['nome'] . ".jpg";
+                                    $link = "./static/img/perfil/imagem-perfil-" . $user[0]['nomeUsuario'] . ".jpg";
                                     $caminho = file_exists($link) ? $link : "semImagem";
                                     echo $caminho;
                                 ?>
-                            alt="Imagem de perfil do usuário <?php echo $_SESSION['userLogado']['nome']; ?>"
+                            alt="Imagem de perfil do usuário <?= $user[0]['nomeUsuario']; ?>"
                             class="profileImage"
                         />
                     </div>
                     <div class="userProfileDados">
-                        <h1 class="h1UserName"><?php echo $_SESSION['userLogado']['nome']; ?></h1>
-                        <h1 class="h1AUser"><?php echo $_SESSION['userLogado']['arroba']; ?></h1>
+                        <h1 class="h1UserName"><?= $user[0]['nomeUsuario']; ?></h1>
+                        <h1 class="h1AUser"><?= $user[0]['uniqueName']; ?></h1>
                         <div class="h1AboutUserDiv">
-                            <h1 class="h1AboutUser"><?php echo $_SESSION['userLogado']['about']; ?></h1>
+                            <h1 class="h1AboutUser"><?= $user[0]['about']; ?></h1>
                             <h1 class="h1AboutUserVerMais" data-toggle="modal" data-target="#sobreModal"> ...mais</h1>
                         </div>
                         <h1 class="h1AUser">
                             <i class="fa-regular fa-folder"></i> 
                             <?php 
-                                $projectsCount = isset($_SESSION['userLogado']['projects']) && is_array($_SESSION['userLogado']['projects']) ? count($_SESSION['userLogado']['projects']) : 0;
+                                $projectsCount = isset($user['projects']) && is_array($user['projects']) ? count($user['projects']) : 0;
                                 echo $projectsCount; 
                             ?>
                             projects - 
                             <i class="fa-solid fa-heart" id="heartIcon"></i> 
                             <?php 
-                                $projectsCount = isset($_SESSION['userLogado']['projects']) && is_array($_SESSION['userLogado']['projects']) ? count($_SESSION['userLogado']['projects']) : 0;
+                                $projectsCount = isset($user['projects']) && is_array($user['projects']) ? count($user['projects']) : 0;
                                 echo $projectsCount; 
                             ?>
                             likes 
@@ -92,8 +87,8 @@
         <!-- Projetos do usuário  -->
         <div class="lista-cards-projeto" style="width: 100%; display: flex; gap: 60px;">
                 <?php
-                if (isset($_SESSION['userLogado']['projects']) && is_array($_SESSION['userLogado']['projects'])) {
-                    foreach ($_SESSION['userLogado']['projects'] as $projeto) {
+                if (isset($user['projects']) && is_array($user['projects'])) {
+                    foreach ($user['projects'] as $projeto) {
 
                         $nomeProjeto = $projeto['nomeProjeto'] ?? 'Nome não disponível';
                         $fotoCapa = $projeto['fotoCapa'] ?? 'default-placeholder.png'; // Define uma imagem padrão se não houver
@@ -142,7 +137,7 @@
                     <i class="fa-solid fa-xmark closeButton" data-dismiss="modal"></i>
                 </div>
                 <div class="modal-body">
-                    <p class="pNormalText"><?php echo $_SESSION['userLogado']['about']; ?></p>
+                    <p class="pNormalText"><?= $user[0]['about']; ?></p>
                 </div>      
             </div>
         </div>
@@ -158,24 +153,24 @@
                 </div>
                 <div class="modal-body">
                     <form action="../views/editProfile.php" method="POST" id="formEditProfile">
-                        <input type="hidden" name="uniqueName" class="form-control" id="uniqueName" value="<?php echo $_SESSION['userLogado']['arroba']; ?>">
+                        <input type="hidden" name="uniqueName" class="form-control" id="uniqueName" value="<?= $user[0]['uniqueName']; ?>">
 
                         <div class="mb-3">
                             <label for="about" class="form-label">Sobre você:</label>
-                            <!-- <input type="text" name="about" class="form-control" id="about" value="<?php echo $_SESSION['userLogado']['about']; ?>"> -->
-                            <textarea class="form-control" name="about" id="about" rows="5"><?php echo $_SESSION['userLogado']['about']; ?></textarea>
+                            <!-- <input type="text" name="about" class="form-control" id="about" value="<?= $user[0]['about']; ?>"> -->
+                            <textarea class="form-control" name="about" id="about" rows="5"><?= $user[0]['about']; ?></textarea>
                         </div>
                 
                         <div class="mb-3">
                             <label for="linkPortfolio" class="form-label">URL para portfólio pessoal (e.g., GitHub, itch.io):</label>
-                            <input type="text" name="linkPortfolio" class="form-control" id="linkPortfolio" value="<?php echo $_SESSION['userLogado']['urlPortfolio']; ?>">
+                            <input type="text" name="linkPortfolio" class="form-control" id="linkPortfolio" value="<?= $user[0]['urlPortfolio']; ?>">
                         </div>
 
                         <button type="submit" class="btn btn-cadastrar">Salvar</button>
 
                     </form>
                     <form action="../views/deleteUsuario.php" method="POST" id="formDeleteAccount">
-                        <input type="hidden" name="uniqueName" class="form-control" id="uniqueName" value="<?php echo $_SESSION['userLogado']['arroba']; ?>">
+                        <input type="hidden" name="uniqueName" class="form-control" id="uniqueName" value="<?= $user[0]['uniqueName']; ?>">
 
                         <button type="submit" class="btn btn-danger">Deletar conta</button>
 
