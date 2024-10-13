@@ -138,7 +138,7 @@ Seguir a [Semantic Versioning (SemVer)](https://semver.org/):
    - Se não estiver instaldo: [Composer](https://getcomposer.org/Composer-Setup.exe)
 
 2. **Instalando XAMPP**
-Se já estiver com XAMPP instalado, pule para: [Iniciando o XAMPP](#Iniciando-o-XAMPP)
+Se já estiver com XAMPP instalado, pule para: [Instalando dependências com o Composer](#Instalando-dependências-com-o-Composer)
 
 - Clique em [Download XAMPP](https://www.apachefriends.org/pt_br/index.html) e faça o download e instale o XAMPP.
 
@@ -168,14 +168,12 @@ Sempre que for rodar o proejto é obrigatotório serguir a instrução abaixo, c
  ```bash
    git clone https://github.com/jessilver/Engenharia-de-Software-Gamyx.git
  ```
-- Já pode fechar tudo e iniciar seu projeto
+# Instalando dependências com o Composer
 
-# Como conectar com o banco de dados
-
-1. Abra o aplicativo do xamppe em seguida na opção **admin** do MySQL
-![image](https://github.com/user-attachments/assets/53fffc93-523e-47ed-b30b-4869b0d9e3d5)
-
-2. 
+Na raiz do seu projeto execute o seguinte comando:
+ ```bash
+   composer install
+ ```
 
 ## Video para Melhor visualizacao
 
