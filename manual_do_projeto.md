@@ -11,7 +11,7 @@
 - [Padrões](#Padrões)
 - [Tags](#tags)
 - [Como Iniciar o Projeto](#como-iniciar-o-projeto)
-- [Como conectar com o banco de dados](#Como-conectar-com-o-banco-de-dados)
+- [Instalando dependências com o Composer](#Instalando-dependências-com-o-Composer)
 - [Criar uma Nova Branch para uma Feature](#criar-uma-nova-branch-para-uma-feature)
 - [Realizar um Push](#realizar-um-push)
 - [Fazendo o Pull Request](#fazendo-o-pull-request)
