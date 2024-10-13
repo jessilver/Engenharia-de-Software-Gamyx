@@ -169,11 +169,25 @@ Sempre que for rodar o proejto é obrigatotório serguir a instrução abaixo, c
    git clone https://github.com/jessilver/Engenharia-de-Software-Gamyx.git
  ```
 # Instalando dependências com o Composer
+<small>[voltar para o Sumário](#Sumário)</small><br>
 
 Na raiz do seu projeto execute o seguinte comando:
  ```bash
    composer install
  ```
+Isso criará uma pasta chamanda vendor, e dentro dela estará nosso autoload, mas pra que server esse arquivo?
+
+O **autoload** no PHP é uma funcionalidade que permite carregar automaticamente classes quando elas são necessárias, sem a necessidade de incluir ou requerer manualmente cada arquivo de classe. Isso é especialmente útil em arquiteturas MVC (Model-View-Controller) por várias razões:
+
+- **Organização do Código**: Em um padrão MVC, você geralmente tem muitas classes (Models, Views e Controllers) organizadas em diferentes diretórios. O autoload ajuda a manter o código organizado, permitindo que você mantenha a estrutura de diretórios sem precisar gerenciar manualmente os arquivos incluídos.
+
+- **Eficiência: O autoload** só carrega as classes que são realmente necessárias em um determinado momento. Isso pode melhorar a performance, especialmente em aplicações grandes, já que não há carregamento desnecessário de arquivos.
+
+- **Redução de Erros**: Com o autoload, você evita erros relacionados a caminhos de arquivos, já que o PHP cuida do carregamento das classes para você. Isso reduz a chance de problemas como "arquivo não encontrado" ou "classe não definida".
+
+- **Facilidade de Manutenção**: Ao utilizar um autoloader, se você precisar mover ou renomear classes, a manutenção se torna mais simples, pois você não precisa atualizar todos os arquivos que incluem as classes.
+
+- **Conformidade com PSR**: Usar autoloading, especialmente seguindo o padrão PSR-4, facilita a interoperabilidade entre bibliotecas e frameworks PHP, tornando seu código mais compatível com outros projetos.
 
 ## Video para Melhor visualizacao
 
