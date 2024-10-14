@@ -1,6 +1,6 @@
 <?php $render('header');?>
 
-<link rel="stylesheet" href="../static/css/userProfile.css">
+<link rel="stylesheet" href="<?=$base?>/static/css/userProfile.css">
 
 <body id="userProfileBody">
     
@@ -17,7 +17,7 @@
                         
                         <div class="userProfileCapa rounded" style="width: 100%; object-fit: cover; overflow: hidden;">
                     <img 
-                        src="../static/img/tetris.png"
+                        src="<?=$base?>/static/img/tetris.png"
                         <?php 
                             // $link = "./static/img/banners/imagem-banner-" . $_SESSION['userLogado']['nome'] . ".jpg";
                             // $caminho = file_exists($link) ? $link : "semImagem";
@@ -32,9 +32,9 @@
                     <div class="userProfileFoto">
                         <img 
                             src=<?php 
-                                    $link = "../static/img/perfil/imagem-perfil-" . $user[0]['nomeUsuario'] . ".jpg";
-                                    $caminho = file_exists($link) ? $link : "sem-imagem.png";
-                                    echo $caminho;
+                                    $link = $base."/static/img/perfil/imagem-perfil-".$user[0]['nomeUsuario'].".jpg";
+                                    // $caminho = file_exists($link) ? $link : "sem-imagem.png";
+                                    echo $link;
                                 ?>
                             alt="Imagem de perfil do usuário <?= $user[0]['nomeUsuario']; ?>"
                             class="profileImage"
