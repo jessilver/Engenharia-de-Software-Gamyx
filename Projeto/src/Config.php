@@ -2,7 +2,7 @@
 namespace src;
 
 class Config {
-    const BASE_DIR = '/Projeto/public';
+    const BASE_DIR = '/Engenharia-de-Software-Gamyx/Projeto/public';
 
     const DB_DSN = 'mysql:host=localhost;port=3306';
     const DB_DRIVER = 'mysql';

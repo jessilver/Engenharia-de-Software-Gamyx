@@ -1,0 +1,26 @@
+/* Reset  */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --cor-fundo: #0D1117;
+    --cor-fundo-projetos: #0B0E13;
+    --cor-cinza-escuro: #151C25;
+    --cor-cinza-claro: #57626F;
+    --cor-cinza-borda: #282F39;
+    --cor-texto: #fff;
+    --fonte-padrao: "ABeeZee", sans-serif;
+    --margem-padrao: 36px;
+    --borda-arredondada-padrao: 12px;
+}
+@media (max-width: 1048px){
+    .creatorCardContainer{
+        display: none;
+    }
+    .projectImage{
+        width: 350px !important;
+        height: 120px !important;
+    }
+}

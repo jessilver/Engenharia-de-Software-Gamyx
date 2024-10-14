@@ -1,0 +1,310 @@
+/* ================================================================================================== */
+/*                                           UserProfile                                              */
+/* ================================================================================================== */
+
+#userProfileBody{
+    height: 100%;
+    width: 100%;
+    background-color: #0D1117;
+    color: #FFFFFF;
+}
+
+#userProfileBody input {
+    background-color: #0D1117 !important;
+    border: 1px solid #282F39;
+    color: #FFFFFF;
+}
+
+#userProfileBody textarea {
+    background-color: #0D1117 !important;
+    border: 1px solid #282F39;
+    color: #FFFFFF;
+}
+
+#userProfileSection{
+    margin: 0 auto;
+    height: 100%;
+    width: calc(100vw - 200px);
+
+}
+
+.editProfileModalClass{
+    background-color: #151C25 !important;
+    color: #FFFFFF !important;
+}
+/* Barra de input */
+.userSearchInput{
+    background-color: #151C25;
+    color: #fff;
+    font-family: "ABeeZee", sans-serif;
+    margin: 20px 0;
+    padding: 12px 240px 12px 12px;
+    border: 1px solid #57626F;
+    border-radius: 12px;
+}
+.userSearchInput::placeholder{
+    color: #57626F;
+    font-size: 14px;
+    font-style: italic;
+}
+.userSearchSubmit{
+    background-color: #57626F;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+}
+.userProfileContainer{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
+.userProfileInfo{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.userProfileCapa{
+    width: calc(100vw - 200px);
+    height: 270px;
+    background-color: #151C25;
+}
+
+.userProfilePerfil{
+    margin-top: 16px;
+    display: flex;
+    align-items: start;
+    flex-direction: row;
+    height: 172px;
+    width: 100%;
+}
+.userProfileFoto{
+    background-color: #151C25;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 172px;
+    width: 172px;
+    margin-right: 19px;
+    border-radius: 50%;
+}
+
+.userProfileProjects{
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    height: fit-content;
+    width: 100%;
+}
+
+.projectsSearch{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.projectList{
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 16px;
+    width: 100%;
+    height: fit-content;
+}
+
+.projectItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 16px;
+    height: 272px;
+    width: 395px;
+    border-radius: 20px;
+}
+
+.projectFoto{
+    height: 216px !important;
+    width: 395px !important;
+    margin-bottom: 16px;
+    border-radius: 20px;
+    background-color: #151C25;
+}
+
+.projectFoto img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.userProfileAmigos{
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    height: fit-content;
+    width: 100%;
+}
+
+.amigosSearch{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.amigosList{
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 16px;
+    width: 100%;
+    height: fit-content;
+}
+
+.amigosItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 16px;
+    height: 206px;
+    width: 150px;
+    border-radius: 20px;
+}
+
+.amigosFoto{
+    height: 150px !important;
+    width: 150px !important;
+    border-radius: 50%;
+    margin-bottom: 16px;
+    background-color: #151C25;
+}
+
+.userHr{
+    margin-top: 16px;
+    border: 1px solid #151C25;
+    margin-bottom: 16px;
+}
+
+.h1UserName{
+    font-family: 'ABeeZee', sans-serif; 
+    font-size: 40px;
+    font-weight: normal;
+    color: white;
+}
+
+.h1AUser{
+    font-family: 'ABeeZee', sans-serif; 
+    font-size: 20px;
+    font-weight:normal;
+    color: white;
+}
+
+.h1AboutUserDiv{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.h1AboutUser{
+    font-family: 'ABeeZee', sans-serif; 
+    font-size: 18px;
+    font-weight: normal; 
+    width: auto;
+    max-width: 350px; 
+    background: linear-gradient(to right, white 70%, transparent); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    overflow: hidden; 
+    white-space: nowrap; 
+}
+
+.h1AboutUserVerMais{
+    margin-left: 15px;
+    font-family: 'ABeeZee', sans-serif; 
+    font-size: 16px;
+    font-weight:lighter; 
+    width: 300px; 
+    transition: all 0.3s ease; 
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.h1AboutUserVerMais:hover{
+    color: rgb(255, 255, 255);
+    transition: all 0.3s ease; 
+    cursor:pointer;
+}
+
+.pNormalText{
+    font-family: 'ABeeZee', sans-serif; 
+    font-size: 15px;
+    font-weight:lighter; 
+    overflow: hidden; 
+}
+
+.sobreModalClass{
+    background-color: #0D1117 !important;
+    color: white;
+    height: calc(100vh - 150px);
+}
+
+.closeButton{
+    margin: auto 0;
+    cursor: pointer;
+}
+
+.profileButtons{
+    height: fit-content;
+    margin: auto 0;
+    display: flex;
+}
+
+.profileImage{
+    width: 100%;
+    height: 100%;
+    max-width: 220px;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.userProfileDados{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.editProfile{
+    width: 170px !important;
+    height: 40px !important;
+    border-radius: 20px !important;
+    background-color: #151C25 !important;
+    margin-right: 9px;
+}
+.viewProjects{
+    width: 170px !important;
+    height: 40px !important;
+    border-radius: 20px !important;
+    background-color: #151C25 !important;
+}
+
+.btn-cadastrar {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+    color: #FFFFFF !important;
+    width: 60% !important;
+    height: 40px !important;
+    background-color: #26A641 !important;
+}
+
+/* Extras  */
+.noProfile{
+    width: 120px;
+    height: 120px;
+}
