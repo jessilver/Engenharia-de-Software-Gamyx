@@ -7,7 +7,10 @@
 </head>
 <body>
 
-    <h1>User</h1>
+    <h1>testse</h1>
+
+    <!-- Incluir o menu diretamente -->
+    <?php include __DIR__ . '/../partials/menu.php'; ?>
 
     <table>
         <thead>
