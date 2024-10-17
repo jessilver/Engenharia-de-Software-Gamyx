@@ -10,5 +10,7 @@ $router->get('/login','userController@index');
 $router->post('/login','userController@auth');
 $router->get('/menu', 'MenuController@index');
 
+$router->get('/projeto/{id}', 'viewProjectController@index');
+
 $router->get('/sobre/{nome}', 'HomeController@sobreP');
 $router->get('/sobre', 'HomeController@sobre');
