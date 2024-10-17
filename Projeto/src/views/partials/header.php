@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <title>Gamyx</title>
     <link rel="icon" href="<?=$base?>/static/img/favicon.ico" type="image/x-icon">
 
     <meta charset="UTF-8">

@@ -68,9 +68,10 @@ class viewProjectController extends Controller{
                 'usuario' => !empty($usuario) ? $usuario[0] : null // Verifica se o usuário foi encontrado
             ];
             // Renderiza a view com os dados
-            $this->render('testeProjeto', $context);
+            $this->render('viewProject', $context);
         } else {
-            echo "<p>Projeto não encontrado.</p>";
+            // echo "<p>Projeto não encontrado.</p>";
+            $this->render('404');
             exit();
         }
     }
