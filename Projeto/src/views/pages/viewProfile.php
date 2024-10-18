@@ -1,12 +1,9 @@
 <?php $render('header');?>
 
-<link rel="stylesheet" href="<?=$base?>/static/css/userProfile.css">
-
 <body id="userProfileBody">
     
-    <?php 
-        include 'menu.php'; 
-    ?>
+    <?php include __DIR__ . '/../partials/menu.php'; ?>
+
     <section id="userProfileSection">
         <form action="../views/pesquisaUsuario.php" method="POST" class="userSearchForm">
             <input type="text" placeholder="Procurar usuário" class="userSearchInput" name="search_query"/> 

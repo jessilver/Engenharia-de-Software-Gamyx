@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" href="../static/css/menu-style.css">
+<link rel="stylesheet" href="<?=$base?>/static/css/menu-style.css">
 
 <button id="menu-btn">☰</button>
 
@@ -11,4 +11,4 @@
     <a href="../login.php">Deslogar</a>
 </div>
 
-<script src="../static/js/menu-script.js"></script> <!-- Link para o JS -->
+<script src="<?=$base?>/static/js/menu-script.js"></script> <!-- Link para o JS -->

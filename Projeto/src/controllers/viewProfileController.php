@@ -23,7 +23,7 @@ class viewProfileController extends Controller {
         
             $context = [
                 'user' => $usuario,
-                'projects' => $projects
+                'projects' => $projects,
             ];
         
             $this->render('viewProfile', $context);

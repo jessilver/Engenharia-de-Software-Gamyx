@@ -10,7 +10,7 @@
 
         $uniqueName = '@' . strtolower(str_replace(' ', '', $nomeUsuario));
 
-        $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        //$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
         $stmt = $conn->prepare("INSERT INTO usuario (email, uniqueName, nomeUsuario, senha, urlPortfolio) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param("sssss", $email, $uniqueName, $nomeUsuario, $senha, $linkPortfolio);

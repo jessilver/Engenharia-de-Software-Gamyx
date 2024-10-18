@@ -7,7 +7,6 @@ use \ClanCats\Hydrahon\Query\Sql\FetchableInterface;
 
 class Model {
 
-    protected static $pdo;
     protected static $_h;
     
     public function __construct() {

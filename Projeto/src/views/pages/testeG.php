@@ -22,7 +22,7 @@
     <!-- Deletar Usuário -->
     <div>
         <h2>Deletar Usuário</h2>
-        <form action="<?= $baseDir ?>/src/deleteUsuario" method="POST">
+        <form action="/Engenharia-de-Software/Projeto/public/deleteUsuario" method="POST">
             <label for="deleteUserId">ID do Usuário:</label>
             <input type="text" id="deleteUserId" name="deleteUserId">
             <button type="submit">Deletar</button>

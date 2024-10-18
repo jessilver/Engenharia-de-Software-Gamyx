@@ -3,33 +3,38 @@ namespace src\controllers;
 
 use \core\Controller;
 use \src\models\Usuario;
-use \src\models\Project;
 
 class userController extends Controller {
-
     public function index() {
-        $this->render('test');
+        $this->render('/login'); // Renderiza a página de login
     }
+
     public function auth() {
 
-        $email = htmlspecialchars(filter_input(INPUT_POST, 'email')) ;
-        $password = htmlspecialchars(filter_input(INPUT_POST, 'password'));
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $email_or_username = htmlspecialchars($_POST['email']);
+            $password = htmlspecialchars($_POST['password']);
 
-        if($email && $password) {
-            $data = Usuario::select()->where('email', $email)->where('password', md5($password))->one();
+            // Verificar os dados usando o modelo Usuario
+            $usuario = Usuario::select()
+                ->where('email', $email_or_username)
+                ->orWhere('nomeUsuario', $email_or_username)
+                ->execute();
+               
+                var_dump($usuario['senha']);
+                var_dump(password_verify($password, $usuario['senha']));
+                exit(); 
 
-            if($data) {
+            if ($usuario && password_verify($password, $usuario['senha'])) {
                 $_SESSION['userLogado'] = [
-                    'id' => $data['id'],
-                    'email' => $data['email']
+                    'id' => $usuario['id'],
+                    'email' => $usuario['email']
                 ];
-                $this->redirect('/perfil');
-            } else {
-                $this->redirect('/login');
+                $this->redirect('/testeG');
             }
         } else {
-            $this->redirect('/login');
+            $_SESSION['login_error'] = "Método de requisição inválido.";
+            $this->render('/login');
         }
     }
-
 }
