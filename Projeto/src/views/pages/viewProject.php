@@ -5,9 +5,9 @@
 </head>
 
 <body>
-    <?php
-    include 'menu.php';
-    ?>
+    
+    <?php include __DIR__ . '/../partials/menu.php'; ?>
+    
     <div class="viewProjectScreen">
         <main class="projectContainer rounded">
             <div class="containerBotoes"> <span class="projectTitle"><?php echo $project['nomeProjeto']  ?></span>

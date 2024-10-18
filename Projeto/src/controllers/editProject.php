@@ -4,7 +4,7 @@ require '../config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $diretorioDestino = '../static/img/capasProjetos/';
-    $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+   // $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
     // Verifica conexão
     if ($conn->connect_error) {

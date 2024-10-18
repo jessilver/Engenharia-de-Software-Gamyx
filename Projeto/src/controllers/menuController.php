@@ -7,6 +7,8 @@ use src\Config;
 class MenuController extends Controller {
     public function index() {
         $baseDir = Config::BASE_DIR;
-        $this->view('partials/menu', ['baseDir' => $baseDir]);
+        $view = 'partials/menu'; 
+        $data = ['baseDir' => $baseDir]; //
+        $this->view($view, $data);
     }
 }

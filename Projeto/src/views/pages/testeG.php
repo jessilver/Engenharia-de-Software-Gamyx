@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Page</title>
-    <link rel="stylesheet" href="<?= $baseDir ?>/static/css/menu-style.css">
+    
 </head>
 <body>
 
@@ -22,7 +22,7 @@
     <!-- Deletar Usuário -->
     <div>
         <h2>Deletar Usuário</h2>
-        <form action="<?= $baseDir ?>/deleteUser.php" method="POST">
+        <form action="<?= $baseDir ?>/src/deleteUsuario" method="POST">
             <label for="deleteUserId">ID do Usuário:</label>
             <input type="text" id="deleteUserId" name="deleteUserId">
             <button type="submit">Deletar</button>
