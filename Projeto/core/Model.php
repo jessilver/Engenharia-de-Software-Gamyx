@@ -1,6 +1,7 @@
 <?php
 namespace core;
 
+use \src\Config;
 use \core\Database;
 use \ClanCats\Hydrahon\Builder;
 use \ClanCats\Hydrahon\Query\Sql\FetchableInterface;
@@ -56,4 +57,26 @@ class Model {
         return self::$_h->delete();
     }
 
+    
+    private static function base64UrlEncode($data) {
+        return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');
+    }
+    
+    private static function base64UrlDecode($data) {
+        $data .= str_repeat('=', (4 - strlen($data) % 4) % 4); // Adiciona padding
+        return base64_decode(strtr($data, '-_', '+/'));
+    }
+
+    public static function encryptData($data) {
+        $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+        $encryptedData = openssl_encrypt($data, 'aes-256-cbc', Config::ENCRYPT_KEY, 0, $iv);
+        return self::base64UrlEncode($encryptedData . '::' . $iv);
+    }
+    
+    public static function decryptData($data) {
+        $decodedData = self::base64UrlDecode($data);
+        list($encryptedData, $iv) = explode('::', $decodedData, 2);
+        return openssl_decrypt($encryptedData, 'aes-256-cbc', Config::ENCRYPT_KEY, 0, $iv);
+    }
+    
 }
