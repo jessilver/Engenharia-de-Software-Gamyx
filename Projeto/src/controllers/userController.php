@@ -19,22 +19,19 @@ class userController extends Controller {
             $usuario = Usuario::select()
                 ->where('email', $email_or_username)
                 ->orWhere('nomeUsuario', $email_or_username)
-                ->execute();
-               
-                var_dump($usuario['senha']);
-                var_dump(password_verify($password, $usuario['senha']));
-                exit(); 
+                ->first();
+
 
             if ($usuario && password_verify($password, $usuario['senha'])) {
                 $_SESSION['userLogado'] = [
                     'id' => $usuario['id'],
                     'email' => $usuario['email']
                 ];
-                $this->redirect('/testeG');
+                $this->redirect('/perfil');
             }
         } else {
             $_SESSION['login_error'] = "Método de requisição inválido.";
-            $this->render('/login');
+            $this->render('login');
         }
     }
 }
