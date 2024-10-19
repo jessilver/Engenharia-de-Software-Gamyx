@@ -23,10 +23,8 @@ class viewProfileController extends Controller {
         $this->render('viewProfile', $context);
     }
     
-    
     public function edit($id){
         $usuarioId = Model::decryptData($id['id']);
-        var_dump($usuarioId);
         
         $about = $_POST['about'];
         $linkPortfolio = $_POST['linkPortfolio'];
@@ -37,6 +35,17 @@ class viewProfileController extends Controller {
         ];
         Usuario::updateUser($usuarioId , $fields);
         $this->redirect('/perfil');
+    }
+
+    public function logout(){
+        session_destroy();
+        $this->redirect('/');
+    }
+
+    public function delete($id){
+        $usuarioId = Model::decryptData($id['id']);
+        Usuario::deleteUser($usuarioId);
+        // $this->redirect('/');
     }
 
     public function other($id) {

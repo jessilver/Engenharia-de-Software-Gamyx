@@ -1,5 +1,6 @@
 <?php
 namespace src\models;
+use \src\models\Project;
 use \core\Model;
 use Exception;
 
@@ -66,5 +67,31 @@ class Usuario extends Model {
             throw new Exception('Erro ao atualizar usuário: ' . $e->getMessage());
         }
     }
+
+    /**
+ * Deleta um usuário pelo ID.
+ *
+ * @param int $id O ID do usuário a ser deletado.
+ * @return bool|Exception Retorna true se a deleção for bem-sucedida, ou lança uma exceção em caso de erro.
+ * @throws Exception Se ocorrer um erro ao tentar deletar o usuário.
+ */
+public static function deleteUser(int $id): bool|Exception {
+    try {
+        $projectIds = Project::selectProjectByUserId($id, ['id']);
+
+        foreach($projectIds as $userProjectId){
+            Project::deleteProject($userProjectId['id']);
+        }
+
+        self::delete()
+            ->where('id', '=', $id)
+            ->execute();
+
+        return true;
+    } catch (Exception $e) {
+        throw new Exception('Erro ao deletar usuário: ' . $e->getMessage());
+    }
+}
+
 
 }

@@ -63,6 +63,7 @@ class Project extends Model {
      */
     public static function selectProjectByUserId(int $id, array $fields = []): array|Exception {
         try {
+            $fields = array_map(fn($field) => "projects.$field", $fields);
             return self::select($fields)
                         ->join('usuarios', 'usuarios.id', '=', 'projects.usuario_id')
                         ->where('projects.usuario_id', $id)
@@ -103,5 +104,24 @@ class Project extends Model {
             throw new Exception('Erro ao atualizar projeto: ' . $e->getMessage());
         }
     }
+
+    /**
+     * Deleta um projeto pelo ID.
+     *
+     * @param int $id O ID do projeto a ser deletado.
+     * @return bool|Exception Retorna true se a deleção for bem-sucedida, ou lança uma exceção em caso de erro.
+     * @throws Exception Se ocorrer um erro ao tentar deletar o projeto.
+     */
+    public static function deleteProject(int $id): bool|Exception {
+        try {
+            self::delete()
+                ->where('id', '=', $id)
+                ->execute();
+            return true; // Retorna true se a deleção for bem-sucedida
+        } catch (Exception $e) {
+            throw new Exception('Erro ao deletar projeto: ' . $e->getMessage());
+        }
+    }
+
 
 }
