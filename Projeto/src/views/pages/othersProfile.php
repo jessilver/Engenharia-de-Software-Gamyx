@@ -1,35 +1,22 @@
-<?php
-    session_start();
-    require "../config.php";  
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <?php
-        require('linkrel.php');
-    ?>
-    <link rel="stylesheet" href="../static/css/variaveis.css"/>
-    <link rel="stylesheet" href="../static/css/othersProfile.css"/>    
-    <title>Perfil de <?php echo $_SESSION['userSearched']['nome']; ?> | Gamyx</title>
+<?php $render('header'); ?>
+    <link rel="stylesheet" href="<?=$base?>/static/css/variaveis.css"/>
+    <link rel="stylesheet" href="<?=$base?>/static/css/othersProfile.css"/>    
+    <title>Perfil de <?php echo $user['nomeUsuario'] ?> | Gamyx</title>
 
 </head>
 <body>
     <?php 
-        include 'menu.php'; 
+        include "menu.php"; 
     ?>
     <div class="visualizeProfilesScreen">
-        <form action="../views/pesquisaUsuario.php" method="POST" class="userSearchForm">
+        <form action="<?=$base?>/perfil" method="POST" class="userSearchForm">
             <input type="text" placeholder="Procurar usuário" class="userSearchInput" name="search_query"/> 
             <button type="submit" class="userSearchSubmit">Buscar</button>
         </form>
         <header class="bannerContainer rounded">
             <img 
-                src=<?php 
-                        $link = "../static/img/banners/imagem-banner-" . $_SESSION['userSearched']['nome'] . ".jpg";
-                        $caminho = file_exists($link) ? $link : "semImagem";
-                        echo $caminho;
-                    ?>
-                alt="Banner do perfil do usuário <?php echo $_SESSION['userSearched']['nome']; ?>"
+                src=""
+                alt="Banner do perfil do usuário <?php echo $user['nomeUsuario'] ?>"
                 class="bannerImage rounded"
             />
         </header>
@@ -37,24 +24,20 @@
             <section class="profileInfoContainer">
                 <div class="profileImageContainer">
                     <img 
-                        src=<?php 
-                                $link = "../static/img/perfil/imagem-perfil-" . $_SESSION['userSearched']['nome'] . ".jpg";
-                                $caminho = file_exists($link) ? $link : "semImagem";
-                                echo $caminho;
-                            ?>
-                        alt="Imagem de perfil do usuário <?php echo $_SESSION['userSearched']['nome']; ?>"
+                        src="<?=$base?>/static/img/perfil/imagem-perfil-Maria.png"
+                        alt="Imagem de perfil do usuário <?php echo $user['nomeUsuario'] ?>"
                         class="profileImage"
                     />
                 </div>
                 <div class="profileInfo">
                     <h1>
-                        <?php echo $_SESSION['userSearched']['nome']; ?>
+                        <?php echo $user['nomeUsuario'] ?>
                     </h1>
                     <span>
-                        <?php echo $_SESSION['userSearched']['arroba']; ?>
+                        <?php echo $user['uniqueName'] ?>
                     </span>
                     <p class="userAbout">
-                        <?php echo $_SESSION['userSearched']['about']; ?>
+                        <?php echo $user['about'] ?>
                     </p>
                     <div class="profileInfoIcons">
                         <i class="fa-regular fa-folder"></i><span> 0 projetos • </span>
@@ -84,7 +67,7 @@
 
     </div>
 
-    <script src="../static/js/semImagem.js" defer></script>
+    <script src="<?=$base?>/static/js/semImagem.js" defer></script>
 </body>
 </html>
 

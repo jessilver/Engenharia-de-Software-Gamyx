@@ -1,7 +1,7 @@
 // Colocando icone de sem imagem 
 // const imagemBanner = document.querySelector('.bannerImage');
 const imagemPerfil = document.querySelector('.profileImage');
-const linkImagem = "../static/img/sem-imagem.png";
+const linkImagem = "../img/sem-imagem.png";
 
 // if(imagemBanner.getAttribute('src') === "semImagem"){
 //     imagemBanner.setAttribute('src', linkImagem);
