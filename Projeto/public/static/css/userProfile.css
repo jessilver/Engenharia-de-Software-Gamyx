@@ -24,7 +24,7 @@
 #userProfileSection{
     margin: 0 auto;
     height: 100%;
-    width: calc(100vw - 200px);
+    width: calc(100dvw - 200px);
 
 }
 
@@ -70,7 +70,7 @@
 }
 
 .userProfileCapa{
-    width: calc(100vw - 200px);
+    width: calc(100dvw - 200px);
     height: 270px;
     background-color: #151C25;
 }
@@ -246,10 +246,24 @@
     overflow: hidden; 
 }
 
+
 .sobreModalClass{
     background-color: #0D1117 !important;
     color: white;
-    height: calc(100vh - 150px);
+    height: calc(100dvh - 150px);
+}
+
+.configModalClass{
+    background-color: #0D1117 !important;
+    color: white;
+}
+
+.configModalBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .closeButton{
@@ -307,4 +321,21 @@
 .noProfile{
     width: 120px;
     height: 120px;
+}
+
+.configButton{
+    cursor:pointer;
+}
+
+.deleteButton{
+    cursor: pointer;
+    color: gray;
+}
+
+#formDeleteAccount{
+    margin-top: 50px;
+}
+
+.sairButton{
+    width: 100px;
 }

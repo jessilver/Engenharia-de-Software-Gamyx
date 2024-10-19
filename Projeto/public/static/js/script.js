@@ -102,3 +102,22 @@ if(imagemPerfil.getAttribute('src') === "semImagem"){
     imagemPerfil.classList.remove('profileImage');
     imagemPerfil.classList.add('noProfile');
 }
+
+function realyDeleteAccount(formID){
+    form = document.getElementById(formID);
+
+    Swal.fire({
+        title: 'Tem certeza que deseja deletar sua conta?',
+        text: "Você não poderá reverter isso!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim, deletar!',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            form.submit();
+        }
+    });
+}
