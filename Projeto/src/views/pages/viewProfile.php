@@ -34,6 +34,7 @@
                             src=<?php 
                                     $link = $base."/static/img/perfil/imagem-perfil-".$user['nomeUsuario'].".jpg";
                                     // $caminho = file_exists($link) ? $link : "sem-imagem.png";
+
                                     echo $link;
                                 ?>
                             alt="Imagem de perfil do usuário <?= $user['nomeUsuario']; ?>"

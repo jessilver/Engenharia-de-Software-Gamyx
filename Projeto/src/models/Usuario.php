@@ -1,17 +1,70 @@
 <?php
 namespace src\models;
 use \core\Model;
+use Exception;
 
 class Usuario extends Model {
 
-    public static function selectUser($id, $fieldsl = []){
-        return self::select($fieldsl)->where('id', $id)->first();
+    /**
+     * Seleciona um usuário pelo ID.
+     *
+     * Este método consulta o banco de dados para retornar os dados de um usuário específico.
+     *
+     * @param int $id O ID do usuário a ser selecionado.
+     * @param array $fields (opcional) Um array de campos a serem retornados. Se vazio, retorna todos os campos.
+     * 
+     *                      campos aceitos:
+     *                    - 'id' (int) -> id do usuario      
+     *                    - 'uniqueName' (string) -> Nome único do usuario com @
+     *                    - 'email' (string) -> email do usuario
+     *                    - 'nomeUsuario' (string) -> Nome do usuario
+     *                    - 'senha' (string) -> Hash da senha do usuario
+     *                    - 'about' (string) -> sobre o usuario  
+     *                    - 'urlPortfolio' (string) -> Link para o reposítóriodo  usuario
+     *
+     * @return array|Exception Retorna um array com os dados do usuário ou lança uma exceção em caso de erro.
+     *
+     * @throws Exception Lança uma exceção se ocorrer um erro durante a consulta.
+     */
+    public static function selectUser($id, $fields = []) : array|Exception {
+        try {
+            return self::select($fields)->where('id', $id)->first();
+        } catch (Exception $e) {
+            throw new Exception('Erro ao selecionar usuário: ' . $e->getMessage());
+        }
     }
-    
-    public static function updateUser($id, $fields) {
-        return self::update($fields)
-                    ->where('id', '=', $id)
-                    ->execute();
+
+    /**
+     * Atualiza um usuario com os dados fornecidos.
+     *
+     * Este método atualiza o usuario identificado pelo ID com os campos especificados.
+     *
+     * @param int $id O ID do usuario a ser atualizado.
+     * @param array $fields Um array associativo com os campos e valores a serem atualizados.
+     * 
+     *                      campos aceitos:
+     *                    - 'id' (int) -> id do usuario      
+     *                    - 'uniqueName' (string) -> Nome único do usuario com @
+     *                    - 'email' (string) -> email do usuario
+     *                    - 'nomeUsuario' (string) -> Nome do usuario
+     *                    - 'senha' (string) -> Hash da senha do usuario
+     *                    - 'about' (string) -> sobre o usuario  
+     *                    - 'urlPortfolio' (string) -> Link para o reposítóriodo  usuario
+     *
+     * @return int O número de registros afetados pela atualização.
+     *
+     * @throws Exception Se ocorrer um erro ao atualizar o banco de dados.
+     *
+     */
+    public static function updateUser(int $id, array $fields = []): bool|Exception {
+        try {
+            self::update($fields)
+                ->where('id', '=', $id)
+                ->execute();
+            return true;
+        } catch (Exception $e) {
+            throw new Exception('Erro ao atualizar usuário: ' . $e->getMessage());
+        }
     }
 
 }
