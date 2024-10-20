@@ -14,19 +14,23 @@
             <button type="submit" class="userSearchSubmit">Buscar</button>
         </form>
         <header class="bannerContainer rounded">
-            <img 
-                src=""
-                alt="Banner do perfil do usuário <?php echo $user['nomeUsuario'] ?>"
-                class="bannerImage rounded"
+            <img
+                src="<?php echo file_exists("./static/img/banners/imagem-banner-" . $user['nomeUsuario'] . ".jpg") 
+                    ? './static/img/banners/imagem-banner-' . $user['nomeUsuario'] . '.jpg' 
+                    : './static/img/sem-imagem.png'; ?>"
+                alt="Imagem de perfil do usuário <?php echo $user['nomeUsuario']; ?>"
+                class="bannerImage" 
             />
         </header>
         <main class="mainContent">
             <section class="profileInfoContainer">
                 <div class="profileImageContainer">
-                    <img 
-                        src="<?=$base?>/static/img/perfil/imagem-perfil-Maria.png"
-                        alt="Imagem de perfil do usuário <?php echo $user['nomeUsuario'] ?>"
-                        class="profileImage"
+                    <img
+                        src="<?php echo file_exists("./static/img/perfil/imagem-perfil-" . $user['nomeUsuario'] . ".jpg") 
+                            ? './static/img/perfil/imagem-perfil-' . $user['nomeUsuario'] . '.jpg' 
+                            : './static/img/sem-imagem.png'; ?>"
+                        alt="Imagem de perfil do usuário <?php echo $user['nomeUsuario']; ?>"
+                        class="profileImage" 
                     />
                 </div>
                 <div class="profileInfo">
@@ -71,7 +75,7 @@
 </body>
 </html>
 
-<!-- 
+<!-- Card projeto
     <a href="viewProject.php">
         <div class="card-projeto rounded">
             <img 

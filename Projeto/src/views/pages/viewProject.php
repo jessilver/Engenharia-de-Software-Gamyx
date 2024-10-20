@@ -1,12 +1,12 @@
 <?php $render('header'); ?>
-<link rel="stylesheet" href="../static/css/variaveis.css" />
-<link rel="stylesheet" href="../static/css/viewProject.css" />
-<title><?php echo $project['nomeProjeto'] ?> | Gamyx</title>
-</head>
+    <link rel="stylesheet" href="<?=$base?>/static/css/variaveis.css" />
+    <link rel="stylesheet" href="<?=$base?>/static/css/viewProject.css" />
+    <title><?php echo $project['nomeProjeto'] ?> | Gamyx</title>
 
+</head>
 <body>
     <?php
-    include 'menu.php';
+        include 'menu.php';
     ?>
     <div class="viewProjectScreen">
         <main class="projectContainer rounded">
@@ -15,7 +15,7 @@
             </div>
             <div class="imageContainer">
                 <img
-                    src="../static/img/capasProjetos/<?php echo $project['fotoCapa'] ?>"
+                    src="<?=$base?>/static/img/capasProjetos/<?php echo $project['fotoCapa'] ?>"
                     alt=""
                     class="projectImage" />
             </div>
@@ -37,14 +37,17 @@
         <section class="creatorCardContainer rounded">
             <div class="creatorCardInfo">
                 <div>
-                    <img
-                        src=<?php
-                            $link = "<?=$base?>/static/img/perfil/imagem-perfil-" . $usuario['nomeUsuario'] . ".jpg";
-                            $caminho = file_exists($link) ? $link : "semImagem";
-                            echo $caminho;
-                            ?>
-                        alt="Imagem de perfil do usuário <?php echo $usuario['nomeUsuario']; ?>"
-                        class="profileImage" />
+                    <div class="profileImageContainer">
+                        <img
+                            src="<?php 
+                            $caminho = "$base/static/img/perfil/imagem-perfil-" . $usuario['nomeUsuario'] . ".jpg";
+                            echo !file_exists($caminho) 
+                                ? $caminho 
+                                : "$base/static/img/sem-imagem.png"; ?>"
+                            alt="Imagem de perfil do usuário <?php echo $usuario['nomeUsuario']; ?>"
+                            class="profileImage" 
+                        />
+                    </div>
                     <h4><?php echo $usuario['nomeUsuario'] ?></h4>
                     <p><?php echo $usuario['uniqueName']  ?></p>
                 </div>

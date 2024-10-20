@@ -18,6 +18,7 @@ body{
     border: 1px solid var(--cor-cinza-borda);
     height: 1000px;
     padding: 12px 24px;
+    max-width: 900px;
 }
 .projectTitle{
     font-size: 24px;
@@ -58,10 +59,20 @@ body{
     text-align: center;
     padding: 12px 42px;
 }
-.profileImage{
-    width: 160px;
-    border-radius: 50%;
+.profileImageContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 130px;
+    border: 1px solid var(--cor-cinza-borda);
     padding: 8px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+.profileImage{
+    width: inherit;
 }
 .cardInfoIcons{
     font-size: 20px;

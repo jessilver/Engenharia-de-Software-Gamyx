@@ -88,9 +88,9 @@
                         ?>
                         
                         <div class='projectItem'>
-                            <a href= "<?=$base?>/perfil/<?=$linkProjeto?>">
+                            <a href= "<?=$base?>/projeto/<?=$projeto['id']?>">
                                 <div class='projectFoto'>
-                                    <img src='../static/img/capasProjetos/<?= $fotoCapa ?>' alt='<?= $nomeProjeto ?>'> 
+                                    <img src='<?=$base?>/static/img/capasProjetos/<?= $fotoCapa ?>' alt='<?= $nomeProjeto ?>'> 
                                 </div>
                             </a>
                             <h1 class='h1AUser' style='margin-bottom: 16px;'><?= $nomeProjeto ?></h1>
@@ -165,6 +165,4 @@
             </div>
         </div>
     </div>
-</body>
 <?php $render('footer');?>
-
