@@ -83,9 +83,7 @@ public static function deleteUser(int $id): bool|Exception {
             Project::deleteProject($userProjectId['id']);
         }
 
-        self::delete()
-            ->where('id', '=', $id)
-            ->execute();
+        self::delete($id);
 
         return true;
     } catch (Exception $e) {

@@ -1,10 +1,11 @@
 <?php
 
-if (isset($_SESSION['login_error'])) {
-    echo "<div style='color: red;'>" . $_SESSION['login_error'] . "</div>";
-    unset($_SESSION['login_error']);
-}
-?>
+// if (isset($_SESSION['login_error'])) {
+//     echo "<div style='color: red;'>" . $_SESSION['login_error'] . "</div>";
+//     unset($_SESSION['login_error']);
+// }
+// ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -28,7 +29,7 @@ if (isset($_SESSION['login_error'])) {
             <div class="login-form">
                 <form action="/Engenharia-de-Software-Gamyx/Projeto/public/login" method="POST">
                     <label for="email">Email ou Usuário</label>
-                    <input type="text" id="email" name="email" required>
+                    <input type="text" id="login" name="login" required>
 
                     <div class="password-container">
                         <label for="password">Senha</label>
@@ -41,7 +42,7 @@ if (isset($_SESSION['login_error'])) {
             </div>
         </div>
         <div class="other-options">
-            <p>Novo no Gamyx? <a href="cadastroUsuario.php" class="bold-link">Criar uma nova conta</a></p>
+            <p>Novo no Gamyx? <a href="/Engenharia-de-Software-Gamyx/Projeto/public/cadastrarUsuario" class="bold-link">Criar uma nova conta</a></p>
         </div>
     </div>
 

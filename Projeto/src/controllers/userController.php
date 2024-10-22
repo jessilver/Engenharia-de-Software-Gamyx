@@ -4,34 +4,90 @@ namespace src\controllers;
 use \core\Controller;
 use \src\models\Usuario;
 
-class userController extends Controller {
-    public function index() {
-        $this->render('/login'); // Renderiza a página de login
+class UserController extends Controller {
+
+    public function cadastroUsuario() {
+        $this->render('cadastroUsuario');
     }
 
+    public function cadastroUsuarioAction(){
+        $email = filter_input(INPUT_POST, "email");
+        $nomeUsuario = filter_input(INPUT_POST, "nomeUsuario");
+        $senha = filter_input(INPUT_POST, "password");
+        $portfolioUser = filter_input(INPUT_POST, "portfolioUser");
+        $uniqueName = "@".$nomeUsuario;
+
+        if($email && $nomeUsuario && $portfolioUser && $senha){
+            $emailExistente = Usuario::select()->where('email', $email)->execute();
+
+            if(\count($emailExistente) === 0){
+                Usuario::insert([
+                    'email' => $email,
+                    'nomeUsuario' => $nomeUsuario,
+                    'uniqueName' => $uniqueName,
+                    'senha' => $senha,
+                    'urlPortfolio' => $portfolioUser
+                ])->execute();
+            }
+
+            $this->redirect('/cadastrarUsuario');
+            exit;
+        }
+
+        $this->redirect('/cadastrarUsuario');
+        exit;
+    }
     public function auth() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $login = filter_input(INPUT_POST, 'login');
+            $senha = filter_input(INPUT_POST, 'password');
 
-        
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $email_or_username = htmlspecialchars($_POST['email']);
-            $password = htmlspecialchars($_POST['password']);
+            if ($login && $senha) {
+                $usuario = Usuario::select()
+                    ->where('email', $login)
+                    ->orWhere('nomeUsuario', $login)
+                    ->first();
 
-            // Verificar os dados usando o modelo Usuario
-            $usuario = Usuario::select()
-                ->where('email', $email_or_username)
-                ->orWhere('nomeUsuario', $email_or_username)
-                ->first();
-
-
-            if ($usuario && password_verify($password, $usuario['senha'])) {
-                $_SESSION['userLogado'] = [
-                    'id' => $usuario['id'],
-                    'email' => $usuario['email']
-                ];
-                $this->redirect('/perfil/' . $usuario['id']);
-            }        } else {
-            $_SESSION['login_error'] = "Método de requisição inválido.";
-            $this->redirect('login');
+                if ($usuario && password_verify($senha, $usuario['senha'])) {
+                    $_SESSION['user_id'] = $usuario['id'];
+                    $this->redirect('/perfilUsuario');
+                    exit;
+                } else {
+                    echo "Credenciais inválidas.";
+                }
+            } else {
+                echo "Por favor, preencha todos os campos.";
+            }
+        } else {
+            $this->render('login');
         }
     }
+    public function index() {
+        $userId = $_SESSION['user_id'] ?? null;
+
+        if ($userId) {
+            $usuario = Usuario::select()->where('id', $userId)->first();
+
+            if ($usuario) {
+                $this->render('perfilUsuario', [
+                    'usuario' => $usuario
+                ]);
+            } else {
+                echo "Usuário não encontrado.";
+            }
+        } else {
+            // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            //     $usr = new UserController();
+            //     $usr->login();
+            // }
+            $this->render('login');
+        }
+    }
+
+    public function logout() {
+        session_destroy();
+        $this->redirect('/login');
+        exit;
+    }
+
 }

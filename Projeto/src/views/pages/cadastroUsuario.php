@@ -50,7 +50,7 @@
 
             </form>
             <div class="other-options">
-                <p>Já possui uma conta? <a href="login.php" class="bold-link">Entre agora</a></p>
+                <p>Já possui uma conta? <a href="<?= $base; ?>/login" class="bold-link">Entre agora</a></p>
             </div>
         </div>
     </section>
