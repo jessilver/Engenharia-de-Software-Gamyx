@@ -86,4 +86,21 @@ document.getElementById("menu-btn").addEventListener("click", toggleNav);
 // Adiciona o evento de clique no overlay para fechar o menu ao clicar fora
 document.getElementById("overlay").addEventListener("click", toggleNav);
 
+function realyDeleteAccount(formID){
+    form = document.getElementById(formID);
 
+    Swal.fire({
+        title: 'Tem certeza que deseja deletar sua conta?',
+        text: "Você não poderá reverter isso!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim, deletar!',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            form.submit();
+        }
+    });
+}
