@@ -11,6 +11,7 @@ class userController extends Controller {
 
     public function auth() {
 
+        
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $email_or_username = htmlspecialchars($_POST['email']);
             $password = htmlspecialchars($_POST['password']);
@@ -27,11 +28,10 @@ class userController extends Controller {
                     'id' => $usuario['id'],
                     'email' => $usuario['email']
                 ];
-                $this->redirect('/perfil');
-            }
-        } else {
+                $this->redirect('/perfil/' . $usuario['id']);
+            }        } else {
             $_SESSION['login_error'] = "Método de requisição inválido.";
-            $this->render('login');
+            $this->redirect('login');
         }
     }
 }

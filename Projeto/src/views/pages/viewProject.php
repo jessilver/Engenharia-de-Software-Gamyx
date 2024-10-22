@@ -24,7 +24,7 @@ if (session_status() == PHP_SESSION_NONE) {
         <button class="btn-editar" data-toggle="modal" data-target="#editProjectModal">
             <i class="fa-solid fa-pen"></i>
         </button>
-        <form action="/Engenharia-de-Software/Projeto/public/deleteProject" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este projeto?');">
+        <form action="/Engenharia-de-Software-Gamyx/Projeto/public/deleteProject" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este projeto?');">
             <input type="hidden" name="projectId" value="<?php echo $projetoId; ?>" />
             <button type="submit" class="btn-excluir">
                 <i class="fa-solid fa-trash"></i>

@@ -66,7 +66,7 @@
     <!-- Formulário para deletar usuário -->
     <div>
         <h2>Deletar Usuário</h2>
-        <form action="/Engenharia-de-Software/Projeto/public/deleteUsuario" method="POST">
+        <form action="/Engenharia-de-Software-Gamyx/Projeto/public/deleteUsuario" method="POST">
             <button type="submit" class="btn btn-danger">Deletar Usuário Logado</button>
         </form>
     </div>

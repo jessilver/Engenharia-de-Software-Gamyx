@@ -1,5 +1,7 @@
 <?php $render('header');?>
 
+<link rel="stylesheet" href="<?=$base?>/static/css/userProfile.css">
+
 <body id="userProfileBody">
     
     <?php include __DIR__ . '/../partials/menu.php'; ?>
@@ -21,7 +23,7 @@
                             // echo $caminho;
                         ?>
                         style="width: 100%;"
-                        alt="Banner do perfil do usuário <?= $user[0]['nomeUsuario']; ?>"
+                        alt="Banner do perfil do usuário <?= $user['nomeUsuario']; ?>"
                         class="bannerImage"
                     />
                 </div>
@@ -29,20 +31,20 @@
                     <div class="userProfileFoto">
                         <img 
                             src=<?php 
-                                    $link = $base."/static/img/perfil/imagem-perfil-".$user[0]['nomeUsuario'].".jpg";
+                                    $link = $base."/static/img/perfil/imagem-perfil-".$user['nomeUsuario'].".jpg";
                                     // $caminho = file_exists($link) ? $link : "sem-imagem.png";
                                     echo $link;
                                 ?>
-                            alt="Imagem de perfil do usuário <?= $user[0]['nomeUsuario']; ?>"
+                            alt="Imagem de perfil do usuário <?= $user['nomeUsuario']; ?>"
                             class="profileImage"
                         />
                     </div>
                     <div class="userProfileDados">
-                        <h1 class="h1UserName"><?= $user[0]['nomeUsuario']; ?></h1>
-                        <h1 class="h1AUser"><?= $user[0]['uniqueName']; ?></h1>
+                        <h1 class="h1UserName"><?= $user['nomeUsuario']; ?></h1>
+                        <h1 class="h1AUser"><?= $user['uniqueName']; ?> <i style="margin-left: 20px;color: white; font-size: 15px;" class="fa-solid fa-gear configButton" data-bs-toggle="modal" data-bs-target="#configModal"></i></h1>
                         <div class="h1AboutUserDiv">
-                            <h1 class="h1AboutUser"><?= $user[0]['about']; ?></h1>
-                            <h1 class="h1AboutUserVerMais" data-toggle="modal" data-target="#sobreModal"> ...mais</h1>
+                            <h1 class="h1AboutUser"><?= $user['about']; ?></h1>
+                            <h1 class="h1AboutUserVerMais" data-bs-toggle="modal" data-bs-target="#sobreModal"> ...mais</h1>
                         </div>
                         <h1 class="h1AUser">
                             <i class="fa-regular fa-folder"></i> 
@@ -57,10 +59,11 @@
                                 echo $projectsCount; 
                             ?>
                             likes 
+                            
                         </h1>
                         <div class="profileButtons">
-                            <button class="btn editProfile" data-toggle="modal" data-target="#editProfileModal"><h1 class="h1AUser">Edit Profile</h1></button>
-                            <button class="btn viewProjects" onclick="window.location.href='cadastrarProjeto.php';"><h1 class="h1AUser">New Project</h1></button>
+                            <button type="button" class="btn editProfile" data-bs-toggle="modal" data-bs-target="#editProfileModal"><h1 class="h1AUser">Edit Profile</h1></button>
+                            <button type="button" class="btn viewProjects" onclick="window.location.href='cadastrarProjeto.php';"><h1 class="h1AUser">New Project</h1></button>
                         </div>
                         
                     </div>
@@ -86,7 +89,7 @@
                         <div class='projectItem'>
                             <a href= "<?=$base?>/perfil/<?=$linkProjeto?>">
                                 <div class='projectFoto'>
-                                    <img src='../static/img/capasProjetos/<?= $fotoCapa ?>' alt='<?= $nomeProjeto ?>'> 
+                                    <img src='<?=$base?>/static/img/capasProjetos/<?= $fotoCapa ?>' alt='<?= $nomeProjeto ?>'> 
                                 </div>
                             </a>
                             <h1 class='h1AUser' style='margin-bottom: 16px;'><?= $nomeProjeto ?></h1>
@@ -111,15 +114,37 @@
     </section>
 
     <!-- Modal -->
+    <div class="modal fade " id="configModal" tabindex="-1" role="dialog" aria-labelledby="configModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content configModalClass" >
+                <div class="modal-header">
+                    <h5 class="modal-title mx-auto" id="configModalLongTitle">Configurações</h5>
+                    <i class="fa-solid fa-xmark closeButton" data-bs-dismiss="modal"></i>
+                </div>
+                <div class="modal-body configModalBody">
+                    <form action="<?=$base?>/logout" method="POST" id="formSair">
+                        <input type="hidden" name="uniqueName" class="form-control" id="uniqueName" value="<?= $user['uniqueName']; ?>">
+                        <button type="submit" class="btn btn-danger sairButton">Sair</button>
+                    </form>
+                    <form action="<?=$base?>/delete/account" method="POST" id="formDeleteAccount">
+                        <input type="hidden" name="uniqueName" class="form-control" id="uniqueName" value="<?= $user['uniqueName']; ?>">
+                        <a href="" class="deleteButton">Deletar conta</a>
+                    </form>
+                </div>      
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
     <div class="modal fade " id="sobreModal" tabindex="-1" role="dialog" aria-labelledby="sobreModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content sobreModalClass" >
                 <div class="modal-header">
-                    <h5 class="modal-title" id="sobreModalLongTitle">Sobre</h5>
-                    <i class="fa-solid fa-xmark closeButton" data-dismiss="modal"></i>
+                    <h5 class="modal-title mx-auto" id="sobreModalLongTitle">Sobre</h5>
+                    <i class="fa-solid fa-xmark closeButton" data-bs-dismiss="modal"></i>
                 </div>
                 <div class="modal-body">
-                    <p class="pNormalText"><?= $user[0]['about']; ?></p>
+                    <p class="pNormalText"><?= $user['about']; ?></p>
                 </div>      
             </div>
         </div>
@@ -131,36 +156,28 @@
             <div class="modal-content editProfileModalClass" >
                 <div class="modal-header">
                     <h5 class="modal-title mx-auto" id="editProfileModalLongTitle">Edit profile</h5>
-                    <i class="fa-solid fa-xmark closeButton" data-dismiss="modal"></i>
+                    <i class="fa-solid fa-xmark closeButton" data-bs-dismiss="modal"></i>
                 </div>
                 <div class="modal-body">
-                    <form action="../views/editProfile.php" method="POST" id="formEditProfile">
-                        <input type="hidden" name="uniqueName" class="form-control" id="uniqueName" value="<?= $user[0]['uniqueName']; ?>">
-
+                    <form action="<?=$base?>/perfil/edit/<?=$HashUserId?>" method="POST" id="formEditProfile">
                         <div class="mb-3">
                             <label for="about" class="form-label">Sobre você:</label>
-                            <!-- <input type="text" name="about" class="form-control" id="about" value="<?= $user[0]['about']; ?>"> -->
-                            <textarea class="form-control" name="about" id="about" rows="5"><?= $user[0]['about']; ?></textarea>
+                            
+                            <textarea class="form-control" name="about" id="about" rows="5"><?= $user['about']; ?></textarea>
                         </div>
                 
                         <div class="mb-3">
                             <label for="linkPortfolio" class="form-label">URL para portfólio pessoal (e.g., GitHub, itch.io):</label>
-                            <input type="text" name="linkPortfolio" class="form-control" id="linkPortfolio" value="<?= $user[0]['urlPortfolio']; ?>">
+                            <input type="text" name="linkPortfolio" class="form-control" id="linkPortfolio" value="<?= $user['urlPortfolio']; ?>">
                         </div>
 
                         <button type="submit" class="btn btn-cadastrar">Salvar</button>
 
                     </form>
-                    <form action="../views/deleteUsuario.php" method="POST" id="formDeleteAccount">
-                        <input type="hidden" name="uniqueName" class="form-control" id="uniqueName" value="<?= $user[0]['uniqueName']; ?>">
-
-                        <button type="submit" class="btn btn-danger">Deletar conta</button>
-
-                    </form>
+                    
                 </div>      
             </div>
         </div>
     </div>
 </body>
 <?php $render('footer');?>
-
