@@ -1,5 +1,4 @@
 <?php
-session_start(); // Inicia a sessão
 
 if (isset($_SESSION['login_error'])) {
     echo "<div style='color: red;'>" . $_SESSION['login_error'] . "</div>";
@@ -13,13 +12,13 @@ if (isset($_SESSION['login_error'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Gamyx</title>
-    <link rel="stylesheet" href="../static/css/loginstyle.css">
+    <link rel="stylesheet" href="<?=$base?>/static/css/loginstyle.css">
 </head>
 <body>
     <div class="login-container">
         <!-- Logo e Título -->
         <div class="login-header">
-            <img src="../static/img/GAMYX.png" alt="Logo" class="logo">
+            <img src="<?=$base?>/static/img/GAMYX.png" alt="Logo" class="logo">
             <h1>BEM VINDO</h1>
             <p>Login para o Gamyx</p>
         </div>
@@ -27,7 +26,7 @@ if (isset($_SESSION['login_error'])) {
         <!-- Caixa de login -->
         <div class="login-box">
             <div class="login-form">
-                <form action="../views/checkLogin.php" method="POST">
+                <form action="<?=$base?>/login" method="POST">
                     <label for="email">Email ou Usuário</label>
                     <input type="text" id="email" name="email" required>
 

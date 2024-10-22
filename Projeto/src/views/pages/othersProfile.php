@@ -70,8 +70,6 @@
         </div>
 
     </div>
-
-    <script src="<?=$base?>/static/js/semImagem.js" defer></script>
 </body>
 </html>
 

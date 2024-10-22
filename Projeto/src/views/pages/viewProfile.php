@@ -5,9 +5,8 @@
 </head>
 <body id="userProfileBody">
     
-    <?php 
-        include 'menu.php'; 
-    ?>
+    <?php include __DIR__ . '/../partials/menu.php'; ?>
+
     <section id="userProfileSection">
         <form action="<?=$base?>/perfil" method="POST" class="userSearchForm">
             <input type="text" placeholder="Procurar usuário" class="userSearchInput" name="search_query"/> 

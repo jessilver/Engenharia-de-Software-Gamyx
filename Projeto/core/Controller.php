@@ -10,6 +10,11 @@ class Controller {
         exit;
     }
 
+    protected function view($viewName, $viewData = []) {
+        extract($viewData);
+        include '../src/views/' . $viewName . '.php';
+    }
+
     private function getBaseUrl() {
         $base = (isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on') ? 'https://' : 'http://';
         $base .= $_SERVER['SERVER_NAME'];

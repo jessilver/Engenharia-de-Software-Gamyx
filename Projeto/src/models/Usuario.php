@@ -3,6 +3,7 @@ namespace src\models;
 use \src\models\Project;
 use \core\Model;
 use Exception;
+use \PDO;
 
 class Usuario extends Model {
 
@@ -69,29 +70,33 @@ class Usuario extends Model {
     }
 
     /**
- * Deleta um usuário pelo ID.
- *
- * @param int $id O ID do usuário a ser deletado.
- * @return bool|Exception Retorna true se a deleção for bem-sucedida, ou lança uma exceção em caso de erro.
- * @throws Exception Se ocorrer um erro ao tentar deletar o usuário.
- */
-public static function deleteUser(int $id): bool|Exception {
-    try {
-        $projectIds = Project::selectProjectByUserId($id, ['id']);
+     * Deleta um usuário pelo ID.
+     *
+     * @param int $id O ID do usuário a ser deletado.
+     * @return bool|Exception Retorna true se a deleção for bem-sucedida, ou lança uma exceção em caso de erro.
+     * @throws Exception Se ocorrer um erro ao tentar deletar o usuário.
+     */
+    public static function deleteUser(int $id): bool|Exception {
+        try {
+            $projectIds = Project::selectProjectByUserId($id, ['id']);
 
-        foreach($projectIds as $userProjectId){
-            Project::deleteProject($userProjectId['id']);
+            foreach($projectIds as $userProjectId){
+                Project::deleteProject($userProjectId['id']);
+            }
+
+            self::delete()
+                ->where('id', '=', $id)
+                ->execute();
+
+            return true;
+        } catch (Exception $e) {
+            throw new Exception('Erro ao deletar usuário: ' . $e->getMessage());
         }
-
-        self::delete()
-            ->where('id', '=', $id)
-            ->execute();
-
-        return true;
-    } catch (Exception $e) {
-        throw new Exception('Erro ao deletar usuário: ' . $e->getMessage());
     }
-}
-
-
+    public function deleteById($id) {
+        $sql = "DELETE FROM usuario WHERE id = :id";
+        $stmt = self::$_h->prepare($sql);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $result = $stmt->execute();
+    }
 }

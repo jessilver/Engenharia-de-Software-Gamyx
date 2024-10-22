@@ -10,7 +10,7 @@
 
         echo $about.'<br>';
 
-        $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        //$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
         $stmt = $conn->prepare("UPDATE usuario SET about = ?, urlPortfolio = ? WHERE uniqueName = ?");
         $stmt->bind_param("sss",$about, $linkPortfolio,$uniqueName);

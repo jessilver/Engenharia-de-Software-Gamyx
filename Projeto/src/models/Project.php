@@ -122,6 +122,7 @@ class Project extends Model {
             throw new Exception('Erro ao deletar projeto: ' . $e->getMessage());
         }
     }
-
-
+    public static function deleteById($id) {
+        return self::select()->delete()->where('id', $id)->execute();
+    }
 }
