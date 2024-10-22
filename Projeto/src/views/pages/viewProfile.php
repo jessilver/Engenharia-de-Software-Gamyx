@@ -33,6 +33,7 @@
                             src=<?php 
                                     $link = $base."/static/img/perfil/imagem-perfil-".$user['nomeUsuario'].".jpg";
                                     // $caminho = file_exists($link) ? $link : "sem-imagem.png";
+
                                     echo $link;
                                 ?>
                             alt="Imagem de perfil do usuário <?= $user['nomeUsuario']; ?>"
@@ -122,13 +123,11 @@
                     <i class="fa-solid fa-xmark closeButton" data-bs-dismiss="modal"></i>
                 </div>
                 <div class="modal-body configModalBody">
-                    <form action="<?=$base?>/logout" method="POST" id="formSair">
-                        <input type="hidden" name="uniqueName" class="form-control" id="uniqueName" value="<?= $user['uniqueName']; ?>">
+                    <form action="<?=$base?>/perfil/logout" method="POST" id="formSair">
                         <button type="submit" class="btn btn-danger sairButton">Sair</button>
                     </form>
-                    <form action="<?=$base?>/delete/account" method="POST" id="formDeleteAccount">
-                        <input type="hidden" name="uniqueName" class="form-control" id="uniqueName" value="<?= $user['uniqueName']; ?>">
-                        <a href="" class="deleteButton">Deletar conta</a>
+                    <form action="<?=$base?>/perfil/delete/<?=$HashUserId?>" method="POST" id="formDeleteAccount">
+                        <a href="#" class="deleteButton" onclick="realyDeleteAccount('formDeleteAccount')">Deletar conta</a>
                     </form>
                 </div>      
             </div>
