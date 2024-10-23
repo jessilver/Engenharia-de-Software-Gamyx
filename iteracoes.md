@@ -21,6 +21,12 @@
   - [feat/editar-projeto](#Editar-projeto)
   - [feat/deletar-projeto](#Deletar-projeto)
   - [adicionais-it2](#Adicionais-it2)
+- [Iteração 03](#Iteração-03)
+  - [feat/avaliacao-do-projeto](#Avaliacao-do-Projeto)
+  - [feat/adicionar-amizade](#Adicionar-amizade)
+  - [feat/feed-inicial](#feed-inicial)
+  - [feat/filtro-pesquisa-projeto](#Filtro-Pesquisa-Prrojeto)
+  - [adicionais-it3](#Adicionais-it3)
 
 # Iteração 01
 <small>[voltar para o Sumário](#Sumário)</small><br>
@@ -292,6 +298,111 @@ Critérios de Aceitação:
 
 ![exemplo](https://github.com/user-attachments/assets/84968a81-992d-4e82-b3d5-e8342c8fc94a)
 
+# Iteração 03
+<small>[voltar para o Sumário](#Sumário)</small><br>
+
+## Valor: 
+Permitir que o usuário tenha acceso ao feed mais filtros de pesquisa de projetos e adicionar amizades
+
+## Features:
+
+# Avaliacao do Projeto
+<small>[voltar para o Sumário](#Sumário)</small><br>
 
 
+## Resposável:
+Jônatas De Sousa Madeira
+
+```bash
+feat/avaliacao-do-projeto
+```
+
+## User Story:
+
+### Como um usuário logado, quero avaliar um projeto
+
+Critérios de Aceitação:
+- O sistema deve permitir que o usuário visualize e avalie um projeto.
+
+## Template:
+
+## Tarefas:
+
+- Tarefa 1: Design da interface de avaliação do projeto.
+- Tarefa 2: Implementação da lógica de backend para processamento de dados.
+
+# Adicionar Amizade
+<small>[voltar para o Sumário](#Sumário)</small><br>
+
+## Resposável:
+Jessé Eliseu Nunes Da Silva
+
+```bash
+feat/adicionar-amizade
+```
+
+## User Story:
+
+### Como um usuário logado, quero acessar quero adicionar uma novo amizade.
+
+Critérios de Aceitação:
+- O usuário deve poder adicionar uma nova amizade.
+
+## Template:
+
+
+## Tarefas:
+
+- Tarefa 1: Design da interface de perfil.
+- Tarefa 2: Implementação da lógica de backend para processamento de dados.
+
+# Feed inicial
+<small>[voltar para o Sumário](#Sumário)</small><br>
+
+## Resposável:
+Arthur Lima Duarte
+
+```bash
+feat/feed-inicial
+```
+
+## User Story:
+
+### Como um usuário logado, quero ter accesso ao feed.
+
+Critérios de Aceitação:
+- O usuário deve ser capaz de visualizar os projetos no feed.
+
+## Template:
+
+
+## Tarefas:
+
+- Tarefa 1: Design da interface.
+- Tarefa 2: Implementação da lógica para exibir informações dos projetos.
+
+# Filtro Pesquisa Projeto
+<small>[voltar para o Sumário](#Sumário)</small><br>
+
+## Resposável:
+Gabriel Fernandes Zamora
+
+```bash
+feat/filtro-pesquisa-projeto
+```
+
+## User Story:
+
+### Como um usuário logado, quero ter filtro para procurar determinados tipos de projetos.
+
+Critérios de Aceitação:
+- O usuário deve ser capaz de filtrar projetos.
+
+## Template:
+
+
+## Tarefas:
+
+- Tarefa 1: Design da interface de perfil.
+- Tarefa 2: Implementação da logica backend para processamento de dados.
 
