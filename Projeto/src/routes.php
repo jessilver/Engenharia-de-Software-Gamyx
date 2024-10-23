@@ -14,3 +14,5 @@ $router->get('/perfil/{id}', 'viewProfileController@other');
 
 $router->get('/sobre/{nome}', 'HomeController@sobreP');
 $router->get('/sobre', 'HomeController@sobre');
+$router->get('/cadastrarUsuario', 'UserController@cadastroUsuario');
+$router->post('/cadastrarUsuario', 'UserController@cadastroUsuarioAction');
