@@ -4,7 +4,11 @@
 //     echo "<div style='color: red;'>" . $_SESSION['login_error'] . "</div>";
 //     unset($_SESSION['login_error']);
 // }
-// ?>
+    //Requesição POST
+
+?>
+
+
 
 
 <!DOCTYPE html>
@@ -27,7 +31,7 @@
         <!-- Caixa de login -->
         <div class="login-box">
             <div class="login-form">
-                <form action="/Engenharia-de-Software-Gamyx/Projeto/public/login" method="POST">
+                <form action="/Engenharia-de-Software-Gamyx/Projeto/public/login" method="GET">
                     <label for="email">Email ou Usuário</label>
                     <input type="text" id="login" name="login" required>
 
@@ -37,7 +41,7 @@
                     </div>
                     <input type="password" id="password" name="password" required>
 
-                    <button type="submit">Entrar</button>
+                    <button type="submit" >Entrar</button>
                 </form>
             </div>
         </div>

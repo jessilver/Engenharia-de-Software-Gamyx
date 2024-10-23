@@ -1,12 +1,12 @@
 <?php $render('header'); 
 
 $_SESSION['userLogado'] = [
-    'id' => 2,
+    'id' => 1,
 ];
 
-unset($_SESSION['userLogado']);
+// unset($_SESSION['userLogado']);
 
 ?>
 
 
-Opa, <?=$nome;?>
+<!-- Opa, <?=$nome;?> -->

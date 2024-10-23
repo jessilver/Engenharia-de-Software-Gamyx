@@ -3,6 +3,7 @@ namespace src\controllers;
 
 use \core\Controller;
 use \src\models\Usuario;
+use \src\models\Project;
 
 class UserController extends Controller {
 
@@ -25,7 +26,7 @@ class UserController extends Controller {
                     'email' => $email,
                     'nomeUsuario' => $nomeUsuario,
                     'uniqueName' => $uniqueName,
-                    'senha' => $senha,
+                    'senha' => password_hash($senha, PASSWORD_DEFAULT),
                     'urlPortfolio' => $portfolioUser
                 ])->execute();
             }
@@ -37,10 +38,8 @@ class UserController extends Controller {
         $this->redirect('/cadastrarUsuario');
         exit;
     }
-    public function auth() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $login = filter_input(INPUT_POST, 'login');
-            $senha = filter_input(INPUT_POST, 'password');
+
+    public function login($login, $senha) {
 
             if ($login && $senha) {
                 $usuario = Usuario::select()
@@ -48,46 +47,97 @@ class UserController extends Controller {
                     ->orWhere('nomeUsuario', $login)
                     ->first();
 
-                if ($usuario && password_verify($senha, $usuario['senha'])) {
-                    $_SESSION['user_id'] = $usuario['id'];
-                    $this->redirect('/perfilUsuario');
-                    exit;
+                if ($usuario) {
+                    // Verifique se a senha está correta
+                    if ($senha === $usuario['senha']) {
+                        // Iniciar a sessão se ainda não estiver iniciada
+                        if (session_status() == PHP_SESSION_NONE) {
+                            session_start();
+                        }
+
+                        // Defina a variável de sessão corretamente
+                        $_SESSION['userLogado'] = [
+                            'id' => $usuario['id'],
+                            'nomeUsuario' => $usuario['nomeUsuario'],
+                            'email' => $usuario['email']
+                        ];
+
+                        // Redirecionar para a página de perfil do usuário
+                        $this->render('/perfil');
+                        exit;
+                    } else {
+                        echo "Senha inválida.";
+                    }
                 } else {
-                    echo "Credenciais inválidas.";
+                    echo "Usuário não encontrado.";
                 }
             } else {
                 echo "Por favor, preencha todos os campos.";
             }
-        } else {
-            $this->render('login');
-        }
+        
     }
+
     public function index() {
-        $userId = $_SESSION['user_id'] ?? null;
-
-        if ($userId) {
+         // Iniciar a sessão se ainda não estiver iniciada
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        
+        
+        // Verifique se a variável de sessão está definida
+        $userId = $_SESSION['userLogado']['id'] ?? null;
+        var_dump($userId);
+        
+        if(!empty($_SESSION['userLogado']['id'])){
             $usuario = Usuario::select()->where('id', $userId)->first();
+            echo "User data from database: ";
+            var_dump($usuario);
+            
+            $this->redirect('/perfil');
+            if ($usuario["id"] > 0) {
+                echo "Usuário encontrado.";
+                $this->redirect('/perfil');
+                // $projects = Project::selectProjectByUserId($userId);
+                // $context = [
+                //     'user'=> $usuario,
+                //     'projects' => $projects
+                // ];
 
-            if ($usuario) {
-                $this->render('perfilUsuario', [
-                    'usuario' => $usuario
-                ]);
+                // $this->render('viewProfile.php', $context);
             } else {
                 echo "Usuário não encontrado.";
             }
         } else {
-            // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            //     $usr = new UserController();
-            //     $usr->login();
-            // }
-            $this->render('login');
+            if(isset($_SESSION['userLogado'])){
+                echo "Usuário não está logado ou ID inválido.";
+            }
+            
+        if (isset($_GET['login']) && isset($_GET['password']))
+        {
+            $login = $_GET['login'];
+            $senha = $_GET['password'];
+
+            $context = new UserController();
+            $context->login($login, $senha);
+        } else {
+            $this->redirect('/login');
+        }
+            // Redirecionar para a página de login ou exibir mensagem de erro
+            //$this->render('login');
         }
     }
 
     public function logout() {
         session_destroy();
-        $this->redirect('/login');
+        header('Location: /login');
         exit;
     }
 
+    // Método para verificar se o usuário está autenticado
+    public function auth() {
+        if (!isset($_SESSION['user_id'])) {
+            $this->redirect('/login');
+            exit;
+        }
+    }
 }
