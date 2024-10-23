@@ -40,7 +40,7 @@ Entregar funcionalidades básicas de interação de usuário, incluindo cadastro
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
 
-## Resposável:
+## Responsável:
 Jônatas De Sousa Madeira
 
 ```bash
@@ -70,7 +70,7 @@ Critérios de Aceitação:
 # Login de Usuário
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
-## Resposável:
+## Responsável:
 Gabriel Fernandes Zamora
 
 ```bash
@@ -100,7 +100,7 @@ Critérios de Aceitação:
 # Acesso ao Perfil
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
-## Resposável:
+## Responsável:
 Jessé Eliseu Nunes Da Silva
 
 ```bash
@@ -129,7 +129,7 @@ Critérios de Aceitação:
 # Visualização de Perfil de Outros Usuários
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
-## Resposável:
+## Responsável:
 Arthur Lima Duarte
 
 ```bash
@@ -179,7 +179,7 @@ Permitir que o usuário logado possa criar, visualizar, editar e deletar um proj
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
 
-## Resposável:
+## Responsável:
 Jônatas De Sousa Madeira
 
 ```bash
@@ -207,7 +207,7 @@ Critérios de Aceitação:
 # Acesso ao projeto
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
-## Resposável:
+## Responsável:
 Arthur Lima Duarte
 
 ```bash
@@ -234,7 +234,7 @@ Critérios de Aceitação:
 # Editar projeto
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
-## Resposável:
+## Responsável:
 Jessé Eliseu Nunes Da Silva
 
 ```bash
@@ -264,7 +264,7 @@ Critérios de Aceitação:
 # Deletar projeto
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
-## Resposável:
+## Responsável:
 Gabriel Fernandes Zamora
 
 ```bash
@@ -310,7 +310,7 @@ Permitir que o usuário tenha acceso ao feed mais filtros de pesquisa de projeto
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
 
-## Resposável:
+## Responsável:
 Jônatas De Sousa Madeira
 
 ```bash
@@ -334,7 +334,7 @@ Critérios de Aceitação:
 # Adicionar Amizade
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
-## Resposável:
+## Responsável:
 Jessé Eliseu Nunes Da Silva
 
 ```bash
@@ -359,7 +359,7 @@ Critérios de Aceitação:
 # Feed inicial
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
-## Resposável:
+## Responsável:
 Arthur Lima Duarte
 
 ```bash
@@ -384,7 +384,7 @@ Critérios de Aceitação:
 # Filtro Pesquisa Projeto
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
-## Resposável:
+## Responsável:
 Gabriel Fernandes Zamora
 
 ```bash
