@@ -8,5 +8,4 @@ $_SESSION['userLogado'] = [
 
 ?>
 
-
-<!-- Opa, <?=$nome;?> -->
+<?php header('Location: '. $base) ?>

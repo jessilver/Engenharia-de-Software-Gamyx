@@ -9,7 +9,8 @@ use \src\models\Project;
 class viewProfileController extends Controller {
 
     public function index() {
-        $usuarioId = $_SESSION['userLogado']['id'];
+        // $usuarioId = $_SESSION['userLogado']['id'];
+        $usuarioId = $_SESSION['userLogado']['id'] ?? 1;
 
         $usuario = Usuario::selectUser($usuarioId);
         $projects = Project::selectProjectByUserId($usuarioId);

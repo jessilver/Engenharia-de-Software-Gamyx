@@ -33,6 +33,7 @@ class Controller {
             $base = $this->getBaseUrl();
             require '../src/views/'.$folder.'/'.$viewName.'.php';
         }
+        echo "View not found!".'../src/views/'.$folder.'/'.$viewName.'.php';
     }
 
     private function renderPartial($viewName, $viewData = []) {
@@ -41,6 +42,8 @@ class Controller {
 
     public function render($viewName, $viewData = []) {
         $this->_render('pages', $viewName, $viewData);
+        echo $viewName;
+        echo $viewData;
     }
 
 }

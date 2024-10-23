@@ -39,7 +39,16 @@ class UserController extends Controller {
         exit;
     }
 
-    public function login($login, $senha) {
+    public function login(){
+        if (!isset($_SESSION['user_id'])) {
+                $this->render('login');
+            }
+    }
+
+    public function loginAction() {
+
+            $login = filter_input(INPUT_POST, 'login');
+            $senha = filter_input(INPUT_POST, 'password');
 
             if ($login && $senha) {
                 $usuario = Usuario::select()
@@ -49,21 +58,25 @@ class UserController extends Controller {
 
                 if ($usuario) {
                     // Verifique se a senha está correta
-                    if ($senha === $usuario['senha']) {
+                    if (password_verify($senha, $usuario['senha'])) {
                         // Iniciar a sessão se ainda não estiver iniciada
-                        if (session_status() == PHP_SESSION_NONE) {
-                            session_start();
-                        }
-
+                        // if (session_status() == PHP_SESSION_NONE) {
+                        //     session_start();
+                        // }
+                        
                         // Defina a variável de sessão corretamente
+                        unset($_SESSION['userLogado']);
+
                         $_SESSION['userLogado'] = [
                             'id' => $usuario['id'],
                             'nomeUsuario' => $usuario['nomeUsuario'],
                             'email' => $usuario['email']
                         ];
 
+                        // var_dump($_SESSION['userLogado']);
+
                         // Redirecionar para a página de perfil do usuário
-                        $this->render('/perfil');
+                        $this->redirect('/perfil');
                         exit;
                     } else {
                         echo "Senha inválida.";
@@ -78,7 +91,8 @@ class UserController extends Controller {
     }
 
     public function index() {
-         // Iniciar a sessão se ainda não estiver iniciada
+        
+        // Iniciar a sessão se ainda não estiver iniciada
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
@@ -86,24 +100,22 @@ class UserController extends Controller {
         
         // Verifique se a variável de sessão está definida
         $userId = $_SESSION['userLogado']['id'] ?? null;
-        var_dump($userId);
         
+
         if(!empty($_SESSION['userLogado']['id'])){
             $usuario = Usuario::select()->where('id', $userId)->first();
             echo "User data from database: ";
             var_dump($usuario);
-            
-            $this->redirect('/perfil');
+
             if ($usuario["id"] > 0) {
                 echo "Usuário encontrado.";
-                $this->redirect('/perfil');
-                // $projects = Project::selectProjectByUserId($userId);
-                // $context = [
-                //     'user'=> $usuario,
-                //     'projects' => $projects
-                // ];
+                $projects = Project::selectProjectByUserId($userId);
+                $context = [
+                    'user'=> $usuario,
+                    'projects' => $projects
+                ];
 
-                // $this->render('viewProfile.php', $context);
+                $this->render('viewProfile', $context);
             } else {
                 echo "Usuário não encontrado.";
             }
@@ -120,7 +132,7 @@ class UserController extends Controller {
             $context = new UserController();
             $context->login($login, $senha);
         } else {
-            $this->redirect('/login');
+            $this->render('login');
         }
             // Redirecionar para a página de login ou exibir mensagem de erro
             //$this->render('login');
@@ -129,15 +141,16 @@ class UserController extends Controller {
 
     public function logout() {
         session_destroy();
-        header('Location: /login');
+        // header('Location: /login');
+        $this->redirect('/login');
         exit;
     }
 
     // Método para verificar se o usuário está autenticado
-    public function auth() {
-        if (!isset($_SESSION['user_id'])) {
-            $this->redirect('/login');
-            exit;
-        }
-    }
+    // public function auth() {
+    //     if (!isset($_SESSION['user_id'])) {
+    //         $this->redirect('/login');
+    //         exit;
+    //     }
+    // }
 }

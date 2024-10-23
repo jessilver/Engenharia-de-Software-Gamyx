@@ -31,7 +31,7 @@
         <!-- Caixa de login -->
         <div class="login-box">
             <div class="login-form">
-                <form action="/Engenharia-de-Software-Gamyx/Projeto/public/login" method="GET">
+                <form action="/Engenharia-de-Software-Gamyx/Projeto/public/login" method="POST">
                     <label for="email">Email ou Usuário</label>
                     <input type="text" id="login" name="login" required>
 
