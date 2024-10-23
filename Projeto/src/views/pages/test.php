@@ -7,7 +7,10 @@
 </head>
 <body>
 
-    <h1>User</h1>
+    <h1>testse</h1>
+
+    <!-- Incluir o menu diretamente -->
+    <?php include __DIR__ . '/../partials/menu.php'; ?>
 
     <table>
         <thead>
@@ -56,8 +59,17 @@
                     <td colspan="3">Nenhum projeto encontrado.</td>
                 </tr>
             <?php endif; ?>
+            
         </tbody>
     </table>
+
+    <!-- Formulário para deletar usuário -->
+    <div>
+        <h2>Deletar Usuário</h2>
+        <form action="/Engenharia-de-Software/Projeto/public/deleteUsuario" method="POST">
+            <button type="submit" class="btn btn-danger">Deletar Usuário Logado</button>
+        </form>
+    </div>
 
 </body>
 </html>

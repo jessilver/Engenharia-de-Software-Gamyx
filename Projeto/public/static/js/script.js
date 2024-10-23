@@ -86,23 +86,6 @@ document.getElementById("menu-btn").addEventListener("click", toggleNav);
 // Adiciona o evento de clique no overlay para fechar o menu ao clicar fora
 document.getElementById("overlay").addEventListener("click", toggleNav);
 
-
-// Colocando icone de sem imagem 
-// const imagemBanner = document.querySelector('.bannerImage');
-const imagemPerfil = document.querySelector('.profileImage');
-const linkImagem = '../static/img/sem-imagem.png';
-
-// if(imagemBanner.getAttribute('src') === "semImagem"){
-//     imagemBanner.setAttribute('src', linkImagem);
-//     imagemBanner.classList.remove('bannerImage');
-//     imagemBanner.classList.add('noBanner');
-// }
-if(imagemPerfil.getAttribute('src') === "semImagem"){
-    imagemPerfil.setAttribute('src', linkImagem);
-    imagemPerfil.classList.remove('profileImage');
-    imagemPerfil.classList.add('noProfile');
-}
-
 function realyDeleteAccount(formID){
     form = document.getElementById(formID);
 

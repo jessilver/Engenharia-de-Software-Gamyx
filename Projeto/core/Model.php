@@ -52,9 +52,9 @@ class Model {
         return self::$_h->update($fields);
     }
 
-    public static function delete() {
+    public static function delete($id) {
         self::_checkH();
-        return self::$_h->delete();
+        return self::$_h->delete()->where('id', $id)->execute();
     }
 
     
