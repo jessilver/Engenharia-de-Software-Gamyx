@@ -311,7 +311,7 @@ Permitir que o usuário tenha acceso ao feed mais filtros de pesquisa de projeto
 
 
 ## Responsável:
-Jônatas De Sousa Madeira
+Gabriel Fernandes Zamora
 
 ```bash
 feat/avaliacao-do-projeto
@@ -385,7 +385,7 @@ Critérios de Aceitação:
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
 ## Responsável:
-Gabriel Fernandes Zamora
+Jônatas De Sousa Madeira
 
 ```bash
 feat/filtro-pesquisa-projeto
