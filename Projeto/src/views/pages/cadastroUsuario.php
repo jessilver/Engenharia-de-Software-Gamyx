@@ -1,13 +1,10 @@
-<?php 
-    require '../config.php';
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <link rel="stylesheet" href="../static/css/cadastro.css">
     <?php
-        require('linkrel.php');
+        include_once(__DIR__ . '/../partials/header.php');
+
     ?>
     <title>Cadastre-se</title>
 </head>
@@ -15,7 +12,7 @@
 
     <section id="sectionCadastroUsuario">
         <header id="headerCadastroUsuario">
-            <img src="../static/img/GAMYX.png" alt="Logo do Gamyx">
+            <img src="<?= $base; ?>/static/img/GAMYX.png" alt="Logo do Gamyx">
             <h2>Bem Vindo</h2>
         </header>
 
@@ -23,7 +20,7 @@
             <div class="titulosCards">
                 <h2 class="text-body-secondary">Cadastro de Usuário</h2>
             </div>
-            <form action="../views/criarUsuario.php" method="POST" id="formCadastroUsuario">
+            <form action="<?= $base; ?>/cadastrarUsuario" method="POST" id="formCadastroUsuario">
                 <div class="mb-3">
                     <label for="emailUsuario" class="form-label">Email:</label>
                     <input type="email" required name="email" class="form-control" id="emailUsuario">

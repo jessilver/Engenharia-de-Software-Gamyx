@@ -1,5 +1,5 @@
-<!-- <?php
-require '../config.php';
+<?php
 
-header('Location: login.php');
+
+header('Location:'. $base . '/src/views/pages/login.php');
 ?>

@@ -8,8 +8,6 @@ $router->get('/', 'HomeController@index');
 $router->get('/perfil', 'viewProfileController@index');
 $router->post('/perfil', 'viewProfileController@other'); // Alterado para lidar com POST
 
-$router->post('/perfil', 'viewProfileController@other'); // Alterado para lidar com POST
-
 $router->get('/login','userController@index');
 $router->post('/login','userController@auth');
 $router->get('/menu', 'MenuController@index');
@@ -23,3 +21,5 @@ $router->post('/perfil/delete/{id}', 'viewProfileController@delete');
 
 $router->get('/sobre/{nome}', 'HomeController@sobreP');
 $router->get('/sobre', 'HomeController@sobre');
+$router->get('/cadastrarUsuario', 'UserController@cadastroUsuario');
+$router->post('/cadastrarUsuario', 'UserController@cadastroUsuarioAction');
