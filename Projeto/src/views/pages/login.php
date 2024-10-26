@@ -4,11 +4,7 @@
 //     echo "<div style='color: red;'>" . $_SESSION['login_error'] . "</div>";
 //     unset($_SESSION['login_error']);
 // }
-    //Requesição POST
-
-?>
-
-
+// ?>
 
 
 <!DOCTYPE html>
@@ -41,7 +37,7 @@
                     </div>
                     <input type="password" id="password" name="password" required>
 
-                    <button type="submit" >Entrar</button>
+                    <button type="submit">Entrar</button>
                 </form>
             </div>
         </div>

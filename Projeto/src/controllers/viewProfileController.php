@@ -10,7 +10,7 @@ class viewProfileController extends Controller {
 
     public function index() {
         // $usuarioId = $_SESSION['userLogado']['id'];
-        $usuarioId = $_SESSION['userLogado']['id'] ?? 1;
+        $usuarioId = $_SESSION['userLogado']['id'];
 
         $usuario = Usuario::selectUser($usuarioId);
         $projects = Project::selectProjectByUserId($usuarioId);
