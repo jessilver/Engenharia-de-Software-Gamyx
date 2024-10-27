@@ -114,14 +114,10 @@ class Project extends Model {
      */
     public static function deleteProject(int $id): bool|Exception {
         try {
-            self::delete()
-                ->where('id', '=', $id)
-                ->execute();
+            self::delete($id);
             return true; // Retorna true se a deleção for bem-sucedida
         } catch (Exception $e) {
             throw new Exception('Erro ao deletar projeto: ' . $e->getMessage());
         }
     }
-
-
 }

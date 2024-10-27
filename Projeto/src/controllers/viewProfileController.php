@@ -11,6 +11,7 @@ class viewProfileController extends Controller
 {
 
     public function index() {
+        // $usuarioId = $_SESSION['userLogado']['id'];
         $usuarioId = $_SESSION['userLogado']['id'];
 
         $usuario = Usuario::selectUser($usuarioId);

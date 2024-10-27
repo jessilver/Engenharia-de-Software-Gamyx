@@ -1,10 +1,11 @@
 <?php
 
-if (isset($_SESSION['login_error'])) {
-    echo "<div style='color: red;'>" . $_SESSION['login_error'] . "</div>";
-    unset($_SESSION['login_error']);
-}
-?>
+// if (isset($_SESSION['login_error'])) {
+//     echo "<div style='color: red;'>" . $_SESSION['login_error'] . "</div>";
+//     unset($_SESSION['login_error']);
+// }
+// ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -12,13 +13,13 @@ if (isset($_SESSION['login_error'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Gamyx</title>
-    <link rel="stylesheet" href="<?=$base?>/static/css/loginstyle.css">
+    <link rel="stylesheet" href="/Engenharia-de-Software-Gamyx/Projeto/public/static/css/loginstyle.css">
 </head>
 <body>
     <div class="login-container">
         <!-- Logo e Título -->
         <div class="login-header">
-            <img src="<?=$base?>/static/img/GAMYX.png" alt="Logo" class="logo">
+            <img src="/Engenharia-de-Software-Gamyx/Projeto/public/static/img/GAMYX.png" alt="Logo" class="logo">
             <h1>BEM VINDO</h1>
             <p>Login para o Gamyx</p>
         </div>
@@ -26,9 +27,9 @@ if (isset($_SESSION['login_error'])) {
         <!-- Caixa de login -->
         <div class="login-box">
             <div class="login-form">
-                <form action="<?=$base?>/login" method="POST">
+                <form action="/Engenharia-de-Software-Gamyx/Projeto/public/login" method="POST">
                     <label for="email">Email ou Usuário</label>
-                    <input type="text" id="email" name="email" required>
+                    <input type="text" id="login" name="login" required>
 
                     <div class="password-container">
                         <label for="password">Senha</label>
@@ -41,7 +42,7 @@ if (isset($_SESSION['login_error'])) {
             </div>
         </div>
         <div class="other-options">
-            <p>Novo no Gamyx? <a href="cadastroUsuario.php" class="bold-link">Criar uma nova conta</a></p>
+            <p>Novo no Gamyx? <a href="/Engenharia-de-Software-Gamyx/Projeto/public/cadastrarUsuario" class="bold-link">Criar uma nova conta</a></p>
         </div>
     </div>
 
