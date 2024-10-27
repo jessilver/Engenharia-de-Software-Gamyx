@@ -5,7 +5,7 @@ class Config {
     const BASE_DIR = '/Engenharia-de-Software-Gamyx/Projeto/public';
     const ENCRYPT_KEY = "IA}V?%'&yQ0C8CcnZD,8^zS?$9pnxP;PhIL?3-C#M(nGDjRre*";
 
-    const DB_DSN = 'mysql:host=localhost;port=3306';
+    const DB_DSN = 'mysql:host=localhost;port=3306;dbname=gamyx';
     const DB_DRIVER = 'mysql';
     const DB_HOST = 'localhost';
     const DB_DATABASE = 'gamyx';

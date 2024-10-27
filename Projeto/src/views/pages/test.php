@@ -11,6 +11,10 @@
 
     <!-- Incluir o menu diretamente -->
     <?php include __DIR__ . '/../partials/menu.php'; ?>
+    <h1>testse</h1>
+
+    <!-- Incluir o menu diretamente -->
+    <?php include __DIR__ . '/../partials/menu.php'; ?>
 
     <table>
         <thead>

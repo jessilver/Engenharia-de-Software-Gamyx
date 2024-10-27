@@ -1,13 +1,14 @@
 <?php $render('header');?>
+    <link rel="stylesheet" href="<?=$base?>/static/css/userProfile.css">
+    <title>Meu perfil | Gamyx</title>
 
-<link rel="stylesheet" href="<?=$base?>/static/css/userProfile.css">
-
+</head>
 <body id="userProfileBody">
     
     <?php include __DIR__ . '/../partials/menu.php'; ?>
 
     <section id="userProfileSection">
-        <form action="../views/pesquisaUsuario.php" method="POST" class="userSearchForm">
+        <form action="<?=$base?>/perfil" method="POST" class="userSearchForm">
             <input type="text" placeholder="Procurar usuário" class="userSearchInput" name="search_query"/> 
             <button type="submit" class="userSearchSubmit">Buscar</button>
         </form>
@@ -88,7 +89,7 @@
                         ?>
                         
                         <div class='projectItem'>
-                            <a href= "<?=$base?>/perfil/<?=$linkProjeto?>">
+                            <a href= "<?=$base?>/projeto/<?=$projeto['id']?>">
                                 <div class='projectFoto'>
                                     <img src='<?=$base?>/static/img/capasProjetos/<?= $fotoCapa ?>' alt='<?= $nomeProjeto ?>'> 
                                 </div>
@@ -178,5 +179,4 @@
             </div>
         </div>
     </div>
-</body>
 <?php $render('footer');?>
