@@ -353,14 +353,14 @@ Critérios de Aceitação:
 
 ## Tarefas:
 
-- Tarefa 1: Design da interface de perfil.
+- Tarefa 1: Design da interface de adiconar uma amizade.
 - Tarefa 2: Implementação da lógica de backend para processamento de dados.
 
 # Feed inicial
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
 ## Responsável:
-Arthur Lima Duarte
+Jônatas De Sousa Madeira
 
 ```bash
 feat/feed-inicial
@@ -385,7 +385,7 @@ Critérios de Aceitação:
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
 ## Responsável:
-Jônatas De Sousa Madeira
+Arthur Lima Duarte
 
 ```bash
 feat/filtro-pesquisa-projeto
@@ -403,6 +403,6 @@ Critérios de Aceitação:
 
 ## Tarefas:
 
-- Tarefa 1: Design da interface de perfil.
+- Tarefa 1: Design da interface.
 - Tarefa 2: Implementação da logica backend para processamento de dados.
 
