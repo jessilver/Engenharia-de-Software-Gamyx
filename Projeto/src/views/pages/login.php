@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="/Engenharia-de-Software-Gamyx/Projeto/public/static/css/loginstyle.css">
 </head>
 <body>
+
+    <?php include __DIR__ . '/../partials/menu.php'; ?>
     <div class="login-container">
         <!-- Logo e Título -->
         <div class="login-header">
