@@ -12,7 +12,7 @@ class DeleteUsuarioController extends Controller {
                 error_log("Tentando deletar usuário com ID: $id");
 
                 $usuarioModel = new Usuario();
-                $result = $usuarioModel->deleteById($id);
+                $result = $usuarioModel->delete($id);
 
                 if ($result) {
                     error_log("Usuário com ID: $id deletado com sucesso.");

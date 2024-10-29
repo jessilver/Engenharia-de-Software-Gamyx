@@ -17,7 +17,6 @@
 </head>
 <body>
 
-    <?php include __DIR__ . '/../partials/menu.php'; ?>
     <div class="login-container">
         <!-- Logo e Título -->
         <div class="login-header">
