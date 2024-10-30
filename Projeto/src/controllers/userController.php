@@ -70,7 +70,7 @@ class UserController extends Controller {
         }
     }
     public function index() {
-        $userId = $_SESSION['userLogado']['id'] ?? null;
+        $userId = $_SESSION['userLogado'] ?? null;
 
         if ($userId) {
             $usuario = Usuario::select()->where('id', $userId)->first();
