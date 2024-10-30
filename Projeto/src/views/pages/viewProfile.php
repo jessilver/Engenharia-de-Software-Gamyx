@@ -136,7 +136,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade " id="sobreModal" tabindex="-1" role="dialog" aria-labelledby="sobreModalTitle" aria-hidden="true">
+    <div class="modal fade "id="sobreModal" tabindex="-1" role="dialog" aria-labelledby="sobreModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content sobreModalClass" >
                 <div class="modal-header">
@@ -179,4 +179,5 @@
             </div>
         </div>
     </div>
+</body>
 <?php $render('footer');?>

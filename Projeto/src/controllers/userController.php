@@ -55,7 +55,7 @@ class UserController extends Controller {
                     ->first();
 
                 if ($usuario && password_verify($senha, $usuario['senha'])) {
-                    $_SESSION['user_id'] = $usuario['id'];
+                    $_SESSION['userLogado']['id'] = $usuario['id'];
                     $this->redirect('/perfil');
                     exit;
                 } else {
@@ -70,7 +70,7 @@ class UserController extends Controller {
         }
     }
     public function index() {
-        $userId = $_SESSION['user_id'] ?? null;
+        $userId = $_SESSION['userLogado']['id'] ?? null;
 
         if ($userId) {
             $usuario = Usuario::select()->where('id', $userId)->first();

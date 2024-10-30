@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" href="<?=$base?>/static/css/menu-style.css">
+<!-- <link rel="stylesheet" href="/static/css/menu-style.css"> -->
 
 <button id="menu-btn">☰</button>
 
@@ -14,9 +14,9 @@
 <script src="<?=$base?>/static/js/menu-script.js"></script> <!-- Link para o JS -->
 <<?php 
     function logout() {
-        require_once '../src/controllers/userController.php';
-        $userController = new \src\controllers\UserController();
-        $userController->logout();
+        // require_once '../src/controllers/userController.php';
+        // $userController = new \src\controllers\UserController();
+        // $userController->logout();
     }
 ?>
 
