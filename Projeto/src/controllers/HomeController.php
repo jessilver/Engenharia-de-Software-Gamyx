@@ -2,11 +2,17 @@
 namespace src\controllers;
 
 use \core\Controller;
+use \src\models\Project;
 
 class HomeController extends Controller {
 
     public function index() {
-        $this->render('home',);
+        $projetos = Project::selectAllProjects();
+
+        $context = [
+            'projetos' => $projetos
+        ];
+        $this->render('home', $context);
     }
 
     public function sobre() {
