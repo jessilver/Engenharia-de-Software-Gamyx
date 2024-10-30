@@ -42,7 +42,7 @@ class viewProfileController extends Controller
 
     public function logout(){
         session_destroy();
-        $this->redirect('/');
+        $this->redirect('/login');
     }
 
     public function delete($id){

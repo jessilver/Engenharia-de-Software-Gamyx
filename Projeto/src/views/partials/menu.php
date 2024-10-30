@@ -4,10 +4,10 @@
 
 <div id="overlay" class="overlay"></div>
 <div id="sidebar" class="sidebar">
-    <a href="../userProfile.php">Home</a>
-    <a href="../perfil">Perfil</a>
-    <a href="../projetos">Projetos</a>
-    <form id="logout-form" action="/logout" method="POST" class="sidebar-link">
+    <a href="<?=$base?>/">Home</a>
+    <a href="<?=$base?>/perfil">Perfil</a>
+    <a href="<?=$base?>/projetos">Projetos</a>
+    <form id="logout-form" action="<?=$base?>/logout" method="POST" class="sidebar-link">
         <button type="submit">Deslogar</button>
     </form>
 </div>

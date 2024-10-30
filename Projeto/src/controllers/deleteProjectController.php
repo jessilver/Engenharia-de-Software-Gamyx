@@ -11,14 +11,14 @@ class deleteProjectController extends Controller {
         }
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (isset($_SESSION['userLogado']['id'])) {
+            if (isset($_SESSION['userLogado'])) {
                 $projectId = $_POST['projectId'];
-                $userId = $_SESSION['userLogado']['id'];
+                $userId = $_SESSION['userLogado'];
 
                 // Verificar se o projeto pertence ao usuário logado
                 $project = Project::select()->where('id', $projectId)->where('usuario_id', $userId)->first();
                 if ($project) {
-                    $result = Project::deleteById($projectId);
+                    $result = Project::delete($projectId);
                     if ($result) {
                         $_SESSION['message'] = "Projeto deletado com sucesso.";
                     } else {
