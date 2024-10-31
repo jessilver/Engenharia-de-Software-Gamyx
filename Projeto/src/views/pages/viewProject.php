@@ -25,7 +25,8 @@
                         </button>
 
                         <form action="<?=$base?>/deleteProject" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este projeto?');">
-                        <input type="hidden" id="projetoId" name="projetoId" value="<?php echo $projetoId; ?>" />
+                        <input type="hidden" name="projectId" value="<?php echo $project['id'] ?>" />
+                        <input type="hidden" name="userId" value="<?php echo $usuario['id'] ?>" />
                         <button type="submit" class="btn-excluir">
                             <i class="fa-solid fa-trash"></i>
                         </button>
