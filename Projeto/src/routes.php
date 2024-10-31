@@ -36,3 +36,6 @@ $router->get('/cadastrarUsuario', 'UserController@cadastroUsuario');
 $router->post('/cadastrarUsuario', 'UserController@cadastroUsuarioAction');
 
 $router->post('/editProject', 'viewProjectController@edit');
+
+$router->post('/add-friend', 'friendController@addFriend');
+$router->post('/deleteFriend', 'friendController@deleteFriend');
