@@ -34,3 +34,5 @@ $router->get('/sobre/{nome}', 'HomeController@sobreP');
 $router->get('/sobre', 'HomeController@sobre');
 $router->get('/cadastrarUsuario', 'UserController@cadastroUsuario');
 $router->post('/cadastrarUsuario', 'UserController@cadastroUsuarioAction');
+
+$router->post('/editProject', 'viewProjectController@edit');
