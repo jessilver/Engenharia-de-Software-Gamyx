@@ -94,7 +94,6 @@ class UserController extends Controller {
     public function logout() {
         session_destroy();
         $this->redirect('/login');
-        exit;
     }
 
 }

@@ -23,20 +23,18 @@
                         <button class="btn-editar" data-bs-toggle="modal" data-bs-target="#editProjectModal">
                             <i class="fa-solid fa-pen"></i>
                         </button>
-                        <form action="/Engenharia-de-Software/Projeto/public/deleteProject" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este projeto?');">
-                            <input type="hidden" name="projectId" value="<?php echo $projetoId; ?>" />
-                            <button type="submit" class="btn-excluir">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </form>
-                    </div>
-                <?php endif; ?>
+
+                        <form action="<?=$base?>/deleteProject" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este projeto?');">
+                        <input type="hidden" id="projetoId" name="projetoId" value="<?php echo $projetoId; ?>" />
+                        <button type="submit" class="btn-excluir">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </form>
+                </div>
+            <?php endif; ?>
             </div> 
             <!-- Botões  -->
-            
-        
-
-            
+                      
             <div class="imageContainer">
                 <img
                     src="<?=$base?>/static/img/capasProjetos/<?=$project['fotoCapa']?>"

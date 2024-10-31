@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/Engenharia-de-Software-Gamyx/Projeto/public/static/css/loginstyle.css">
 </head>
 <body>
+
     <div class="login-container">
         <!-- Logo e Título -->
         <div class="login-header">

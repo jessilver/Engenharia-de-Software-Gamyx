@@ -38,7 +38,7 @@
 }
 
 
-.sidebar a {
+.sidebar a, .sidebar-link button {
     padding: 15px 20px; 
     text-decoration: none;
     font-size: 18px;
@@ -64,4 +64,35 @@
 
 body.no-scroll {
     overflow: hidden;
+}
+
+.sidebar-link {
+    display: block;
+    padding: 10px;
+}
+
+
+.sidebar-link {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.sidebar-link button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 18px;
+    display: block;
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box;
+    border-radius: 0;
+}
+
+.sidebar-link button:hover {
+    background-color: #57626F;
 }

@@ -12,7 +12,7 @@ class viewProfileController extends Controller
 
     public function index() {
         // $usuarioId = $_SESSION['userLogado']['id'];
-        $usuarioId = $_SESSION['userLogado']['id'];
+        $usuarioId = $_SESSION['userLogado']['id'] ?? null;
 
         $usuario = Usuario::selectUser($usuarioId);
         $projects = Project::selectProjectByUserId($usuarioId);
@@ -42,7 +42,7 @@ class viewProfileController extends Controller
 
     public function logout(){
         session_destroy();
-        $this->redirect('/');
+        $this->redirect('/login');
     }
 
     public function delete($id){
