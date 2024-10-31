@@ -127,7 +127,7 @@
                     <form action="<?=$base?>/perfil/logout" method="POST" id="formSair">
                         <button type="submit" class="btn btn-danger sairButton">Sair</button>
                     </form>
-                    <form action="<?=$base?>/perfil/delete/<?=$HashUserId?>" method="POST" id="formDeleteAccount">
+                    <form action="<?=$base?>/deleteUsuario" method="POST" id="formDeleteAccount">
                         <a href="#" class="deleteButton" onclick="realyDeleteAccount('formDeleteAccount')">Deletar conta</a>
                     </form>
                 </div>      

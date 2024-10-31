@@ -10,6 +10,7 @@ $router->post('/perfil', 'viewProfileController@other'); // Alterado para lidar 
 
 $router->get('/login','userController@index');
 $router->post('/login','userController@auth');
+$router->post('/logout', 'userController@logout');
 $router->get('/menu', 'MenuController@index');
 $router->post('/deleteUsuario', 'deleteUsuarioController@delete');
 $router->post('/deleteProject', 'deleteProjectController@delete');
