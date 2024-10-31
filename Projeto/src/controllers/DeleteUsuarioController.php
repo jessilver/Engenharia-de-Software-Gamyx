@@ -8,13 +8,12 @@ use core\Model;
 class DeleteUsuarioController extends Controller {
     public function delete() {
         if (isset($_SESSION['userLogado'])) {
-            $usuarioId = $_SESSION['userLogado'];
+            $usuarioId = $_SESSION['userLogado']['id'];
             $result = Usuario::deleteUser($usuarioId);
 
             if ($result) {
                 error_log("Usuário com ID: $usuarioId deletado com sucesso.");
-                session_unset(); // Limpa a sessão após a exclusão
-                $_SESSION['message'] = "Usuário deletado com sucesso.";
+                session_unset();
                 $this->redirect('/login');
             } else {
                 error_log("Erro ao deletar usuário com ID: $usuarioId");

@@ -79,4 +79,10 @@ class Model {
         return openssl_decrypt($encryptedData, 'aes-256-cbc', Config::ENCRYPT_KEY, 0, $iv);
     }
     
+    // public static function deleteProjectByUserId($projectId, $userId) {
+    //     return self::delete()
+    //         ->where('id', $projectId)
+    //         ->where('usuario_id', $userId)
+    //         ->execute();
+    // }
 }
