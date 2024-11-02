@@ -1,11 +1,12 @@
 <?php $render('header'); ?>
-    <link rel="stylesheet" href="<?=$base?>/static/css/variaveis.css" />
-    <link rel="stylesheet" href="<?=$base?>/static/css/viewProject.css" />
-    <title><?php echo $project['nomeProjeto'] ?> | Gamyx</title>
+<link rel="stylesheet" href="<?= $base ?>/static/css/variaveis.css" />
+<link rel="stylesheet" href="<?= $base ?>/static/css/viewProject.css" />
+<title><?php echo $project['nomeProjeto'] ?> | Gamyx</title>
 
 </head>
+
 <body>
-    
+
     <?php include __DIR__ . '/../partials/menu.php'; ?>
 
     <div class="viewProjectScreen">
@@ -17,20 +18,20 @@
                         <button class="btn-editar" data-toggle="modal" data-target="#editProjectModal">
                             <i class="fa-solid fa-pen"></i>
                         </button>
-                        <form action="<?=$base?>/deleteProject" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este projeto?');">
-            <input type="hidden" id="projetoId" name="projetoId" value="<?php echo $projetoId; ?>" />
-            <button type="submit" class="btn-excluir">
-                <i class="fa-solid fa-trash"></i>
-            </button>
-        </form>
-    </div>
-<?php endif; ?>
-            </div> 
+                        <form action="<?= $base ?>/deleteProject" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este projeto?');">
+                            <input type="hidden" id="projetoId" name="projetoId" value="<?php echo $projetoId; ?>" />
+                            <button type="submit" class="btn-excluir">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </form>
+                    </div>
+                <?php endif; ?>
+            </div>
             <!-- Botões  -->
-                      
+
             <div class="imageContainer">
                 <img
-                    src="<?=$base?>/static/img/capasProjetos/<?php echo $project['fotoCapa'] ?>"
+                    src="<?= $base ?>/static/img/capasProjetos/<?php echo $project['fotoCapa'] ?>"
                     alt=""
                     class="projectImage" />
             </div>
@@ -45,7 +46,7 @@
                 ?>
             </span>
             <span class="projectTitle lower">Link para download</span>
-            <div class="projectRepContainer rounded">
+            <div class="projectRepContainer rounded my-3">
                 <a href="<?php echo $project['linkDownload']; ?>"><?php echo $project['linkDownload']; ?></a>
             </div>
         </main>
@@ -54,14 +55,13 @@
                 <div>
                     <div class="profileImageContainer">
                         <img
-                            src="<?php 
-                            $caminho = "$base/static/img/perfil/imagem-perfil-" . $usuario['nomeUsuario'] . ".jpg";
-                            echo !file_exists($caminho) 
-                                ? $caminho 
-                                : "$base/static/img/sem-imagem.png"; ?>"
+                            src="<?php
+                                    $caminho = "$base/static/img/perfil/imagem-perfil-" . $usuario['nomeUsuario'] . ".jpg";
+                                    echo !file_exists($caminho)
+                                        ? $caminho
+                                        : "$base/static/img/sem-imagem.png"; ?>"
                             alt="Imagem de perfil do usuário <?php echo $usuario['nomeUsuario']; ?>"
-                            class="profileImage" 
-                        />
+                            class="profileImage" />
                     </div>
                     <h4><?php echo $usuario['nomeUsuario'] ?></h4>
                     <p><?php echo $usuario['uniqueName']  ?></p>

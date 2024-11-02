@@ -5,9 +5,7 @@
 
 </head>
 <body>
-    <?php 
-        include "menu.php"; 
-    ?>
+    <?php include __DIR__ . '/../partials/menu.php'; ?>
     <div class="visualizeProfilesScreen">
         <form action="<?=$base?>/perfil" method="POST" class="userSearchForm">
             <input type="text" placeholder="Procurar usuário" class="userSearchInput" name="search_query"/> 
