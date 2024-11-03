@@ -90,17 +90,27 @@ class Project extends Model {
      * @throws Exception Se ocorrer um erro ao consultar o banco de dados.
      *
      */
+    // public static function selectProjectByUserId(int $id, array $fields = []): array|Exception {
+    //     try {
+    //         $fields = array_map(fn($field) => "projects.$field", $fields);
+    //         return self::select($fields)
+    //                     ->join('usuarios', 'usuarios.id', '=', 'projects.usuario_id')
+    //                     ->where('projects.usuario_id', $id)
+    //                     ->execute();
+    //     } catch (Exception $e) {
+    //         throw new Exception('Erro ao selecionar projetos: ' . $e->getMessage());
+    //     }
+    // }
     public static function selectProjectByUserId(int $id, array $fields = []): array|Exception {
         try {
-            $fields = array_map(fn($field) => "projects.$field", $fields);
-            return self::select($fields)
-                        ->join('usuarios', 'usuarios.id', '=', 'projects.usuario_id')
-                        ->where('projects.usuario_id', $id)
+            return self::select($fields ?: '*')
+                        ->where('usuario_id', $id)
                         ->execute();
         } catch (Exception $e) {
             throw new Exception('Erro ao selecionar projetos: ' . $e->getMessage());
         }
     }
+    
 
     /**
      * Atualiza um projeto com os dados fornecidos.

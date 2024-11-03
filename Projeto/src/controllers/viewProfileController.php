@@ -58,10 +58,7 @@ class viewProfileController extends Controller
                 // Busca o usuário no banco de dados
                 $usuario = Usuario::select()->where('nomeUsuario', $usuarioPesquisado)->execute();
                 if (!empty($usuario)) {
-                    $projects = Project::select()
-                        ->join('usuarios', 'usuarios.id', '=', 'projects.usuario_id')
-                        ->where('projects.usuario_id', $usuario[0]['id'])
-                        ->execute();
+                    $projects = Project::selectProjectByUserId($usuario[0]['id']);
                     $context = [
                         'user' => $usuario[0], //O [0] é porque a pesquisa retorna um array de usuarios, queremos somente o primeiro encontrado
                         'projects' => $projects
