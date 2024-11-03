@@ -134,7 +134,7 @@ class Project extends Model {
      * @throws Exception Se ocorrer um erro ao atualizar o banco de dados.
      *
      */
-    public static function updateProject(int $id, array $fields): int|Exception {
+    public static function updateProject(int $id, array $fields) {
         try {
             return self::update($fields)
                         ->where('id', '=', $id)
