@@ -36,7 +36,36 @@ class Project extends Model {
             throw new Exception('Erro ao selecionar projeto: ' . $e->getMessage());
         }
     }
-
+       /**
+     * Seleciona todos os projetos, até um limite de 30.
+     *
+     * Este método recupera todos os projetos disponíveis, respeitando o limite máximo de 30 resultados.
+     *
+     * @param array $fields (opcional) Um array de campos a serem retornados.
+     *                      Se não forem fornecidos, todos os campos dos projetos serão retornados.
+     *
+     *                      campos aceitos:
+     *                    - 'id' (int) -> ID do projeto      
+     *                    - 'nomeProjeto' (string) -> Nome do projeto     
+     *                    - 'descricaoProjeto' (string) -> Descrição do projeto
+     *                    - 'linkDownload' (string) -> Link para o repositório do projeto
+     *                    - 'sistemasOperacionaisSuportados' (string) -> Sistemas operacionais que rodam o projeto
+     *                    - 'fotoCapa' (string) -> Caminho para a foto de capa do projeto  
+     *                    - 'usuario_id' (int) -> FK id do Usuario
+     *
+     * @return array|Exception Retorna um array associativo com os dados dos projetos.
+     *                          Se ocorrer um erro durante a consulta, uma Exception será lançada.
+     *
+     * @throws Exception Se ocorrer um erro ao consultar o banco de dados.
+     *
+     */
+    public static function selectAllProjects(array $fields = []): array|Exception {
+        try {
+            return self::select($fields)->limit(30)->get();
+        } catch (Exception $e) {
+            throw new Exception('Erro ao selecionar todos os projetos: ' . $e->getMessage());
+        }
+    }
     /**
      * Seleciona projetos associados a um usuário específico.
      *
@@ -61,17 +90,27 @@ class Project extends Model {
      * @throws Exception Se ocorrer um erro ao consultar o banco de dados.
      *
      */
+    // public static function selectProjectByUserId(int $id, array $fields = []): array|Exception {
+    //     try {
+    //         $fields = array_map(fn($field) => "projects.$field", $fields);
+    //         return self::select($fields)
+    //                     ->join('usuarios', 'usuarios.id', '=', 'projects.usuario_id')
+    //                     ->where('projects.usuario_id', $id)
+    //                     ->execute();
+    //     } catch (Exception $e) {
+    //         throw new Exception('Erro ao selecionar projetos: ' . $e->getMessage());
+    //     }
+    // }
     public static function selectProjectByUserId(int $id, array $fields = []): array|Exception {
         try {
-            $fields = array_map(fn($field) => "projects.$field", $fields);
-            return self::select($fields)
-                        ->join('usuarios', 'usuarios.id', '=', 'projects.usuario_id')
-                        ->where('projects.usuario_id', $id)
+            return self::select($fields ?: '*')
+                        ->where('usuario_id', $id)
                         ->execute();
         } catch (Exception $e) {
             throw new Exception('Erro ao selecionar projetos: ' . $e->getMessage());
         }
     }
+    
 
     /**
      * Atualiza um projeto com os dados fornecidos.
