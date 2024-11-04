@@ -158,3 +158,27 @@ body{
 .apertado{
     color: rgb(143, 14, 14);
 }
+/***************/
+.projectItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 16px;
+    height: 272px;
+    width: 395px;
+    border-radius: 20px;
+}
+
+.projectFoto{
+    height: 216px !important;
+    width: 395px !important;
+    margin-bottom: 16px;
+    border-radius: 20px;
+    background-color: #151C25;
+}
+
+.projectFoto img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

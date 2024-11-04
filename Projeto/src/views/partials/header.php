@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <title>Gamyx</title>
     <link rel="icon" href="<?=$base?>/static/img/favicon.ico" type="image/x-icon">
 
     <meta charset="UTF-8">
@@ -19,4 +17,3 @@
     
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-</head>
