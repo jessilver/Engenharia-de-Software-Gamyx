@@ -39,3 +39,4 @@ $router->post('/editProject', 'viewProjectController@edit');
 
 $router->get('/novoProjeto', 'CadastrarProjeto@index');
 $router->post('/novoProjeto', 'CadastrarProjeto@cadastrarProjetoAction');
+$router->post('/search/{filter}/{data}', 'SearchProjectController@apiSearch');
