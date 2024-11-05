@@ -16,11 +16,25 @@ class viewProfileController extends Controller
 
         $usuario = Usuario::selectUser($usuarioId);
         $projects = Project::selectProjectByUserId($usuarioId);
-    
+
+        $friends = Usuario::select()
+                        ->join('friends', function($join) use ($usuario) {
+                            $join->on('friends.friend_1', '=', 'usuarios.id')
+                                 ->orOn('friends.friend_2', '=', 'usuarios.id');
+                        })
+                        ->where(function($query) use ($usuario) {
+                            $query->where('friends.friend_1', '=', $usuario['id'])
+                                  ->orWhere('friends.friend_2', '=', $usuario['id']);
+                        })
+                        ->execute();
+
+        // Filter out the logged-in user from the friends list
+        
         $context = [
             'user' => $usuario,
             'HashUserId' => Model::encryptData($usuarioId),
-            'projects' => $projects
+            'projects' => $projects,
+            'friends' => $friends
         ];
     
         $this->render('viewProfile', $context);
@@ -58,9 +72,36 @@ class viewProfileController extends Controller
                 // Busca o usuário no banco de dados
                 $usuario = Usuario::select()->where('nomeUsuario', $usuarioPesquisado)->execute();
                 if (!empty($usuario)) {
-                    $projects = Project::selectProjectByUserId($usuario[0]['id']);
+
+                    $projects = Project::select()
+                        ->join('usuarios', 'usuarios.id', '=', 'projects.usuario_id')
+                        ->where('projects.usuario_id', $usuario[0]['id'])
+                        ->execute();
+
+                    $friends = Usuario::select()
+                        ->join('friends', function($join) use ($usuario) {
+                            $join->on('friends.friend_1', '=', 'usuarios.id')
+                                 ->orOn('friends.friend_2', '=', 'usuarios.id');
+                        })
+                        ->where(function($query) use ($usuario) {
+                            $query->where('friends.friend_1', '=', $usuario[0]['id'])
+                                  ->orWhere('friends.friend_2', '=', $usuario[0]['id']);
+                        })
+                        ->execute();
+                        
+                    $isFriend = false;
+                    foreach ($friends as $friend) {
+                        if ($friend['friend_1'] == $_SESSION['userLogado']['id'] || $friend['friend_2'] == $_SESSION['userLogado']['id']) {
+                            $isFriend = true;
+                            break;
+                        }
+                    }
+                    $context['isFriend'] = $isFriend;
+
                     $context = [
                         'user' => $usuario[0], //O [0] é porque a pesquisa retorna um array de usuarios, queremos somente o primeiro encontrado
+                        'friends' => $friends,
+                        'isFriend' => $isFriend,
                         'projects' => $projects
                     ];
                     $this->render('othersProfile', $context);

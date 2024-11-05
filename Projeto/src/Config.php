@@ -40,6 +40,16 @@ class Config {
             FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
         "
     ];
+    const TB_FRIENDS = [
+        'name' => 'Friends',
+        'culloms' => "
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            friend_1 INT NOT NULL,
+            friend_2 INT NOT NULL,
+            FOREIGN KEY (friend_1) REFERENCES usuarios(id) ON DELETE CASCADE,
+            FOREIGN KEY (friend_2) REFERENCES usuarios(id) ON DELETE CASCADE
+        "
+    ];
     const TB_REVIEWS = [
         'name' => 'Reviews',
         'culloms' => "
