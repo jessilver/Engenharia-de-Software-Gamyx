@@ -97,6 +97,7 @@ class viewProfileController extends Controller
                         }
                     }
                     $context['isFriend'] = $isFriend;
+
                     $context = [
                         'user' => $usuario[0], //O [0] é porque a pesquisa retorna um array de usuarios, queremos somente o primeiro encontrado
                         'friends' => $friends,
