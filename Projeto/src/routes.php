@@ -35,3 +35,7 @@ $router->post('/deleteFriend', 'friendController@deleteFriend');
 
 $router->get('/novoProjeto', 'CadastrarProjeto@index');
 $router->post('/novoProjeto', 'CadastrarProjeto@cadastrarProjetoAction');
+
+// API
+
+$router->get('/api/friends/{id}', 'friendController@api');
