@@ -42,15 +42,17 @@
                         <button class="btn-editar" data-bs-toggle="modal" data-bs-target="#editProjectModal">
                             <i class="fa-solid fa-pen"></i>
                         </button>
-                        <form action="<?= $base ?>/deleteProject" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este projeto?');">
-                            <input type="hidden" id="projetoId" name="projetoId" value="<?php echo $projetoId; ?>" />
-                            <button type="submit" class="btn-excluir">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </form>
-                    </div>
-                <?php endif; ?>
-            </div>
+
+                        <form action="<?=$base?>/deleteProject" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este projeto?');">
+                        <input type="hidden" name="projectId" value="<?php echo $project['id'] ?>" />
+                        <input type="hidden" name="userId" value="<?php echo $usuario['id'] ?>" />
+                        <button type="submit" class="btn-excluir">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </form>
+                </div>
+            <?php endif; ?>
+            </div> 
             <!-- Botões  -->
 
             <div class="imageContainer">
@@ -69,6 +71,28 @@
             <div class="projectRepContainer rounded my-3">
                 <a href="<?php echo $project['linkDownload']; ?>"><?php echo $project['linkDownload']; ?></a>
             </div>
+
+<!-- Avaliações  -->
+<form action="<?=$base?>/projeto/review" method="POST">
+    <input type="hidden" name="projectId" value="<?php echo $project['id']; ?>">
+    <div class="rating">
+        <?php 
+        // Recupera a nota da sessão, se existir
+        $nota = isset($_SESSION['nota']) ? $_SESSION['nota'] : null;
+
+        for ($i = 1; $i <= 5; $i++): ?>
+            <button type="submit" name="nota" value="<?php echo $i; ?>" class="star <?php echo ($nota && $nota >= $i) ? 'selected' : ''; ?>">
+                &#9733; <!-- Unicode para estrela -->
+            </button>
+        <?php endfor; ?>
+    </div>
+</form>
+
+<?php if (isset($_SESSION['message'])): ?>
+    <p><?php echo $_SESSION['message']; unset($_SESSION['message']); unset($_SESSION['nota']); ?></p> <!-- Limpa a mensagem e a nota da sessão -->
+<?php endif; ?>
+
+
         </main>
         <section class="creatorCardContainer rounded">
             <a href="<?=$base?>/perfil" class="text-white text-decoration-none">
