@@ -37,12 +37,11 @@
                             <img src="<?= $base ?>/static/img/capasProjetos/<?= $fotoCapa ?>" alt="Banner do projeto" class="projectImage rounded"/>
                             <!-- **  -->
                             <div class="projectDescription py-2 d-flex gap-3">
-                                <img src="<?php
-                                    $caminho = "$base/static/img/perfil/imagem-perfil-" . $usuarioDono['nomeUsuario'] . ".jpg";
-                                    // var_dump($caminho);
-                                    echo !file_exists($caminho)
-                                        ? $caminho
-                                        : "$base/static/img/sem-imagem.png"; ?>"
+                                <img src="
+                                    <?php
+                                        $caminho = "__DIR__ . '/../../public/static/img/perfil/imagem-perfil-" . $usuarioDono['nomeUsuario'] . ".jpg";
+                                        echo file_exists($caminho)? $caminho : "$base/static/img/sem-imagem.png"; 
+                                    ?>"
                                     alt="Imagem de perfil do usuário <?php echo $usuarioDono['nomeUsuario']; ?>" 
                                     class="ownerProfile"
                                 />

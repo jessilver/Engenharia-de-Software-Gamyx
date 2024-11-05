@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="<?= $base ?>/static/css/viewProject.css" />
 <title><?php echo $project['nomeProjeto'] ?> | Gamyx</title>
 
-   
+
 </head>
 <!-- Requisição para recuperar dados do usuário pela API -->
 <?php
@@ -29,6 +29,7 @@
         $usuario = $usuarioData[0];
     }
 ?>
+
 <body>
 
     <?php include __DIR__ . '/../partials/menu.php'; ?>
@@ -43,16 +44,16 @@
                             <i class="fa-solid fa-pen"></i>
                         </button>
 
-                        <form action="<?=$base?>/deleteProject" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este projeto?');">
-                        <input type="hidden" name="projectId" value="<?php echo $project['id'] ?>" />
-                        <input type="hidden" name="userId" value="<?php echo $usuario['id'] ?>" />
-                        <button type="submit" class="btn-excluir">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                    </form>
-                </div>
-            <?php endif; ?>
-            </div> 
+                        <form action="<?= $base ?>/deleteProject" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este projeto?');">
+                            <input type="hidden" name="projectId" value="<?php echo $project['id'] ?>" />
+                            <input type="hidden" name="userId" value="<?php echo $usuario['id'] ?>" />
+                            <button type="submit" class="btn-excluir">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </form>
+                    </div>
+                <?php endif; ?>
+            </div>
             <!-- Botões  -->
 
             <div class="imageContainer">
@@ -72,37 +73,39 @@
                 <a href="<?php echo $project['linkDownload']; ?>"><?php echo $project['linkDownload']; ?></a>
             </div>
 
-<!-- Avaliações  -->
-<form action="<?=$base?>/projeto/review" method="POST">
-    <input type="hidden" name="projectId" value="<?php echo $project['id']; ?>">
-    <div class="rating">
-        <?php 
-        // Recupera a nota da sessão, se existir
-        $nota = isset($_SESSION['nota']) ? $_SESSION['nota'] : null;
+            <!-- Avaliações  -->
+            <form action="<?= $base ?>/projeto/review" method="POST">
+                <input type="hidden" name="projectId" value="<?php echo $project['id']; ?>">
+                <div class="rating">
+                    <?php
+                    // Recupera a nota da sessão, se existir
+                    $nota = isset($_SESSION['nota']) ? $_SESSION['nota'] : null;
 
-        for ($i = 1; $i <= 5; $i++): ?>
-            <button type="submit" name="nota" value="<?php echo $i; ?>" class="star <?php echo ($nota && $nota >= $i) ? 'selected' : ''; ?>">
-                &#9733; <!-- Unicode para estrela -->
-            </button>
-        <?php endfor; ?>
-    </div>
-</form>
+                    for ($i = 1; $i <= 5; $i++): ?>
+                        <button type="submit" name="nota" value="<?php echo $i; ?>" class="star <?php echo ($nota && $nota >= $i) ? 'selected' : ''; ?>">
+                            &#9733; <!-- Unicode para estrela -->
+                        </button>
+                    <?php endfor; ?>
+                </div>
+            </form>
 
-<?php if (isset($_SESSION['message'])): ?>
-    <p><?php echo $_SESSION['message']; unset($_SESSION['message']); unset($_SESSION['nota']); ?></p> <!-- Limpa a mensagem e a nota da sessão -->
-<?php endif; ?>
+            <?php if (isset($_SESSION['message'])): ?>
+                <p><?php echo $_SESSION['message'];
+                    unset($_SESSION['message']);
+                    unset($_SESSION['nota']); ?></p> <!-- Limpa a mensagem e a nota da sessão -->
+            <?php endif; ?>
 
 
         </main>
         <section class="creatorCardContainer rounded">
-            <a href="<?=$base?>/perfil" class="text-white text-decoration-none">
+            <a href="<?= $base ?>/perfil" class="text-white text-decoration-none">
                 <div class="creatorCardInfo">
                     <div>
                         <div class="profileImageContainer">
                             <img src="<?php
-                                $caminho = "$base/static/img/perfil/imagem-perfil-" . $usuario['nomeUsuario'] . ".jpg";
-                                echo !file_exists($caminho) ? $caminho : "$base/static/img/sem-imagem.png"; ?>"
-                                alt="Imagem de perfil do usuário <?php echo $usuario['nomeUsuario']; ?>" class="profileImage" />
+                                        $caminho = "$base/static/img/perfil/imagem-perfil-" . $usuario['nomeUsuario'] . ".jpg";
+                                        echo !file_exists($caminho) ? $caminho : "$base/static/img/sem-imagem.png"; ?>"
+                                alt="" class="profileImage" />
                         </div>
                         <h4><?php echo $usuario['nomeUsuario'] ?></h4>
                         <p><?php echo $usuario['arroba'] ?></p>
@@ -118,31 +121,6 @@
             </a>
         </section>
     </div>
-
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Launch demo modal
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     <!-- Modal -->
     <div class="modal fade" id="editProjectModal" tabindex="-1" role="dialog" aria-labelledby="editProjectModalTitle" aria-hidden="true">
