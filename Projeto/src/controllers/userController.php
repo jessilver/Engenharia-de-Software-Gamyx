@@ -60,6 +60,7 @@ class UserController extends Controller {
                     exit;
                 } else {
                     echo "Credenciais inválidas.";
+                    $this->redirect('/login');
                 }
             } else {
                 echo "Por favor, preencha todos os campos.";
