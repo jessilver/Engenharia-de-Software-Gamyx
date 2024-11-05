@@ -91,7 +91,7 @@
                     <div class="collapse" id="collapseExample">
                             <form action="<?=$base?>/search" method="POST" class="userSearchForm" style="flex-direction: row;">
                            
-                                <select class="form-select" aria-label="Default select example">
+                                <select class="form-select" name="filterProject">
                                     <option value="nomeProjeto">Nome</option>
                                     <option value="sistemasOperacionais">Sistema Operacional</option>
                                 </select>
