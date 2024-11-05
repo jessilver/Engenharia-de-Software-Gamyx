@@ -3,7 +3,6 @@ namespace src\controllers;
 
 use core\Controller;
 use src\models\Usuario;
-use core\Model;
 
 class DeleteUsuarioController extends Controller {
     public function delete() {
