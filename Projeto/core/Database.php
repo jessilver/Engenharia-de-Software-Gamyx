@@ -15,6 +15,8 @@ class Database {
 
             self::checkTable(Config::TB_USER['name'],Config::TB_USER['culloms']);
             self::checkTable(Config::TB_PROJECT['name'],Config::TB_PROJECT['culloms']);
+            self::checkTable(Config::TB_REVIEWS['name'], Config::TB_REVIEWS['culloms']);
+
 
             if (!Usuario::select()->where('id', 1)->execute() && !Usuario::select()->where('id', 2)->execute()){
                 Usuario::insert([[
