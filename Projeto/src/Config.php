@@ -40,4 +40,16 @@ class Config {
             FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
         "
     ];
+    const TB_REVIEWS = [
+        'name' => 'Reviews',
+        'culloms' => "
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            usuario_id INT NOT NULL,
+            projeto_id INT NOT NULL,
+            nota TINYINT NOT NULL CHECK (nota BETWEEN 1 AND 5),
+            FOREIGN KEY (usuario_id) REFERENCES Usuarios(id) ON DELETE CASCADE,
+            FOREIGN KEY (projeto_id) REFERENCES Projects(id) ON DELETE CASCADE,
+            UNIQUE (usuario_id, projeto_id) -- Impede que um usuário avalie o mesmo projeto mais de uma vez
+        "
+    ];
 }

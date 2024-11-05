@@ -53,6 +53,28 @@
             <div class="projectRepContainer rounded my-3">
                 <a href="<?php echo $project['linkDownload']; ?>"><?php echo $project['linkDownload']; ?></a>
             </div>
+
+<!-- Avaliações  -->
+<form action="<?=$base?>/projeto/review" method="POST">
+    <input type="hidden" name="projectId" value="<?php echo $project['id']; ?>">
+    <div class="rating">
+        <?php 
+        // Recupera a nota da sessão, se existir
+        $nota = isset($_SESSION['nota']) ? $_SESSION['nota'] : null;
+
+        for ($i = 1; $i <= 5; $i++): ?>
+            <button type="submit" name="nota" value="<?php echo $i; ?>" class="star <?php echo ($nota && $nota >= $i) ? 'selected' : ''; ?>">
+                &#9733; <!-- Unicode para estrela -->
+            </button>
+        <?php endfor; ?>
+    </div>
+</form>
+
+<?php if (isset($_SESSION['message'])): ?>
+    <p><?php echo $_SESSION['message']; unset($_SESSION['message']); unset($_SESSION['nota']); ?></p> <!-- Limpa a mensagem e a nota da sessão -->
+<?php endif; ?>
+
+
         </main>
         <section class="creatorCardContainer rounded">
             <div class="creatorCardInfo">

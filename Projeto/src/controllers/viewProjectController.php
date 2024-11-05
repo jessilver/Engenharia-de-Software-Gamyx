@@ -106,7 +106,6 @@ class viewProjectController extends Controller {
 
     public function delete() {
 
-        // Verifica se o método de requisição é POST e se o usuário está logado
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['userLogado']['id'])) {
             $userId = $_SESSION['userLogado']['id'];
             $projectId = $_POST['projectId']; // Recebe o ID do projeto a partir do formulário

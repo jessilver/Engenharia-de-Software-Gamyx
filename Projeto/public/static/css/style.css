@@ -64,4 +64,23 @@
     background-color: #26A641 !important;
 }
 
+.rating {
+    display: inline-block;
+}
 
+.star {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2em;
+    color: gray; /* Cor padrão das estrelas */
+    transition: color 0.2s;
+}
+
+.star.hover {
+    color: gold; /* Cor das estrelas ao passar o mouse */
+}
+
+.star.selected {
+    color: gold; /* Cor das estrelas quando selecionadas */
+}
