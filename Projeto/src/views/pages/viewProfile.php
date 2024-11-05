@@ -75,8 +75,26 @@
         <hr class="userHr">
         <div class="userProfileProjects">
             <div class="projectsSearch">
-                <h1 class="h1AUser my-3">Meus projetos</h1>
-                <i class="fa-solid fa-magnifying-glass" style="margin-left: 20px;color: white; font-size: 15px;"></i>
+                
+                
+                <div class="colapse" style="display: flex; flex-direction: column;">
+                    <div class="pesquisaHeader" style="flex-direction: row;">
+                        <p class="d-inline-flex ">
+                        <h1 class="h1AUser my-3 d-inline-flex">Meus projetos</h1>
+                        
+                        <a class="" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <i class="fa-solid fa-magnifying-glass" style="margin-left: 20px;color: white; font-size: 15px;"></i>
+                        </a>
+                    </div>
+                    
+                    </p>
+                    <div class="collapse" id="collapseExample">
+                            <form action="<?=$base?>/perfil" method="POST" class="userSearchForm">
+                                <input type="text" placeholder="Pesquisar projeto" class="userSearchInput" name="projectSearchInput"/> 
+                                <button type="submit" class="userSearchSubmit">Buscar</button>
+                            </form>
+                    </div>
+                </div>
             </div>
         <!-- Projetos do usuário -->
             <div class="lista-cards-projeto" style="width: 100%; display: flex; gap: 60px;">
