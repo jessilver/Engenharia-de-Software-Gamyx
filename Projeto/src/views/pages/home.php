@@ -31,7 +31,7 @@
                     $linkProjeto = $projeto['id'];
                     ?>
 
-                    <div class="projectCard col">
+                    <div class="projectCard col col-lg-4">
                         <a href="<?= $base ?>/projeto/<?= $linkProjeto ?>" class="text-white text-decoration-none">
                             <!-- Placeholder  -->
                             <img src="<?= $base ?>/static/img/tetris.png" alt="Banner do projeto" class="projectImage rounded"/>
