@@ -59,18 +59,26 @@
                         
                             <?php if (!$isFriend): ?>
 
-                                <form action="<?=$base?>/add-friend" method="post">
-                                    <input type="hidden" name="friendId" value="<?php echo $user['id'] ?>"/>
-                                    <input type="hidden" name="userId" value="<?php echo $_SESSION['userLogado']['id'] ?>"/>
-                                    <button type="submit" class="btn btn-primary">Add Friend</button>
-                                </form>
+                                <?php if ($_SESSION['userLogado']['id'] == $user['id']): ?>
+                                    
+                                <?php else: ?>
+                                    <form action="<?=$base?>/add-friend" method="post">
+                                        <input type="hidden" name="friendId" value="<?php echo $user['id'] ?>"/>
+                                        <input type="hidden" name="userId" value="<?php echo $_SESSION['userLogado']['id'] ?>"/>
+                                        <button type="submit" class="btn btn-primary">Add Friend</button>
+                                    </form>
+                                <?php endif; ?>
 
                             <?php else: ?>
-                                <form action="<?=$base?>/deleteFriend" method="post">
-                                    <input type="hidden" name="friendId" value="<?php echo $user['id'] ?>"/>
-                                    <input type="hidden" name="userId" value="<?php echo $_SESSION['userLogado']['id'] ?>"/>
-                                    <button type="submit" class="btn btn-primary">Delete Friend</button>
-                                </form>
+                                <?php if ($_SESSION['userLogado']['id'] == $user['id']): ?>
+                                    
+                                <?php else: ?>
+                                    <form action="<?=$base?>/deleteFriend" method="post">
+                                        <input type="hidden" name="friendId" value="<?php echo $user['id'] ?>"/>
+                                        <input type="hidden" name="userId" value="<?php echo $_SESSION['userLogado']['id'] ?>"/>
+                                        <button type="submit" class="btn btn-primary">Delete Friend</button>
+                                    </form>
+                                <?php endif; ?>
                             <?php endif; ?>
                     </div>
                 </div>

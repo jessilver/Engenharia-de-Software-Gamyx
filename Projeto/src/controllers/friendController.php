@@ -42,4 +42,22 @@ class friendController extends Controller {
         exit;
     }
 
+    public function api($id){
+        $friends = Friend::select()
+                        ->where('friend_1', $id['id'])
+                        ->orWhere('friend_2', $id['id'])
+                        ->execute();
+
+        $users = [];
+        foreach($friends as $friend){
+            if($friend['friend_1'] == $id['id']){
+                $users[] = Usuario::selectUser($friend['friend_2']);
+            } else {
+                $users[] = Usuario::selectUser($friend['friend_1']);
+            }
+        }
+
+        echo json_encode($users);
+    }
+
 }
