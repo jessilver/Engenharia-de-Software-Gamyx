@@ -55,7 +55,7 @@ class UserController extends Controller {
                     ->first();
 
                 if ($usuario && password_verify($senha, $usuario['senha'])) {
-                    $_SESSION['userLogado']['id'] = $usuario['id'];
+                    $_SESSION['userLogado']['id'] = $usuario['id']; 
                     $this->redirect('/perfil');
                     exit;
                 } else {
