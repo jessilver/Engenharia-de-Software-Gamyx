@@ -29,3 +29,6 @@ $router->post('/projeto/review', 'reviewsController@review');
 
 
 $router->post('/editProject', 'viewProjectController@edit');
+
+$router->get('/novoProjeto', 'CadastrarProjeto@index');
+$router->post('/novoProjeto', 'CadastrarProjeto@cadastrarProjetoAction');

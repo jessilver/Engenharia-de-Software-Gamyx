@@ -13,7 +13,7 @@ class UserController extends Controller {
     public function cadastroUsuarioAction(){
         $email = filter_input(INPUT_POST, "email");
         $nomeUsuario = filter_input(INPUT_POST, "nomeUsuario");
-        $senha = filter_input(INPUT_POST, "password");
+        $senha = password_hash(filter_input(INPUT_POST, "password"), PASSWORD_DEFAULT); 
         $portfolioUser = filter_input(INPUT_POST, "portfolioUser");
         $uniqueName = "@".$nomeUsuario;
 
@@ -55,7 +55,7 @@ class UserController extends Controller {
                     ->first();
 
                 if ($usuario && password_verify($senha, $usuario['senha'])) {
-                    $_SESSION['userLogado']['id'] = $usuario['id'];
+                    $_SESSION['userLogado']['id'] = $usuario['id']; 
                     $this->redirect('/perfil');
                     exit;
                 } else {

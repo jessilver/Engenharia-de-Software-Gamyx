@@ -65,7 +65,7 @@
                         </h1>
                         <div class="profileButtons">
                             <button type="button" class="btn editProfile" data-bs-toggle="modal" data-bs-target="#editProfileModal"><h1 class="h1AUser">Edit Profile</h1></button>
-                            <button type="button" class="btn viewProjects" onclick="window.location.href='cadastrarProjeto.php';"><h1 class="h1AUser">New Project</h1></button>
+                            <button type="button" class="btn viewProjects" onclick="window.location.href='<?= $base ?>/novoProjeto';"><h1 class="h1AUser">New Project</h1></button>
                         </div>
                         
                     </div>
