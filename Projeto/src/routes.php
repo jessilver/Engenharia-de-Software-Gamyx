@@ -36,3 +36,5 @@ $router->get('/cadastrarUsuario', 'UserController@cadastroUsuario');
 $router->post('/cadastrarUsuario', 'UserController@cadastroUsuarioAction');
 
 $router->post('/editProject', 'viewProjectController@edit');
+
+$router->get('/novoProjeto', 'CadastrarProjeto@index');
