@@ -34,6 +34,12 @@ class SearchProjectController extends Controller {
             echo json_encode($projetos); // Retorna os projetos encontrados
         }
     }
+
+    public function apiAllProjects($id){
+
+        
+
+    }
     
     
 }

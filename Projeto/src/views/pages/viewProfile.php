@@ -89,7 +89,12 @@
                     
                     </p>
                     <div class="collapse" id="collapseExample">
-                            <form action="<?=$base?>/perfil" method="POST" class="userSearchForm">
+                            <form action="<?=$base?>/search" method="POST" class="userSearchForm" style="flex-direction: row;">
+                           
+                                <select class="form-select" aria-label="Default select example">
+                                    <option value="nomeProjeto">Nome</option>
+                                    <option value="sistemasOperacionais">Sistema Operacional</option>
+                                </select>
                                 <input type="text" placeholder="Pesquisar projeto" class="userSearchInput" name="projectSearchInput"/> 
                                 <button type="submit" class="userSearchSubmit">Buscar</button>
                             </form>
