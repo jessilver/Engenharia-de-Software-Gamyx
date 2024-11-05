@@ -4,13 +4,14 @@ namespace src\models;
 use \core\Model;
 
 class Review extends Model {
-    public static function addReviews(int $usuarioId, int $projetoId, int $nota): bool {
-        // Tente executar a inserção e retorne verdadeiro ou falso
+    public static function addReviews(int $usuarioId, int $projetoId, int $nota, string $uniqueName): bool {
+        // Inclui o uniqueName ao registrar a avaliação
         return self::insert([
             'usuario_id' => $usuarioId,
             'projeto_id' => $projetoId,
-            'nota' => $nota
-        ])->execute() !== false; // Verifica se a execução retornou falso
+            'nota' => $nota,
+            'uniqueName' => $uniqueName // Adiciona o uniqueName na inserção
+        ])->execute() !== false;
     }
 
     public static function getMediaReviews(int $projetoId): float {
@@ -20,13 +21,11 @@ class Review extends Model {
     }
 
     public static function getReviewsUsuario(int $usuarioId, int $projetoId): ?array {
-        // Execute a consulta para obter a avaliação
         $result = self::select(['nota'])
             ->where('usuario_id', $usuarioId)
             ->where('projeto_id', $projetoId)
             ->first();
     
-        // Se o resultado for falso (sem registros), retorna null
         return $result ?: null; 
     }
 
@@ -34,6 +33,6 @@ class Review extends Model {
         return self::update(['nota' => $nota])
             ->where('usuario_id', $usuarioId)
             ->where('projeto_id', $projetoId)
-            ->execute() !== false; // Retorna true ou false
+            ->execute() !== false;
     }
 }

@@ -6,7 +6,7 @@ use \src\models\Usuario;
 use \src\models\Project;
 use \src\Config;
 
-class viewProjectController extends Controller {
+class ViewProjectController extends Controller {
 
     public function index($id) {
         // Obtém o ID do projeto da URL

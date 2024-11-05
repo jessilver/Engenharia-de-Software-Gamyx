@@ -7,7 +7,7 @@ use \core\Controller;
 use \src\models\Usuario;
 use \src\models\Project;
 
-class viewProfileController extends Controller
+class ViewProfileController extends Controller
 {
 
     public function index() {
