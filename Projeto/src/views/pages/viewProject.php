@@ -8,7 +8,7 @@
 <!-- Requisição para recuperar dados do usuário pela API -->
 <?php
     $usuarioId = $project['usuario_id'];
-    $apiUrl = "http://localhost/Engenharia-de-Software-Gamyx/Projeto/public/api/{$usuarioId}?acao=buscar-usuario";
+    $apiUrl = "http://localhost/Engenharia-de-Software-Gamyx/Projeto/public/api/busca-usuario/{$usuarioId}?acao=buscar-usuario";
     // Inicializa uma sessão cURL
     $ch = curl_init($apiUrl);
     // Configura opções para a requisição

@@ -37,7 +37,7 @@
 
                                     echo $link;
                                 ?>
-                            alt="Imagem de perfil do usuário <?= $user['nomeUsuario']; ?>"
+                            alt=""
                             class="profileImage"
                         />
                     </div>
@@ -109,6 +109,29 @@
                 <i class="fa-solid fa-magnifying-glass" style="margin-left: 20px;color: white; font-size: 15px;"></i>
             </div>
             <div class="amigosList">
+                <?php if (count($friends) > 0) : ?>
+                    <?php foreach ($friends as $friend) : ?>
+                        <?php 
+                            $nomeUsuario = $friend['nomeUsuario'] ?? 'Nome não disponível';
+                            $id = $friend['id'];
+                        ?>
+                        <?php if ($user['nomeUsuario'] != $nomeUsuario): ?>
+                        <div class='amigosItem'>  
+                            <form action="<?=$base?>/perfil" method="post"> 
+                                <input type="hidden" name="search_query" value="<?=$nomeUsuario?>">
+                                <button class="btn" type="submit" style="background:none;border:none;padding:0;margin:0;color:inherit;text-align:center;box-shadow:none;">
+                                    <div class='amigosFoto'>
+                                        <img src='<?=$base?>/static/img/' alt='<?= $nomeUsuario ?>'> 
+                                    </div>
+                                    <h1 class='h1AUser' style='margin-bottom: 16px;'><?= $nomeUsuario ?></h1>
+                                </button>
+                            </form> 
+                        </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <p>Nenhum amigo encontrado.</p>
+                <?php endif; ?>
             </div>
         </div>
         <hr class="userHr">

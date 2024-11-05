@@ -7,6 +7,7 @@
 
 <body>
     <?php include __DIR__ . '/../partials/menu.php'; ?>
+
     <div class="visualizeProfilesScreen">
         <form action="<?= $base ?>/perfil" method="POST" class="userSearchForm">
             <input type="text" placeholder="Procurar usuário" class="userSearchInput" name="search_query" />
@@ -40,20 +41,46 @@
                     <p class="userAbout">
                         <?php echo $user['about'] ?>
                     </p>
-                    <h1 class="h1AUser">
-                        <i class="fa-regular fa-folder"></i>
-                        <?php
+                    <div class="profileInfoIcons">
+                        <i class="fa-regular fa-folder"></i><span>
+                          <?php
+                            $projectsCount = $projects ? count($projects) : 0;
+                            echo $projectsCount;
+                          ?> 
+                           projetos • 
+                        </span>
+                        <i class="fa-solid fa-heart" id="heartIcon"></i><span id="spanHeartIcon">
+                          <?php
                             $projectsCount = $projects ? count($projects) : 0;
                             echo $projectsCount;
                         ?>
-                        projects -
-                        <i class="fa-solid fa-heart" id="heartIcon"></i>
-                        <?php
-                            $projectsCount = $projects ? count($projects) : 0;
-                            echo $projectsCount;
-                        ?>
-                        likes
-                    </h1>
+                           Likes
+                        </span>
+                        
+                            <?php if (!$isFriend): ?>
+
+                                <?php if ($_SESSION['userLogado']['id'] == $user['id']): ?>
+                                    
+                                <?php else: ?>
+                                    <form action="<?=$base?>/add-friend" method="post">
+                                        <input type="hidden" name="friendId" value="<?php echo $user['id'] ?>"/>
+                                        <input type="hidden" name="userId" value="<?php echo $_SESSION['userLogado']['id'] ?>"/>
+                                        <button type="submit" class="btn btn-primary">Add Friend</button>
+                                    </form>
+                                <?php endif; ?>
+
+                            <?php else: ?>
+                                <?php if ($_SESSION['userLogado']['id'] == $user['id']): ?>
+                                    
+                                <?php else: ?>
+                                    <form action="<?=$base?>/deleteFriend" method="post">
+                                        <input type="hidden" name="friendId" value="<?php echo $user['id'] ?>"/>
+                                        <input type="hidden" name="userId" value="<?php echo $_SESSION['userLogado']['id'] ?>"/>
+                                        <button type="submit" class="btn btn-primary">Delete Friend</button>
+                                    </form>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                    </div>
                 </div>
             </section>
             <hr class="bar" />
@@ -90,7 +117,29 @@
                 <h1 class="h1AUser">Amigos</h1>
             </div>
             <div class="amigosList">
-
+                <?php if (count($friends) > 0) : ?>
+                    <?php foreach ($friends as $friend) : ?>
+                        <?php 
+                            $nomeUsuario = $friend['nomeUsuario'] ?? 'Nome não disponível';
+                            $id = $friend['id'];
+                        ?>
+                        <?php if ($user['nomeUsuario'] != $nomeUsuario): ?>
+                        <div class='amigosItem'>  
+                            <form action="<?=$base?>/perfil" method="post"> 
+                                <input type="hidden" name="search_query" value="<?=$nomeUsuario?>">
+                                <button class="btn" type="submit" style="background:none;border:none;padding:0;margin:0;color:inherit;text-align:center;box-shadow:none;">
+                                    <div class='amigosFoto'>
+                                        <img src='<?=$base?>/static/img/' alt='<?= $nomeUsuario ?>'> 
+                                    </div>
+                                    <h1 class='h1AUser' style='margin-bottom: 16px;'><?= $nomeUsuario ?></h1>
+                                </button>
+                            </form> 
+                        </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <p>Nenhum amigo encontrado.</p>
+                <?php endif; ?>
             </div>
         </div>
     </div>

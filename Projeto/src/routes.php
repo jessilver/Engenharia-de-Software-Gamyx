@@ -28,8 +28,12 @@ $router->post('/cadastrarUsuario', 'UserController@cadastroUsuarioAction');
 
 $router->post('/editProject', 'viewProjectController@edit');
 
+$router->post('/add-friend', 'friendController@addFriend');
+$router->post('/deleteFriend', 'friendController@deleteFriend');
+
 $router->get('/novoProjeto', 'CadastrarProjeto@index');
 $router->post('/novoProjeto', 'CadastrarProjeto@cadastrarProjetoAction');
 
 // Rota API
-$router->get('/api/{id}', 'apiBuscaUsuarioController@index');
+$router->get('/api/busca-usuario/{id}', 'apiBuscaUsuarioController@index');
+$router->get('/api/friends/{id}', 'friendController@api');
