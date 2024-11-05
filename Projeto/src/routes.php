@@ -38,3 +38,4 @@ $router->post('/cadastrarUsuario', 'UserController@cadastroUsuarioAction');
 $router->post('/editProject', 'viewProjectController@edit');
 
 $router->get('/novoProjeto', 'CadastrarProjeto@index');
+$router->post('/novoProjeto', 'CadastrarProjeto@cadastrarProjetoAction');

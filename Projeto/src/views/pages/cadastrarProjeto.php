@@ -16,7 +16,7 @@
             <h2 class="text-body-secondary">Cadastrar Novo Projeto</h2>
         </div>
 
-        <form action="../views/backendCadastrarProjeto.php" method="POST" id="formCadastrarProjeto" enctype="multipart/form-data">
+        <form action="" method="POST" id="formCadastrarProjeto" enctype="multipart/form-data">
 
             <div class="mb-3 mt-3">
                 <label for="nomeProjeto" class="form-label">Nome do projeto:</label>
