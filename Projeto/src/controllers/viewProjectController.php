@@ -26,7 +26,7 @@ class viewProjectController extends Controller {
             // Prepara os dados para a view
             $context = [
                 'project' => $project,
-                'usuario' => !empty($usuario) ? $usuario : null // Verifica se o usuário foi encontrado
+                // 'usuario' => !empty($usuario) ? $usuario : null // Verifica se o usuário foi encontrado
             ];
 
             // Renderiza a view com os dados

@@ -99,7 +99,7 @@ body{
     font-size: 24px;
 }
 .projectsContainer{
-    background-color: var(--cor-fundo-projetos);
+    /* background-color: var(--cor-fundo-projetos); */
     min-height: 250px;
 }
 /* Amigos */

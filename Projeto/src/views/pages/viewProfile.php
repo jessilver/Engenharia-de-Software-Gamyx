@@ -37,7 +37,7 @@
 
                                     echo $link;
                                 ?>
-                            alt="Imagem de perfil do usuário <?= $user['nomeUsuario']; ?>"
+                            alt=""
                             class="profileImage"
                         />
                     </div>

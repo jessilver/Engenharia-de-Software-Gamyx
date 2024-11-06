@@ -65,7 +65,7 @@ class viewProfileController extends Controller
         // $this->redirect('/');
     }
 
-    public function other($id) {
+    public function other() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (!empty($_POST['search_query'])) {
                 $usuarioPesquisado = $_POST['search_query'];

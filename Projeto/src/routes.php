@@ -19,14 +19,12 @@ $router->post('/perfil/edit/{id}', 'viewProfileController@edit');
 $router->post('/perfil/logout', 'viewProfileController@logout');
 $router->post('/perfil/delete/{id}', 'viewProfileController@delete');
 
-$router->get('/perfil/{id}', 'viewProfileController@other');
+// $router->get('/perfil/{id}', 'viewProfileController@other');
 $router->get('/login','userController@login');
 $router->get('/sobre/{nome}', 'HomeController@sobreP');
 $router->get('/sobre', 'HomeController@sobre');
 $router->get('/cadastrarUsuario', 'UserController@cadastroUsuario');
 $router->post('/cadastrarUsuario', 'UserController@cadastroUsuarioAction');
-$router->post('/projeto/review', 'reviewsController@review');
-
 
 $router->post('/editProject', 'viewProjectController@edit');
 
@@ -39,6 +37,6 @@ $router->post('/search', 'SearchProjectController@searchProjectAction');
 $router->get('/user/{id}/projetos', 'ProjectController@getAllProjects');
 
 
-// API
-
+// Rota API
+$router->get('/api/busca-usuario/{id}', 'apiBuscaUsuarioController@index');
 $router->get('/api/friends/{id}', 'friendController@api');
