@@ -11,7 +11,6 @@ class CadastrarProjeto extends Controller {
     }
 
     public function cadastrarProjetoAction(){
-        // Obtém o usuário logado diretamente do banco pelo ID (ou outro identificador, se necessário)
         $usuarioLogado = Usuario::select()->where('id', $_SESSION['userLogado']['id'])->first();
 
         if (!$usuarioLogado) {
@@ -29,25 +28,21 @@ class CadastrarProjeto extends Controller {
         if (isset($_POST['linux'])) $sistemasOperacionais[] = 'linux';
         if (isset($_POST['mac'])) $sistemasOperacionais[] = 'mac';
 
-        // Diretório de destino para salvar as imagens de capa dos projetos
-        $diretorioDestino = '../../public/static/img/capasProjetos/';
+        $diretorioDestino = '../public/static/img/capasProjetos/';
 
         if (isset($_FILES['imagemCapaProjeto']) && $_FILES['imagemCapaProjeto']['error'] == 0) {
             $imagemCapa = $_FILES['imagemCapaProjeto'];
             $nomeArquivo = uniqid() . '_' . $usuarioLogado['uniqueName'] . '.' . pathinfo($imagemCapa['name'], PATHINFO_EXTENSION);
             $caminhoArquivo = $diretorioDestino . $nomeArquivo;
 
-            // Verifica se o diretório de destino existe; caso contrário, cria o diretório
             if (!is_dir($diretorioDestino)) {
                 mkdir($diretorioDestino, 0777, true);
             }
 
             if (move_uploaded_file($imagemCapa['tmp_name'], $caminhoArquivo)) {
-                // Converte sistemas operacionais suportados para JSON
                 $sistemasOperacionaisJson = json_encode($sistemasOperacionais);
 
                 if ($nomeProjeto && $descricaoProjeto && $linkDownload) {
-                    // Insere o novo projeto no banco de dados
                     Project::insert([
                         'nomeProjeto' => $nomeProjeto,
                         'descricaoProjeto' => $descricaoProjeto,

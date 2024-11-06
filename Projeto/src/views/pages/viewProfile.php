@@ -89,16 +89,16 @@
                     </div>
                     
                     </p>
-                    <div class="collapse" id="collapseExample">
-                            <form action="<?=$base?>/search" method="POST" class="userSearchForm" style="flex-direction: row;">
-                           
-                                <select class="form-select" name="filterProject">
-                                    <option value="nomeProjeto">Nome</option>
-                                    <option value="sistemasOperacionais">Sistema Operacional</option>
-                                </select>
-                                <input type="text" placeholder="Pesquisar projeto" class="userSearchInput" name="projectSearchInput"/> 
-                                <button type="submit" class="userSearchSubmit">Buscar</button>
-                            </form>
+                    <div class="collapse" id="collapseExample" style="width: fit-content; box-sizing:border-box; ">
+                    <form action="<?=$base?>/search" method="POST" class="userSearchForm row center">
+                        <select name="filterProject" class="form-select col" style="height:50px; margin: 20px 0; background-color: #0D1117 !important; border: 1px solid #282F39; color: #FFFFFF;">
+                            <option value="nomeProjeto">Nome</option>
+                            <option value="sistemasOperacionais">Sistema Operacional</option>
+                        </select>
+                        <input type="text" name="projectSearchInput" class="userSearchInput col" placeholder="Pesquisar projeto" style=""/>
+                        <button type="submit" class="userSearchSubmit col" style="height:50px; margin: 20px 0;">Buscar</button>
+                    </form>
+
                     </div>
                 </div>
             </div>
