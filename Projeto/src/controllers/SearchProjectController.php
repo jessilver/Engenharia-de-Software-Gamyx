@@ -7,25 +7,29 @@ use src\models\Usuario;
 
 class SearchProjectController extends Controller {
 
-    public function searchProjectAction(){
+    public function searchProjectAction() {
         $filterUser = filter_input(INPUT_POST, "filterProject");
         $inputFilter = filter_input(INPUT_POST, "projectSearchInput");
         $usuarioId = $_SESSION['userLogado']['id'] ?? null;
-        $usuario = Usuario::selectUser($usuarioId);
 
-        $filterUser == 'nomeProjeto' ? $filter = 'name' : $filter =  'SO';
-
-        if($filter == 'name'){
-            $projetos = Project::select()->where('nomeProjeto', $inputFilter)->execute();
-        } else {
-            $projetos = Project::select()->where('sistemasOperacionaisSuportados', 'LIKE', '%' . $inputFilter . '%')->execute();
+        $usuario = Usuario::select()->where('id', $usuarioId)->execute();
+        
+        if (!$usuarioId) {
+            $this->redirect('/login');
+            return;
         }
 
-        count($projetos) == 0 ? $projetos = [] : $projetos = $projetos;
+        $filterColumn = $filterUser === 'nomeProjeto' ? 'nomeProjeto' : 'sistemasOperacionaisSuportados';
 
-        $this->render('viewProfile', ['projects' => $projetos, 'user' => $usuario]);
+        $projetos = Project::select()
+            ->where('usuario_id', $usuarioId)
+            ->where($filterColumn, 'LIKE', '%' . $inputFilter . '%')
+            ->execute();
 
+        $context = ['projects' => $projetos, 'user' => $usuario];
+        $this->render('viewProfile', $context);
     }
+
     
     
 }

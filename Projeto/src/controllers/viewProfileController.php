@@ -10,13 +10,44 @@ use \src\models\Project;
 class viewProfileController extends Controller
 {
 
+    // public function index() {
+    //     // $usuarioId = $_SESSION['userLogado']['id'];
+    //     $usuarioId = $_SESSION['userLogado']['id'] ?? null;
+
+    //     $usuario = Usuario::selectUser($usuarioId);
+    //     $projects = Project::selectProjectByUserId($usuarioId);
+
+    //     $friends = Usuario::select()
+    //                     ->join('friends', function($join) use ($usuario) {
+    //                         $join->on('friends.friend_1', '=', 'usuarios.id')
+    //                              ->orOn('friends.friend_2', '=', 'usuarios.id');
+    //                     })
+    //                     ->where(function($query) use ($usuario) {
+    //                         $query->where('friends.friend_1', '=', $usuario['id'])
+    //                               ->orWhere('friends.friend_2', '=', $usuario['id']);
+    //                     })
+    //                     ->execute();
+
+    //     // Filter out the logged-in user from the friends list
+        
+    //     $context = [
+    //         'user' => $usuario,
+    //         'HashUserId' => Model::encryptData($usuarioId),
+    //         'projects' => $projects,
+    //         'friends' => $friends
+    //     ];
+    
+    //     $this->render('viewProfile', $context);
+    // }
+
     public function index() {
-        // $usuarioId = $_SESSION['userLogado']['id'];
         $usuarioId = $_SESSION['userLogado']['id'] ?? null;
-
+    
         $usuario = Usuario::selectUser($usuarioId);
-        $projects = Project::selectProjectByUserId($usuarioId);
-
+        $projects = $_SESSION['filteredProjects'] ?? Project::selectProjectByUserId($usuarioId);
+    
+        unset($_SESSION['filteredProjects']);
+    
         $friends = Usuario::select()
                         ->join('friends', function($join) use ($usuario) {
                             $join->on('friends.friend_1', '=', 'usuarios.id')
@@ -27,9 +58,7 @@ class viewProfileController extends Controller
                                   ->orWhere('friends.friend_2', '=', $usuario['id']);
                         })
                         ->execute();
-
-        // Filter out the logged-in user from the friends list
-        
+    
         $context = [
             'user' => $usuario,
             'HashUserId' => Model::encryptData($usuarioId),
@@ -39,6 +68,7 @@ class viewProfileController extends Controller
     
         $this->render('viewProfile', $context);
     }
+    
     
     public function edit($id){
         $usuarioId = Model::decryptData($id['id']);
