@@ -56,6 +56,7 @@ class Config {
             id INT AUTO_INCREMENT PRIMARY KEY,
             usuario_id INT NOT NULL,
             projeto_id INT NOT NULL,
+            uniqueName VARCHAR(100) NOT NULL UNIQUE,
             nota TINYINT NOT NULL CHECK (nota BETWEEN 1 AND 5),
             FOREIGN KEY (usuario_id) REFERENCES Usuarios(id) ON DELETE CASCADE,
             FOREIGN KEY (projeto_id) REFERENCES Projects(id) ON DELETE CASCADE,
