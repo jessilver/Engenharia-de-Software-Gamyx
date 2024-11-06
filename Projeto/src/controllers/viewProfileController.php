@@ -73,10 +73,7 @@ class viewProfileController extends Controller
                 $usuario = Usuario::select()->where('nomeUsuario', $usuarioPesquisado)->execute();
                 if (!empty($usuario)) {
 
-                    $projects = Project::select()
-                        ->join('usuarios', 'usuarios.id', '=', 'projects.usuario_id')
-                        ->where('projects.usuario_id', $usuario[0]['id'])
-                        ->execute();
+                    $projects = Project::selectProjectByUserId($usuario[0]['id']);
 
                     $friends = Usuario::select()
                         ->join('friends', function($join) use ($usuario) {
