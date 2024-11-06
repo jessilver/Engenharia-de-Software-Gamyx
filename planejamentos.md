@@ -11,6 +11,7 @@
 
 - [P1](#planejamento-iteração-01)
 - [P2](#planejamento-iteração-02)
+- [P3](#planejamento-iteração-03)
 
 # Planejamentos
 <small>[voltar para o Sumário](#Sumário)</small><br>
@@ -137,6 +138,56 @@ Critérios de Aceitação:
 
 - Tarefa 1: Design da interface de perfil.
 - Tarefa 2: Implementação do envio da confirmação de deleção.
+
+# Planejamento Iteração 03
+
+## Valor da Sprint: 
+PPermitir que o usuário tenha acceso ao feed mais filtros de pesquisa de projetos e adicionar amizades
+
+## 1. Backlog da Sprint
+
+### Como um usuário logado, quero avaliar um projeto
+
+Critérios de Aceitação:
+- O sistema deve permitir que o usuário visualize e avalie um projeto.
+
+### Como um usuário logado, quero acessar quero adicionar uma novo amizade.
+
+Critérios de Aceitação:
+- O usuário deve poder adicionar uma nova amizade
+
+### Como um usuário logado, quero ter accesso ao feed.
+
+Critérios de Aceitação:
+- O usuário deve ser capaz de visualizar os projetos no feed.
+
+### Como um usuário logado, quero ter filtro para procurar determinados tipos de projetos.
+
+Critérios de Aceitação:
+- O usuário deve ser capaz de filtrar projetos em sua pesquisa.
+
+## 2. Tarefas
+
+### Avaliação do Projeto
+
+- Tarefa 1: Design da interface de avaliação do projeto.
+- Tarefa 2: Implementação da lógica de backend para processamento de dados.
+
+### Adicionar Amizade
+
+- Tarefa 1: Design da interface de adiconar uma amizade.
+- Tarefa 2: Implementação da lógica de backend para processamento de dados.
+
+### Feed inicial
+
+- Tarefa 1: Design da interface.
+- Tarefa 2: Implementação da lógica para exibir informações dos projetos.
+
+### Filtro Pesquisa Projeto
+
+- Tarefa 1: Design da interface.
+- Tarefa 2: Implementação da logica backend para processamento de dados.
+
 
 
 

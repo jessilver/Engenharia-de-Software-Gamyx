@@ -5,13 +5,14 @@
 
 - [Home](https://github.com/jessilver/Engenharia-de-Software-Gamyx/blob/docs/readme/README.md)
 - [Iterações](https://github.com/jessilver/Engenharia-de-Software-Gamyx/blob/docs/readme/iteracoes.md)
-- [Planejementos](https://github.com/jessilver/Engenharia-de-Software-Gamyx/blob/docs/readme/planejamentos.md)
+- [Planejamentos](https://github.com/jessilver/Engenharia-de-Software-Gamyx/blob/docs/readme/planejamentos.md)
 
 ## Sumário
 - [Padrões](#Padrões)
 - [Tags](#tags)
 - [Como Iniciar o Projeto](#como-iniciar-o-projeto)
-- [Como conectar com o banco de dados](#Como-conectar-com-o-banco-de-dados)
+- [Instalando dependências com o Composer](#Instalando-dependências-com-o-Composer)
+- [Biblioteca Hydrahon](#Biblioteca-Hydrahon)
 - [Criar uma Nova Branch para uma Feature](#criar-uma-nova-branch-para-uma-feature)
 - [Realizar um Push](#realizar-um-push)
 - [Fazendo o Pull Request](#fazendo-o-pull-request)
@@ -124,16 +125,21 @@ Seguir a [Semantic Versioning (SemVer)](https://semver.org/):
 
 ## Configurando o Ambiente
 
-1. **Certifique-se que o Git instalado:**
+1. **Certifique-se que o Git e o Composer estejam instalados:**
 
    - No seu cmd execute o seguinte coamndo:
    ```bash
      git --version
    ```
    - Se não estiver instaldo: [Git](https://git-scm.com/downloads)
+   - No seu cmd execute o seguinte coamndo:
+   ```bash
+     composer --version
+   ```
+   - Se não estiver instaldo: [Composer](https://getcomposer.org/Composer-Setup.exe)
 
 2. **Instalando XAMPP**
-Se já estiver com XAMPP instalado, pule para: [Iniciando o XAMPP](#Iniciando-o-XAMPP)
+Se já estiver com XAMPP instalado, pule para: [Instalando dependências com o Composer](#Instalando-dependências-com-o-Composer)
 
 - Clique em [Download XAMPP](https://www.apachefriends.org/pt_br/index.html) e faça o download e instale o XAMPP.
 
@@ -163,12 +169,31 @@ Sempre que for rodar o proejto é obrigatotório serguir a instrução abaixo, c
  ```bash
    git clone https://github.com/jessilver/Engenharia-de-Software-Gamyx.git
  ```
-- Já pode fechar tudo e iniciar seu projeto
+# Instalando dependências com o Composer
+<small>[voltar para o Sumário](#Sumário)</small><br>
 
-# Como conectar com o banco de dados
+Na raiz do seu projeto execute o seguinte comando:
+ ```bash
+   composer install
+ ```
+Isso criará uma pasta chamanda vendor, e dentro dela estará nosso autoload, mas pra que server esse arquivo?
 
-1. Abra o aplicativo do xamppe em seguida na opção **admin** do MySQL
-![image](https://github.com/user-attachments/assets/53fffc93-523e-47ed-b30b-4869b0d9e3d5)
+O **autoload** no PHP é uma funcionalidade que permite carregar automaticamente classes quando elas são necessárias, sem a necessidade de incluir ou requerer manualmente cada arquivo de classe. Isso é especialmente útil em arquiteturas MVC (Model-View-Controller) por várias razões:
+
+- **Organização do Código**: Em um padrão MVC, você geralmente tem muitas classes (Models, Views e Controllers) organizadas em diferentes diretórios. O autoload ajuda a manter o código organizado, permitindo que você mantenha a estrutura de diretórios sem precisar gerenciar manualmente os arquivos incluídos.
+
+- **Eficiência: O autoload** só carrega as classes que são realmente necessárias em um determinado momento. Isso pode melhorar a performance, especialmente em aplicações grandes, já que não há carregamento desnecessário de arquivos.
+
+- **Redução de Erros**: Com o autoload, você evita erros relacionados a caminhos de arquivos, já que o PHP cuida do carregamento das classes para você. Isso reduz a chance de problemas como "arquivo não encontrado" ou "classe não definida".
+
+- **Facilidade de Manutenção**: Ao utilizar um autoloader, se você precisar mover ou renomear classes, a manutenção se torna mais simples, pois você não precisa atualizar todos os arquivos que incluem as classes.
+
+- **Conformidade com PSR**: Usar autoloading, especialmente seguindo o padrão PSR-4, facilita a interoperabilidade entre bibliotecas e frameworks PHP, tornando seu código mais compatível com outros projetos.
+
+## Biblioteca Hydrahon
+<small>[voltar para o Sumário](#Sumário)</small><br>
+
+[Documentação](https://github.com/ClanCats/Hydrahon.git)
 
 2. Com o phpMyAdmin aberto, clique em tema e selecione bootstrap (OPCIONAL)
 ![image](https://github.com/user-attachments/assets/6eb682ae-0416-4881-b9e6-d0f49a2592a8)

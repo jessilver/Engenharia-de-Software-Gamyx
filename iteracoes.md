@@ -5,7 +5,7 @@
 
 - [Home](https://github.com/jessilver/Engenharia-de-Software-Gamyx/blob/docs/readme/README.md)
 - [Manual do Projeto](https://github.com/jessilver/Engenharia-de-Software-Gamyx/blob/docs/readme/manual_do_projeto.md)
-- [Planejementos](https://github.com/jessilver/Engenharia-de-Software-Gamyx/blob/docs/readme/planejamentos.md)
+- [Planejamentos](https://github.com/jessilver/Engenharia-de-Software-Gamyx/blob/docs/readme/planejamentos.md)
 
 ## Sumário
 
@@ -21,6 +21,17 @@
   - [feat/editar-projeto](#Editar-projeto)
   - [feat/deletar-projeto](#Deletar-projeto)
   - [adicionais-it2](#Adicionais-it2)
+- [Iteração 03](#Iteração-03)
+  - [feat/avaliacao-do-projeto](#Avaliacao-do-Projeto)
+  - [feat/adicionar-amizade](#Adicionar-amizade)
+  - [feat/home-inicial](#home-inicial)
+  - [feat/filtro-pesquisa-projeto](#Filtro-Pesquisa-Prrojeto)
+  - [adicionais-it3](#Adicionais-it3)
+- [Iteração 04](#Iteração-04)
+  - [feat/favoritar-projetos](#favoritar-projetos)
+  - [feat/comentarios-do-projeto](#comentarios-do-projeto)
+  - [feat/game-jam](#game-jam)
+  - [feat/feed-inicial](#feed-inicial)
 
 # Iteração 01
 <small>[voltar para o Sumário](#Sumário)</small><br>
@@ -34,7 +45,7 @@ Entregar funcionalidades básicas de interação de usuário, incluindo cadastro
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
 
-## Resposável:
+## Responsável:
 Jônatas De Sousa Madeira
 
 ```bash
@@ -64,7 +75,7 @@ Critérios de Aceitação:
 # Login de Usuário
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
-## Resposável:
+## Responsável:
 Gabriel Fernandes Zamora
 
 ```bash
@@ -94,7 +105,7 @@ Critérios de Aceitação:
 # Acesso ao Perfil
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
-## Resposável:
+## Responsável:
 Jessé Eliseu Nunes Da Silva
 
 ```bash
@@ -122,7 +133,7 @@ Critérios de Aceitação:
 # Visualização de Perfil de Outros Usuários
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
-## Resposável:
+## Responsável:
 Arthur Lima Duarte
 
 ```bash
@@ -172,7 +183,7 @@ Permitir que o usuário logado possa criar, visualizar, editar e deletar um proj
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
 
-## Resposável:
+## Responsável:
 Jônatas De Sousa Madeira
 
 ```bash
@@ -200,7 +211,7 @@ Critérios de Aceitação:
 # Acesso ao projeto
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
-## Resposável:
+## Responsável:
 Arthur Lima Duarte
 
 ```bash
@@ -227,7 +238,7 @@ Critérios de Aceitação:
 # Editar projeto
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
-## Resposável:
+## Responsável:
 Jessé Eliseu Nunes Da Silva
 
 ```bash
@@ -257,7 +268,7 @@ Critérios de Aceitação:
 # Deletar projeto
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
-## Resposável:
+## Responsável:
 Gabriel Fernandes Zamora
 
 ```bash
@@ -292,5 +303,219 @@ Critérios de Aceitação:
 ![exemplo](https://github.com/user-attachments/assets/84968a81-992d-4e82-b3d5-e8342c8fc94a)
 
 
+# Iteração 03
+<small>[voltar para o Sumário](#Sumário)</small><br>
+
+## Valor: 
+Permitir que o usuário tenha acceso ao home mais filtros de pesquisa de projetos e adicionar amizades
+
+## Features:
+
+# Avaliacao do Projeto
+<small>[voltar para o Sumário](#Sumário)</small><br>
 
 
+## Responsável:
+Gabriel Fernandes Zamora
+
+```bash
+feat/avaliacao-do-projeto
+```
+
+## User Story:
+
+### Como um usuário logado, quero avaliar um projeto
+
+Critérios de Aceitação:
+- O sistema deve permitir que o usuário visualize e avalie um projeto.
+
+## Template:
+
+## Tarefas:
+
+- Tarefa 1: Design da interface de avaliação do projeto.
+- Tarefa 2: Implementação da lógica de backend para processamento de dados.
+
+# Adicionar Amizade
+<small>[voltar para o Sumário](#Sumário)</small><br>
+
+## Responsável:
+Jessé Eliseu Nunes Da Silva
+
+```bash
+feat/adicionar-amizade
+```
+
+## User Story:
+
+### Como um usuário logado, quero acessar quero adicionar uma novo amizade.
+
+Critérios de Aceitação:
+- O usuário deve poder adicionar uma nova amizade.
+
+## Template:
+
+
+## Tarefas:
+
+- Tarefa 1: Design da interface de adiconar uma amizade.
+- Tarefa 2: Implementação da lógica de backend para processamento de dados.
+
+# Home inicial
+<small>[voltar para o Sumário](#Sumário)</small><br>
+
+## Responsável:
+Jônatas De Sousa Madeira
+
+```bash
+feat/home-inicial
+```
+
+## User Story:
+
+### Como um usuário logado, quero ter accesso ao home.
+
+Critérios de Aceitação:
+- O usuário deve ser capaz de visualizar os projetos no home.
+
+## Template:
+
+
+## Tarefas:
+
+- Tarefa 1: Design da interface.
+- Tarefa 2: Implementação da lógica para exibir informações dos projetos.
+
+# Filtro Pesquisa Projeto
+<small>[voltar para o Sumário](#Sumário)</small><br>
+
+## Responsável:
+Arthur Lima Duarte
+
+```bash
+feat/filtro-pesquisa-projeto
+```
+
+## User Story:
+
+### Como um usuário logado, quero ter filtro para procurar determinados tipos de projetos.
+
+Critérios de Aceitação:
+- O usuário deve ser capaz de filtrar projetos.
+
+## Template:
+
+
+## Tarefas:
+
+- Tarefa 1: Design da interface.
+- Tarefa 2: Implementação da logica backend para processamento de dados.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+# Iteração 04
+<small>[voltar para o Sumário](#Sumário)</small><br>
+
+## Valor: 
+Permitir que o usuário tenha accesso a mais recursos para melhor experiência
+
+## Features:
+
+# Favoritar Projetos
+<small>[voltar para o Sumário](#Sumário)</small><br>
+
+
+## Responsável:
+Jessé Eliseu Nunes da Silva
+
+```bash
+feat/avaliacao-do-projeto
+```
+
+## User Story:
+
+### Como um usuário logado, quero favoritar um projeto
+
+Critérios de Aceitação:
+- O sistema deve permitir que o usuário visualize e favorite um projeto.
+
+## Template:
+
+## Tarefas:
+
+- Tarefa 1: Design da interface de favoritar o projeto.
+- Tarefa 2: Implementação da lógica de backend para processamento de dados.
+
+# Comentarios do projeto
+<small>[voltar para o Sumário](#Sumário)</small><br>
+
+## Responsável:
+Gabriel Fernandes Zamora
+
+```bash
+feat/adicionar-amizade
+```
+
+## User Story:
+
+### Como um usuário logado, quero poder comentar em um projeto.
+
+Critérios de Aceitação:
+- O usuário deve poder comentar em um projeto.
+
+## Template:
+
+
+## Tarefas:
+
+- Tarefa 1: Design da interface de comentarios.
+- Tarefa 2: Implementação da lógica de backend para processamento de dados.
+
+# Game jam
+<small>[voltar para o Sumário](#Sumário)</small><br>
+
+## Responsável:
+Arthur Lima Duarte
+
+```bash
+feat/game-jam
+```
+
+## User Story:
+
+### Como um usuário logado, quero criar uma game jam e/ou adicionar links de jogos em uma game jam existente.
+
+Critérios de Aceitação:
+- O usuário deve ser capaz de criar e/ou participar de uma game jam.
+
+## Template:
+
+
+## Tarefas:
+
+- Tarefa 1: Design da interface.
+- Tarefa 2: Implementação da lógica para processamento de dados.
+
+# Feed Inicial
+<small>[voltar para o Sumário](#Sumário)</small><br>
+
+## Responsável:
+Jonatas de Sousa Madeira
+
+```bash
+feat/feed-inicial
+```
+
+## User Story:
+
+### Como um usuário logado, quero ter aceesso ao feed onde vou poder ver as postagens, descrição e capa de outros usuários.
+
+Critérios de Aceitação:
+- O usuário deve ser capaz acessar o feed.
+
+## Template:
+
+
+## Tarefas:
+
+- Tarefa 1: Design da interface.
+- Tarefa 2: Implementação da logica backend para processamento de dados.
