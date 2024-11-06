@@ -66,7 +66,7 @@
                         </h1>
                         <div class="profileButtons">
                             <button type="button" class="btn editProfile" data-bs-toggle="modal" data-bs-target="#editProfileModal"><h1 class="h1AUser">Edit Profile</h1></button>
-                            <button type="button" class="btn viewProjects" onclick="window.location.href='cadastrarProjeto.php';"><h1 class="h1AUser">New Project</h1></button>
+                            <button type="button" class="btn viewProjects" onclick="window.location.href='<?= $base ?>/novoProjeto';"><h1 class="h1AUser">New Project</h1></button>
                         </div>
                         
                     </div>
@@ -76,8 +76,31 @@
         <hr class="userHr">
         <div class="userProfileProjects">
             <div class="projectsSearch">
-                <h1 class="h1AUser my-3">Meus projetos</h1>
-                <i class="fa-solid fa-magnifying-glass" style="margin-left: 20px;color: white; font-size: 15px;"></i>
+                
+                
+                <div class="colapse" style="display: flex; flex-direction: column;">
+                    <div class="pesquisaHeader" style="flex-direction: row;">
+                        <p class="d-inline-flex ">
+                        <h1 class="h1AUser my-3 d-inline-flex">Meus projetos</h1>
+                        
+                        <a class="" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <i class="fa-solid fa-magnifying-glass" style="margin-left: 20px;color: white; font-size: 15px;"></i>
+                        </a>
+                    </div>
+                    
+                    </p>
+                    <div class="collapse" id="collapseExample">
+                            <form action="<?=$base?>/search" method="POST" class="userSearchForm" style="flex-direction: row;">
+                           
+                                <select class="form-select" name="filterProject">
+                                    <option value="nomeProjeto">Nome</option>
+                                    <option value="sistemasOperacionais">Sistema Operacional</option>
+                                </select>
+                                <input type="text" placeholder="Pesquisar projeto" class="userSearchInput" name="projectSearchInput"/> 
+                                <button type="submit" class="userSearchSubmit">Buscar</button>
+                            </form>
+                    </div>
+                </div>
             </div>
         <!-- Projetos do usuário -->
             <div class="lista-cards-projeto" style="width: 100%; display: flex; gap: 60px;">
@@ -110,6 +133,29 @@
                 <i class="fa-solid fa-magnifying-glass" style="margin-left: 20px;color: white; font-size: 15px;"></i>
             </div>
             <div class="amigosList">
+                <?php if (count($friends) > 0) : ?>
+                    <?php foreach ($friends as $friend) : ?>
+                        <?php 
+                            $nomeUsuario = $friend['nomeUsuario'] ?? 'Nome não disponível';
+                            $id = $friend['id'];
+                        ?>
+                        <?php if ($user['nomeUsuario'] != $nomeUsuario): ?>
+                        <div class='amigosItem'>  
+                            <form action="<?=$base?>/perfil" method="post"> 
+                                <input type="hidden" name="search_query" value="<?=$nomeUsuario?>">
+                                <button class="btn" type="submit" style="background:none;border:none;padding:0;margin:0;color:inherit;text-align:center;box-shadow:none;">
+                                    <div class='amigosFoto'>
+                                        <img src='<?=$base?>/static/img/' alt='<?= $nomeUsuario ?>'> 
+                                    </div>
+                                    <h1 class='h1AUser' style='margin-bottom: 16px;'><?= $nomeUsuario ?></h1>
+                                </button>
+                            </form> 
+                        </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <p>Nenhum amigo encontrado.</p>
+                <?php endif; ?>
             </div>
         </div>
         <hr class="userHr">

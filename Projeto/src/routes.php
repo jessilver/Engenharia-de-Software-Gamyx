@@ -32,3 +32,16 @@ $router->post('/editProject', 'ViewProjectController@edit');
 
 $router->get('/api/reviews/{id}', 'reviewsController@getReviewsApi');
 $router->get('/api/all-projects-reviews', 'reviewsController@getAllProjectsReviews');
+
+$router->post('/add-friend', 'friendController@addFriend');
+$router->post('/deleteFriend', 'friendController@deleteFriend');
+
+$router->get('/novoProjeto', 'CadastrarProjeto@index');
+$router->post('/novoProjeto', 'CadastrarProjeto@cadastrarProjetoAction');
+$router->post('/search', 'SearchProjectController@searchProjectAction');
+$router->get('/user/{id}/projetos', 'ProjectController@getAllProjects');
+
+
+// API
+
+$router->get('/api/friends/{id}', 'friendController@api');
