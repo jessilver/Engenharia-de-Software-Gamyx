@@ -1,5 +1,6 @@
 <?php $render('header');?>
     <link rel="stylesheet" href="<?=$base?>/static/css/userProfile.css">
+    <link rel="stylesheet" href="<?=$base?>/static/css/notes.css">
     <title>Meu perfil | Gamyx</title>
 
 </head>
@@ -200,12 +201,18 @@
     <!-- Modal -->
     <div class="modal fade " id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content editProfileModalClass" >
-                <div class="modal-header">
+            <div class="modal-content editProfileModalClass" style="
+    width: 100%;
+" >
+                <div class="modal-header" style="
+    width: 100%;
+">
                     <h5 class="modal-title mx-auto" id="editProfileModalLongTitle">Edit profile</h5>
                     <i class="fa-solid fa-xmark closeButton" data-bs-dismiss="modal"></i>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="
+    width: 100%;
+">
                     <form action="<?=$base?>/perfil/edit/<?=$HashUserId?>" method="POST" id="formEditProfile">
                         <div class="mb-3">
                             <label for="about" class="form-label">Sobre você:</label>
@@ -227,11 +234,13 @@
         </div>
     </div>
     <div id="projectsModal" class="modal" style="display: none;">
+    <!--  -->
     <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Projetos e Notas</h2>
         <div id="projectsContainer"></div>
     </div>
+    <!--  -->
 </div>
 
 <script src="<?=$base?>/static/js/notas.js"></script>

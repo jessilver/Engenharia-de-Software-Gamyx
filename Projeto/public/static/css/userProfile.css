@@ -7,6 +7,7 @@
     width: 100%;
     background-color: #0D1117;
     color: #FFFFFF;
+    overflow-x: hidden;
 }
 
 #userProfileBody input {
@@ -347,7 +348,7 @@
 .modal {
     display: none; /* Inicialmente invisível */
     position: fixed; 
-    z-index: 1; /* Fica na frente de outros elementos */
+    /* Fica na frente de outros elementos */
     left: 0;
     top: 0;
     width: 100%;
@@ -366,6 +367,7 @@
     max-width: 600px;
     border-radius: 15px;
     color: #FFFFFF;
+    overflow: auto;
 }
 
 /* Fechar Modal */
@@ -402,7 +404,7 @@
 
 /* Estilo para Cada Item de Projeto */
 .project-item {
-    background-color: #1A2129;
+    background-color: rgb(25 36 49);
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
@@ -420,4 +422,8 @@
     font-size: 16px;
     color: #B0B0B0;
     margin: 5px 0;
+}
+
+.lista-cards-projeto{
+    overflow-x: auto;
 }
