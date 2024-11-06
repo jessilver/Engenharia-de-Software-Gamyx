@@ -496,7 +496,7 @@ Critérios de Aceitação:
 - Tarefa 1: Design da interface.
 - Tarefa 2: Implementação da lógica para processamento de dados.
 
-# Filtro Pesquisa Projeto
+# Filtro Feed inicial
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
 ## Responsável:
