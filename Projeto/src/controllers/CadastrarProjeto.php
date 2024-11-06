@@ -18,6 +18,7 @@ class CadastrarProjeto extends Controller {
             echo "Erro: usuário não encontrado.";
             exit;
         }
+        
 
         $nomeProjeto = filter_input(INPUT_POST, 'nomeProjeto');
         $descricaoProjeto = filter_input(INPUT_POST, 'descricaoProjeto');
