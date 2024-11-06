@@ -411,12 +411,11 @@ Critérios de Aceitação:
 - Tarefa 1: Design da interface.
 - Tarefa 2: Implementação da logica backend para processamento de dados.
 
-----------------------------------------------------------------------------------------------------------------------------------------------------
 # Iteração 04
 <small>[voltar para o Sumário](#Sumário)</small><br>
 
 ## Valor: 
-Permitir que o usuário tenha accesso a mais recursos para melhor experiência
+Proporcionar aos usuarias maiores possibilidades de interação dentro do do sistema, como comentarios e favoritar projetos, game jam's e um feed inical.
 
 ## Features:
 
