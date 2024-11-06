@@ -1,19 +1,7 @@
-<?php
-
-// if (isset($_SESSION['login_error'])) {
-//     echo "<div style='color: red;'>" . $_SESSION['login_error'] . "</div>";
-//     unset($_SESSION['login_error']);
-// }
-// ?>
-
-
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Gamyx</title>
+<?php $render('header');?>
     <link rel="stylesheet" href="/Engenharia-de-Software-Gamyx/Projeto/public/static/css/loginstyle.css">
+    <title>Login - Gamyx</title>
+
 </head>
 <body>
 

@@ -47,6 +47,7 @@
                         <div class="h1AboutUserDiv">
                             <h1 class="h1AboutUser"><?= $user['about']; ?></h1>
                             <h1 class="h1AboutUserVerMais" data-bs-toggle="modal" data-bs-target="#sobreModal"> ...mais</h1>
+                            <button id="openModalBtn" class="btn viewProjects">Ver Projetos e Notas</button>
                         </div>
                         <h1 class="h1AUser">
                             <i class="fa-regular fa-folder"></i> 
@@ -225,5 +226,14 @@
             </div>
         </div>
     </div>
+    <div id="projectsModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Projetos e Notas</h2>
+        <div id="projectsContainer"></div>
+    </div>
+</div>
+
+<script src="<?=$base?>/static/js/notas.js"></script>
 </body>
 <?php $render('footer');?>

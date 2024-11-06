@@ -5,28 +5,33 @@ $router = new Router();
 
 $router->get('/', 'HomeController@index');
 
-$router->get('/perfil', 'viewProfileController@index');
-$router->post('/perfil', 'viewProfileController@other'); // Alterado para lidar com POST
+$router->get('/perfil', 'ViewProfileController@index');
+$router->post('/perfil', 'ViewProfileController@other'); // Alterado para lidar com POST
 
-$router->get('/login','userController@index');
-$router->post('/login','userController@auth');
-$router->post('/logout', 'userController@logout');
+$router->get('/login','UserController@index');
+$router->post('/login','UserController@auth');
+$router->post('/logout', 'UserController@logout');
 $router->get('/menu', 'MenuController@index');
-$router->post('/deleteUsuario', 'userController@delete');
-$router->post('/deleteProject', 'viewProjectController@delete');
-$router->get('/projeto/{id}', 'viewProjectController@index');
-$router->post('/perfil/edit/{id}', 'viewProfileController@edit');
-$router->post('/perfil/logout', 'viewProfileController@logout');
-$router->post('/perfil/delete/{id}', 'viewProfileController@delete');
+$router->post('/deleteUsuario', 'UserController@delete');
+$router->post('/deleteProject', 'ViewProjectController@delete');
+$router->get('/projeto/{id}', 'ViewProjectController@index');
+$router->post('/perfil/edit/{id}', 'ViewProfileController@edit');
+$router->post('/perfil/logout', 'ViewProfileController@logout');
+$router->post('/perfil/delete/{id}', 'ViewProfileController@delete');
 
-// $router->get('/perfil/{id}', 'viewProfileController@other');
-$router->get('/login','userController@login');
+$router->get('/perfil/{id}', 'ViewProfileController@other');
+$router->get('/login','UserController@login');
 $router->get('/sobre/{nome}', 'HomeController@sobreP');
 $router->get('/sobre', 'HomeController@sobre');
 $router->get('/cadastrarUsuario', 'UserController@cadastroUsuario');
 $router->post('/cadastrarUsuario', 'UserController@cadastroUsuarioAction');
+$router->post('/projeto/review', 'ReviewsController@review');
 
-$router->post('/editProject', 'viewProjectController@edit');
+
+$router->post('/editProject', 'ViewProjectController@edit');
+
+$router->get('/api/reviews/{id}', 'reviewsController@getReviewsApi');
+$router->get('/api/all-projects-reviews', 'reviewsController@getAllProjectsReviews');
 
 $router->post('/add-friend', 'friendController@addFriend');
 $router->post('/deleteFriend', 'friendController@deleteFriend');
