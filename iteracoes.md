@@ -118,8 +118,7 @@ feat/acesso-ao-perfil
 
 Critérios de Aceitação:
 - O usuário deve ser redirecionado para sua página de perfil após o login.
-- O perfil deve exibir informações básicas do usuário (nome, email, etc.).
-- O usuário deve ter a opção de editar suas informações de perfil.
+- O perfil deve exibir informações básicas do usuário (nome, @, etc.).
 - Visualização de Perfil de Outros Usuários
 
 ## Template:

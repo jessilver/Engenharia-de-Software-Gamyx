@@ -1,0 +1,190 @@
+body{
+    background-color: var(--cor-fundo);
+}
+.viewProjectScreen{
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    color: var(--cor-texto);
+    font-family: var(--fonte-padrao), sans-serif;
+    margin: 36px 100px;
+}
+/* Projeto  */
+.projectContainer{
+    background-color: var(--cor-cinza-escuro);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border: 1px solid var(--cor-cinza-borda);
+    padding: 12px 24px;
+    max-width: 900px;
+}
+.projectTitle{
+    font-size: 24px;
+    font-weight: bold;
+}
+.projectDesc{
+    max-width: 700px;
+}
+.lower{
+    font-weight: normal;
+}
+.projectCategory{
+    font-size: 12px;
+}
+.projectImage{
+    width: 700px;
+    height: 240px;
+    object-fit: cover;
+}
+.projectRepContainer{
+    background-color: var(--cor-fundo-projetos);
+    padding: 8px;
+}
+/* Card do criador  */
+.creatorCardContainer{
+    cursor: pointer;
+    position: sticky;
+    top: 36px; 
+    background-color: var(--cor-cinza-escuro);
+    max-width: 25%;
+    max-height: 50vh;
+    border: 1px solid var(--cor-cinza-borda);
+    
+    overflow: auto;
+}
+.creatorCardInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    padding: 12px 42px;
+}
+.profileImageContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 130px;
+    border: 1px solid var(--cor-cinza-borda);
+    padding: 8px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+.profileImage{
+    width: inherit;
+}
+.cardInfoIcons{
+    font-size: 20px;
+}
+.userAbout{
+    margin-top: 14px;
+}
+/* Extras  */
+.noProfile{
+    width: 120px;
+    height: 120px;
+    /* padding: 12px; */
+    border: 1px solid #282F39;
+    border-radius: 50%;
+}
+
+/* Estilo para a div que contém os botões */
+.btn-container {
+    display: flex;
+    gap: 10px; /* Espaçamento entre os botões */
+    margin-top: 20px; /* Margem superior para afastar dos outros elementos */
+}
+
+/* Estilo do botão de editar */
+.btn-editar {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    border: 2px solid #005EFF;
+    background: #7CACFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Estilo do botão de excluir */
+.btn-excluir {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    border: 2px solid #F00;
+    background: #3c2121;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Estilo do ícone dentro dos botões */
+.btn-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Estilos hover para interações com o mouse */
+.btn-editar:hover {
+    background-color: #005EFF;
+}
+
+.btn-excluir:hover {
+    background-color: #FF0000;
+}
+
+.containerBotoes {   
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* edit project */
+
+.editProjectModalClass{
+    background-color: #151C25 !important;
+    color: #FFFFFF !important;
+}
+
+.edtiPh1{
+    margin: 0 0 16px 0;
+    font-family: 'ABeeZee', sans-serif; 
+    font-size: 16px;
+    font-weight:lighter; 
+    width: fit-content; 
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.previewTrojectImg{
+    margin: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.projectCapa{
+    width: 360px !important;
+    height: 167px !important;
+    object-fit: cover
+}
+
+#editProjectModal textarea {
+    background-color: #0D1117 !important;
+    border: 1px solid #282F39;
+    color: #FFFFFF;
+}
+
+#editProjectModal input {
+    background-color: #0D1117 !important;
+    border: 1px solid #282F39;
+    color: #FFFFFF;
+}

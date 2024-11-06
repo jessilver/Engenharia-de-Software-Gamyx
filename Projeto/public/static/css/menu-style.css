@@ -1,0 +1,98 @@
+/* ================================================================================================== */
+/*                                         Menu Lateral                                               */
+/* ================================================================================================== */
+
+#menu-btn {
+    font-size: 20px;
+    font-family: "ABeeZee", sans-serif;
+    cursor: pointer;
+    position: fixed;
+    top: 9px;
+    left: 20px;
+    color: #fff;
+    background-color: #0D1117;
+    margin: 10px 0;
+    padding: 9px 19px;
+    border: 1px solid #57626F;
+    border-radius: 12px;
+    transition: 0.3s;
+    z-index: 1000;
+}
+
+#menu-btn:hover {
+    background-color: #57626F;
+}
+
+/* Estilo para a barra lateral */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #0D1117;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 73px;
+    z-index: 999;
+}
+
+
+.sidebar a, .sidebar-link button {
+    padding: 15px 20px; 
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #57626F;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998; 
+    display: none;
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+.sidebar-link {
+    display: block;
+    padding: 10px;
+}
+
+
+.sidebar-link {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.sidebar-link button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 18px;
+    display: block;
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box;
+    border-radius: 0;
+}
+
+.sidebar-link button:hover {
+    background-color: #57626F;
+}
