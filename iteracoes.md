@@ -24,7 +24,7 @@
 - [Iteração 03](#Iteração-03)
   - [feat/avaliacao-do-projeto](#Avaliacao-do-Projeto)
   - [feat/adicionar-amizade](#Adicionar-amizade)
-  - [feat/feed-inicial](#feed-inicial)
+  - [feat/home-inicial](#home-inicial)
   - [feat/filtro-pesquisa-projeto](#Filtro-Pesquisa-Prrojeto)
   - [adicionais-it3](#Adicionais-it3)
 - [Iteração 04](#Iteração-04)
