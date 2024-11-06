@@ -91,6 +91,10 @@ public static function deleteUser(int $id): bool|Exception {
     }
 }
 
-
+public static function getUserById(int $usuarioId): ?array {
+    return self::select(['uniqueName'])
+        ->where('id', $usuarioId)
+        ->first();
 }
 
+}

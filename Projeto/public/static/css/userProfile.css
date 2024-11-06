@@ -299,11 +299,15 @@
     background-color: #151C25 !important;
     margin-right: 9px;
 }
-.viewProjects{
+.viewProjects {
     width: 170px !important;
     height: 40px !important;
     border-radius: 20px !important;
-    background-color: #151C25 !important;
+    background-color: #151C25 !important;  /* Cor de fundo do botão */
+    color: #FFFFFF !important;  /* Cor do texto do botão */
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 15px;
+    text-align: center;
 }
 
 .btn-cadastrar {
@@ -338,4 +342,82 @@
 
 .sairButton{
     width: 100px;
+}
+
+.modal {
+    display: none; /* Inicialmente invisível */
+    position: fixed; 
+    z-index: 1; /* Fica na frente de outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro com transparência */
+    padding-top: 60px; /* Distância do topo */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #151C25;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #282F39;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 15px;
+    color: #FFFFFF;
+}
+
+/* Fechar Modal */
+.close {
+    color: #FFFFFF;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #FF6347;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilo para o Título do Modal */
+.modal-content h2 {
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 24px;
+    font-weight: normal;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+}
+
+/* Estilo para o Container de Projetos e Notas */
+#projectsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Estilo para Cada Item de Projeto */
+.project-item {
+    background-color: #1A2129;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.project-item h3 {
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 20px;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+}
+
+.project-item p {
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 16px;
+    color: #B0B0B0;
+    margin: 5px 0;
 }
