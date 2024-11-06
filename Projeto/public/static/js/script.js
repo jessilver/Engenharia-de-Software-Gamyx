@@ -139,3 +139,4 @@ document.querySelectorAll('.star').forEach((star, index) => {
         });
     });
 });
+

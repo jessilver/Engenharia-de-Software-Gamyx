@@ -43,4 +43,18 @@ class ReviewsController extends Controller {
             }
         }
     }
+
+    public function getReviewsApi($args) {
+        $projetoId = (int)$args['id']; // Extraia o ID do projeto da URL e converta para inteiro
+        $reviews = Review::getReviewsWithUniqueName($projetoId);
+        header('Content-Type: application/json');
+        echo json_encode($reviews);
+    }
+
+    public function getAllProjectsReviews() {
+        $reviews = Review::getAllProjectsReviews();
+        header('Content-Type: application/json');
+        echo json_encode($reviews);
+    }
 }
+

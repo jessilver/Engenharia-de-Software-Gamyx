@@ -29,3 +29,6 @@ $router->post('/projeto/review', 'ReviewsController@review');
 
 
 $router->post('/editProject', 'ViewProjectController@edit');
+
+$router->get('/api/reviews/{id}', 'reviewsController@getReviewsApi');
+$router->get('/api/all-projects-reviews', 'reviewsController@getAllProjectsReviews');

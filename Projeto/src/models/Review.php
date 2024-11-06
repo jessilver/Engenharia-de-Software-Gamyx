@@ -35,4 +35,18 @@ class Review extends Model {
             ->where('projeto_id', $projetoId)
             ->execute() !== false;
     }
+
+    public static function getReviewsWithUniqueName(int $projetoId): ?array {
+        return self::select(['reviews.nota', 'usuarios.uniqueName'])
+            ->join('usuarios', 'usuarios.id', '=', 'reviews.usuario_id')
+            ->where('reviews.projeto_id', $projetoId)
+            ->execute();
+    }
+
+    public static function getAllProjectsReviews(): ?array {
+        return self::select(['reviews.nota', 'usuarios.uniqueName', 'projects.nomeProjeto'])
+            ->join('projects', 'projects.id', '=', 'reviews.projeto_id')
+            ->join('usuarios', 'usuarios.id', '=', 'reviews.usuario_id')
+            ->execute();
+    }
 }
