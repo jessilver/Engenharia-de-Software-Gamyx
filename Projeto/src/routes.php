@@ -42,6 +42,6 @@ $router->post('/search', 'SearchProjectController@searchProjectAction');
 $router->get('/user/{id}/projetos', 'ProjectController@getAllProjects');
 
 
-// API
-
+// Rota API
+$router->get('/api/busca-usuario/{id}', 'apiBuscaUsuarioController@index');
 $router->get('/api/friends/{id}', 'friendController@api');

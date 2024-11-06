@@ -3,13 +3,32 @@
 <link rel="stylesheet" href="<?= $base ?>/static/css/viewProject.css" />
 <title><?php echo $project['nomeProjeto'] ?> | Gamyx</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://kit.fontawesome.com/278bb2ddaf.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-    <script src="<?=$base?>/static/js/script.js"></script>
+
 </head>
+<!-- Requisição para recuperar dados do usuário pela API -->
+<?php
+    $usuarioId = $project['usuario_id'];
+    $apiUrl = "http://localhost/Engenharia-de-Software-Gamyx/Projeto/public/api/busca-usuario/{$usuarioId}?acao=buscar-usuario";
+    // Inicializa uma sessão cURL
+    $ch = curl_init($apiUrl);
+    // Configura opções para a requisição
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    // Executa a requisição
+    $response = curl_exec($ch);
+    // Verifica se ocorreu algum erro
+    if (curl_errno($ch)) {
+        echo 'Error:' . curl_error($ch);
+    }
+    // Fecha a sessão cURL
+    curl_close($ch);
+    // Decodifica a resposta JSON
+    $usuarioData = json_decode($response, true);
+
+    // Exibe os dados do usuário, se disponível
+    if (!empty($usuarioData)) {
+        $usuario = $usuarioData[0];
+    }
+?>
 
 <body>
 
@@ -25,108 +44,83 @@
                             <i class="fa-solid fa-pen"></i>
                         </button>
 
-                        <form action="<?=$base?>/deleteProject" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este projeto?');">
-                        <input type="hidden" name="projectId" value="<?php echo $project['id'] ?>" />
-                        <input type="hidden" name="userId" value="<?php echo $usuario['id'] ?>" />
-                        <button type="submit" class="btn-excluir">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                    </form>
-                </div>
-            <?php endif; ?>
-            </div> 
+                        <form action="<?= $base ?>/deleteProject" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este projeto?');">
+                            <input type="hidden" name="projectId" value="<?php echo $project['id'] ?>" />
+                            <input type="hidden" name="userId" value="<?php echo $usuario['id'] ?>" />
+                            <button type="submit" class="btn-excluir">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </form>
+                    </div>
+                <?php endif; ?>
+            </div>
             <!-- Botões  -->
 
             <div class="imageContainer">
                 <img
-                    src="<?=$base?>/static/img/capasProjetos/<?=$project['fotoCapa']?>"
+                    src="<?= $base ?>/static/img/capasProjetos/<?= $project['fotoCapa'] ?>"
                     alt=""
                     class="projectImage" />
             </div>
             <!-- <span class="projectCategory">Gêneros: Aventura, Educativo, Retro</span> -->
             <span class="projectTitle lower">Descrição</span>
-            <p><?php echo $project['descricaoProjeto'] ?></p>
+            <p class="projectDesc"><?php echo $project['descricaoProjeto'] ?></p>
             <span class="projectTitle lower">Disponível para:
-                <?=$project['sistemasOperacionaisSuportados'];?>
+                <?= $project['sistemasOperacionaisSuportados']; ?>
             </span>
             <span class="projectTitle lower">Link para download</span>
             <div class="projectRepContainer rounded my-3">
                 <a href="<?php echo $project['linkDownload']; ?>"><?php echo $project['linkDownload']; ?></a>
             </div>
 
-<!-- Avaliações  -->
-<form action="<?=$base?>/projeto/review" method="POST">
-    <input type="hidden" name="projectId" value="<?php echo $project['id']; ?>">
-    <div class="rating">
-        <?php 
-        // Recupera a nota da sessão, se existir
-        $nota = isset($_SESSION['nota']) ? $_SESSION['nota'] : null;
+            <!-- Avaliações  -->
+            <form action="<?= $base ?>/projeto/review" method="POST">
+                <input type="hidden" name="projectId" value="<?php echo $project['id']; ?>">
+                <div class="rating">
+                    <?php
+                    // Recupera a nota da sessão, se existir
+                    $nota = isset($_SESSION['nota']) ? $_SESSION['nota'] : null;
 
-        for ($i = 1; $i <= 5; $i++): ?>
-            <button type="submit" name="nota" value="<?php echo $i; ?>" class="star <?php echo ($nota && $nota >= $i) ? 'selected' : ''; ?>">
-                &#9733; <!-- Unicode para estrela -->
-            </button>
-        <?php endfor; ?>
-    </div>
-</form>
+                    for ($i = 1; $i <= 5; $i++): ?>
+                        <button type="submit" name="nota" value="<?php echo $i; ?>" class="star <?php echo ($nota && $nota >= $i) ? 'selected' : ''; ?>">
+                            &#9733; <!-- Unicode para estrela -->
+                        </button>
+                    <?php endfor; ?>
+                </div>
+            </form>
 
-<?php if (isset($_SESSION['message'])): ?>
-    <p><?php echo $_SESSION['message']; unset($_SESSION['message']); unset($_SESSION['nota']); ?></p> <!-- Limpa a mensagem e a nota da sessão -->
-<?php endif; ?>
+            <?php if (isset($_SESSION['message'])): ?>
+                <p><?php echo $_SESSION['message'];
+                    unset($_SESSION['message']);
+                    unset($_SESSION['nota']); ?></p> <!-- Limpa a mensagem e a nota da sessão -->
+            <?php endif; ?>
 
 
         </main>
         <section class="creatorCardContainer rounded">
-            <div class="creatorCardInfo">
-                <div>
-                    <div class="profileImageContainer">
-                        <img
-                            src="<?php
-                                    $caminho = "$base/static/img/perfil/imagem-perfil-" . $usuario['nomeUsuario'] . ".jpg";
-                                    echo !file_exists($caminho)
-                                        ? $caminho
-                                        : "$base/static/img/sem-imagem.png"; ?>"
-                            alt="Imagem de perfil do usuário <?php echo $usuario['nomeUsuario']; ?>"
-                            class="profileImage" />
+            <a href="<?= $base ?>/perfil" class="text-white text-decoration-none">
+                <div class="creatorCardInfo">
+                    <div>
+                        <div class="profileImageContainer">
+                            <img src="<?php
+                                        $caminho = "$base/static/img/perfil/imagem-perfil-" . $usuario['nomeUsuario'] . ".jpg";
+                                        echo !file_exists($caminho) ? $caminho : "$base/static/img/sem-imagem.png"; ?>"
+                                alt="" class="profileImage" />
+                        </div>
+                        <h4><?php echo $usuario['nomeUsuario'] ?></h4>
+                        <p><?php echo $usuario['arroba'] ?></p>
                     </div>
-                    <h4><?php echo $usuario['nomeUsuario'] ?></h4>
-                    <p><?php echo $usuario['uniqueName']  ?></p>
+                    <div class="cardInfoIcons">
+                        <i class="fa-regular fa-folder"></i><span> 0 projetos • </span>
+                        <i class="fa-solid fa-heart" id="heartIcon"></i><span id="spanHeartIcon"> 0 Likes</span>
+                    </div>
+                    <div>
+                        <p class="userAbout"><?php echo $usuario['sobre'] ?></p>
+                    </div>
                 </div>
-                <div class="cardInfoIcons">
-                    <i class="fa-regular fa-folder"></i><span> 0 projetos • </span>
-                    <i class="fa-solid fa-heart" id="heartIcon"></i><span id="spanHeartIcon"> 0 Likes</span>
-                </div>
-                <div>
-                    <p class="userAbout"><?php echo $usuario['about'] ?></p>
-                </div>
-            </div>
+            </a>
         </section>
     </div>
-
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            ...
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-        </div>
-    </div>
-    </div>
-
 
     <!-- Modal -->
     <div class="modal fade" id="editProjectModal" tabindex="-1" role="dialog" aria-labelledby="editProjectModalTitle" aria-hidden="true">
@@ -137,7 +131,7 @@
                     <i class="fa-solid fa-xmark closeButton" data-bs-dismiss="modal"></i>
                 </div>
                 <div class="modal-body">
-                    <form action="<?=$base?>/editProject" method="POST" id="formeditProject" enctype="multipart/form-data">
+                    <form action="<?= $base ?>/editProject" method="POST" id="formeditProject" enctype="multipart/form-data">
                         <input type="hidden" name="projectId" value="<?php echo $project['id'] ?>" />
                         <input type="hidden" name="userId" value="<?php echo $usuario['id'] ?>" />
 
@@ -154,15 +148,15 @@
                         <div class="mb-3">
                             <label for="projectOs" class="form-label">Sistemas operacionais suportados:</label>
                             <div class="form-check">
-                                <input class="form-check-input" name="windows" type="checkbox" value="windows" id="sistemaWindowsCheckbox" >
+                                <input class="form-check-input" name="windows" type="checkbox" value="windows" id="sistemaWindowsCheckbox">
                                 <label class="form-check-label" for="sistemaWindowsCheckbox">Windows</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" name="linux" type="checkbox" value="linux" id="sistemaLinuxCheckbox" >
+                                <input class="form-check-input" name="linux" type="checkbox" value="linux" id="sistemaLinuxCheckbox">
                                 <label class="form-check-label" for="sistemaLinuxCheckbox">Linux</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" name="mac" type="checkbox" value="mac" id="sistemaMacCheckbox" >
+                                <input class="form-check-input" name="mac" type="checkbox" value="mac" id="sistemaMacCheckbox">
                                 <label class="form-check-label" for="sistemaMacCheckbox">Mac</label>
                             </div>
                         </div>
@@ -189,4 +183,4 @@
         </div>
     </div>
 </body>
-<?php $render('footer');?>
+<?php $render('footer'); ?>

@@ -23,6 +23,9 @@ body{
     font-size: 24px;
     font-weight: bold;
 }
+.projectDesc{
+    max-width: 700px;
+}
 .lower{
     font-weight: normal;
 }

@@ -29,7 +29,7 @@ class Project extends Model {
      * @throws Exception Se ocorrer um erro ao consultar o banco de dados.
      *
      */
-    public static function selectProject(int $id, array $fields = []): array|Exception {
+    public static function selectProject(int $id, array $fields = []){
         try {
             return self::select($fields)->where('id', $id)->first();
         } catch (Exception $e) {
