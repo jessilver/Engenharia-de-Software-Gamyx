@@ -42,6 +42,7 @@ class UserController extends Controller {
         $this->render("login");
 
     }
+    
 
     public function auth() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
