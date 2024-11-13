@@ -5,7 +5,8 @@
     "autoload": {
         "psr-4": {
             "core\\": "core/",
-            "src\\": "src/"
+            "src\\": "src/",
+            "Tests\\": "tests/"
         }
     }
 }

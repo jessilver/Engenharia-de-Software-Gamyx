@@ -18,10 +18,10 @@ class ProjectController extends Controller {
 
         if (count($projetos) > 0) {
             header('Content-Type: application/json');
-            echo json_encode($projetos);
+            return json_encode($projetos);
         } else {
             header('Content-Type: application/json');
-            echo json_encode(['message' => 'Nenhum projeto encontrado para este usuário']);
+            return json_encode(['message' => 'Nenhum projeto encontrado para este usuário']);
         }
     }
 
