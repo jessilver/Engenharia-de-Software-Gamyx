@@ -1,0 +1,92 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    background-color: #0D1117;
+    color: white;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#sectionConteudoFeed {
+    display: flex;
+    justify-content: center;
+}
+
+#content{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    background-color: #151C25;
+    color: white;
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px !important;
+    padding: 10px;
+}
+
+#usuarioPost {
+    max-height: 20%;
+}
+
+#post{
+    width: 70%;
+    background-color: #0D1117;
+    color: white;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+#usuarioPost{
+    margin: 10px;
+    width: 100%;
+    display: flex;
+}
+
+.dadosUsuarioPost{
+    margin-left: 12px;
+    flex-direction: column;
+}
+
+.imagemPerfilUsuarioPost{
+    width: 10%;
+    height: 10%;
+    border-radius: 100%;
+
+}
+
+#perfilGeralUsuario {
+    background-color: #151C25;
+    width: 18%;
+    height: 300px;
+    color: white;
+    margin-left: 10px !important;
+    align-items: center;
+    padding: 30px;
+    /* justify-content: center; */
+}
+
+.imagemPerfilGeralUsuario{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+}
+
+.dadosUsuario {
+    align-items: center;
+    justify-content: center;
+}

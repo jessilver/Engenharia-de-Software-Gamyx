@@ -8,6 +8,8 @@ $router->get('/', 'HomeController@index');
 $router->get('/perfil', 'ViewProfileController@index');
 $router->post('/perfil', 'ViewProfileController@other'); // Alterado para lidar com POST
 
+$router->get('/inicio', 'HomeController@feed');
+
 $router->get('/login','UserController@index');
 $router->post('/login','UserController@auth');
 $router->post('/logout', 'UserController@logout');

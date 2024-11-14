@@ -30,4 +30,8 @@ class HomeController extends Controller {
         print_r($args);
     }
 
+    public function feed(){
+        $this->render('feedInicial');
+    }
+
 }
