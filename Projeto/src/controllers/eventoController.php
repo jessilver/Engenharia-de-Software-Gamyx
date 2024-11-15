@@ -3,31 +3,37 @@
 namespace src\controllers;
 
 use \core\Controller;
-use src\models\Event;
+use src\models\GameJam;
 use \src\models\Usuario;
 use \src\models\Project;
 
 class eventoController extends Controller{
     public function index() {
 
-        $listaJams = Event::buscar(); 
-
+        $listaJams = GameJam::getAllJams();
+        $usuariosHost = array();
+        foreach($listaJams as $jam){
+            $usuariosHost[] = GameJam::getHostById($jam['host_id']);
+        }
+        
         $context = [
             'jams' => $listaJams,
+            'usuariosHost' => $usuariosHost,
         ];
+
         $this->render('eventos', $context);
     }
     public function createJam(){
+        $hostId = $_SESSION['userLogado']['id'] ?? null;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            echo "Olá bolo\n";
+            
             $nomeJam = filter_input(INPUT_POST, 'nomeInput');
             $descricaoJam = filter_input(INPUT_POST, 'descricaoInput');
-            echo $nomeJam . $descricaoJam;
 
             if ($nomeJam && $descricaoJam) {
-                Event::insertEvent();
+                GameJam::createJam($hostId, $nomeJam, $descricaoJam);
             }
-            // $this->redirect('/eventos');
+            $this->redirect('/eventos');
         }
     }
 }

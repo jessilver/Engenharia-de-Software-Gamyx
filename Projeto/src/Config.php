@@ -63,14 +63,14 @@ class Config {
             UNIQUE (usuario_id, projeto_id) -- Impede que um usuário avalie o mesmo projeto mais de uma vez
         "
     ];
-    const TB_GAMEJAM = [
-        'name' => 'Game Jam',
+    const TB_GAMEJAMS = [
+        'name' => 'GameJams',
         'culloms' => "
             id INT AUTO_INCREMENT PRIMARY KEY,
             host_id INT NOT NULL,
             nomeJam VARCHAR(100) NOT NULL,
             descricaoJam VARCHAR(200),
-            FOREIGN KEY (host_id) REFERENCES Usuarios(id) ON DELETE CASCADE,
+            FOREIGN KEY (host_id) REFERENCES Usuarios(id) ON DELETE CASCADE
         "
     ];
 }

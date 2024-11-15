@@ -68,3 +68,7 @@ hr{
 .form-floating > label::after {
     background-color: transparent !important;
 }
+/* Modal  */
+.GameJamModal{
+    background-color: var(--cor-cinza-escuro);
+}

@@ -17,30 +17,81 @@
             <div class="row d-flex gap-5 align-items-center w-100">
 
                 <?php if (count($jams) > 0) : ?>
-                    <?php foreach ($jams as $jam) : ?>
+                    <?php for ($i = 0; $i < count($jams); $i++) : ?>
                         <?php
-                        // $nomeProjeto = $projeto['nomeProjeto'] ?? 'Nome não disponível';
-                        // $fotoCapa = $projeto['fotoCapa'] ?? 'default-placeholder.png';
-                        // $linkProjeto = $projeto['id'];
-                        ?>
+                        $jam = $jams[$i];
+                        $host = $usuariosHost[$i];
 
+                        $nomeJam = $jam['nomeJam'];
+                        $descricao = $jam['descricaoJam'];
+                        $arrobaHost = $host['uniqueName'];
+                        $nomeHost = $host['nomeUsuario'];
+
+                        // Gerar um ID único para cada modal baseado no índice
+                        $modalId = "modalGameJam" . $i;
+                        ?>
+                        <!-- Card da Game Jam -->
                         <div class="jamItem d-flex flex-column col-3 rounded gap-2">
                             <div class="d-flex align-items-center p-2 gap-2">
                                 <div class="flex-shrink-0">
-                                    <img src="<?= $base ?>/static/img/perfil/imagem-perfil-Mario.jpg" alt="..." class="jamHostProfile">
+                                    <img src="
+                                        <?php
+                                            $caminho = "__DIR__ . '/../../public/static/img/perfil/imagem-perfil-" . $nomeHost . ".jpg";
+                                            echo file_exists($caminho) ? $caminho : "$base/static/img/sem-imagem.png";
+                                        ?>"
+                                        alt="Imagem de perfil do usuário host da jam, <?php echo $nomeHost; ?>"
+                                        class="jamHostProfile" 
+                                    />
                                 </div>
-                                <div class="flex-grow-1 ms-3 h4">Game jam de Mario Games</div>
+                                <div class="flex-grow-1 ms-3 h4"><?= $nomeJam ?></div>
                             </div>
-                            <span class="text-muted">Hosteada por <u>@MarioGames</u></span>
-                            <span class="pb-4">A Game Jam do Mario Games reúne desenvolvedores para criar jogos inspirados nos mundos e personagens de Mario, desafiando criatividade!</span>
+                            <span class="text-muted">Hosteada por <u><?= $arrobaHost ?></u></span>
+                            <span class="pb-4"><?= $descricao ?></span>
+                            <button type="button" class="btn btn-primary p-1 mb-4" data-bs-toggle="modal" data-bs-target="#<?= $modalId ?>">
+                                Ver mais
+                            </button>
                         </div>
-                    <?php endforeach; ?>
+
+                        <!-- Modal para cada Game Jam -->
+                        <div class="modal fade" id="<?= $modalId ?>" tabindex="-1" aria-labelledby="<?= $modalId ?>Label" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+                                <div class="GameJamModal modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="<?= $modalId ?>Label"><?= $nomeJam ?></h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body d-flex flex-column align-items-center gap-3">
+                                        <img src="
+                                            <?php
+                                                $caminho = "__DIR__ . '/../../public/static/img/perfil/imagem-perfil-" . $nomeHost . ".jpg";
+                                                echo file_exists($caminho) ? $caminho : "$base/static/img/sem-imagem.png";
+                                            ?>"
+                                            alt="Imagem de perfil do usuário host da jam, <?php echo $nomeHost; ?>"
+                                            class="jamHostProfile" 
+                                        />
+                                        <p><?= $descricao ?></p>
+                                        <div class="d-flex flex-column">
+                                            <span><strong>Host: </strong> <?= $arrobaHost ?></span>
+                                            <span><strong>Status: </strong> Ativa</span>
+                                        </div>
+                                        <!-- Você pode adicionar mais detalhes da Game Jam aqui, conforme necessário -->
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                        <!-- <button type="button" class="btn btn-primary">Entendido</button> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <?php endfor; ?>
                 <?php else : ?>
                     <span class="text-muted h3">Ops, parece que não há nenhuma jam ativa no momento.</span>
                 <?php endif; ?>
 
             </div>
         </div>
+
 
         <span class="h1 align-self-center pt-4" style="border-top: 1px solid var(--cor-cinza-borda);">Quer hostear sua própria game jam? Cadastre aqui!</span>
         <form action="<?= $base ?>/eventos" method="POST" class="formularioCadastroJam align-self-center my-5">
@@ -57,9 +108,7 @@
             <button type="submit" class="botaoCadastrarJam p-4">Criar minha game jam</button>
         </form>
 
-
     </div>
-
 
     <script>
         //Faz o título aumentar ou diminuir baseado no scroll
@@ -75,6 +124,9 @@
             }
         }
     </script>
+    <!-- Javascript do bootstrap  -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
