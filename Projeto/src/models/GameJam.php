@@ -8,6 +8,33 @@ use Exception;
 class GameJam extends Model {
 
     /**
+     * Retorna uma Game Jam pelo ID.
+     *
+     * Este método recupera os dados de uma Game Jam específica do banco de dados.
+     *
+     * @param int $jamId O ID da Game Jam a ser buscada.
+     * @param array $fields (opcional) Um array de campos a serem retornados.
+     *                      Se não fornecido, retorna todos os campos.
+     *
+     * @return array Retorna os dados da Game Jam como um array associativo.
+     * @throws Exception Se não encontrar a Game Jam ou ocorrer erro na consulta.
+     */
+    public static function getJamById(int $jamId, array $fields = []): array {
+        try {
+            $query = self::select($fields)->where('id', $jamId)->limit(1);
+            $result = $query->first();
+
+            if (!$result) {
+                throw new Exception('Game Jam não encontrada com o ID fornecido.');
+            }
+
+            return $result;
+        } catch (Exception $e) {
+            throw new Exception('Erro ao buscar a Game Jam pelo ID: ' . $e->getMessage());
+        }
+    }
+
+    /**
      * Retorna todas as Game Jams do banco de dados.
      *
      * Este método recupera todas as Game Jams existentes no banco de dados.
@@ -71,14 +98,34 @@ class GameJam extends Model {
      */
     public static function createJam(int $hostId, string $nome, string $descricao): void {
         try {
+            $dataAtual = date('Y-m-d');
+
             $result = self::insert([
                 'host_id' => $hostId,
                 'nomeJam' => $nome,
-                'descricaoJam' => $descricao
+                'descricaoJam' => $descricao,
+                'dataCriacao' => $dataAtual
             ])->execute();
         } catch (Exception $e) {
             throw new Exception('Erro ao criar uma nova Game Jam: ' . $e->getMessage());
         }
     }
-    
+    /**
+     * Deleta uma Game Jam pelo ID.
+     *
+     * Este método utiliza o método padrão de deleção definido no model base.
+     *
+     * @param int $jamId O ID da Game Jam a ser deletada.
+     *
+     * @return void
+     * @throws Exception Se houver falha ao deletar a Game Jam no banco de dados.
+     */
+    public static function deleteJamById(int $jamId): void {
+        try {
+            self::delete($jamId);
+        } catch (Exception $e) {
+            throw new Exception('Erro ao deletar a Game Jam: ' . $e->getMessage());
+        }
+    }
+
 }

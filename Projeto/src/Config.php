@@ -69,7 +69,8 @@ class Config {
             id INT AUTO_INCREMENT PRIMARY KEY,
             host_id INT NOT NULL,
             nomeJam VARCHAR(100) NOT NULL,
-            descricaoJam VARCHAR(200),
+            descricaoJam VARCHAR(400),
+            dataCriacao DATE DEFAULT CURRENT_DATE NOT NULL,
             FOREIGN KEY (host_id) REFERENCES Usuarios(id) ON DELETE CASCADE
         "
     ];

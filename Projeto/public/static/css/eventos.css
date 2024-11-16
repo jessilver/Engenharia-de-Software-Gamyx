@@ -33,12 +33,28 @@ hr{
     margin: 76px 100px;
     border-color: var(--cor-cinza-claro);
 }
+.formExcluirJam{
+    justify-self: flex-end;
+    align-self: flex-start;
+}
+.botaoExcluirJam{
+    background-color: #F00;
+    width: 40px;
+    height: 40px;
+    border: none;
+    margin-top: 8px;
+}
 .jamContainer{
     margin: 48px 100px;
+}
+.descricaoJam{
+    max-height: 100px;
+    overflow: hidden;
 }
 .jamItem{
     background-color: var(--cor-cinza-escuro);
     min-width: 428px;
+    height: 370px;
 }
 .jamHostProfile{
     width: 150px;

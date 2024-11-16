@@ -24,6 +24,7 @@
 
                         $nomeJam = $jam['nomeJam'];
                         $descricao = $jam['descricaoJam'];
+                        $data = date('d/m/Y', strtotime($jam['dataCriacao']));
                         $arrobaHost = $host['uniqueName'];
                         $nomeHost = $host['nomeUsuario'];
 
@@ -33,21 +34,28 @@
                         <!-- Card da Game Jam -->
                         <div class="jamItem d-flex flex-column col-3 rounded gap-2">
                             <div class="d-flex align-items-center p-2 gap-2">
+
                                 <div class="flex-shrink-0">
                                     <img src="
                                         <?php
-                                            $caminho = "__DIR__ . '/../../public/static/img/perfil/imagem-perfil-" . $nomeHost . ".jpg";
-                                            echo file_exists($caminho) ? $caminho : "$base/static/img/sem-imagem.png";
+                                        $caminho = "__DIR__ . '/../../public/static/img/perfil/imagem-perfil-" . $nomeHost . ".jpg";
+                                        echo file_exists($caminho) ? $caminho : "$base/static/img/sem-imagem.png";
                                         ?>"
                                         alt="Imagem de perfil do usuário host da jam, <?php echo $nomeHost; ?>"
-                                        class="jamHostProfile" 
-                                    />
+                                        class="jamHostProfile" />
                                 </div>
                                 <div class="flex-grow-1 ms-3 h4"><?= $nomeJam ?></div>
+                                <?php if ($_SESSION['userLogado']['id'] === $host['id']) : ?>
+                                    <form action="<?= $base ?>/eventos/<?=$jam['id']?>" method="GET" class="formExcluirJam" onsubmit="return confirm('Tem certeza que quer excluir a jam?');">    
+                                        <button type="submit" class="botaoExcluirJam rounded">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </form>
+                                <?php endif; ?>
                             </div>
                             <span class="text-muted">Hosteada por <u><?= $arrobaHost ?></u></span>
-                            <span class="pb-4"><?= $descricao ?></span>
-                            <button type="button" class="btn btn-primary p-1 mb-4" data-bs-toggle="modal" data-bs-target="#<?= $modalId ?>">
+                            <span class="descricaoJam pb-4"><?= $descricao ?></span>
+                            <button type="button" class="btn btn-primary p-1 mb-4 border-0" data-bs-toggle="modal" data-bs-target="#<?= $modalId ?>">
                                 Ver mais
                             </button>
                         </div>
@@ -58,21 +66,21 @@
                                 <div class="GameJamModal modal-content">
                                     <div class="modal-header">
                                         <h1 class="modal-title fs-5" id="<?= $modalId ?>Label"><?= $nomeJam ?></h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-body d-flex flex-column align-items-center gap-3">
+                                    <div class="modal-body d-flex flex-column align-items-center gap-4">
                                         <img src="
                                             <?php
-                                                $caminho = "__DIR__ . '/../../public/static/img/perfil/imagem-perfil-" . $nomeHost . ".jpg";
-                                                echo file_exists($caminho) ? $caminho : "$base/static/img/sem-imagem.png";
+                                            $caminho = "__DIR__ . '/../../public/static/img/perfil/imagem-perfil-" . $nomeHost . ".jpg";
+                                            echo file_exists($caminho) ? $caminho : "$base/static/img/sem-imagem.png";
                                             ?>"
                                             alt="Imagem de perfil do usuário host da jam, <?php echo $nomeHost; ?>"
-                                            class="jamHostProfile" 
-                                        />
+                                            class="jamHostProfile" />
                                         <p><?= $descricao ?></p>
                                         <div class="d-flex flex-column">
                                             <span><strong>Host: </strong> <?= $arrobaHost ?></span>
                                             <span><strong>Status: </strong> Ativa</span>
+                                            <span><strong>Criada em: </strong> <?= $data ?></span>
                                         </div>
                                         <!-- Você pode adicionar mais detalhes da Game Jam aqui, conforme necessário -->
                                     </div>
@@ -101,11 +109,12 @@
                     <label for="floatingInput">Nome da jam</label>
                 </div>
                 <div class="form-floating mb-3">
+                    <!-- TODO: Definir tamanho mínimo com minlength="50"  -->
                     <textarea class="cadastroJamLabel form-control" placeholder="Descrição breve" id="floatingTextarea" name="descricaoInput" required></textarea>
                     <label for="floatingTextarea">Descrição breve</label>
                 </div>
             </div>
-            <button type="submit" class="botaoCadastrarJam p-4">Criar minha game jam</button>
+            <button type="submit" class="botaoCadastrarJam p-4" onsubmit="return confirm('Sua jam foi criada e já está disponível!');">Criar minha game jam</button>
         </form>
 
     </div>
