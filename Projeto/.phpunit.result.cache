@@ -1,0 +1,1 @@
+{"version":1,"defects":{"Tests\\ApiBuscarProjetosTest::testGetItems":7},"times":{"Tests\\ApiBuscarProjetosTest::testGetItems":0.02,"Tests\\EditMethodsTest::testEdit":0.034,"Tests\\ExampleTest::testAddition":0.006,"EditMethodsTest::testEdit":0.07}}
