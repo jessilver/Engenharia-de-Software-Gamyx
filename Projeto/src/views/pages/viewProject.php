@@ -1,4 +1,5 @@
 <?php $render('header'); ?>
+<?php require_once __DIR__ . '/../../models/Review.php'; ?>
 <link rel="stylesheet" href="<?= $base ?>/static/css/variaveis.css" />
 <link rel="stylesheet" href="<?= $base ?>/static/css/viewProject.css" />
 <title><?php echo $project['nomeProjeto'] ?> | Gamyx</title>
@@ -74,27 +75,55 @@
             </div>
 
             <!-- Avaliações  -->
-            <form action="<?= $base ?>/projeto/review" method="POST">
-                <input type="hidden" name="projectId" value="<?php echo $project['id']; ?>">
+
+    
+        <!-- Adicione a seção de avaliações e comentários aqui -->
+        <section class="review-section">
+            <h2>Deixe sua Avaliação</h2>
+            <form action="<?=$base?>/projeto/review" method="POST">
+                <input type="hidden" name="projectId" value="<?= $project['id'] ?>">
                 <div class="rating">
-                    <?php
-                    // Recupera a nota da sessão, se existir
-                    $nota = isset($_SESSION['nota']) ? $_SESSION['nota'] : null;
-
-                    for ($i = 1; $i <= 5; $i++): ?>
-                        <button type="submit" name="nota" value="<?php echo $i; ?>" class="star <?php echo ($nota && $nota >= $i) ? 'selected' : ''; ?>">
-                            &#9733; <!-- Unicode para estrela -->
-                        </button>
-                    <?php endfor; ?>
+                    <input type="radio" id="star5" name="nota" value="5">
+                    <label for="star5">&#9733;</label>
+                    <input type="radio" id="star4" name="nota" value="4">
+                    <label for="star4">&#9733;</label>
+                    <input type="radio" id="star3" name="nota" value="3">
+                    <label for="star3">&#9733;</label>
+                    <input type="radio" id="star2" name="nota" value="2">
+                    <label for="star2">&#9733;</label>
+                    <input type="radio" id="star1" name="nota" value="1">
+                    <label for="star1">&#9733;</label>
                 </div>
+                <textarea class="review-textarea" name="comentario" placeholder="Deixe um comentário..."></textarea>
+                <button type="submit" class="btn-review">Enviar Review</button>
             </form>
+        </section>
 
-            <?php if (isset($_SESSION['message'])): ?>
-                <p><?php echo $_SESSION['message'];
-                    unset($_SESSION['message']);
-                    unset($_SESSION['nota']); ?></p> <!-- Limpa a mensagem e a nota da sessão -->
+        <section class="reviews-section">
+            <h2>Avaliações e Comentários</h2>
+            <?php if (!empty($reviews)): ?>
+                <?php foreach ($reviews as $review): ?>
+                    <div class="review-item d-flex align-items-center gap-3" style="border-bottom: 2px solid var(--cor-cinza-borda); margin-bottom: 15px;">
+                        <div class="d-flex flex-column w-100">
+                            <div class="d-flex justify-content-between">
+                                <p><strong><?= $review['uniqueName'] ?></strong></p>
+                                <div class="rating-display">
+                                    <?php for ($i = 0; $i < $review['nota']; $i++): ?>
+                                        <span class="star">&#9733;</span>
+                                    <?php endfor; ?>
+                                    <?php for ($i = $review['nota']; $i < 5; $i++): ?>
+                                        <span class="star empty">&#9733;</span>
+                                    <?php endfor; ?>
+                                </div>
+                            </div>
+                            <p class="review-comment"><?= !empty($review['comentario']) ? $review['comentario'] : 'O usuário não comentou sobre o projeto' ?></p>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>Não há avaliações ainda.</p>
             <?php endif; ?>
-
+        </section>
 
         </main>
         <section class="creatorCardContainer rounded">

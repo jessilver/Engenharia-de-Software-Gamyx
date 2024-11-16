@@ -1,4 +1,6 @@
-<?php $render('header');?>
+<?php $render('header');
+    session_destroy();
+?>
     <link rel="stylesheet" href="/Engenharia-de-Software-Gamyx/Projeto/public/static/css/loginstyle.css">
     <title>Login - Gamyx</title>
 

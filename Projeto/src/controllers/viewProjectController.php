@@ -4,6 +4,7 @@ namespace src\controllers;
 use \core\Controller;
 use \src\models\Usuario;
 use \src\models\Project;
+use \src\models\Review;
 use \src\Config;
 
 class ViewProjectController extends Controller {
@@ -23,10 +24,14 @@ class ViewProjectController extends Controller {
             // Busca o usuário pelo ID utilizando o novo método selectUser
             $usuario = Usuario::selectUser($usuarioId);
 
+            // Busca os comentários e avaliações do projeto
+            $reviews = Review::getReviewsComments($projetoId);
+
             // Prepara os dados para a view
             $context = [
                 'project' => $project,
                 // 'usuario' => !empty($usuario) ? $usuario : null // Verifica se o usuário foi encontrado
+                'reviews' => $reviews
             ];
 
             // Renderiza a view com os dados

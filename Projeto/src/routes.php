@@ -30,8 +30,7 @@ $router->post('/projeto/review', 'ReviewsController@review');
 
 $router->post('/editProject', 'ViewProjectController@edit');
 
-$router->get('/api/reviews/{id}', 'reviewsController@getReviewsApi');
-$router->get('/api/all-projects-reviews', 'reviewsController@getAllProjectsReviews');
+
 
 $router->post('/add-friend', 'friendController@addFriend');
 $router->post('/deleteFriend', 'friendController@deleteFriend');
@@ -42,6 +41,10 @@ $router->post('/search', 'SearchProjectController@searchProjectAction');
 $router->get('/user/{id}/projetos', 'ProjectController@getAllProjects');
 
 
-// Rota API
+// Rota API para busca de usuários
 $router->get('/api/busca-usuario/{id}', 'apiBuscaUsuarioController@index');
 $router->get('/api/friends/{id}', 'friendController@api');
+
+// Rota API para reviews
+$router->get('/api/reviews/{id}', 'reviewsController@getReviewsApi');
+$router->get('/api/all-projects-reviews', 'reviewsController@getAllProjectsReviews');
