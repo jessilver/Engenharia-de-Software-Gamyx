@@ -34,7 +34,7 @@ class UserController extends Controller {
             exit;
         }
 
-        $this->redirect('/cadastrarUsuario');
+        $this->redirect('/login');
         exit;
     }
 
