@@ -5,7 +5,6 @@ use \src\Config;
 use \core\Database;
 use \ClanCats\Hydrahon\Builder;
 use \ClanCats\Hydrahon\Query\Sql\FetchableInterface;
-use \InvalidArgumentException;
 
 class Model {
 

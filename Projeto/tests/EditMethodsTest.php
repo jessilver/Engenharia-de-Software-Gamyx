@@ -7,16 +7,14 @@ use src\models\Usuario;
 use core\OutputColors;
 
 
-class EditMethodsTest extends TestCase
-{
-    protected function setUp(): void
-    {
+class EditMethodsTest extends TestCase{
+
+    protected function setUp(): void{
         $_POST['about'] = 'About me';
         $_POST['linkPortfolio'] = 'http://portfolio.com';
     }
 
-    public function testEditProfile()
-    {
+    public function testEditProfile(){
         $output = OutputColors::setColors();
 
         // Criar um mock do ViewProfileController
@@ -44,14 +42,11 @@ class EditMethodsTest extends TestCase
         $this->assertEquals($id['id'], $decryptedId, 'Erro ao descriptografar o id');
     
         // Adicionar mensagem de depuração
-        $output->write('<info>Calling edit method of ViewProfileController: </info>');
+        $output->write('<info>'."\n".'Calling edit method of ViewProfileController: </info>');
     
         $return = $controller->edit(['id' => $encriptedId]);
-    
-        if ($return == true) {
-            $output->writeln('<success>OK</success>');
-        } 
         $this->assertEquals(true, $return, 'Erro ao chamar o método edit');
+        $output->writeln('<success>Pass successful</success>');
         
     }
 }
