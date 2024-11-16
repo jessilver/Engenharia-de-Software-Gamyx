@@ -30,7 +30,7 @@ class UserController extends Controller {
                 ])->execute();
             }
 
-            $this->redirect('/cadastrarUsuario');
+            $this->redirect('/login');
             exit;
         }
 
@@ -108,12 +108,10 @@ class UserController extends Controller {
                 $this->redirect('/login');
             } else {
                 error_log("Erro ao deletar usuário com ID: $usuarioId");
-                $_SESSION['error'] = "Erro ao deletar usuário.";
                 $this->redirect('/perfil');
             }
         } else {
             error_log("Usuário não está logado.");
-            $_SESSION['error'] = "Usuário não está logado.";
             $this->redirect('/login');
         }
     }

@@ -24,11 +24,9 @@ class ReviewsController extends Controller {
                     if ($avaliacaoExistente) {
                         // Atualiza a avaliação existente
                         Review::updateReview($usuarioId, $projectId, $nota, $comentario);
-                        $_SESSION['message'] = "Avaliação e comentário atualizados com sucesso.";
                     } else {
                         // Adiciona uma nova avaliação com uniqueName e comentário
                         Review::addReviews($usuarioId, $projectId, $nota, $uniqueName, $comentario);
-                        $_SESSION['message'] = "Avaliação e comentário registrados com sucesso.";
                     }
         
                     // Armazena a nota na sessão para uso posterior

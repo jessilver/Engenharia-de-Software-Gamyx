@@ -121,23 +121,19 @@ class ViewProjectController extends Controller {
             if ($project && $project['usuario_id'] == $userId) {
 
                 if (Project::deleteProject($projectId)) {
-                    $_SESSION['message'] = "Projeto deletado com sucesso.";
                     echo "Projeto deletado com sucesso.";
                     $this->redirect('\perfil');
                 } else {
-                    $_SESSION['error'] = "Erro ao deletar projeto.";
                     echo "Erro ao deletar projeto.";
                     $this->redirect('\perfil');
                 }
             } else {
                 // Projeto não encontrado ou usuário não tem permissão
-                $_SESSION['error'] = "Projeto não encontrado ou você não tem permissão para deletá-lo.";
                 echo "Projeto não encontrado ou você não tem permissão para deletá-lo.";
                 $this->redirect('\perfil');
             }
         } else {
             // Usuário não logado ou método inválido
-            $_SESSION['error'] = "Usuário não está logado ou método inválido.";
             echo "Usuário não está logado ou método inválido.";
             $this->redirect('\perfil');
         }
