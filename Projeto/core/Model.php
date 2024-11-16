@@ -5,6 +5,7 @@ use \src\Config;
 use \core\Database;
 use \ClanCats\Hydrahon\Builder;
 use \ClanCats\Hydrahon\Query\Sql\FetchableInterface;
+use \InvalidArgumentException;
 
 class Model {
 
@@ -75,7 +76,11 @@ class Model {
     
     public static function decryptData($data) {
         $decodedData = self::base64UrlDecode($data);
-        list($encryptedData, $iv) = explode('::', $decodedData, 2);
+        $parts = explode('::', $decodedData, 2);
+        if (count($parts) !== 2) {
+            throw new \InvalidArgumentException('Invalid data format for decryption.');
+        }
+        list($encryptedData, $iv) = $parts;
         return openssl_decrypt($encryptedData, 'aes-256-cbc', Config::ENCRYPT_KEY, 0, $iv);
     }
 }
