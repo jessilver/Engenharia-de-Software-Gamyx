@@ -14,7 +14,7 @@
                 <input type="text" placeholder="Procurar usuário" class="userSearchInput" name="search_query" />
                 <button type="submit" class="userSearchSubmit">Buscar</button>
             </form>
-            <?php if (!isset($_SESSION['userLogado'])): ?>
+            <?php if (!isset($_SESSION['userLogado']['id'])): ?>
                 <a href="<?=$base?>/login" class="loginButton">Fazer login</a>
             <?php endif; ?>
         </div>
