@@ -19,6 +19,9 @@
         <div class="login-box">
             <div class="login-form">
                 <form action="/Engenharia-de-Software-Gamyx/Projeto/public/login" method="POST">
+                    <?php if (isset($error)): ?>
+                        <p class="error-message"><?= $error ?></p>
+                    <?php endif; ?>
                     <label for="email">Email ou Usuário</label>
                     <input type="text" id="login" name="login" required>
 
@@ -26,8 +29,10 @@
                         <label for="password">Senha</label>
                         <a href="#" class="forgot-password">Esqueceu sua senha?</a>
                     </div>
-                    <input type="password" id="password" name="password" required>
-
+                    <div class="password-input-container">
+                        <input type="password" id="password" name="password" required>
+                        <img src="<?=$base?>/static/img/eye-closed.png" id="toggle-password" alt="Mostrar senha" class="toggle-password">
+                    </div>
                     <button type="submit">Entrar</button>
                 </form>
             </div>
@@ -36,13 +41,22 @@
             <p>Novo no Gamyx? <a href="/Engenharia-de-Software-Gamyx/Projeto/public/cadastrarUsuario" class="bold-link">Criar uma nova conta</a></p>
         </div>
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.has('error')) {
-                alert('Login ou Senha incorreta. Por favor, tente novamente.');
-            }
+            const togglePassword = document.getElementById('toggle-password');
+            const passwordInput = document.getElementById('password');
+
+            togglePassword.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+
+                // Alterna o ícone
+                if (type === 'password') {
+                    togglePassword.src = '<?=$base?>/static/img/eye-closed.png';
+                } else {
+                    togglePassword.src = '<?=$base?>/static/img/eye-open.png';
+                }
+            });
         });
     </script>
 </body>
