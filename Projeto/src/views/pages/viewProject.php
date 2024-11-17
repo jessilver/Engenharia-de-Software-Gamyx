@@ -98,8 +98,9 @@
                 <textarea class="review-textarea" name="comentario" placeholder="Deixe um comentário..."></textarea>
                 <button type="submit" class="btn-review">Enviar Review</button>
             </form>
-        <?php endif; ?>
-            <h2 style="color:red">Você precisa estar logado para avaliar esse projeto</h2> 
+        <?php else:?>
+            <h2 style="color:red">Você precisa estar logado para avaliar esse projeto</h2>
+            <?php endif; ?> 
         </section>
 
         <section class="reviews-section">

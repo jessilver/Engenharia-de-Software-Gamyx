@@ -159,4 +159,8 @@ class Project extends Model {
             throw new Exception('Erro ao deletar projeto: ' . $e->getMessage());
         }
     }
+
+    public function deleteProjectInstance(int $id): bool|Exception {
+        return self::deleteProject($id);
+    }
 }
