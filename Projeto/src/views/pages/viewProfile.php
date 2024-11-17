@@ -188,11 +188,11 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content sobreModalClass" >
                 <div class="modal-header">
-                    <h5 class="modal-title mx-auto" id="sobreModalLongTitle">Sobre</h5>
-                    <i class="fa-solid fa-xmark closeButton" data-bs-dismiss="modal"></i>
+                    <h5 class="modal-title mx-auto" id="sobreModalLongTitle" style="color: #FFFFFF ">Sobre</h5>
+                    <i class="fa-solid fa-xmark closeButton" data-bs-dismiss="modal" style="color: #FFFFFF" ></i>
                 </div>
                 <div class="modal-body">
-                    <p class="pNormalText"><?= $user['about']; ?></p>
+                    <p class="pNormalText" style="color: #FFFFFF;"><?= $user['about']; ?></p>
                 </div>      
             </div>
         </div>
@@ -235,9 +235,9 @@
     </div>
     <div id="projectsModal" class="modal" style="display: none;">
     <!--  -->
-    <div class="modal-content">
+    <div class="review__modal-content">
         <span class="close">&times;</span>
-        <h2>Projetos e Notas</h2>
+        <h2 style = "color: white">Projetos e Notas</h2>
         <div id="projectsContainer"></div>
     </div>
     <!--  -->

@@ -3,7 +3,7 @@ namespace src\controllers;
 
 use \core\Controller;
 use src\models\Review;
-use src\models\Usuario; // Adicione o uso da classe User para buscar o uniqueName
+use src\models\Usuario;
 
 class ReviewsController extends Controller {
     public function review() {
@@ -11,10 +11,11 @@ class ReviewsController extends Controller {
             $usuarioId = $_SESSION['userLogado']['id'];
             $projectId = $_POST['projectId'];
             $nota = $_POST['nota'];
+            $comentario = $_POST['comentario']; // Coleta o comentário do formulário
     
             if ($nota >= 1 && $nota <= 5) {
-                // Buscar o uniqueName do usuário
-                $user = Usuario::getUserById($usuarioId); // Novo método para obter o uniqueName
+                // Busca o uniqueName do usuário
+                $user = Usuario::getUserById($usuarioId);
                 $uniqueName = $user['uniqueName'] ?? null;
                 
                 if ($uniqueName) {
@@ -22,12 +23,10 @@ class ReviewsController extends Controller {
         
                     if ($avaliacaoExistente) {
                         // Atualiza a avaliação existente
-                        Review::updateNota($usuarioId, $projectId, $nota);
-                        $_SESSION['message'] = "Avaliação atualizada com sucesso.";
+                        Review::updateReview($usuarioId, $projectId, $nota, $comentario);
                     } else {
-                        // Adiciona uma nova avaliação com uniqueName
-                        Review::addReviews($usuarioId, $projectId, $nota, $uniqueName);
-                        $_SESSION['message'] = "Avaliação registrada com sucesso.";
+                        // Adiciona uma nova avaliação com uniqueName e comentário
+                        Review::addReviews($usuarioId, $projectId, $nota, $uniqueName, $comentario);
                     }
         
                     // Armazena a nota na sessão para uso posterior
@@ -55,6 +54,15 @@ class ReviewsController extends Controller {
         $reviews = Review::getAllProjectsReviews();
         header('Content-Type: application/json');
         echo json_encode($reviews);
+    }
+
+    public function viewProject($args) {
+        $projetoId = (int)$args['id']; // Pega o ID do projeto da URL
+        $reviews = Review::getReviewsComments($projetoId); // Busca os reviews com comentários
+
+        $this->render('viewProject', [
+            'reviews' => $reviews // Envia os reviews para a view
+        ]);
     }
 }
 

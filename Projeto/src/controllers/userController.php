@@ -30,11 +30,11 @@ class UserController extends Controller {
                 ])->execute();
             }
 
-            $this->redirect('/cadastrarUsuario');
+            $this->redirect('/login');
             exit;
         }
 
-        $this->redirect('/login');
+        $this->redirect('/cadastrarUsuario');
         exit;
     }
 
@@ -54,40 +54,19 @@ class UserController extends Controller {
                     ->orWhere('nomeUsuario', $login)
                     ->first();
 
-                if ($usuario && password_verify($senha, $usuario['senha'])) {
-                    $_SESSION['userLogado']['id'] = $usuario['id']; 
-                    $this->redirect('/perfil');
-                    exit;
+                if ($usuario) {
+                    if (password_verify($senha, $usuario['senha'])) {
+                        $_SESSION['userLogado']['id'] = $usuario['id']; 
+                        $this->redirect('/perfil');
+                        exit;
+                    } else {
+                        $error = "Login ou senha inválido.";
+                    }
                 } else {
-                    echo "Credenciais inválidas.";
-                    $this->redirect('/login');
+                    $error = "Usuário não existe.";
                 }
-            } else {
-                echo "Por favor, preencha todos os campos.";
-            }
+            }  $this->render('login', ['error' => $error]);
         } else {
-            
-            $this->render('login');
-        }
-    }
-    public function index() {
-        $userId = $_SESSION['userLogado']['id'] ?? null;
-
-        if ($userId) {
-            $usuario = Usuario::select()->where('id', $userId)->first();
-
-            if ($usuario) {
-                $this->render('/perfil', [
-                    'usuario' => $usuario
-                ]);
-            } else {
-                echo "Usuário não encontrado.";
-            }
-        } else {
-            // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            //     $usr = new UserController();
-            //     $usr->login();
-            // }
             $this->render('login');
         }
     }
@@ -108,12 +87,10 @@ class UserController extends Controller {
                 $this->redirect('/login');
             } else {
                 error_log("Erro ao deletar usuário com ID: $usuarioId");
-                $_SESSION['error'] = "Erro ao deletar usuário.";
                 $this->redirect('/perfil');
             }
         } else {
             error_log("Usuário não está logado.");
-            $_SESSION['error'] = "Usuário não está logado.";
             $this->redirect('/login');
         }
     }
