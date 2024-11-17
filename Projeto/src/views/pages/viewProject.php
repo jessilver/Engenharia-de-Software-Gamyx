@@ -39,22 +39,25 @@
         <main class="projectContainer rounded">
             <div class="containerBotoes">
                 <span class="projectTitle"><?php echo $project['nomeProjeto']  ?></span>
-                <?php if ($_SESSION['userLogado']['id'] === $usuario['id']) : ?>
-                    <div class="btn-container">
-                        <button class="btn-editar" data-bs-toggle="modal" data-bs-target="#editProjectModal">
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
-
-                        <form action="<?= $base ?>/deleteProject" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este projeto?');">
-                            <input type="hidden" name="projectId" value="<?php echo $project['id'] ?>" />
-                            <input type="hidden" name="userId" value="<?php echo $usuario['id'] ?>" />
-                            <button type="submit" class="btn-excluir">
-                                <i class="fa-solid fa-trash"></i>
+                <?php if (isset($_SESSION['userLogado']['id'])): ?>
+    
+                    <?php if ($_SESSION['userLogado']['id'] === $usuario['id']) : ?>
+                        <div class="btn-container">
+                            <button class="btn-editar" data-bs-toggle="modal" data-bs-target="#editProjectModal">
+                                <i class="fa-solid fa-pen"></i>
                             </button>
-                        </form>
-                    </div>
-                <?php endif; ?>
-            </div>
+
+                            <form action="<?= $base ?>/deleteProject" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este projeto?');">
+                                <input type="hidden" name="projectId" value="<?php echo $project['id'] ?>" />
+                                <input type="hidden" name="userId" value="<?php echo $usuario['id'] ?>" />
+                                <button type="submit" class="btn-excluir">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
+                        </div>
+                    <?php endif; ?>
+                <?php endif; ?>        
+                </div>
             <!-- Botões  -->
 
             <div class="imageContainer">
@@ -73,12 +76,10 @@
             <div class="projectRepContainer rounded my-3">
                 <a href="<?php echo $project['linkDownload']; ?>"><?php echo $project['linkDownload']; ?></a>
             </div>
-
-            <!-- Avaliações  -->
-
     
         <!-- Adicione a seção de avaliações e comentários aqui -->
         <section class="review-section">
+        <?php if (isset($_SESSION['userLogado']['id'])): ?>
             <h2>Deixe sua Avaliação</h2>
             <form action="<?=$base?>/projeto/review" method="POST">
                 <input type="hidden" name="projectId" value="<?= $project['id'] ?>">
@@ -97,32 +98,34 @@
                 <textarea class="review-textarea" name="comentario" placeholder="Deixe um comentário..."></textarea>
                 <button type="submit" class="btn-review">Enviar Review</button>
             </form>
+        <?php endif; ?>
+            <h2 style="color:red">Você precisa estar logado para avaliar esse projeto</h2> 
         </section>
 
         <section class="reviews-section">
             <h2>Avaliações e Comentários</h2>
-            <?php if (!empty($reviews)): ?>
-                <?php foreach ($reviews as $review): ?>
-                    <div class="review-item d-flex align-items-center gap-3" style="border-bottom: 2px solid var(--cor-cinza-borda); margin-bottom: 15px;">
-                        <div class="d-flex flex-column w-100">
-                            <div class="d-flex justify-content-between">
-                                <p><strong><?= $review['uniqueName'] ?></strong></p>
-                                <div class="rating-display">
-                                    <?php for ($i = 0; $i < $review['nota']; $i++): ?>
-                                        <span class="star">&#9733;</span>
-                                    <?php endfor; ?>
-                                    <?php for ($i = $review['nota']; $i < 5; $i++): ?>
-                                        <span class="star empty">&#9733;</span>
-                                    <?php endfor; ?>
+                <?php if (!empty($reviews)): ?>
+                    <?php foreach ($reviews as $review): ?>
+                        <div class="review-item d-flex align-items-center gap-3" style="border-bottom: 2px solid var(--cor-cinza-borda); margin-bottom: 15px;">
+                            <div class="d-flex flex-column w-100">
+                                <div class="d-flex justify-content-between">
+                                    <p><strong><?= $review['uniqueName'] ?></strong></p>
+                                    <div class="rating-display">
+                                        <?php for ($i = 0; $i < $review['nota']; $i++): ?>
+                                            <span class="star">&#9733;</span>
+                                        <?php endfor; ?>
+                                        <?php for ($i = $review['nota']; $i < 5; $i++): ?>
+                                            <span class="star empty">&#9733;</span>
+                                        <?php endfor; ?>
+                                    </div>
                                 </div>
+                                <p class="review-comment"><?= !empty($review['comentario']) ? $review['comentario'] : 'O usuário não comentou sobre o projeto' ?></p>
                             </div>
-                            <p class="review-comment"><?= !empty($review['comentario']) ? $review['comentario'] : 'O usuário não comentou sobre o projeto' ?></p>
                         </div>
-                    </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p>Não há avaliações ainda.</p>
-            <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>Não há avaliações ainda.</p>
+                <?php endif; ?>
         </section>
 
         </main>

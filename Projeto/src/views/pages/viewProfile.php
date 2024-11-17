@@ -6,7 +6,9 @@
 </head>
 <body id="userProfileBody">
     
-    <?php include __DIR__ . '/../partials/menu.php'; ?>
+<?php if (isset($_SESSION['userLogado']['id'])): ?>
+        <?php include __DIR__ . '/../partials/menu.php'; ?>
+    <?php endif; ?>
 
     <section id="userProfileSection">
         <form action="<?=$base?>/perfil" method="POST" class="userSearchForm">

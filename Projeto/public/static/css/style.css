@@ -174,7 +174,33 @@
 }
 
 .reviews-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: flex-start;
     max-width: 800px;
     margin: 0 auto;
-    box-sizing: border-box;
+    min-height: 100px; 
+    box-sizing: border-box; 
+    width: 100%; 
+}
+
+.review-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    padding: 10px;
+    border: 1px solid #57626F;
+    border-radius: 5px;
+    background-color: #090d11; 
+    color: #fbfbfb;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    text-align: left; 
+}
+
+.review-item:last-child {
+    margin-bottom: 0; 
 }
