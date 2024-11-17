@@ -77,15 +77,13 @@ class GameJam extends Model {
      * @return array|Exception Retorna os dados do host ou lança uma exceção em caso de erro.
      * @throws Exception Se houver falha ao consultar o banco de dados.
      */
-    public static function getHostById(int $hostId, array $fields = []): array {
+    public static function getHostById(int $hostId): array {
         try {
             return Usuario::selectUser($hostId);
         } catch (Exception $e) {
             throw new Exception('Erro ao buscar o host da Game Jam: ' . $e->getMessage());
         }
     }
-    
-
     /**
      * Insere uma nova Game Jam no banco de dados.
      *
@@ -100,12 +98,16 @@ class GameJam extends Model {
         try {
             $dataAtual = date('Y-m-d');
 
-            $result = self::insert([
+            self::insert([
                 'host_id' => $hostId,
                 'nomeJam' => $nome,
                 'descricaoJam' => $descricao,
                 'dataCriacao' => $dataAtual
             ])->execute();
+
+            //Pega o id da útlima jam do usuário para criar a tabela de participantes
+            $gameJamId = self::getLastJam($hostId);
+            ParticipantesJam::createTableOfParticipants($gameJamId);
         } catch (Exception $e) {
             throw new Exception('Erro ao criar uma nova Game Jam: ' . $e->getMessage());
         }
@@ -122,10 +124,24 @@ class GameJam extends Model {
      */
     public static function deleteJamById(int $jamId): void {
         try {
+            ParticipantesJam::deleteParticipants($jamId);
             self::delete($jamId);
         } catch (Exception $e) {
             throw new Exception('Erro ao deletar a Game Jam: ' . $e->getMessage());
         }
     }
 
+    public static function getLastJam(int $hostId): int {
+        try {
+            $result = self::select(['id'])  
+            ->where('host_id', $hostId)  
+            ->orderBy('id', 'DESC')  // Ordenando pelo ID em ordem decrescente
+            ->get(); 
+    
+            return $result[0]['id']; // Pegando a de maior id (mais recente)
+        } catch (Exception $e) {
+            throw new Exception('Erro ao buscar a Game Jam pelo ID do host: ' . $e->getMessage());
+        }
+
+    }
 }

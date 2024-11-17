@@ -4,19 +4,23 @@ namespace src\controllers;
 
 use \core\Controller;
 use src\models\GameJam;
+use src\models\ParticipantesJam;
 
 class eventoController extends Controller{
     public function index(){
 
         $listaJams = GameJam::getAllJams();
         $usuariosHost = array();
+        $participantes = array();
         foreach ($listaJams as $jam) {
             $usuariosHost[] = GameJam::getHostById($jam['host_id']);
+            $participantes[] = ParticipantesJam::getParticipantsByJamId($jam['id']);
         }
 
         $context = [
             'jams' => $listaJams,
             'usuariosHost' => $usuariosHost,
+            'participantes' => $participantes
         ];
 
         $this->render('eventos', $context);
@@ -52,4 +56,23 @@ class eventoController extends Controller{
             $this->redirect('/eventos');
         }
     }
+    public function joinJam($id, $userId){
+        var_dump($id, $userId); // Verifica os valores recebidos
+        // Verifica se o ID do usuário está presente
+        if ($userId == null) {
+            $this->redirect('/login');
+            return;
+        }
+        try { 
+            // Chama o método para adicionar o usuário na Game Jam
+            ParticipantesJam::joinJam($id, $userId);
+            $this->redirect('/eventos');
+    
+        } catch (\Exception $e) {
+            // Em caso de erro, redireciona com a mensagem de erro
+            $_SESSION['error'] = 'Erro ao entrar na Game Jam: ' . $e->getMessage();
+            $this->redirect('/eventos');
+        }
+    }
+      
 }

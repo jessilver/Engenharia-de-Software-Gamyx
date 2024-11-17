@@ -21,6 +21,7 @@
                         <?php
                         $jam = $jams[$i];
                         $host = $usuariosHost[$i];
+                        $participante = $participantes[$i];
 
                         $nomeJam = $jam['nomeJam'];
                         $descricao = $jam['descricaoJam'];
@@ -46,7 +47,7 @@
                                 </div>
                                 <div class="flex-grow-1 ms-3 h4"><?= $nomeJam ?></div>
                                 <?php if ($_SESSION['userLogado']['id'] === $host['id']) : ?>
-                                    <form action="<?= $base ?>/eventos/<?=$jam['id']?>" method="GET" class="formExcluirJam" onsubmit="return confirm('Tem certeza que quer excluir a jam?');">    
+                                    <form action="<?= $base ?>/eventos/<?= $jam['id'] ?>" method="GET" class="formExcluirJam" onsubmit="return confirm('Tem certeza que quer excluir a jam?');">
                                         <button type="submit" class="botaoExcluirJam rounded">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
@@ -77,16 +78,30 @@
                                             alt="Imagem de perfil do usuário host da jam, <?php echo $nomeHost; ?>"
                                             class="jamHostProfile" />
                                         <p><?= $descricao ?></p>
-                                        <div class="d-flex flex-column">
+                                        <div class="d-flex flex-column align-self-start">
                                             <span><strong>Host: </strong> <?= $arrobaHost ?></span>
                                             <span><strong>Status: </strong> Ativa</span>
                                             <span><strong>Criada em: </strong> <?= $data ?></span>
+                                            <!-- Novo loop para exibir participantes -->
+                                            <span><strong>Participantes:</strong></span>
+                                            <ul class="list-unstyled">
+                                                <?php
+                                                foreach ($participante as $key => $value) {
+                                                    if (strpos($key, 'participante_') === 0 && !empty($value)) { // Verifica se é um campo de participante e não é vazio
+                                                        echo "<li>→ " . htmlspecialchars($value) . "</li>";
+                                                    }
+                                                }
+                                                ?>
+                                            </ul>
+
                                         </div>
-                                        <!-- Você pode adicionar mais detalhes da Game Jam aqui, conforme necessário -->
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                        <!-- <button type="button" class="btn btn-primary">Entendido</button> -->
+                                        <form action="<?= $base ?>/eventos/<?= $jam['id'] ?>/<?= $_SESSION['userLogado']['id'] ?>" method="get">
+                                            <button type="submit" class="btn btn-primary">Quero participar!</button>
+                                        </form>
+
                                     </div>
                                 </div>
                             </div>

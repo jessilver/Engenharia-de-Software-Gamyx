@@ -46,4 +46,5 @@ $router->get('/api/all-projects-reviews', 'reviewsController@getAllProjectsRevie
 //Game jams
 $router->get('/eventos', 'eventoController@index');
 $router->get('/eventos/{id}', 'eventoController@deleteJam');
+$router->get('/eventos/{id}/{userId}', 'eventoController@joinJam');
 $router->post('/eventos', 'eventoController@createJam');

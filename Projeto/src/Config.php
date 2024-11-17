@@ -74,4 +74,29 @@ class Config {
             FOREIGN KEY (host_id) REFERENCES Usuarios(id) ON DELETE CASCADE
         "
     ];
+    const TB_PARTICIPANTESJAMS = [
+        'name' => 'ParticipantesJams',
+        'culloms' => "
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            jam_id INT NOT NULL,
+            participante_1 VARCHAR(100),
+            participante_2 VARCHAR(100),
+            participante_3 VARCHAR(100),
+            participante_4 VARCHAR(100),
+            participante_5 VARCHAR(100),
+            participante_6 VARCHAR(100),
+            participante_7 VARCHAR(100),
+            participante_8 VARCHAR(100),
+            FOREIGN KEY (participante_1) REFERENCES Usuarios(uniqueName) ON DELETE CASCADE,
+            FOREIGN KEY (participante_2) REFERENCES Usuarios(uniqueName) ON DELETE CASCADE,
+            FOREIGN KEY (participante_3) REFERENCES Usuarios(uniqueName) ON DELETE CASCADE,
+            FOREIGN KEY (participante_4) REFERENCES Usuarios(uniqueName) ON DELETE CASCADE,
+            FOREIGN KEY (participante_5) REFERENCES Usuarios(uniqueName) ON DELETE CASCADE,
+            FOREIGN KEY (participante_6) REFERENCES Usuarios(uniqueName) ON DELETE CASCADE,
+            FOREIGN KEY (participante_7) REFERENCES Usuarios(uniqueName) ON DELETE CASCADE,
+            FOREIGN KEY (participante_8) REFERENCES Usuarios(uniqueName) ON DELETE CASCADE,
+            FOREIGN KEY (jam_id) REFERENCES GameJams(id) ON DELETE CASCADE
+        "
+    ];
+    
 }
