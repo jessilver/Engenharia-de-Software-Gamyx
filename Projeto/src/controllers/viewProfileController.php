@@ -70,18 +70,30 @@ class ViewProfileController extends Controller
     }
     
     
-    public function edit($id){
-        $usuarioId = Model::decryptData($id['id']);
+    public function edit($id)
+    {
+        if (is_array($id) && isset($id['id'])) {
+            $usuarioId = Model::decryptData($id['id']);
+            // echo "Decrypted ID: $usuarioId\n";
+        } else {
+            throw new \InvalidArgumentException('Formato de dados inválido: id deve ser um array com uma chave "id".');
+        }
         
-        $about = $_POST['about'];
-        $linkPortfolio = $_POST['linkPortfolio'];
-
+        $about = $_POST['about'] ?? null;
+        $linkPortfolio = $_POST['linkPortfolio'] ?? null;
+        
+        if ($about === null || $linkPortfolio === null) {
+            throw new \InvalidArgumentException('Dados POST obrigatórios ausentes.');
+        }
         $fields = [
             'about' => $about,
             'urlPortfolio' => $linkPortfolio
         ];
-        Usuario::updateUser($usuarioId , $fields);
+        
+        $updateSuccess = Usuario::updateUser($usuarioId, $fields);
         $this->redirect('/perfil');
+    
+        return $updateSuccess;
     }
 
     public function logout(){

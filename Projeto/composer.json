@@ -1,11 +1,16 @@
 {
     "require": {
-        "clancats/hydrahon": "^1.1"
+        "clancats/hydrahon": "^1.1",
+        "symfony/console": "^7.1"
     },
     "autoload": {
         "psr-4": {
             "core\\": "core/",
-            "src\\": "src/"
+            "src\\": "src/",
+            "Tests\\": "tests/"
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.4"
     }
 }

@@ -5,16 +5,20 @@
 </head>
 
 <body>
-    <?php include __DIR__ . '/../partials/menu.php'; ?>
+<?php if (isset($_SESSION['userLogado']['id'])): ?>
+        <?php include __DIR__ . '/../partials/menu.php'; ?>
+    <?php endif; ?>
     <div class="homeContainerScreen">
         <div class="d-flex justify-content-between align-items-center">
             <form action="<?= $base ?>/perfil" method="POST" class="userSearchForm">
                 <input type="text" placeholder="Procurar usuário" class="userSearchInput" name="search_query" />
                 <button type="submit" class="userSearchSubmit">Buscar</button>
             </form>
-            <a href="<?=$base?>/login" class="loginButton">Fazer login</a>
+            <?php if (!isset($_SESSION['userLogado']['id'])): ?>
+                <a href="<?=$base?>/login" class="loginButton">Fazer login</a>
+            <?php endif; ?>
         </div>
-        <h1 class="userGreetings py-3 mt-5">Opa, <?php echo $_SESSION['userLogado']['nomeUsuario'] ?? "Usuário!" ?></h1>
+        <h1 class="userGreetings py-3 mt-5">Opa, <?php echo $usuario['nomeUsuario'] ?? "Usuário!" ?>!</h1>
         <h4 class="userGreetingsSubtitle">Aqui estão alguns jogos que pode gostar</h4>
 
         <div class="projectsContainer my-3">

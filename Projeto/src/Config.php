@@ -58,6 +58,7 @@ class Config {
             projeto_id INT NOT NULL,
             uniqueName VARCHAR(100) NOT NULL,
             nota TINYINT NOT NULL CHECK (nota BETWEEN 1 AND 5),
+            comentario TEXT,
             FOREIGN KEY (usuario_id) REFERENCES Usuarios(id) ON DELETE CASCADE,
             FOREIGN KEY (projeto_id) REFERENCES Projects(id) ON DELETE CASCADE,
             UNIQUE (usuario_id, projeto_id) -- Impede que um usuário avalie o mesmo projeto mais de uma vez

@@ -4,6 +4,7 @@ namespace src\controllers;
 use \core\Controller;
 use \src\models\Usuario;
 use \src\models\Project;
+use \src\models\Review;
 use \src\Config;
 
 class ViewProjectController extends Controller {
@@ -23,10 +24,14 @@ class ViewProjectController extends Controller {
             // Busca o usuário pelo ID utilizando o novo método selectUser
             $usuario = Usuario::selectUser($usuarioId);
 
+            // Busca os comentários e avaliações do projeto
+            $reviews = Review::getReviewsComments($projetoId);
+
             // Prepara os dados para a view
             $context = [
                 'project' => $project,
                 // 'usuario' => !empty($usuario) ? $usuario : null // Verifica se o usuário foi encontrado
+                'reviews' => $reviews
             ];
 
             // Renderiza a view com os dados
@@ -116,23 +121,19 @@ class ViewProjectController extends Controller {
             if ($project && $project['usuario_id'] == $userId) {
 
                 if (Project::deleteProject($projectId)) {
-                    $_SESSION['message'] = "Projeto deletado com sucesso.";
                     echo "Projeto deletado com sucesso.";
                     $this->redirect('\perfil');
                 } else {
-                    $_SESSION['error'] = "Erro ao deletar projeto.";
                     echo "Erro ao deletar projeto.";
                     $this->redirect('\perfil');
                 }
             } else {
                 // Projeto não encontrado ou usuário não tem permissão
-                $_SESSION['error'] = "Projeto não encontrado ou você não tem permissão para deletá-lo.";
                 echo "Projeto não encontrado ou você não tem permissão para deletá-lo.";
                 $this->redirect('\perfil');
             }
         } else {
             // Usuário não logado ou método inválido
-            $_SESSION['error'] = "Usuário não está logado ou método inválido.";
             echo "Usuário não está logado ou método inválido.";
             $this->redirect('\perfil');
         }
