@@ -51,3 +51,9 @@ $router->get('/api/friends/{id}', 'friendController@api');
 $router->get('/api/reviews/{id}', 'reviewsController@getReviewsApi');
 $router->get('/api/all-projects-reviews', 'reviewsController@getAllProjectsReviews');
 $router->get('/user/{id}/projetos', 'ProjectController@getAllProjects');
+
+// Api para busca de projetos
+$router->get('/api/busca-projeto/{id}', 'FavoritesController@get_all_Favorites_api');
+$router->get('/api/busca-projeto/add/{project}/{user}', 'FavoritesController@add_favorite_api');
+$router->get('/api/busca-projeto/delete/{project}/{user}', 'FavoritesController@remove_favorite_api');
+$router->get('/api/busca-projeto/check/{project}/{user}', 'FavoritesController@check_favorite_api');

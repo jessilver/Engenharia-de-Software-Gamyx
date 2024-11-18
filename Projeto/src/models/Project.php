@@ -101,7 +101,7 @@ class Project extends Model {
     //         throw new Exception('Erro ao selecionar projetos: ' . $e->getMessage());
     //     }
     // }
-    public static function selectProjectByUserId(int $id, array $fields = []): array|Exception {
+    public static function selectProjectByUserId( $id, array $fields = []): array|Exception {
         try {
             return self::select($fields ?: '*')
                         ->where('usuario_id', $id)
@@ -159,4 +159,5 @@ class Project extends Model {
             throw new Exception('Erro ao deletar projeto: ' . $e->getMessage());
         }
     }
+
 }

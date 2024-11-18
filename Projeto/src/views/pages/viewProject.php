@@ -67,7 +67,16 @@
                     class="projectImage" />
             </div>
             <!-- <span class="projectCategory">Gêneros: Aventura, Educativo, Retro</span> -->
-            <span class="projectTitle lower">Descrição</span>
+            <div class="projetcDescriptionHeader">
+                <span class="projectTitle lower" style="width: fit-content;">Descrição</span>
+
+                <span class="starded" style="width: fit-content;">
+                    <button type="button" class="btn" style="color: #FFFFFF;" onclick="starClick()"> 
+                        <i id="favStar" class="fa-star fa-regular "></i>
+                    </button>
+                </span>
+
+            </div>
             <p class="projectDesc"><?php echo $project['descricaoProjeto'] ?></p>
             <span class="projectTitle lower">Disponível para:
                 <?= $project['sistemasOperacionaisSuportados']; ?>
@@ -214,5 +223,63 @@
             </div>
         </div>
     </div>
+    <script>
+
+        const userId = <?= json_encode($_SESSION['userLogado']['id'] ?? null) ?>;
+        const projectId = <?= json_encode($project['id']) ?>;
+        const baseURL = '<?=$base?>';
+
+        document.addEventListener('DOMContentLoaded', function() {
+            checkFav();
+        });
+
+        async function starClick(){
+            const fav = await checkFav();
+            if (fav){
+                removeFav();
+            }else{
+                addFav();
+            }
+            window.location.reload();
+        }
+
+        function addFav(){
+            fetch(`${baseURL}/api/busca-projeto/add/${userId}/${projectId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('favStar').classList.remove('fa-regular');
+                        document.getElementById('favStar').classList.add('fa-solid');
+                    }
+                });
+        }
+
+        function removeFav(){
+            fetch(`${baseURL}/api/busca-projeto/delete/${userId}/${projectId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('favStar').classList.remove('fa-solid');
+                        document.getElementById('favStar').classList.add('fa-regular');
+                    }
+                });
+            
+        }
+        
+        async function checkFav(){
+            if (userId) {
+                const response = await fetch(`${baseURL}/api/busca-projeto/check/${userId}/${projectId}`);
+                const data = await response.json();
+                if (data.favorited) {
+                    document.getElementById('favStar').classList.remove('fa-regular');
+                    document.getElementById('favStar').classList.add('fa-solid');
+                }
+                return data.favorited;
+            }
+            return false;
+        }
+
+    </script>
 </body>
 <?php $render('footer'); ?>
+

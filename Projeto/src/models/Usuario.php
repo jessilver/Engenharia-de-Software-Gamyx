@@ -27,7 +27,7 @@ class Usuario extends Model {
      *
      * @throws Exception Lança uma exceção se ocorrer um erro durante a consulta.
      */
-    public static function selectUser($id, $fields = []) : array|Exception {
+    public static function selectUser($id, $fields = []) : bool|array|Exception {
         try {
             return self::select($fields)->where('id', $id)->first();
         } catch (Exception $e) {
