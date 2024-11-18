@@ -47,7 +47,8 @@
                                 </div>
                                 <div class="flex-grow-1 ms-3 h4"><?= $nomeJam ?></div>
                                 <?php if ($_SESSION['userLogado']['id'] === $host['id']) : ?>
-                                    <form action="<?= $base ?>/eventos/<?= $jam['id'] ?>" method="GET" class="formExcluirJam" onsubmit="return confirm('Tem certeza que quer excluir a jam?');">
+                                    <form action="<?= $base ?>/eventos/delete" method="POST" class="formExcluirJam" onsubmit="return confirm('Tem certeza que quer excluir a jam?');">
+                                        <input type="hidden" name="jam_id" value="<?= $jam['id'] ?>">
                                         <button type="submit" class="botaoExcluirJam rounded">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
@@ -98,7 +99,8 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                        <form action="<?= $base ?>/eventos/<?= $jam['id'] ?>/<?= $_SESSION['userLogado']['id'] ?>" method="get">
+                                        <form action="<?= $base ?>/eventos/join" method="POST">
+                                            <input type="hidden" name="jam_id" value="<?= $jam['id'] ?>">
                                             <button type="submit" class="btn btn-primary">Quero participar!</button>
                                         </form>
 
@@ -123,9 +125,8 @@
                     <input type="text" class="cadastroJamLabel form-control" id="floatingInput" name="nomeInput" placeholder="Nome da jam" required>
                     <label for="floatingInput">Nome da jam</label>
                 </div>
-                <div class="form-floating mb-3">
-                    <!-- TODO: Definir tamanho mínimo com minlength="50"  -->
-                    <textarea class="cadastroJamLabel form-control" placeholder="Descrição breve" id="floatingTextarea" name="descricaoInput" required></textarea>
+                <div class="form-floating mb-3">                 
+                    <textarea class="cadastroJamLabel form-control" placeholder="Descrição breve" id="floatingTextarea" name="descricaoInput" required minlength="50"></textarea>
                     <label for="floatingTextarea">Descrição breve</label>
                 </div>
             </div>

@@ -31,54 +31,60 @@ class ParticipantesJam extends Model {
      * @param int $jamId O ID da Game Jam.
      * @param int $userId O ID do usuário da sessão.
      *
-     * @return bool Retorna true se a operação for bem-sucedida, caso contrário, false.
+     * @return void
      * @throws Exception Se houver falha ao adicionar o participante.
      */
     public static function joinJam(int $jamId, int $userId): void {
         try {
-            // Recupera os dados do usuário pelo ID
+            // Recupera o nome único do usuário (uniqueName)
             $user = Usuario::selectUser($userId, ['uniqueName']);
             if (!$user) {
-                throw new Exception('Usuário não encontrado.');
+                throw new \Exception('Usuário não encontrado.');
             }
             $uniqueName = $user['uniqueName'];
     
             // Recupera os participantes da Game Jam
             $participantes = self::getParticipantsByJamId($jamId);
-    
             if (!$participantes) {
-                throw new Exception('Game Jam não encontrada.');
+                throw new \Exception('Game Jam não encontrada.');
             }
     
-            // Checa se o usuário já está participando da Game Jam
+            // Campos fixos de participantes
             $fields = [
                 'participante_1', 'participante_2', 'participante_3',
                 'participante_4', 'participante_5', 'participante_6',
                 'participante_7', 'participante_8'
             ];
     
+            // Verifica se o usuário já está participando
             foreach ($fields as $field) {
-                if ($participantes[$field] == $uniqueName) {
-                    throw new Exception('O usuário já está participando dessa Game Jam.');
+                if ($participantes[$field] === $uniqueName) {
+                    throw new \Exception('Você já está participando desta Game Jam.');
                 }
             }
     
-            // Encontra o primeiro campo vazio e adiciona o uniqueName do usuário
+            // Encontra o primeiro campo vazio
+            $campoVazio = null;
             foreach ($fields as $field) {
                 if (empty($participantes[$field])) {
-                    // Atualiza o primeiro campo vazio com o uniqueName
-                    self::update([
-                        $field => $uniqueName
-                    ])
-                    ->where('jam_id', $jamId)
-                    ->execute();
+                    $campoVazio = $field;
                     break;
                 }
             }
-            // Caso todos os campos estejam preenchidos, lança uma exceção
-            throw new Exception('Não há vagas disponíveis para participar da Game Jam.');
-        } catch (Exception $e) {
-            throw new Exception('Erro ao adicionar participante na Game Jam: ' . $e->getMessage());
+    
+            // Verifica se há vagas disponíveis
+            if (!$campoVazio) {
+                throw new \Exception('Não há vagas disponíveis para esta Game Jam.');
+            }
+    
+            // Insere o usuário no primeiro campo vazio
+            self::update([$campoVazio => $uniqueName])
+                ->where('jam_id', $jamId)
+                ->execute();
+    
+        } catch (\Exception $e) {
+            // Relança a exceção para que o controlador capture
+            throw new \Exception('Erro ao adicionar participante: ' . $e->getMessage());
         }
     }
     
