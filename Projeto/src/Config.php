@@ -24,7 +24,8 @@ class Config {
             nomeUsuario VARCHAR(100) NOT NULL,
             senha VARCHAR(100) NOT NULL,
             about VARCHAR(500),
-            urlPortfolio VARCHAR(100) NOT NULL
+            urlPortfolio VARCHAR(100) NOT NULL,
+            fotoPerfil VARCHAR(255) NULL
         "
     ];
     const TB_PROJECT = [

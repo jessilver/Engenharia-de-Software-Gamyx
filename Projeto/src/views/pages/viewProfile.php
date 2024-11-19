@@ -33,16 +33,11 @@
                 </div>
                 <div class="userProfilePerfil">
                     <div class="userProfileFoto">
-                        <img 
-                            src=<?php 
-                                    $link = $base."/static/img/perfil/imagem-perfil-".$user['nomeUsuario'].".jpg";
-                                    // $caminho = file_exists($link) ? $link : "sem-imagem.png";
-
-                                    echo $link;
-                                ?>
-                            alt=""
-                            class="profileImage"
-                        />
+                    <img 
+                        src="<?= $base ?>/static/img/perfil/<?= $user['fotoPerfil'] ?>" 
+                        alt="Foto de perfil de <?= $user['nomeUsuario'] ?>" 
+                        class="profileImage"
+                    />
                     </div>
                     <div class="userProfileDados">
                         <h1 class="h1UserName"><?= $user['nomeUsuario']; ?></h1>
@@ -215,21 +210,21 @@
                 <div class="modal-body" style="
     width: 100%;
 ">
-                    <form action="<?=$base?>/perfil/edit/<?=$HashUserId?>" method="POST" id="formEditProfile">
-                        <div class="mb-3">
-                            <label for="about" class="form-label">Sobre você:</label>
-                            
-                            <textarea class="form-control" name="about" id="about" rows="5"><?= $user['about']; ?></textarea>
-                        </div>
-                
-                        <div class="mb-3">
-                            <label for="linkPortfolio" class="form-label">URL para portfólio pessoal (e.g., GitHub, itch.io):</label>
-                            <input type="text" name="linkPortfolio" class="form-control" id="linkPortfolio" value="<?= $user['urlPortfolio']; ?>">
-                        </div>
-
-                        <button type="submit" class="btn btn-cadastrar">Salvar</button>
-
-                    </form>
+                <form action="<?=$base?>/perfil/changeProfilePicture" method="POST" id="formEditProfile" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="about" class="form-label">Sobre você:</label>
+                        <textarea class="form-control" name="about" id="about" rows="5"><?= $user['about']; ?></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fotoPerfil" class="form-label">Foto de Perfil:</label>
+                        <input type="file" name="fotoPerfil" class="form-control" id="fotoPerfil" accept="image/*">
+                    </div>
+                    <div class="mb-3">
+                        <label for="linkPortfolio" class="form-label">URL para portfólio pessoal (e.g., GitHub, itch.io):</label>
+                        <input type="text" name="linkPortfolio" class="form-control" id="linkPortfolio" value="<?= $user['urlPortfolio']; ?>">
+                    </div>
+                    <button type="submit" class="btn btn-cadastrar">Salvar</button>
+                </form>
                     
                 </div>      
             </div>

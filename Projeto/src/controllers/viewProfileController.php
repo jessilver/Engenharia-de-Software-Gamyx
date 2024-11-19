@@ -151,4 +151,43 @@ class ViewProfileController extends Controller
             $this->index();
         }
     }
+
+    public function changeProfilePicture() {
+        $usuarioId = $_SESSION['userLogado']['id'] ?? null;
+
+        if ($usuarioId === null) {
+            $this->redirect('/login');
+            return;
+        }
+
+        $fotoPerfil = $_FILES['fotoPerfil'] ?? null;
+
+        if ($fotoPerfil && $fotoPerfil['error'] == 0) {
+            $nomeArquivo = basename($fotoPerfil['name']);
+            $diretorioDestino = __DIR__ . '/../../public/static/img/perfil/';
+            $caminhoArquivo = $diretorioDestino . $nomeArquivo;
+
+            // Verificar se o diretório de destino existe, se não, criar
+            if (!is_dir($diretorioDestino)) {
+                mkdir($diretorioDestino, 0777, true);
+            }
+
+            // Mover o arquivo para o diretório de destino
+            if (!move_uploaded_file($fotoPerfil['tmp_name'], $caminhoArquivo)) {
+                echo "Erro ao mover o arquivo.";
+                exit();
+            }
+
+            // Atualizar o caminho da imagem no banco de dados
+            Usuario::updateUser($usuarioId, ['fotoPerfil' => $nomeArquivo]);
+
+            // Atualizar a sessão do usuário
+            $_SESSION['userLogado']['fotoPerfil'] = $nomeArquivo;
+
+            $this->redirect('/perfil');
+        } else {
+            echo "Erro ao enviar a imagem.";
+        }
+    }
+
 }

@@ -20,7 +20,7 @@
             <div class="titulosCards">
                 <h2 class="text-body-secondary">Cadastro de Usuário</h2>
             </div>
-            <form action="<?= $base; ?>/cadastrarUsuario" method="POST" id="formCadastroUsuario">
+            <form action="<?= $base; ?>/cadastrarUsuario" method="POST" id="formCadastroUsuario" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="emailUsuario" class="form-label">Email:</label>
                     <input type="email" required name="email" class="form-control" id="emailUsuario">
@@ -44,6 +44,11 @@
                 <div class="mb-4">
                     <label for="linkPortfolio" class="form-label">URL para portfólio pessoal (e.g., GitHub, itch.io):</label>
                     <input type="text" required name="portfolioUser" class="form-control" id="linkPortfolio">
+                </div>
+
+                <div class="mb-3">
+                    <label for="fotoPerfil" class="form-label">Foto de Perfil:</label>
+                    <input type="file" name="fotoPerfil" class="form-control" id="fotoPerfil" accept="image/*">
                 </div>
 
                 <button type="submit" class="btn btn-cadastrar">Cadastrar-se</button>
