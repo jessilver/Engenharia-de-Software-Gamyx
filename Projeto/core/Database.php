@@ -17,6 +17,8 @@ class Database {
             self::checkTable(Config::TB_PROJECT['name'],Config::TB_PROJECT['culloms']);
             self::checkTable(Config::TB_FRIENDS['name'],Config::TB_FRIENDS['culloms']);
             self::checkTable(Config::TB_REVIEWS['name'], Config::TB_REVIEWS['culloms']);
+            self::checkTable(Config::TB_GAMEJAMS['name'], Config::TB_GAMEJAMS['culloms']);
+            self::checkTable(Config::TB_PARTICIPANTESJAMS['name'], Config::TB_PARTICIPANTESJAMS['culloms']);
 
             if (!Usuario::select()->where('id', 1)->execute() && !Usuario::select()->where('id', 2)->execute()){
                 

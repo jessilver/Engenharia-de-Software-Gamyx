@@ -98,7 +98,7 @@
                             <option value="nomeProjeto">Nome</option>
                             <option value="sistemasOperacionais">Sistema Operacional</option>
                         </select>
-                        <input type="text" name="projectSearchInput" class="userSearchInput col" placeholder="Pesquisar projeto" style=""/>
+                        <input type="text" name="projectSearchInput" class="userSearchInput col" placeholder="Pesquisar projeto"/>
                         <button type="submit" class="userSearchSubmit col" style="height:50px; margin: 20px 0;">Buscar</button>
                     </form>
 

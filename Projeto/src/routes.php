@@ -51,3 +51,9 @@ $router->get('/api/friends/{id}', 'friendController@api');
 $router->get('/api/reviews/{id}', 'reviewsController@getReviewsApi');
 $router->get('/api/all-projects-reviews', 'reviewsController@getAllProjectsReviews');
 $router->get('/user/{id}/projetos', 'ProjectController@getAllProjects');
+
+//Game jams
+$router->get('/eventos', 'eventoController@index');
+$router->post('/eventos/delete', 'eventoController@deleteJam');
+$router->post('/eventos/join', 'eventoController@joinJam');
+$router->post('/eventos', 'eventoController@createJam');
