@@ -34,7 +34,7 @@ class UserController extends Controller {
                 exit();
             }
         } else {
-            $nomeArquivo = null;
+            $nomeArquivo = "sem-imagem.png";
         }
 
         if($email && $nomeUsuario && $portfolioUser && $senha){

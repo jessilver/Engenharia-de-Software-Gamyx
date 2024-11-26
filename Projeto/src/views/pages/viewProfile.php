@@ -113,7 +113,7 @@
                         <div class='projectItem'>
                             <a href= "<?=$base?>/projeto/<?=$projeto['id']?>">
                                 <div class='projectFoto'>
-                                    <img src='<?=$base?>/static/img/capasProjetos/<?= $fotoCapa ?>' alt='<?= $nomeProjeto ?>'> 
+                                    <img src='<?=$base?>/static/img/capasProjetos/<?= $fotoCapa ?>' alt='<?= $nomeProjeto ?>' class="rounded"> 
                                 </div>
                             </a>
                             <h1 class='h1AUser' style='margin-bottom: 16px;'><?= $nomeProjeto ?></h1>
@@ -136,14 +136,19 @@
                         <?php 
                             $nomeUsuario = $friend['nomeUsuario'] ?? 'Nome não disponível';
                             $id = $friend['id'];
+                            $fotoAmigo = $friend['fotoPerfil'];
                         ?>
                         <?php if ($user['nomeUsuario'] != $nomeUsuario): ?>
                         <div class='amigosItem'>  
                             <form action="<?=$base?>/perfil" method="post"> 
                                 <input type="hidden" name="search_query" value="<?=$nomeUsuario?>">
                                 <button class="btn" type="submit" style="background:none;border:none;padding:0;margin:0;color:inherit;text-align:center;box-shadow:none;">
-                                    <div class='amigosFoto'>
-                                        <img src='<?=$base?>/static/img/' alt='<?= $nomeUsuario ?>'> 
+                                    <div>
+                                        <img src="<?php echo file_exists("./static/img/perfil/" . $fotoAmigo)
+                                            ? "./static/img/perfil/" . $fotoAmigo
+                                            : './static/img/sem-imagem.png'; ?>" 
+                                            alt='<?= $nomeUsuario ?>'
+                                            class='amigosFoto' />
                                     </div>
                                     <h1 class='h1AUser' style='margin-bottom: 16px;'><?= $nomeUsuario ?></h1>
                                 </button>

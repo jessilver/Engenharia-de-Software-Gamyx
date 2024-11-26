@@ -19,7 +19,8 @@
                         "id" => $usuario['id'],
                         "nomeUsuario" => $usuario['nomeUsuario'],
                         "arroba" => $usuario['uniqueName'],
-                        "sobre" => $usuario['about']
+                        "sobre" => $usuario['about'],
+                        "perfil" => $usuario['fotoPerfil']
                     );
                 }
             }
