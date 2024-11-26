@@ -10,6 +10,10 @@ $router->get('/', 'HomeController@index');
 $router->get('/perfil', 'ViewProfileController@index');
 $router->post('/perfil', 'ViewProfileController@other'); // Alterado para lidar com POST
 
+$router->get('/inicio', 'HomeController@feed');
+
+$router->get('/inicio', 'HomeController@feed');
+
 //Rotas para a página de login e sing in
 $router->get('/login','UserController@index');
 $router->get('/login','UserController@login');
