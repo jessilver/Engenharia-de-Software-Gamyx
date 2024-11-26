@@ -37,7 +37,7 @@ header {
     align-items: center;
     margin-right: 20px !important;
     padding: 10px;
-    border-radius: 20px !important;
+    border-radius: 20px;
 }
 
 #usuarioPost {
@@ -45,7 +45,7 @@ header {
 }
 
 #post{
-    width: 70%;
+    width: 80%;
     background-color: #0D1117;
     color: white;
     padding: 15px;
@@ -78,6 +78,7 @@ header {
     margin-left: 10px !important;
     align-items: center;
     padding: 30px;
+    border-radius: 15px;
     /* justify-content: center; */
 }
 

@@ -17,7 +17,7 @@
     </header>
 
     <section id="sectionConteudoFeed">
-        <div class="container card shadow rounded" id="content">
+        <div class="container card shadow" id="content">
 
             <?php foreach($projetos as $projeto) : ?>
                 <div class="card shadow rounded" id="post">
@@ -37,17 +37,14 @@
             <?php endforeach; ?>
         </div> 
 
-        <div class="container card rounded shadow" id="perfilGeralUsuario">
+        <div class="container card shadow" id="perfilGeralUsuario">
             
             <img src="<?= $base ?>/static/img/sem-imagem.png" alt="" class="imagemPerfilGeralUsuario card-img-top">
 
             <p class="card-text"> 
-                <h3>Jotta Gamer</h3>
-                <h6>@jotta.jotta</h6>
+                <h3><?= $usuario['nomeUsuario'] ?? 'Usuário não logado' ?></h3>
+                <h6><?= $usuario['uniqueName'] ?? 'Usuário não logado' ?></h6>
             </p>
-
-            
-
         </div>
     </section>
 
