@@ -18,38 +18,24 @@
 
     <section id="sectionConteudoFeed">
         <div class="container card shadow rounded" id="content">
-            <div class="card shadow rounded" id="post">
-                <div id="usuarioPost">
-                    <img class="imagemPerfilUsuarioPost" src="<?= $base ?>/static/img/sem-imagem.png" alt="">
-                    <div class="dadosUsuarioPost">
-                        <h4>Jotta Gamer</h4>
-                        <h6>@jotta.jotta</h6>
-                    </div>
-                </div>
-                <img class="card-img-top" src="<?= $base ?>/static/img/tetris.png" alt="">
-                <div class="card-body">
-                    <p class="card-text">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis adipisci illo suscipit aspernatur ut nobis, inventore porro similique, nemo illum in unde perferendis accusamus quas ab sit neque debitis accusantium.
-                    </p>
-                </div>
-            </div>
 
-            <div class="card shadow rounded" id="post">
-                <div id="usuarioPost">
-                    <img class="imagemPerfilUsuarioPost" src="<?= $base ?>/static/img/sem-imagem.png" alt="">
-                    <div class="dadosUsuarioPost">
-                        <h4>Jotta Gamer</h4>
-                        <h6>@jotta.jotta</h6>
+            <?php foreach($projetos as $projeto) : ?>
+                <div class="card shadow rounded" id="post">
+                    <div id="usuarioPost">
+                        <img class="imagemPerfilUsuarioPost" src="<?= $base ?>/static/img/sem-imagem.png" alt="">
+                        <div class="dadosUsuarioPost">
+                            <h4><?= $projeto['nomeUsuario']; ?></h4>
+                            <h6><?= $projeto['uniqueName']; ?></h6>
+                        </div>
+                    </div>
+                    <h2><?= $projeto['nomeProjeto']; ?></h2>
+                    <img class="card-img-top" src="<?= $base ?>/static/img/capasProjetos/<?= $projeto['fotoCapa']; ?>" alt="">
+                    <div class="card-body">
+                        <p class="card-text"> <?= $projeto['descricaoProjeto']; ?> </p>
                     </div>
                 </div>
-                <img class="card-img-top" src="<?= $base ?>/static/img/tetris.png" alt="">
-                <div class="card-body">
-                    <p class="card-text">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis adipisci illo suscipit aspernatur ut nobis, inventore porro similique, nemo illum in unde perferendis accusamus quas ab sit neque debitis accusantium.
-                    </p>
-                </div>
-            </div>
-        </div>
+            <?php endforeach; ?>
+        </div> 
 
         <div class="container card rounded shadow" id="perfilGeralUsuario">
             

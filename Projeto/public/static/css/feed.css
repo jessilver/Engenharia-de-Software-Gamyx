@@ -26,7 +26,7 @@ header {
 }
 
 #content{
-    width: 60%;
+    width: 65%;
     height: 100%;
     display: flex;
     background-color: #151C25;
@@ -37,6 +37,7 @@ header {
     align-items: center;
     margin-right: 20px !important;
     padding: 10px;
+    border-radius: 20px !important;
 }
 
 #usuarioPost {
