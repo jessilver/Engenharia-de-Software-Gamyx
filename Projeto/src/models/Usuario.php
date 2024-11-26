@@ -97,4 +97,20 @@ public static function getUserById(int $usuarioId): ?array {
         ->first();
 }
 
+private static $mockInstance;
+
+public static function setMockInstance($mock) {
+    self::$mockInstance = $mock;
+}
+
+public static function select($columns = ['*']) {
+    if (self::$mockInstance) {
+        return self::$mockInstance->select($columns);
+    }
+    return parent::select($columns);
+}
+
+public function deleteUserInstance(int $id): bool|Exception {
+    return self::deleteUser($id);
+}
 }

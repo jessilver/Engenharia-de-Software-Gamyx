@@ -6,7 +6,9 @@
 </head>
 <body id="userProfileBody">
     
-    <?php include __DIR__ . '/../partials/menu.php'; ?>
+<?php if (isset($_SESSION['userLogado']['id'])): ?>
+        <?php include __DIR__ . '/../partials/menu.php'; ?>
+    <?php endif; ?>
 
     <section id="userProfileSection">
         <form action="<?=$base?>/perfil" method="POST" class="userSearchForm">
@@ -96,7 +98,7 @@
                             <option value="nomeProjeto">Nome</option>
                             <option value="sistemasOperacionais">Sistema Operacional</option>
                         </select>
-                        <input type="text" name="projectSearchInput" class="userSearchInput col" placeholder="Pesquisar projeto" style=""/>
+                        <input type="text" name="projectSearchInput" class="userSearchInput col" placeholder="Pesquisar projeto"/>
                         <button type="submit" class="userSearchSubmit col" style="height:50px; margin: 20px 0;">Buscar</button>
                     </form>
 
@@ -188,11 +190,11 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content sobreModalClass" >
                 <div class="modal-header">
-                    <h5 class="modal-title mx-auto" id="sobreModalLongTitle">Sobre</h5>
-                    <i class="fa-solid fa-xmark closeButton" data-bs-dismiss="modal"></i>
+                    <h5 class="modal-title mx-auto" id="sobreModalLongTitle" style="color: #FFFFFF ">Sobre</h5>
+                    <i class="fa-solid fa-xmark closeButton" data-bs-dismiss="modal" style="color: #FFFFFF" ></i>
                 </div>
                 <div class="modal-body">
-                    <p class="pNormalText"><?= $user['about']; ?></p>
+                    <p class="pNormalText" style="color: #FFFFFF;"><?= $user['about']; ?></p>
                 </div>      
             </div>
         </div>
@@ -235,9 +237,9 @@
     </div>
     <div id="projectsModal" class="modal" style="display: none;">
     <!--  -->
-    <div class="modal-content">
+    <div class="review__modal-content">
         <span class="close">&times;</span>
-        <h2>Projetos e Notas</h2>
+        <h2 style = "color: white">Projetos e Notas</h2>
         <div id="projectsContainer"></div>
     </div>
     <!--  -->

@@ -159,4 +159,22 @@ class Project extends Model {
             throw new Exception('Erro ao deletar projeto: ' . $e->getMessage());
         }
     }
+
+    public function deleteProjectInstance(int $id): bool|Exception {
+        return self::deleteProject($id);
+    }
+    // Configurando mocks
+    private static $mockInstance;
+
+    public static function setMockInstance($mock) {
+        self::$mockInstance = $mock;
+    }
+
+    public static function select($columns = ['*']) {
+        if (self::$mockInstance) {
+            return self::$mockInstance->select($columns);
+        }
+        return parent::select($columns);
+    }
+
 }

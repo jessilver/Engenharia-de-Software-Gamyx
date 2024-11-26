@@ -92,22 +92,115 @@
 }
 
 .rating {
-    display: inline-block;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: left;
+    margin: 20px 0;
 }
 
-.star {
-    background: none;
-    border: none;
+.rating input {
+    display: none;
+}
+
+.rating label {
+    font-size: 30px;
+    color: #ccc;
     cursor: pointer;
-    font-size: 2em;
-    color: gray; /* Cor padrão das estrelas */
     transition: color 0.2s;
 }
 
-.star.hover {
-    color: gold; /* Cor das estrelas ao passar o mouse */
+.rating input:checked ~ label,
+.rating input:hover ~ label {
+    color: #ffcb0c;
 }
 
-.star.selected {
-    color: gold; /* Cor das estrelas quando selecionadas */
+.rating label:hover,
+.rating label:hover ~ label {
+    color: #ffcb0c;
+}
+
+.review-textarea {
+    background-color: #090d11;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #57626F;
+    border-radius: 5px;
+    resize: vertical;
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 15px;
+    color: #fbfbfb;
+    margin-bottom: 10px;
+}
+
+/* Estilo do botão de review */
+.btn-review {
+    background-color: var(--cor-cinza-claro);
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border: 1px solid #57626F;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 15px;
+    transition: background-color 0.3s;
+}
+
+.btn-review:hover {
+    background-color: #090d11;
+}
+
+
+.rating-display {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.rating-display .star {
+    font-size: 20px;
+    color: #ffcb0c;
+}
+
+.rating-display .star.empty {
+    color: #ccc;
+}
+
+.review-comment {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    max-width: 100%;
+    box-sizing: border-box; 
+}
+
+.reviews-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: flex-start;
+    max-width: 800px;
+    margin: 0 auto;
+    min-height: 100px; 
+    box-sizing: border-box; 
+    width: 100%; 
+}
+
+.review-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    padding: 10px;
+    border: 1px solid #57626F;
+    border-radius: 5px;
+    background-color: #090d11; 
+    color: #fbfbfb;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    text-align: left; 
+}
+
+.review-item:last-child {
+    margin-bottom: 0; 
 }

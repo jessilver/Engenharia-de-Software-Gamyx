@@ -58,9 +58,46 @@ class Config {
             projeto_id INT NOT NULL,
             uniqueName VARCHAR(100) NOT NULL,
             nota TINYINT NOT NULL CHECK (nota BETWEEN 1 AND 5),
+            comentario TEXT,
             FOREIGN KEY (usuario_id) REFERENCES Usuarios(id) ON DELETE CASCADE,
             FOREIGN KEY (projeto_id) REFERENCES Projects(id) ON DELETE CASCADE,
             UNIQUE (usuario_id, projeto_id) -- Impede que um usuário avalie o mesmo projeto mais de uma vez
         "
     ];
+    const TB_GAMEJAMS = [
+        'name' => 'GameJams',
+        'culloms' => "
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            host_id INT NOT NULL,
+            nomeJam VARCHAR(100) NOT NULL,
+            descricaoJam VARCHAR(400),
+            dataCriacao DATE DEFAULT CURRENT_DATE NOT NULL,
+            FOREIGN KEY (host_id) REFERENCES Usuarios(id) ON DELETE CASCADE
+        "
+    ];
+    const TB_PARTICIPANTESJAMS = [
+        'name' => 'ParticipantesJams',
+        'culloms' => "
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            jam_id INT NOT NULL,
+            participante_1 VARCHAR(100),
+            participante_2 VARCHAR(100),
+            participante_3 VARCHAR(100),
+            participante_4 VARCHAR(100),
+            participante_5 VARCHAR(100),
+            participante_6 VARCHAR(100),
+            participante_7 VARCHAR(100),
+            participante_8 VARCHAR(100),
+            FOREIGN KEY (participante_1) REFERENCES Usuarios(uniqueName) ON DELETE CASCADE,
+            FOREIGN KEY (participante_2) REFERENCES Usuarios(uniqueName) ON DELETE CASCADE,
+            FOREIGN KEY (participante_3) REFERENCES Usuarios(uniqueName) ON DELETE CASCADE,
+            FOREIGN KEY (participante_4) REFERENCES Usuarios(uniqueName) ON DELETE CASCADE,
+            FOREIGN KEY (participante_5) REFERENCES Usuarios(uniqueName) ON DELETE CASCADE,
+            FOREIGN KEY (participante_6) REFERENCES Usuarios(uniqueName) ON DELETE CASCADE,
+            FOREIGN KEY (participante_7) REFERENCES Usuarios(uniqueName) ON DELETE CASCADE,
+            FOREIGN KEY (participante_8) REFERENCES Usuarios(uniqueName) ON DELETE CASCADE,
+            FOREIGN KEY (jam_id) REFERENCES GameJams(id) ON DELETE CASCADE
+        "
+    ];
+    
 }
