@@ -26,7 +26,7 @@ class DeleteMethodsTest extends TestCase
         // Chamar o método deleteUserInstance e verificar o resultado
         $result = $usuarioMock->deleteUserInstance(1);
         $this->assertTrue($result, 'Erro ao chamar o método deleteUserInstance');
-        $output->writeln('<success>Pass successful</success>');
+        $output->writeln('<success>Pass successful: Usuario deletado com sucesso</success>');
     }
 
     public function testDeleteProject()
@@ -47,7 +47,7 @@ class DeleteMethodsTest extends TestCase
         // Chamar o método deleteProjectInstance e verificar o resultado
         $result = $projectMock->deleteProjectInstance(1);
         $this->assertTrue($result, 'Erro ao chamar o método deleteProjectInstance');
-        $output->writeln('<success>Pass successful</success>');
+        $output->writeln('<success>Pass successful: Projeto deletado com sucesso</success>');
     }
 }
 

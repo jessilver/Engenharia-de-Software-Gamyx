@@ -49,6 +49,6 @@ class LoginMethodsTest extends TestCase {
 
         // Verificar se o método auth retornou true
         $this->assertTrue($return, 'Erro ao chamar o método auth');
-        $output->writeln('<success>Pass successful</success>');
+        $output->writeln('<success>Pass successful: Usuario logado com sucesso</success>');
     }
 }
