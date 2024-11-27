@@ -215,21 +215,21 @@
                 <div class="modal-body" style="
     width: 100%;
 ">
-                <form action="<?=$base?>/perfil/changeProfilePicture" method="POST" id="formEditProfile" enctype="multipart/form-data">
-                    <div class="mb-3">
-                        <label for="about" class="form-label">Sobre você:</label>
-                        <textarea class="form-control" name="about" id="about" rows="5"><?= $user['about']; ?></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="fotoPerfil" class="form-label">Foto de Perfil:</label>
-                        <input type="file" name="fotoPerfil" class="form-control" id="fotoPerfil" accept="image/*">
-                    </div>
-                    <div class="mb-3">
-                        <label for="linkPortfolio" class="form-label">URL para portfólio pessoal (e.g., GitHub, itch.io):</label>
-                        <input type="text" name="linkPortfolio" class="form-control" id="linkPortfolio" value="<?= $user['urlPortfolio']; ?>">
-                    </div>
-                    <button type="submit" class="btn btn-cadastrar">Salvar</button>
-                </form>
+            <form action="<?=$base?>/perfil/changeProfilePicture" method="POST" id="formEditProfile" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="about" class="form-label">Sobre você:</label>
+                    <textarea class="form-control" name="about" id="about" rows="5"><?= $user['about']; ?></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="fotoPerfil" class="form-label">Foto de Perfil:</label>
+                    <input type="file" name="fotoPerfil" class="form-control" id="fotoPerfil" accept="image/png, image/jpeg">
+                </div>
+                <div class="mb-3">
+                    <label for="linkPortfolio" class="form-label">URL para portfólio pessoal (e.g., GitHub, itch.io):</label>
+                    <input type="text" name="linkPortfolio" class="form-control" id="linkPortfolio" value="<?= $user['urlPortfolio']; ?>">
+                </div>
+                <button type="submit" class="btn btn-cadastrar">Salvar</button>
+            </form>
                     
                 </div>      
             </div>
@@ -246,5 +246,19 @@
 </div>
 
 <script src="<?=$base?>/static/js/notas.js"></script>
+<script>
+document.getElementById('formEditProfile').addEventListener('submit', function(event) {
+    const fileInput = document.getElementById('fotoPerfil');
+    const file = fileInput.files[0];
+    if (file) {
+        const fileType = file.type;
+        const validImageTypes = ['image/jpeg', 'image/png'];
+        if (!validImageTypes.includes(fileType)) {
+            alert('Por favor, envie um arquivo de imagem válido (PNG ou JPEG).');
+            event.preventDefault();
+        }
+    }
+});
+</script>
 </body>
 <?php $render('footer');?>

@@ -41,4 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => console.error('Erro ao buscar projetos e avaliações:', error));
     }
+
+    
 });

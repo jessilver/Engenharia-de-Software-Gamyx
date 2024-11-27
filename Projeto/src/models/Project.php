@@ -29,13 +29,12 @@ class Project extends Model {
      * @throws Exception Se ocorrer um erro ao consultar o banco de dados.
      *
      */
-    public static function selectProject(int $id, array $fields = []){
-        try {
-            return self::select($fields)->where('id', $id)->first();
-        } catch (Exception $e) {
-            throw new Exception('Erro ao selecionar projeto: ' . $e->getMessage());
-        }
+    public static function selectProject($projectId) {
+        return self::select(['id', 'nomeProjeto', 'descricaoProjeto', 'linkDownload', 'sistemasOperacionaisSuportados', 'fotoCapa', 'usuario_id'])
+                   ->where('id', $projectId)
+                   ->first();
     }
+    
        /**
      * Seleciona todos os projetos, até um limite de 30.
      *

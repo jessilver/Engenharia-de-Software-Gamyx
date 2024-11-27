@@ -48,7 +48,7 @@
 
                 <div class="mb-3">
                     <label for="fotoPerfil" class="form-label">Foto de Perfil:</label>
-                    <input type="file" name="fotoPerfil" class="form-control" id="fotoPerfil" accept="image/*">
+                    <input type="file" name="fotoPerfil" class="form-control" id="fotoPerfil" accept="image/png, image/jpeg">
                 </div>
 
                 <button type="submit" class="btn btn-cadastrar">Cadastrar-se</button>
