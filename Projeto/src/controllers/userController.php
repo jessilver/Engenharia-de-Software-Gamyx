@@ -16,6 +16,26 @@ class UserController extends Controller {
         $senha = password_hash(filter_input(INPUT_POST, "password"), PASSWORD_DEFAULT); 
         $portfolioUser = filter_input(INPUT_POST, "portfolioUser");
         $uniqueName = "@".$nomeUsuario;
+        $fotoPerfil = $_FILES['fotoPerfil'];
+
+        if ($fotoPerfil['error'] == 0) {
+            $nomeArquivo = basename($fotoPerfil['name']);
+            $diretorioDestino = __DIR__ . '/../../public/static/img/perfil/';
+            $caminhoArquivo = $diretorioDestino . $nomeArquivo;
+
+            // Verificar se o diretório de destino existe, se não, criar
+            if (!is_dir($diretorioDestino)) {
+                mkdir($diretorioDestino, 0777, true);
+            }
+
+            // Mover o arquivo para o diretório de destino
+            if (!move_uploaded_file($fotoPerfil['tmp_name'], $caminhoArquivo)) {
+                echo "Erro ao mover o arquivo.";
+                exit();
+            }
+        } else {
+            $nomeArquivo = "sem-imagem.png";
+        }
 
         if($email && $nomeUsuario && $portfolioUser && $senha){
             $emailExistente = Usuario::select()->where('email', $email)->execute();
@@ -26,7 +46,8 @@ class UserController extends Controller {
                     'nomeUsuario' => $nomeUsuario,
                     'uniqueName' => $uniqueName,
                     'senha' => $senha,
-                    'urlPortfolio' => $portfolioUser
+                    'urlPortfolio' => $portfolioUser,
+                    'fotoPerfil' => $nomeArquivo
                 ])->execute();
             }
 

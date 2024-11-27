@@ -14,14 +14,17 @@ class ViewProjectController extends Controller {
         $projetoId = $id['id']; 
 
         $project = Project::selectProject($projetoId);
-
+        $fotoUsuario = Usuario::selectUser($project['usuario_id']);
+        $fotoUsuario = $fotoUsuario['fotoPerfil'];
+    
         if (!empty($project)) {
             // Busca os comentários e avaliações do projeto
             $reviews = Review::getReviewsComments($projetoId);
 
             $context = [
                 'project' => $project,
-                'reviews' => $reviews
+                'reviews' => $reviews,
+                'perfil' => $fotoUsuario
             ];
 
             $this->render('viewProject', $context);

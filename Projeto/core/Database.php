@@ -28,7 +28,8 @@ class Database {
                         'nomeUsuario' => 'Maria', 
                         'senha' => password_hash('senhaSegura123', PASSWORD_DEFAULT), 
                         'about' => 'Eu sou a Maria e adoro jogos de aventura.',
-                        'urlPortfolio' => 'https://portfolio.maria.com'
+                        'urlPortfolio' => 'https://portfolio.maria.com',
+                        'fotoPerfil' => 'Maria.jpg'
                     ]
                 ])->execute();
     
@@ -38,7 +39,8 @@ class Database {
                         'nomeUsuario' => 'Carlos', 
                         'senha' => password_hash('senhaSegura456', PASSWORD_DEFAULT), 
                         'about' => 'Carlos, desenvolvedor e amante de programação.',
-                        'urlPortfolio' => 'https://portfolio.carlos.com'
+                        'urlPortfolio' => 'https://portfolio.carlos.com',
+                        'fotoPerfil' => 'Carlos.jpg'
                     ]
                 ])->execute();
             }

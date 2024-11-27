@@ -1,11 +1,11 @@
 <?php $render('header'); ?>
-    <link rel="stylesheet" href="<?= $base ?>/static/css/variaveis.css" />
-    <link rel="stylesheet" href="<?= $base ?>/static/css/home.css" />
-    <title>Home</title>
+<link rel="stylesheet" href="<?= $base ?>/static/css/variaveis.css" />
+<link rel="stylesheet" href="<?= $base ?>/static/css/home.css" />
+<title>Home</title>
 </head>
 
 <body>
-<?php if (isset($_SESSION['userLogado']['id'])): ?>
+    <?php if (isset($_SESSION['userLogado']['id'])): ?>
         <?php include __DIR__ . '/../partials/menu.php'; ?>
     <?php endif; ?>
     <div class="homeContainerScreen">
@@ -15,7 +15,7 @@
                 <button type="submit" class="userSearchSubmit">Buscar</button>
             </form>
             <?php if (!isset($_SESSION['userLogado']['id'])): ?>
-                <a href="<?=$base?>/login" class="loginButton">Fazer login</a>
+                <a href="<?= $base ?>/login" class="loginButton">Fazer login</a>
             <?php endif; ?>
         </div>
         <h1 class="userGreetings py-3 mt-5">Opa, <?php echo $usuario['nomeUsuario'] ?? "Usuário!" ?>!</h1>
@@ -33,21 +33,18 @@
                     $nomeProjeto = $projeto['nomeProjeto'] ?? 'Nome não disponível';
                     $fotoCapa = $projeto['fotoCapa'] ?? 'default-placeholder.png';
                     $linkProjeto = $projeto['id'];
+                    $fotoPerfil = $usuarioDono['fotoPerfil']
                     ?>
 
                     <div class="projectCard col col-lg-4">
                         <a href="<?= $base ?>/projeto/<?= $linkProjeto ?>" class="text-white text-decoration-none">
                             <!-- Placeholder  -->
-                            <img src="<?= $base ?>/static/img/capasProjetos/<?= $fotoCapa ?>" alt="Banner do projeto" class="projectImage rounded"/>
+                            <img src="<?= $base ?>/static/img/capasProjetos/<?= $fotoCapa ?>" alt="Banner do projeto" class="projectImage rounded" />
                             <!-- **  -->
                             <div class="projectDescription py-2 d-flex gap-3">
-                                <img src="
-                                    <?php
-                                        $caminho = "__DIR__ . '/../../public/static/img/perfil/imagem-perfil-" . $usuarioDono['nomeUsuario'] . ".jpg";
-                                        echo file_exists($caminho)? $caminho : "$base/static/img/sem-imagem.png"; 
-                                    ?>"
-                                    alt="Imagem de perfil do usuário <?php echo $usuarioDono['nomeUsuario']; ?>" 
-                                    class="ownerProfile"
+                                <img src="<?= $base ?>/static/img/perfil/<?= $fotoPerfil ?>"
+                                    alt="Imagem de perfil do usuário dono, <?php echo $usuarioDono['nomeUsuario']; ?>"
+                                    class="ownerProfile" 
                                 />
                                 <div class="textDescription d-flex flex-column">
                                     <span><?= $usuarioDono['uniqueName'] ?></span>

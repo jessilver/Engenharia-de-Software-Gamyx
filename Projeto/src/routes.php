@@ -39,6 +39,7 @@ $router->get('/projeto/{id}', 'ViewProjectController@index');
 $router->get('/novoProjeto', 'CadastrarProjeto@index');
 $router->post('/novoProjeto', 'CadastrarProjeto@cadastrarProjetoAction');
 $router->post('/editProject', 'ViewProjectController@edit');
+$router->post('/perfil/changeProfilePicture', 'ViewProfileController@changeProfilePicture');
 $router->post('/deleteProject', 'ViewProjectController@delete');
 $router->post('/projeto/review', 'ReviewsController@review');
 $router->post('/search', 'SearchProjectController@searchProjectAction');

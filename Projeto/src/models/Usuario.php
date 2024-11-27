@@ -27,12 +27,12 @@ class Usuario extends Model {
      *
      * @throws Exception Lança uma exceção se ocorrer um erro durante a consulta.
      */
-    public static function selectUser($id, $fields = []) : array|Exception {
-        try {
-            return self::select($fields)->where('id', $id)->first();
-        } catch (Exception $e) {
-            throw new Exception('Erro ao selecionar usuário: ' . $e->getMessage());
+    public static function selectUser($id) {
+        $result = self::select()->where('id', $id)->first();
+        if ($result === false) {
+            throw new Exception('Usuário não encontrado.');
         }
+        return $result;
     }
 
     /**

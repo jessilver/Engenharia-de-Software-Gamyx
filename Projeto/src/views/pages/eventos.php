@@ -28,6 +28,7 @@
                         $data = date('d/m/Y', strtotime($jam['dataCriacao']));
                         $arrobaHost = $host['uniqueName'];
                         $nomeHost = $host['nomeUsuario'];
+                        $fotoHost = $host['fotoPerfil'];
 
                         // Gerar um ID único para cada modal baseado no índice
                         $modalId = "modalGameJam" . $i;
@@ -39,7 +40,7 @@
                                 <div class="flex-shrink-0">
                                     <img src="
                                         <?php
-                                        $caminho = "__DIR__ . '/../../public/static/img/perfil/imagem-perfil-" . $nomeHost . ".jpg";
+                                        $caminho = "__DIR__ . '/../../public/static/img/perfil/" . $fotoHost;                                       
                                         echo file_exists($caminho) ? $caminho : "$base/static/img/sem-imagem.png";
                                         ?>"
                                         alt="Imagem de perfil do usuário host da jam, <?php echo $nomeHost; ?>"
@@ -73,7 +74,7 @@
                                     <div class="modal-body d-flex flex-column align-items-center gap-4">
                                         <img src="
                                             <?php
-                                            $caminho = "__DIR__ . '/../../public/static/img/perfil/imagem-perfil-" . $nomeHost . ".jpg";
+                                            $caminho = "__DIR__ . '/../../public/static/img/perfil/" . $fotoHost;
                                             echo file_exists($caminho) ? $caminho : "$base/static/img/sem-imagem.png";
                                             ?>"
                                             alt="Imagem de perfil do usuário host da jam, <?php echo $nomeHost; ?>"

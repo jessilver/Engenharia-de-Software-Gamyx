@@ -133,7 +133,6 @@
     height: 216px !important;
     width: 395px !important;
     margin-bottom: 16px;
-    border-radius: 20px;
     background-color: #151C25;
 }
 
@@ -426,4 +425,18 @@
 
 .lista-cards-projeto{
     overflow-x: auto;
+}
+
+.ownerProfile {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.projectOwner {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
 }
