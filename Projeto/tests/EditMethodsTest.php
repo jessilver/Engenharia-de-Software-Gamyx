@@ -28,6 +28,13 @@ class EditMethodsTest extends TestCase{
                    ->with('/perfil');
     
         $id = ['id' => 1];
+
+        $user = Usuario::selectUser($id['id']);
+        
+        if(count($user) <= 0){
+            $output->writeln('<warning> Usuário não encontrado </warning>');
+        }
+
         $encriptedId = Usuario::encryptData($id['id']);
         $this->assertNotEmpty($encriptedId, 'Erro ao criptografar o id');
     
