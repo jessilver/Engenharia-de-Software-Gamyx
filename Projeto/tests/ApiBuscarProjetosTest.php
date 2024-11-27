@@ -3,6 +3,7 @@
 namespace Tests;
 
 use PHPUnit\Framework\TestCase;
+use core\OutputColors;
 
 class ApiBuscarProjetosTest extends TestCase
 {
@@ -10,7 +11,8 @@ class ApiBuscarProjetosTest extends TestCase
 
     public function testGetItems()
     {
-        $id = 3;
+        $output = OutputColors::setColors();
+        $id = 1;
         $url = $this->baseUrl .  $id .'/projetos';
 
         $ch = curl_init($url);
@@ -34,5 +36,6 @@ class ApiBuscarProjetosTest extends TestCase
             $this->assertArrayHasKey('linkDownload', $data[0], "O item não tem chave 'linkDownload'");
             $this->assertArrayHasKey('sistemasOperacionaisSuportados', $data[0], "O item não tem chave 'sistemasOperacionaisSuportados'");
         }
+        $output->writeln('<success>Pass successful: API retornou os projetos do usuario com sucesso</success>');
     }
 }

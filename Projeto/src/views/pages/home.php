@@ -18,7 +18,7 @@
                 <a href="<?= $base ?>/login" class="loginButton">Fazer login</a>
             <?php endif; ?>
         </div>
-        <h1 class="userGreetings py-3 mt-5">Opa, <?php echo $usuario['nomeUsuario'] ?? "Usuário!" ?>!</h1>
+        <h1 class="userGreetings py-3 mt-5"> Bem vindo, <?php echo $usuario['nomeUsuario'] ?? "Usuário!" ?>!</h1>
         <h4 class="userGreetingsSubtitle">Aqui estão alguns jogos que pode gostar</h4>
 
         <div class="projectsContainer my-3">

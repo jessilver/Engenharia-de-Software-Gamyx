@@ -19,7 +19,7 @@
             <img
                 src="<?php echo file_exists("./static/img/banners/imagem-banner-" . $user['nomeUsuario'] . ".jpg")
                             ? './static/img/banners/imagem-banner-' . $user['nomeUsuario'] . '.jpg'
-                            : './static/img/sem-imagem.png'; ?>"
+                            : './static/img/tetris.png'; ?>"
                 alt="Imagem de perfil do usuário <?php echo $user['nomeUsuario']; ?>"
                 class="bannerImage" />
         </header>

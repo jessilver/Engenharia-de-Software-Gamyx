@@ -127,7 +127,7 @@
                     <label for="floatingInput">Nome da jam</label>
                 </div>
                 <div class="form-floating mb-3">                 
-                    <textarea class="cadastroJamLabel form-control" placeholder="Descrição breve" id="floatingTextarea" name="descricaoInput" required minlength="50"></textarea>
+                    <textarea class="cadastroJamLabel form-control" placeholder="Descrição breve" id="floatingTextarea" name="descricaoInput" required></textarea>
                     <label for="floatingTextarea">Descrição breve</label>
                 </div>
             </div>

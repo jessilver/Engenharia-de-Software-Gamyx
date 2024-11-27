@@ -160,7 +160,19 @@ class ViewProfileController extends Controller
             return;
         }
 
+        $about = $_POST['about'] ?? null;
+        $linkPortfolio = $_POST['linkPortfolio'] ?? null;
         $fotoPerfil = $_FILES['fotoPerfil'] ?? null;
+
+        $fields = [];
+
+        if ($about !== null) {
+            $fields['about'] = $about;
+        }
+
+        if ($linkPortfolio !== null) {
+            $fields['urlPortfolio'] = $linkPortfolio;
+        }
 
         if ($fotoPerfil && $fotoPerfil['error'] == 0) {
             $nomeArquivo = basename($fotoPerfil['name']);
@@ -178,16 +190,19 @@ class ViewProfileController extends Controller
                 exit();
             }
 
-            // Atualizar o caminho da imagem no banco de dados
-            Usuario::updateUser($usuarioId, ['fotoPerfil' => $nomeArquivo]);
+            $fields['fotoPerfil'] = $nomeArquivo;
+        }
+
+        if (!empty($fields)) {
+            Usuario::updateUser($usuarioId, $fields);
 
             // Atualizar a sessão do usuário
-            $_SESSION['userLogado']['fotoPerfil'] = $nomeArquivo;
-
-            $this->redirect('/perfil');
-        } else {
-            echo "Erro ao enviar a imagem.";
+            foreach ($fields as $key => $value) {
+                $_SESSION['userLogado'][$key] = $value;
+            }
         }
+
+        $this->redirect('/perfil');
     }
 
 }
