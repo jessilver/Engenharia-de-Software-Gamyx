@@ -10,6 +10,10 @@ $router->get('/', 'HomeController@index');
 $router->get('/perfil', 'ViewProfileController@index');
 $router->post('/perfil', 'ViewProfileController@other'); // Alterado para lidar com POST
 
+$router->get('/inicio', 'HomeController@feed');
+
+$router->get('/inicio', 'HomeController@feed');
+
 //Rotas para a página de login e sing in
 $router->get('/login','UserController@index');
 $router->get('/login','UserController@login');
@@ -35,6 +39,7 @@ $router->get('/projeto/{id}', 'ViewProjectController@index');
 $router->get('/novoProjeto', 'CadastrarProjeto@index');
 $router->post('/novoProjeto', 'CadastrarProjeto@cadastrarProjetoAction');
 $router->post('/editProject', 'ViewProjectController@edit');
+$router->post('/perfil/changeProfilePicture', 'ViewProfileController@changeProfilePicture');
 $router->post('/deleteProject', 'ViewProjectController@delete');
 $router->post('/projeto/review', 'ReviewsController@review');
 $router->post('/search', 'SearchProjectController@searchProjectAction');
@@ -57,3 +62,9 @@ $router->get('/api/busca-projeto/{id}', 'FavoritesController@get_all_Favorites_a
 $router->get('/api/busca-projeto/add/{project}/{user}', 'FavoritesController@add_favorite_api');
 $router->get('/api/busca-projeto/delete/{project}/{user}', 'FavoritesController@remove_favorite_api');
 $router->get('/api/busca-projeto/check/{project}/{user}', 'FavoritesController@check_favorite_api');
+
+//Game jams
+$router->get('/eventos', 'eventoController@index');
+$router->post('/eventos/delete', 'eventoController@deleteJam');
+$router->post('/eventos/join', 'eventoController@joinJam');
+$router->post('/eventos', 'eventoController@createJam');

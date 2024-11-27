@@ -8,27 +8,27 @@
 </head>
 <!-- Requisição para recuperar dados do usuário pela API -->
 <?php
-    $usuarioId = $project['usuario_id'];
-    $apiUrl = "http://localhost/Engenharia-de-Software-Gamyx/Projeto/public/api/busca-usuario/{$usuarioId}?acao=buscar-usuario";
-    // Inicializa uma sessão cURL
-    $ch = curl_init($apiUrl);
-    // Configura opções para a requisição
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    // Executa a requisição
-    $response = curl_exec($ch);
-    // Verifica se ocorreu algum erro
-    if (curl_errno($ch)) {
-        echo 'Error:' . curl_error($ch);
-    }
-    // Fecha a sessão cURL
-    curl_close($ch);
-    // Decodifica a resposta JSON
-    $usuarioData = json_decode($response, true);
+$usuarioId = $project['usuario_id'];
+$apiUrl = "http://localhost/Engenharia-de-Software-Gamyx/Projeto/public/api/busca-usuario/{$usuarioId}?acao=buscar-usuario";
+// Inicializa uma sessão cURL
+$ch = curl_init($apiUrl);
+// Configura opções para a requisição
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+// Executa a requisição
+$response = curl_exec($ch);
+// Verifica se ocorreu algum erro
+if (curl_errno($ch)) {
+    echo 'Error:' . curl_error($ch);
+}
+// Fecha a sessão cURL
+curl_close($ch);
+// Decodifica a resposta JSON
+$usuarioData = json_decode($response, true);
 
-    // Exibe os dados do usuário, se disponível
-    if (!empty($usuarioData)) {
-        $usuario = $usuarioData[0];
-    }
+// Exibe os dados do usuário, se disponível
+if (!empty($usuarioData)) {
+    $usuario = $usuarioData[0];
+}
 ?>
 
 <body>
@@ -40,7 +40,7 @@
             <div class="containerBotoes">
                 <span class="projectTitle"><?php echo $project['nomeProjeto']  ?></span>
                 <?php if (isset($_SESSION['userLogado']['id'])): ?>
-    
+
                     <?php if ($_SESSION['userLogado']['id'] === $usuario['id']) : ?>
                         <div class="btn-container">
                             <button class="btn-editar" data-bs-toggle="modal" data-bs-target="#editProjectModal">
@@ -56,8 +56,8 @@
                             </form>
                         </div>
                     <?php endif; ?>
-                <?php endif; ?>        
-                </div>
+                <?php endif; ?>
+            </div>
             <!-- Botões  -->
 
             <div class="imageContainer">
@@ -85,34 +85,35 @@
             <div class="projectRepContainer rounded my-3">
                 <a href="<?php echo $project['linkDownload']; ?>"><?php echo $project['linkDownload']; ?></a>
             </div>
-    
-        <!-- Adicione a seção de avaliações e comentários aqui -->
-        <section class="review-section">
-        <?php if (isset($_SESSION['userLogado']['id'])): ?>
-            <h2>Deixe sua Avaliação</h2>
-            <form action="<?=$base?>/projeto/review" method="POST">
-                <input type="hidden" name="projectId" value="<?= $project['id'] ?>">
-                <div class="rating">
-                    <input type="radio" id="star5" name="nota" value="5">
-                    <label for="star5">&#9733;</label>
-                    <input type="radio" id="star4" name="nota" value="4">
-                    <label for="star4">&#9733;</label>
-                    <input type="radio" id="star3" name="nota" value="3">
-                    <label for="star3">&#9733;</label>
-                    <input type="radio" id="star2" name="nota" value="2">
-                    <label for="star2">&#9733;</label>
-                    <input type="radio" id="star1" name="nota" value="1">
-                    <label for="star1">&#9733;</label>
-                </div>
-                <textarea class="review-textarea" name="comentario" placeholder="Deixe um comentário..."></textarea>
-                <button type="submit" class="btn-review">Enviar Review</button>
-            </form>
-        <?php endif; ?>
-            <h2 style="color:red">Você precisa estar logado para avaliar esse projeto</h2> 
-        </section>
 
-        <section class="reviews-section">
-            <h2>Avaliações e Comentários</h2>
+            <!-- Adicione a seção de avaliações e comentários aqui -->
+            <section class="review-section">
+                <?php if (isset($_SESSION['userLogado']['id'])): ?>
+                    <h2>Deixe sua Avaliação</h2>
+                    <form action="<?= $base ?>/projeto/review" method="POST">
+                        <input type="hidden" name="projectId" value="<?= $project['id'] ?>">
+                        <div class="rating">
+                            <input type="radio" id="star5" name="nota" value="5">
+                            <label for="star5">&#9733;</label>
+                            <input type="radio" id="star4" name="nota" value="4">
+                            <label for="star4">&#9733;</label>
+                            <input type="radio" id="star3" name="nota" value="3">
+                            <label for="star3">&#9733;</label>
+                            <input type="radio" id="star2" name="nota" value="2">
+                            <label for="star2">&#9733;</label>
+                            <input type="radio" id="star1" name="nota" value="1">
+                            <label for="star1">&#9733;</label>
+                        </div>
+                        <textarea class="review-textarea" name="comentario" placeholder="Deixe um comentário..."></textarea>
+                        <button type="submit" class="btn-review">Enviar Review</button>
+                    </form>
+                <?php else: ?>
+                    <h2 style="color:red">Você precisa estar logado para avaliar esse projeto</h2>
+                <?php endif; ?>
+            </section>
+
+            <section class="reviews-section">
+                <h2>Avaliações e Comentários</h2>
                 <?php if (!empty($reviews)): ?>
                     <?php foreach ($reviews as $review): ?>
                         <div class="review-item d-flex align-items-center gap-3" style="border-bottom: 2px solid var(--cor-cinza-borda); margin-bottom: 15px;">
@@ -135,18 +136,18 @@
                 <?php else: ?>
                     <p>Não há avaliações ainda.</p>
                 <?php endif; ?>
-        </section>
+            </section>
 
         </main>
+        <!-- Card do criador  -->
         <section class="creatorCardContainer rounded">
             <a href="<?= $base ?>/perfil" class="text-white text-decoration-none">
                 <div class="creatorCardInfo">
                     <div>
                         <div class="profileImageContainer">
-                            <img src="<?php
-                                        $caminho = "$base/static/img/perfil/imagem-perfil-" . $usuario['nomeUsuario'] . ".jpg";
-                                        echo !file_exists($caminho) ? $caminho : "$base/static/img/sem-imagem.png"; ?>"
-                                alt="" class="profileImage" />
+                            <img src="<?= $base ?>/static/img/perfil/<?= $perfil ?>"
+                                alt="Imagem de perfil do usuário <?php echo $usuario['nomeUsuario']; ?>"
+                                class="profileImage" />
                         </div>
                         <h4><?php echo $usuario['nomeUsuario'] ?></h4>
                         <p><?php echo $usuario['arroba'] ?></p>

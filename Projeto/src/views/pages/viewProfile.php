@@ -33,16 +33,11 @@
                 </div>
                 <div class="userProfilePerfil">
                     <div class="userProfileFoto">
-                        <img 
-                            src=<?php 
-                                    $link = $base."/static/img/perfil/imagem-perfil-".$user['nomeUsuario'].".jpg";
-                                    // $caminho = file_exists($link) ? $link : "sem-imagem.png";
-
-                                    echo $link;
-                                ?>
-                            alt=""
-                            class="profileImage"
-                        />
+                    <img 
+                        src="<?= $base ?>/static/img/perfil/<?= $user['fotoPerfil'] ?>" 
+                        alt="Foto de perfil de <?= $user['nomeUsuario'] ?>" 
+                        class="profileImage"
+                    />
                     </div>
                     <div class="userProfileDados">
                         <h1 class="h1UserName"><?= $user['nomeUsuario']; ?></h1>
@@ -101,7 +96,7 @@
                             <option value="nomeProjeto">Nome</option>
                             <option value="sistemasOperacionais">Sistema Operacional</option>
                         </select>
-                        <input type="text" name="projectSearchInput" class="userSearchInput col" placeholder="Pesquisar projeto" style=""/>
+                        <input type="text" name="projectSearchInput" class="userSearchInput col" placeholder="Pesquisar projeto"/>
                         <button type="submit" class="userSearchSubmit col" style="height:50px; margin: 20px 0;">Buscar</button>
                     </form>
 
@@ -121,7 +116,7 @@
                         <div class='projectItem'>
                             <a href= "<?=$base?>/projeto/<?=$projeto['id']?>">
                                 <div class='projectFoto'>
-                                    <img src='<?=$base?>/static/img/capasProjetos/<?= $fotoCapa ?>' alt='<?= $nomeProjeto ?>'> 
+                                    <img src='<?=$base?>/static/img/capasProjetos/<?= $fotoCapa ?>' alt='<?= $nomeProjeto ?>' class="rounded"> 
                                 </div>
                             </a>
                             <h1 class='h1AUser' style='margin-bottom: 16px;'><?= $nomeProjeto ?></h1>
@@ -144,14 +139,19 @@
                         <?php 
                             $nomeUsuario = $friend['nomeUsuario'] ?? 'Nome não disponível';
                             $id = $friend['id'];
+                            $fotoAmigo = $friend['fotoPerfil'];
                         ?>
                         <?php if ($user['nomeUsuario'] != $nomeUsuario): ?>
                         <div class='amigosItem'>  
                             <form action="<?=$base?>/perfil" method="post"> 
                                 <input type="hidden" name="search_query" value="<?=$nomeUsuario?>">
                                 <button class="btn" type="submit" style="background:none;border:none;padding:0;margin:0;color:inherit;text-align:center;box-shadow:none;">
-                                    <div class='amigosFoto'>
-                                        <img src='<?=$base?>/static/img/' alt='<?= $nomeUsuario ?>'> 
+                                    <div>
+                                        <img src="<?php echo file_exists("./static/img/perfil/" . $fotoAmigo)
+                                            ? "./static/img/perfil/" . $fotoAmigo
+                                            : './static/img/sem-imagem.png'; ?>" 
+                                            alt='<?= $nomeUsuario ?>'
+                                            class='amigosFoto' />
                                     </div>
                                     <h1 class='h1AUser' style='margin-bottom: 16px;'><?= $nomeUsuario ?></h1>
                                 </button>
@@ -233,21 +233,21 @@
                 <div class="modal-body" style="
     width: 100%;
 ">
-                    <form action="<?=$base?>/perfil/edit/<?=$HashUserId?>" method="POST" id="formEditProfile">
-                        <div class="mb-3">
-                            <label for="about" class="form-label">Sobre você:</label>
-                            
-                            <textarea class="form-control" name="about" id="about" rows="5"><?= $user['about']; ?></textarea>
-                        </div>
-                
-                        <div class="mb-3">
-                            <label for="linkPortfolio" class="form-label">URL para portfólio pessoal (e.g., GitHub, itch.io):</label>
-                            <input type="text" name="linkPortfolio" class="form-control" id="linkPortfolio" value="<?= $user['urlPortfolio']; ?>">
-                        </div>
-
-                        <button type="submit" class="btn btn-cadastrar">Salvar</button>
-
-                    </form>
+            <form action="<?=$base?>/perfil/changeProfilePicture" method="POST" id="formEditProfile" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="about" class="form-label">Sobre você:</label>
+                    <textarea class="form-control" name="about" id="about" rows="5"><?= $user['about']; ?></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="fotoPerfil" class="form-label">Foto de Perfil:</label>
+                    <input type="file" name="fotoPerfil" class="form-control" id="fotoPerfil" accept="image/png, image/jpeg">
+                </div>
+                <div class="mb-3">
+                    <label for="linkPortfolio" class="form-label">URL para portfólio pessoal (e.g., GitHub, itch.io):</label>
+                    <input type="text" name="linkPortfolio" class="form-control" id="linkPortfolio" value="<?= $user['urlPortfolio']; ?>">
+                </div>
+                <button type="submit" class="btn btn-cadastrar">Salvar</button>
+            </form>
                     
                 </div>      
             </div>
@@ -294,5 +294,19 @@
 
 <script src="<?=$base?>/static/js/notas.js"></script>
 
+<script>
+document.getElementById('formEditProfile').addEventListener('submit', function(event) {
+    const fileInput = document.getElementById('fotoPerfil');
+    const file = fileInput.files[0];
+    if (file) {
+        const fileType = file.type;
+        const validImageTypes = ['image/jpeg', 'image/png'];
+        if (!validImageTypes.includes(fileType)) {
+            alert('Por favor, envie um arquivo de imagem válido (PNG ou JPEG).');
+            event.preventDefault();
+        }
+    }
+});
+</script>
 </body>
 <?php $render('footer');?>

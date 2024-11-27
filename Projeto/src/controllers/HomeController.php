@@ -6,6 +6,7 @@ use \src\models\Project;
 use src\models\Usuario;
 
 class HomeController extends Controller {
+
     public function index() {
         $projetos = Project::selectAllProjects();
         $donos = [];
@@ -14,15 +15,9 @@ class HomeController extends Controller {
             $donos[] = Usuario::selectUser($idUsuario);
         }
 
-        $usuario = null;
-        if (isset($_SESSION['userLogado']['id'])) {
-            $usuario = Usuario::selectUser($_SESSION['userLogado']['id']);
-        }
-
         $context = [
             'projetos' => $projetos,
-            'usuarios' => $donos,
-            'usuario' => $usuario
+            'usuarios' => $donos
         ];
         $this->render('home', $context);
     }
@@ -34,4 +29,16 @@ class HomeController extends Controller {
     public function sobreP($args) {
         print_r($args);
     }
+
+    public function feed(){
+
+        $allProjects = Project::selectProjectsWithUsers();
+
+        $context = [
+            'projetos' => $allProjects
+        ];
+
+        $this->render('feedInicial', $context);
+    }
+
 }

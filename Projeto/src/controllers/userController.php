@@ -16,6 +16,26 @@ class UserController extends Controller {
         $senha = password_hash(filter_input(INPUT_POST, "password"), PASSWORD_DEFAULT); 
         $portfolioUser = filter_input(INPUT_POST, "portfolioUser");
         $uniqueName = "@".$nomeUsuario;
+        $fotoPerfil = $_FILES['fotoPerfil'];
+
+        if ($fotoPerfil['error'] == 0) {
+            $nomeArquivo = basename($fotoPerfil['name']);
+            $diretorioDestino = __DIR__ . '/../../public/static/img/perfil/';
+            $caminhoArquivo = $diretorioDestino . $nomeArquivo;
+
+            // Verificar se o diretório de destino existe, se não, criar
+            if (!is_dir($diretorioDestino)) {
+                mkdir($diretorioDestino, 0777, true);
+            }
+
+            // Mover o arquivo para o diretório de destino
+            if (!move_uploaded_file($fotoPerfil['tmp_name'], $caminhoArquivo)) {
+                echo "Erro ao mover o arquivo.";
+                exit();
+            }
+        } else {
+            $nomeArquivo = "sem-imagem.png";
+        }
 
         if($email && $nomeUsuario && $portfolioUser && $senha){
             $emailExistente = Usuario::select()->where('email', $email)->execute();
@@ -26,7 +46,8 @@ class UserController extends Controller {
                     'nomeUsuario' => $nomeUsuario,
                     'uniqueName' => $uniqueName,
                     'senha' => $senha,
-                    'urlPortfolio' => $portfolioUser
+                    'urlPortfolio' => $portfolioUser,
+                    'fotoPerfil' => $nomeArquivo
                 ])->execute();
             }
 
@@ -45,32 +66,42 @@ class UserController extends Controller {
 
     public function auth() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $login = filter_input(INPUT_POST, 'login');
-            $senha = filter_input(INPUT_POST, 'password');
+            $login = getenv('login') ?: filter_input(INPUT_POST, 'login'); 
+            $senha = getenv('password') ?: filter_input(INPUT_POST, 'password');
 
+    
             if ($login && $senha) {
                 $usuario = Usuario::select()
                     ->where('email', $login)
                     ->orWhere('nomeUsuario', $login)
                     ->first();
-
+    
                 if ($usuario) {
                     if (password_verify($senha, $usuario['senha'])) {
-                        $_SESSION['userLogado']['id'] = $usuario['id']; 
+                        $_SESSION['userLogado']['id'] = $usuario['id'];
                         $this->redirect('/perfil');
-                        exit;
+                        return true;
                     } else {
                         $error = "Login ou senha inválido.";
+                        $this->render('login', ['error' => $error]);
+                        return false;
                     }
                 } else {
                     $error = "Usuário não existe.";
+                    $this->render('login', ['error' => $error]);
+                    return false;
                 }
-            }  $this->render('login', ['error' => $error]);
+            } else {
+                $error = "Por favor, preencha todos os campos.";
+                $this->render('login', ['error' => $error]);
+                return false;
+            }
         } else {
             $this->render('login');
+            return false;
         }
     }
-
+   
     public function logout() {
         session_destroy();
         $this->redirect('/login');
