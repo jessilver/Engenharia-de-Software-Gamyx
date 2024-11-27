@@ -6,12 +6,12 @@ use PHPUnit\Framework\TestCase;
 
 class ApiBuscarProjetosTest extends TestCase
 {
-    private $baseUrl = 'http://localhost/user/';
+    private $baseUrl = 'http://localhost/Engenharia-de-Software-Gamyx/Projeto/public/user/';
 
     public function testGetItems()
     {
-        $id = 1;
-        $url = $this->baseUrl . $id .'/projetos';
+        $id = 3;
+        $url = $this->baseUrl .  $id .'/projetos';
 
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
