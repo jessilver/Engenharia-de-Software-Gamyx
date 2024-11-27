@@ -59,8 +59,11 @@
                                 $projectsCount = $projects ? count($projects) : 0;
                                 echo $projectsCount; 
                             ?>
-                            likes 
-                            
+                            likes -
+                            <button type="button" class="btn" style="color: #FFFFFF;" onclick="get_fav_projects()"> 
+                                <i class="fa-solid fa-star"></i>    
+                                Favoritos
+                            </button>
                         </h1>
                         <div class="profileButtons">
                             <button type="button" class="btn editProfile" data-bs-toggle="modal" data-bs-target="#editProfileModal"><h1 class="h1AUser">Edit Profile</h1></button>
@@ -201,6 +204,21 @@
     </div>
 
     <!-- Modal -->
+    <div class="modal fade "id="favProjects" tabindex="-1" role="dialog" aria-labelledby="sobreModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content sobreModalClass" >
+                <div class="modal-header">
+                    <h5 class="modal-title mx-auto" id="sobreModalLongTitle" style="color: #FFFFFF ">Projetos Favoritos</h5>
+                    <i class="fa-solid fa-xmark closeButton" data-bs-dismiss="modal" style="color: #FFFFFF" ></i>
+                </div>
+                <div class="modal-body">
+                    <p class="pNormalText" style="color: #FFFFFF;"><?= $user['about']; ?></p>
+                </div>      
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
     <div class="modal fade " id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content editProfileModalClass" style="
@@ -242,10 +260,40 @@
         <h2 style = "color: white">Projetos e Notas</h2>
         <div id="projectsContainer"></div>
     </div>
-    <!--  -->
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    function get_fav_projects(){
+        
+        fetch('<?=$base?>/api/busca-projeto/<?=$user['id']?>')
+            .then(response => response.json())
+            .then(data => {
+                const modalBody = document.querySelector('#favProjects .modal-body');
+                modalBody.innerHTML = '';
+                if (data.length > 0) {
+                    data.forEach(project => {
+                        const projectElement = document.createElement('div');
+                        projectElement.classList.add('favoriteProjectItem');
+                        projectElement.innerHTML = `
+                            <a href="<?=$base?>/projeto/${project.id}">
+                                <p>${project.nomeProjeto}</p>
+                            </a>
+                        `;
+                        modalBody.appendChild(projectElement);
+                    });
+                } else {
+                    modalBody.innerHTML = '<p>Nenhum projeto favorito encontrado.</p>';
+                }
+                $('#favProjects').modal('show');
+            })
+            .catch(error => console.error('Erro ao buscar projetos favoritos:', error));
+    }
+</script>
+
 <script src="<?=$base?>/static/js/notas.js"></script>
+
 <script>
 document.getElementById('formEditProfile').addEventListener('submit', function(event) {
     const fileInput = document.getElementById('fotoPerfil');
