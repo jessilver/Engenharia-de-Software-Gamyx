@@ -1,4 +1,4 @@
-﻿# Projeto - Rede Social de Desenvolvedores De Jogos
+﻿# Gamyx - Rede Social de Desenvolvedores De Jogos
 # Home
 
 | Links Uteis                                                                                |
