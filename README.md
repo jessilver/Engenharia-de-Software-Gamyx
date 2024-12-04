@@ -1,6 +1,13 @@
 ﻿# Projeto - Rede Social de Desenvolvedores De Jogos
 # Home
 
+| Links Uteis                                                                                |
+|------------------------------------------------------------------------------------------- |
+| [Landing Page](https://arthutstuts96.github.io/Gamyx-Landing-Page/) |
+| [Versão Final](https://github.com/jessilver/Engenharia-de-Software-Gamyx/releases/tag/v5.0.2) |
+| [Vídeo do produto](https://drive.google.com/file/d/1zzN2Ed74XRvOIn-9uZmIOCYmXdEWzvmk/view) | 
+| [Apresentação Final](https://fuft-my.sharepoint.com/:p:/g/personal/jesse_nunes_uft_edu_br/EWKpkAIQMEJFirf7LtkoJvQBIGge_F9WXQlFviGslJsraw?e=hVXePc) |
+
 ## Navegação
 
 - [Iterações](https://github.com/jessilver/Engenharia-de-Software-Gamyx/blob/docs/readme/iteracoes.md)
