@@ -30,4 +30,15 @@ class HomeController extends Controller {
         print_r($args);
     }
 
+    public function feed(){
+
+        $allProjects = Project::selectProjectsWithUsers();
+
+        $context = [
+            'projetos' => $allProjects
+        ];
+
+        $this->render('feedInicial', $context);
+    }
+
 }

@@ -29,13 +29,12 @@ class Project extends Model {
      * @throws Exception Se ocorrer um erro ao consultar o banco de dados.
      *
      */
-    public static function selectProject(int $id, array $fields = []){
-        try {
-            return self::select($fields)->where('id', $id)->first();
-        } catch (Exception $e) {
-            throw new Exception('Erro ao selecionar projeto: ' . $e->getMessage());
-        }
+    public static function selectProject($projectId) {
+        return self::select(['id', 'nomeProjeto', 'descricaoProjeto', 'linkDownload', 'sistemasOperacionaisSuportados', 'fotoCapa', 'usuario_id'])
+                   ->where('id', $projectId)
+                   ->first();
     }
+    
        /**
      * Seleciona todos os projetos, até um limite de 30.
      *
@@ -101,7 +100,7 @@ class Project extends Model {
     //         throw new Exception('Erro ao selecionar projetos: ' . $e->getMessage());
     //     }
     // }
-    public static function selectProjectByUserId(int $id, array $fields = []): array|Exception {
+    public static function selectProjectByUserId( $id, array $fields = []): array|Exception {
         try {
             return self::select($fields ?: '*')
                         ->where('usuario_id', $id)
@@ -157,6 +156,56 @@ class Project extends Model {
             return true; // Retorna true se a deleção for bem-sucedida
         } catch (Exception $e) {
             throw new Exception('Erro ao deletar projeto: ' . $e->getMessage());
+        }
+    }
+
+    public function deleteProjectInstance(int $id): bool|Exception {
+        return self::deleteProject($id);
+    }
+    // Configurando mocks
+    private static $mockInstance;
+
+    public static function setMockInstance($mock) {
+        self::$mockInstance = $mock;
+    }
+
+    public static function select($columns = ['*']) {
+        if (self::$mockInstance) {
+            return self::$mockInstance->select($columns);
+        }
+        return parent::select($columns);
+    }
+
+    /**
+     * Realiza um INNER JOIN entre as tabelas 'projects' e 'usuarios' e retorna os resultados.
+     *
+     * Este método combina informações de projetos e usuários com base na chave estrangeira 'usuario_id'.
+     *
+     * @param array $fields Um array de campos a serem selecionados no formato:
+     *                      - 'projects.campo' para campos da tabela 'projects'.
+     *                      - 'usuarios.campo' para campos da tabela 'usuarios'.
+     *                      Exemplo: ['projects.nomeProjeto', 'usuarios.nome']
+     * @param array $conditions (opcional) Um array associativo de condições adicionais no formato:
+     *                          ['campo' => 'valor'].
+     * @return array|Exception Retorna um array com os resultados ou lança uma exceção em caso de erro.
+     *
+     * @throws Exception Se ocorrer um erro durante a consulta.
+     */
+    public static function selectProjectsWithUsers(array $fields = ['*'], array $conditions = []): array|Exception {
+        try {
+            // Inicializa a consulta com os campos fornecidos
+            $query = self::select($fields)
+                ->join('usuarios', 'usuarios.id', '=', 'projects.usuario_id'); // Define o INNER JOIN
+            
+            // Adiciona condições, se existirem
+            foreach ($conditions as $field => $value) {
+                $query = $query->where($field, '=', $value);
+            }
+
+            // Executa a consulta e retorna os resultados
+            return $query->execute();
+        } catch (Exception $e) {
+            throw new Exception('Erro ao realizar consulta com INNER JOIN: ' . $e->getMessage());
         }
     }
 }

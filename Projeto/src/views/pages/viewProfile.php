@@ -6,7 +6,9 @@
 </head>
 <body id="userProfileBody">
     
-    <?php include __DIR__ . '/../partials/menu.php'; ?>
+<?php if (isset($_SESSION['userLogado']['id'])): ?>
+        <?php include __DIR__ . '/../partials/menu.php'; ?>
+    <?php endif; ?>
 
     <section id="userProfileSection">
         <form action="<?=$base?>/perfil" method="POST" class="userSearchForm">
@@ -31,16 +33,11 @@
                 </div>
                 <div class="userProfilePerfil">
                     <div class="userProfileFoto">
-                        <img 
-                            src=<?php 
-                                    $link = $base."/static/img/perfil/imagem-perfil-".$user['nomeUsuario'].".jpg";
-                                    // $caminho = file_exists($link) ? $link : "sem-imagem.png";
-
-                                    echo $link;
-                                ?>
-                            alt=""
-                            class="profileImage"
-                        />
+                    <img 
+                        src="<?= $base ?>/static/img/perfil/<?= $user['fotoPerfil'] ?>" 
+                        alt="Foto de perfil de <?= $user['nomeUsuario'] ?>" 
+                        class="profileImage"
+                    />
                     </div>
                     <div class="userProfileDados">
                         <h1 class="h1UserName"><?= $user['nomeUsuario']; ?></h1>
@@ -62,8 +59,11 @@
                                 $projectsCount = $projects ? count($projects) : 0;
                                 echo $projectsCount; 
                             ?>
-                            likes 
-                            
+                            likes -
+                            <button type="button" class="btn" style="color: #FFFFFF;" onclick="get_fav_projects()"> 
+                                <i class="fa-solid fa-star"></i>    
+                                Favoritos
+                            </button>
                         </h1>
                         <div class="profileButtons">
                             <button type="button" class="btn editProfile" data-bs-toggle="modal" data-bs-target="#editProfileModal"><h1 class="h1AUser">Edit Profile</h1></button>
@@ -96,7 +96,7 @@
                             <option value="nomeProjeto">Nome</option>
                             <option value="sistemasOperacionais">Sistema Operacional</option>
                         </select>
-                        <input type="text" name="projectSearchInput" class="userSearchInput col" placeholder="Pesquisar projeto" style=""/>
+                        <input type="text" name="projectSearchInput" class="userSearchInput col" placeholder="Pesquisar projeto"/>
                         <button type="submit" class="userSearchSubmit col" style="height:50px; margin: 20px 0;">Buscar</button>
                     </form>
 
@@ -116,7 +116,7 @@
                         <div class='projectItem'>
                             <a href= "<?=$base?>/projeto/<?=$projeto['id']?>">
                                 <div class='projectFoto'>
-                                    <img src='<?=$base?>/static/img/capasProjetos/<?= $fotoCapa ?>' alt='<?= $nomeProjeto ?>'> 
+                                    <img src='<?=$base?>/static/img/capasProjetos/<?= $fotoCapa ?>' alt='<?= $nomeProjeto ?>' class="rounded"> 
                                 </div>
                             </a>
                             <h1 class='h1AUser' style='margin-bottom: 16px;'><?= $nomeProjeto ?></h1>
@@ -139,14 +139,19 @@
                         <?php 
                             $nomeUsuario = $friend['nomeUsuario'] ?? 'Nome não disponível';
                             $id = $friend['id'];
+                            $fotoAmigo = $friend['fotoPerfil'];
                         ?>
                         <?php if ($user['nomeUsuario'] != $nomeUsuario): ?>
                         <div class='amigosItem'>  
                             <form action="<?=$base?>/perfil" method="post"> 
                                 <input type="hidden" name="search_query" value="<?=$nomeUsuario?>">
                                 <button class="btn" type="submit" style="background:none;border:none;padding:0;margin:0;color:inherit;text-align:center;box-shadow:none;">
-                                    <div class='amigosFoto'>
-                                        <img src='<?=$base?>/static/img/' alt='<?= $nomeUsuario ?>'> 
+                                    <div>
+                                        <img src="<?php echo file_exists("./static/img/perfil/" . $fotoAmigo)
+                                            ? "./static/img/perfil/" . $fotoAmigo
+                                            : './static/img/sem-imagem.png'; ?>" 
+                                            alt='<?= $nomeUsuario ?>'
+                                            class='amigosFoto' />
                                     </div>
                                     <h1 class='h1AUser' style='margin-bottom: 16px;'><?= $nomeUsuario ?></h1>
                                 </button>
@@ -188,11 +193,26 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content sobreModalClass" >
                 <div class="modal-header">
-                    <h5 class="modal-title mx-auto" id="sobreModalLongTitle">Sobre</h5>
-                    <i class="fa-solid fa-xmark closeButton" data-bs-dismiss="modal"></i>
+                    <h5 class="modal-title mx-auto" id="sobreModalLongTitle" style="color: #FFFFFF ">Sobre</h5>
+                    <i class="fa-solid fa-xmark closeButton" data-bs-dismiss="modal" style="color: #FFFFFF" ></i>
                 </div>
                 <div class="modal-body">
-                    <p class="pNormalText"><?= $user['about']; ?></p>
+                    <p class="pNormalText" style="color: #FFFFFF;"><?= $user['about']; ?></p>
+                </div>      
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade "id="favProjects" tabindex="-1" role="dialog" aria-labelledby="sobreModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content sobreModalClass" >
+                <div class="modal-header">
+                    <h5 class="modal-title mx-auto" id="sobreModalLongTitle" style="color: #FFFFFF ">Projetos Favoritos</h5>
+                    <i class="fa-solid fa-xmark closeButton" data-bs-dismiss="modal" style="color: #FFFFFF" ></i>
+                </div>
+                <div class="modal-body">
+                    <p class="pNormalText" style="color: #FFFFFF;"><?= $user['about']; ?></p>
                 </div>      
             </div>
         </div>
@@ -213,21 +233,21 @@
                 <div class="modal-body" style="
     width: 100%;
 ">
-                    <form action="<?=$base?>/perfil/edit/<?=$HashUserId?>" method="POST" id="formEditProfile">
-                        <div class="mb-3">
-                            <label for="about" class="form-label">Sobre você:</label>
-                            
-                            <textarea class="form-control" name="about" id="about" rows="5"><?= $user['about']; ?></textarea>
-                        </div>
-                
-                        <div class="mb-3">
-                            <label for="linkPortfolio" class="form-label">URL para portfólio pessoal (e.g., GitHub, itch.io):</label>
-                            <input type="text" name="linkPortfolio" class="form-control" id="linkPortfolio" value="<?= $user['urlPortfolio']; ?>">
-                        </div>
-
-                        <button type="submit" class="btn btn-cadastrar">Salvar</button>
-
-                    </form>
+            <form action="<?=$base?>/perfil/changeProfilePicture" method="POST" id="formEditProfile" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="about" class="form-label">Sobre você:</label>
+                    <textarea class="form-control" name="about" id="about" rows="5"><?= $user['about']; ?></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="fotoPerfil" class="form-label">Foto de Perfil:</label>
+                    <input type="file" name="fotoPerfil" class="form-control" id="fotoPerfil" accept="image/png, image/jpeg">
+                </div>
+                <div class="mb-3">
+                    <label for="linkPortfolio" class="form-label">URL para portfólio pessoal (e.g., GitHub, itch.io):</label>
+                    <input type="text" name="linkPortfolio" class="form-control" id="linkPortfolio" value="<?= $user['urlPortfolio']; ?>">
+                </div>
+                <button type="submit" class="btn btn-cadastrar">Salvar</button>
+            </form>
                     
                 </div>      
             </div>
@@ -235,14 +255,58 @@
     </div>
     <div id="projectsModal" class="modal" style="display: none;">
     <!--  -->
-    <div class="modal-content">
+    <div class="review__modal-content">
         <span class="close">&times;</span>
-        <h2>Projetos e Notas</h2>
+        <h2 style = "color: white">Projetos e Notas</h2>
         <div id="projectsContainer"></div>
     </div>
-    <!--  -->
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    function get_fav_projects(){
+        
+        fetch('<?=$base?>/api/busca-projeto/<?=$user['id']?>')
+            .then(response => response.json())
+            .then(data => {
+                const modalBody = document.querySelector('#favProjects .modal-body');
+                modalBody.innerHTML = '';
+                if (data.length > 0) {
+                    data.forEach(project => {
+                        const projectElement = document.createElement('div');
+                        projectElement.classList.add('favoriteProjectItem');
+                        projectElement.innerHTML = `
+                            <a href="<?=$base?>/projeto/${project.id}">
+                                <p>${project.nomeProjeto}</p>
+                            </a>
+                        `;
+                        modalBody.appendChild(projectElement);
+                    });
+                } else {
+                    modalBody.innerHTML = '<p>Nenhum projeto favorito encontrado.</p>';
+                }
+                $('#favProjects').modal('show');
+            })
+            .catch(error => console.error('Erro ao buscar projetos favoritos:', error));
+    }
+</script>
+
 <script src="<?=$base?>/static/js/notas.js"></script>
+
+<script>
+document.getElementById('formEditProfile').addEventListener('submit', function(event) {
+    const fileInput = document.getElementById('fotoPerfil');
+    const file = fileInput.files[0];
+    if (file) {
+        const fileType = file.type;
+        const validImageTypes = ['image/jpeg', 'image/png'];
+        if (!validImageTypes.includes(fileType)) {
+            alert('Por favor, envie um arquivo de imagem válido (PNG ou JPEG).');
+            event.preventDefault();
+        }
+    }
+});
+</script>
 </body>
 <?php $render('footer');?>

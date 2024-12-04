@@ -60,9 +60,10 @@ body{
     width: 623px;
 }
 .ownerProfile{
-    max-width: 60px;
-    max-height: 60px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
+    object-fit: cover;
 }
 .projectImage{
     background-color: #282F39;

@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="<?=$base?>/static/css/style.css">
     <link rel="stylesheet" href="<?=$base?>/static/css/cadastro.css">
     <link rel="stylesheet" href="<?=$base?>/static/css/cadastrarProjeto.css">
+    <link rel="stylesheet" href="<?=$base?>/static/css/feed.css">
+    <link rel="stylesheet" href="<?=$base?>/static/css/userProfile.css">
+    <link rel="stylesheet" href="<?=$base?>/static/css/notes.css">
     
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -70,18 +70,30 @@ class ViewProfileController extends Controller
     }
     
     
-    public function edit($id){
-        $usuarioId = Model::decryptData($id['id']);
+    public function edit($id)
+    {
+        if (is_array($id) && isset($id['id'])) {
+            $usuarioId = Model::decryptData($id['id']);
+            // echo "Decrypted ID: $usuarioId\n";
+        } else {
+            throw new \InvalidArgumentException('Formato de dados inválido: id deve ser um array com uma chave "id".');
+        }
         
-        $about = $_POST['about'];
-        $linkPortfolio = $_POST['linkPortfolio'];
-
+        $about = $_POST['about'] ?? null;
+        $linkPortfolio = $_POST['linkPortfolio'] ?? null;
+        
+        if ($about === null || $linkPortfolio === null) {
+            throw new \InvalidArgumentException('Dados POST obrigatórios ausentes.');
+        }
         $fields = [
             'about' => $about,
             'urlPortfolio' => $linkPortfolio
         ];
-        Usuario::updateUser($usuarioId , $fields);
+        
+        $updateSuccess = Usuario::updateUser($usuarioId, $fields);
         $this->redirect('/perfil');
+    
+        return $updateSuccess;
     }
 
     public function logout(){
@@ -139,4 +151,58 @@ class ViewProfileController extends Controller
             $this->index();
         }
     }
+
+    public function changeProfilePicture() {
+        $usuarioId = $_SESSION['userLogado']['id'] ?? null;
+
+        if ($usuarioId === null) {
+            $this->redirect('/login');
+            return;
+        }
+
+        $about = $_POST['about'] ?? null;
+        $linkPortfolio = $_POST['linkPortfolio'] ?? null;
+        $fotoPerfil = $_FILES['fotoPerfil'] ?? null;
+
+        $fields = [];
+
+        if ($about !== null) {
+            $fields['about'] = $about;
+        }
+
+        if ($linkPortfolio !== null) {
+            $fields['urlPortfolio'] = $linkPortfolio;
+        }
+
+        if ($fotoPerfil && $fotoPerfil['error'] == 0) {
+            $nomeArquivo = basename($fotoPerfil['name']);
+            $diretorioDestino = __DIR__ . '/../../public/static/img/perfil/';
+            $caminhoArquivo = $diretorioDestino . $nomeArquivo;
+
+            // Verificar se o diretório de destino existe, se não, criar
+            if (!is_dir($diretorioDestino)) {
+                mkdir($diretorioDestino, 0777, true);
+            }
+
+            // Mover o arquivo para o diretório de destino
+            if (!move_uploaded_file($fotoPerfil['tmp_name'], $caminhoArquivo)) {
+                echo "Erro ao mover o arquivo.";
+                exit();
+            }
+
+            $fields['fotoPerfil'] = $nomeArquivo;
+        }
+
+        if (!empty($fields)) {
+            Usuario::updateUser($usuarioId, $fields);
+
+            // Atualizar a sessão do usuário
+            foreach ($fields as $key => $value) {
+                $_SESSION['userLogado'][$key] = $value;
+            }
+        }
+
+        $this->redirect('/perfil');
+    }
+
 }
