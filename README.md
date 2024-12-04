@@ -1,5 +1,12 @@
-﻿# Projeto - Rede Social de Desenvolvedores De Jogos
+﻿# Gamyx - Rede Social de Desenvolvedores De Jogos
 # Home
+
+| Links Uteis                                                                                |
+|------------------------------------------------------------------------------------------- |
+| [Landing Page](https://arthutstuts96.github.io/Gamyx-Landing-Page/) |
+| [Versão Final](https://github.com/jessilver/Engenharia-de-Software-Gamyx/releases/tag/v5.0.2) |
+| [Vídeo do produto](https://drive.google.com/file/d/1zzN2Ed74XRvOIn-9uZmIOCYmXdEWzvmk/view) | 
+| [Apresentação Final](https://fuft-my.sharepoint.com/:p:/g/personal/jesse_nunes_uft_edu_br/EWKpkAIQMEJFirf7LtkoJvQBIGge_F9WXQlFviGslJsraw?e=hVXePc) |
 
 ## Navegação
 
@@ -11,7 +18,6 @@
 
 - [Informações Acadêmicas](#Informações-Acadêmicas)
 - [Sobre o Projeto](#sobre-o-projeto)
-- [Vídeo do projeto funcionando](#vídeo-do-projeto-funcionando)
 
 ## Informações Acadêmicas
 <small>[voltar para o Sumário](#Sumário)</small><br>
@@ -44,8 +50,3 @@ Este projeto foi desenvolvido utilizando XAMPP 3.3.0,PHP, HTML, CSS, Java Script
 - **Git:** Controle de versão do código.
 - **GitHub:** Hospedagem do repositório remoto.
 - **Gitflow:** Modelo de ramificação para organização do desenvolvimento. 
-
-## Vídeo do projeto funcionando
-<small>[voltar para o Sumário](#Sumário)</small><br>
-
-...
