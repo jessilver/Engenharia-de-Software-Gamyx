@@ -18,7 +18,6 @@
 
 - [Informações Acadêmicas](#Informações-Acadêmicas)
 - [Sobre o Projeto](#sobre-o-projeto)
-- [Vídeo do projeto funcionando](#vídeo-do-projeto-funcionando)
 
 ## Informações Acadêmicas
 <small>[voltar para o Sumário](#Sumário)</small><br>
@@ -51,8 +50,3 @@ Este projeto foi desenvolvido utilizando XAMPP 3.3.0,PHP, HTML, CSS, Java Script
 - **Git:** Controle de versão do código.
 - **GitHub:** Hospedagem do repositório remoto.
 - **Gitflow:** Modelo de ramificação para organização do desenvolvimento. 
-
-## Vídeo do projeto funcionando
-<small>[voltar para o Sumário](#Sumário)</small><br>
-
-...
