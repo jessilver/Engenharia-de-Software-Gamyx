@@ -1,4 +1,3 @@
-/* Modal Estilo */
 #projectsModal {
     display: none;
     position: fixed;
@@ -13,7 +12,7 @@
 }
 
 /* Conteúdo do Modal */
-.modal-content {
+.review__modal-content {
     background-color: #FFFFFF; /* Fundo branco para combinar com outras modais */
     margin: auto;
     padding: 20px;

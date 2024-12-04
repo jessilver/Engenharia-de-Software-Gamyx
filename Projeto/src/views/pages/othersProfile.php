@@ -6,7 +6,9 @@
 </head>
 
 <body>
-    <?php include __DIR__ . '/../partials/menu.php'; ?>
+<?php if (isset($_SESSION['userLogado']['id'])): ?>
+        <?php include __DIR__ . '/../partials/menu.php'; ?>
+    <?php endif; ?>
 
     <div class="visualizeProfilesScreen">
         <form action="<?= $base ?>/perfil" method="POST" class="userSearchForm">
@@ -17,7 +19,7 @@
             <img
                 src="<?php echo file_exists("./static/img/banners/imagem-banner-" . $user['nomeUsuario'] . ".jpg")
                             ? './static/img/banners/imagem-banner-' . $user['nomeUsuario'] . '.jpg'
-                            : './static/img/sem-imagem.png'; ?>"
+                            : './static/img/tetris.png'; ?>"
                 alt="Imagem de perfil do usuário <?php echo $user['nomeUsuario']; ?>"
                 class="bannerImage" />
         </header>
@@ -25,11 +27,10 @@
             <section class="profileInfoContainer">
                 <div class="profileImageContainer">
                     <img
-                        src="<?php echo file_exists("./static/img/perfil/imagem-perfil-" . $user['nomeUsuario'] . ".jpg")
-                                    ? './static/img/perfil/imagem-perfil-' . $user['nomeUsuario'] . '.jpg'
-                                    : './static/img/sem-imagem.png'; ?>"
+                        src="<?php echo "./static/img/perfil/" . $user['fotoPerfil']; ?>"
                         alt="Imagem de perfil do usuário <?php echo $user['nomeUsuario']; ?>"
-                        class="profileImage" />
+                        class="profileImage" 
+                    />
                 </div>
                 <div class="profileInfo">
                     <h1>
@@ -102,7 +103,7 @@
                                         <img src='<?= $base ?>/static/img/capasProjetos/<?= $fotoCapa ?>' alt='<?= $nomeProjeto ?>'>
                                     </div>
                                 </a>
-                                <h1 class='h1AUser' style='margin-bottom: 16px;'><?= $nomeProjeto ?></h1>
+                                <h1 class='h1AUser' style='margin-bottom: 16px; align-self: center;'><?= $nomeProjeto ?></h1>
                             </div>
                         <?php endforeach; ?>
                     <?php else : ?>
@@ -122,14 +123,19 @@
                         <?php 
                             $nomeUsuario = $friend['nomeUsuario'] ?? 'Nome não disponível';
                             $id = $friend['id'];
+                            $fotoAmigo = $friend['fotoPerfil'];
                         ?>
                         <?php if ($user['nomeUsuario'] != $nomeUsuario): ?>
                         <div class='amigosItem'>  
                             <form action="<?=$base?>/perfil" method="post"> 
                                 <input type="hidden" name="search_query" value="<?=$nomeUsuario?>">
                                 <button class="btn" type="submit" style="background:none;border:none;padding:0;margin:0;color:inherit;text-align:center;box-shadow:none;">
-                                    <div class='amigosFoto'>
-                                        <img src='<?=$base?>/static/img/' alt='<?= $nomeUsuario ?>'> 
+                                    <div>
+                                        <img src="<?php echo file_exists("./static/img/perfil/" . $fotoAmigo)
+                                            ? "./static/img/perfil/" . $fotoAmigo
+                                            : './static/img/sem-imagem.png'; ?>" 
+                                        alt='<?= $nomeUsuario ?>'
+                                        class="amigosFoto" />
                                     </div>
                                     <h1 class='h1AUser' style='margin-bottom: 16px;'><?= $nomeUsuario ?></h1>
                                 </button>
@@ -159,4 +165,8 @@
             />                          
         </div>
     </a>
+-->
+<!-- Ver foto 
+$caminho = "__DIR__ . '/../../public/static/img/perfil/" . $fotoHost;                                       
+echo file_exists($caminho) ? $caminho : "$base/static/img/sem-imagem.png"; 
 -->

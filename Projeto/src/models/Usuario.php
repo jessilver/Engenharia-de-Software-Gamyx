@@ -27,12 +27,12 @@ class Usuario extends Model {
      *
      * @throws Exception Lança uma exceção se ocorrer um erro durante a consulta.
      */
-    public static function selectUser($id, $fields = []) : array|Exception {
-        try {
-            return self::select($fields)->where('id', $id)->first();
-        } catch (Exception $e) {
-            throw new Exception('Erro ao selecionar usuário: ' . $e->getMessage());
+    public static function selectUser($id) {
+        $result = self::select()->where('id', $id)->first();
+        if ($result === false) {
+            throw new Exception('Usuário não encontrado.');
         }
+        return $result;
     }
 
     /**
@@ -97,4 +97,20 @@ public static function getUserById(int $usuarioId): ?array {
         ->first();
 }
 
+private static $mockInstance;
+
+public static function setMockInstance($mock) {
+    self::$mockInstance = $mock;
+}
+
+public static function select($columns = ['*']) {
+    if (self::$mockInstance) {
+        return self::$mockInstance->select($columns);
+    }
+    return parent::select($columns);
+}
+
+public function deleteUserInstance(int $id): bool|Exception {
+    return self::deleteUser($id);
+}
 }

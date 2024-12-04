@@ -9,6 +9,10 @@
     <?php $render('header'); ?>
     <title>Cadastrar Novo Projeto</title>
 </head>
+
+<?php if (isset($_SESSION['userLogado']['id'])): ?>
+        <?php include __DIR__ . '/../partials/menu.php'; ?>
+    <?php endif; ?>
 <body id="bodyCadastrarProjeto">
 
     <section id="conteudoCadastrarProjeto" class="rounded shadow">

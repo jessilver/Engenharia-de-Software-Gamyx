@@ -1,4 +1,5 @@
 <?php $render('header'); ?>
+<?php require_once __DIR__ . '/../../models/Review.php'; ?>
 <link rel="stylesheet" href="<?= $base ?>/static/css/variaveis.css" />
 <link rel="stylesheet" href="<?= $base ?>/static/css/viewProject.css" />
 <title><?php echo $project['nomeProjeto'] ?> | Gamyx</title>
@@ -7,27 +8,27 @@
 </head>
 <!-- Requisição para recuperar dados do usuário pela API -->
 <?php
-    $usuarioId = $project['usuario_id'];
-    $apiUrl = "http://localhost/Engenharia-de-Software-Gamyx/Projeto/public/api/busca-usuario/{$usuarioId}?acao=buscar-usuario";
-    // Inicializa uma sessão cURL
-    $ch = curl_init($apiUrl);
-    // Configura opções para a requisição
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    // Executa a requisição
-    $response = curl_exec($ch);
-    // Verifica se ocorreu algum erro
-    if (curl_errno($ch)) {
-        echo 'Error:' . curl_error($ch);
-    }
-    // Fecha a sessão cURL
-    curl_close($ch);
-    // Decodifica a resposta JSON
-    $usuarioData = json_decode($response, true);
+$usuarioId = $project['usuario_id'];
+$apiUrl = "http://localhost/Engenharia-de-Software-Gamyx/Projeto/public/api/busca-usuario/{$usuarioId}?acao=buscar-usuario";
+// Inicializa uma sessão cURL
+$ch = curl_init($apiUrl);
+// Configura opções para a requisição
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+// Executa a requisição
+$response = curl_exec($ch);
+// Verifica se ocorreu algum erro
+if (curl_errno($ch)) {
+    echo 'Error:' . curl_error($ch);
+}
+// Fecha a sessão cURL
+curl_close($ch);
+// Decodifica a resposta JSON
+$usuarioData = json_decode($response, true);
 
-    // Exibe os dados do usuário, se disponível
-    if (!empty($usuarioData)) {
-        $usuario = $usuarioData[0];
-    }
+// Exibe os dados do usuário, se disponível
+if (!empty($usuarioData)) {
+    $usuario = $usuarioData[0];
+}
 ?>
 
 <body>
@@ -38,20 +39,23 @@
         <main class="projectContainer rounded">
             <div class="containerBotoes">
                 <span class="projectTitle"><?php echo $project['nomeProjeto']  ?></span>
-                <?php if ($_SESSION['userLogado']['id'] === $usuario['id']) : ?>
-                    <div class="btn-container">
-                        <button class="btn-editar" data-bs-toggle="modal" data-bs-target="#editProjectModal">
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
+                <?php if (isset($_SESSION['userLogado']['id'])): ?>
 
-                        <form action="<?= $base ?>/deleteProject" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este projeto?');">
-                            <input type="hidden" name="projectId" value="<?php echo $project['id'] ?>" />
-                            <input type="hidden" name="userId" value="<?php echo $usuario['id'] ?>" />
-                            <button type="submit" class="btn-excluir">
-                                <i class="fa-solid fa-trash"></i>
+                    <?php if ($_SESSION['userLogado']['id'] === $usuario['id']) : ?>
+                        <div class="btn-container">
+                            <button class="btn-editar" data-bs-toggle="modal" data-bs-target="#editProjectModal">
+                                <i class="fa-solid fa-pen"></i>
                             </button>
-                        </form>
-                    </div>
+
+                            <form action="<?= $base ?>/deleteProject" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este projeto?');">
+                                <input type="hidden" name="projectId" value="<?php echo $project['id'] ?>" />
+                                <input type="hidden" name="userId" value="<?php echo $usuario['id'] ?>" />
+                                <button type="submit" class="btn-excluir">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
+                        </div>
+                    <?php endif; ?>
                 <?php endif; ?>
             </div>
             <!-- Botões  -->
@@ -63,7 +67,16 @@
                     class="projectImage" />
             </div>
             <!-- <span class="projectCategory">Gêneros: Aventura, Educativo, Retro</span> -->
-            <span class="projectTitle lower">Descrição</span>
+            <div class="projetcDescriptionHeader">
+                <span class="projectTitle lower" style="width: fit-content;">Descrição</span>
+
+                <span class="starded" style="width: fit-content;">
+                    <button type="button" class="btn" style="color: #FFFFFF;" onclick="starClick()"> 
+                        <i id="favStar" class="fa-star fa-regular "></i>
+                    </button>
+                </span>
+
+            </div>
             <p class="projectDesc"><?php echo $project['descricaoProjeto'] ?></p>
             <span class="projectTitle lower">Disponível para:
                 <?= $project['sistemasOperacionaisSuportados']; ?>
@@ -73,39 +86,68 @@
                 <a href="<?php echo $project['linkDownload']; ?>"><?php echo $project['linkDownload']; ?></a>
             </div>
 
-            <!-- Avaliações  -->
-            <form action="<?= $base ?>/projeto/review" method="POST">
-                <input type="hidden" name="projectId" value="<?php echo $project['id']; ?>">
-                <div class="rating">
-                    <?php
-                    // Recupera a nota da sessão, se existir
-                    $nota = isset($_SESSION['nota']) ? $_SESSION['nota'] : null;
+            <!-- Adicione a seção de avaliações e comentários aqui -->
+            <section class="review-section">
+                <?php if (isset($_SESSION['userLogado']['id'])): ?>
+                    <h2>Deixe sua Avaliação</h2>
+                    <form action="<?= $base ?>/projeto/review" method="POST">
+                        <input type="hidden" name="projectId" value="<?= $project['id'] ?>">
+                        <div class="rating">
+                            <input type="radio" id="star5" name="nota" value="5">
+                            <label for="star5">&#9733;</label>
+                            <input type="radio" id="star4" name="nota" value="4">
+                            <label for="star4">&#9733;</label>
+                            <input type="radio" id="star3" name="nota" value="3">
+                            <label for="star3">&#9733;</label>
+                            <input type="radio" id="star2" name="nota" value="2">
+                            <label for="star2">&#9733;</label>
+                            <input type="radio" id="star1" name="nota" value="1">
+                            <label for="star1">&#9733;</label>
+                        </div>
+                        <textarea class="review-textarea" name="comentario" placeholder="Deixe um comentário..."></textarea>
+                        <button type="submit" class="btn-review">Enviar Review</button>
+                    </form>
+                <?php else: ?>
+                    <h2 style="color:red">Você precisa estar logado para avaliar esse projeto</h2>
+                <?php endif; ?>
+            </section>
 
-                    for ($i = 1; $i <= 5; $i++): ?>
-                        <button type="submit" name="nota" value="<?php echo $i; ?>" class="star <?php echo ($nota && $nota >= $i) ? 'selected' : ''; ?>">
-                            &#9733; <!-- Unicode para estrela -->
-                        </button>
-                    <?php endfor; ?>
-                </div>
-            </form>
-
-            <?php if (isset($_SESSION['message'])): ?>
-                <p><?php echo $_SESSION['message'];
-                    unset($_SESSION['message']);
-                    unset($_SESSION['nota']); ?></p> <!-- Limpa a mensagem e a nota da sessão -->
-            <?php endif; ?>
-
+            <section class="reviews-section">
+                <h2>Avaliações e Comentários</h2>
+                <?php if (!empty($reviews)): ?>
+                    <?php foreach ($reviews as $review): ?>
+                        <div class="review-item d-flex align-items-center gap-3" style="border-bottom: 2px solid var(--cor-cinza-borda); margin-bottom: 15px;">
+                            <div class="d-flex flex-column w-100">
+                                <div class="d-flex justify-content-between">
+                                    <p><strong><?= $review['uniqueName'] ?></strong></p>
+                                    <div class="rating-display">
+                                        <?php for ($i = 0; $i < $review['nota']; $i++): ?>
+                                            <span class="star">&#9733;</span>
+                                        <?php endfor; ?>
+                                        <?php for ($i = $review['nota']; $i < 5; $i++): ?>
+                                            <span class="star empty">&#9733;</span>
+                                        <?php endfor; ?>
+                                    </div>
+                                </div>
+                                <p class="review-comment"><?= !empty($review['comentario']) ? $review['comentario'] : 'O usuário não comentou sobre o projeto' ?></p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p>Não há avaliações ainda.</p>
+                <?php endif; ?>
+            </section>
 
         </main>
+        <!-- Card do criador  -->
         <section class="creatorCardContainer rounded">
             <a href="<?= $base ?>/perfil" class="text-white text-decoration-none">
                 <div class="creatorCardInfo">
                     <div>
                         <div class="profileImageContainer">
-                            <img src="<?php
-                                        $caminho = "$base/static/img/perfil/imagem-perfil-" . $usuario['nomeUsuario'] . ".jpg";
-                                        echo !file_exists($caminho) ? $caminho : "$base/static/img/sem-imagem.png"; ?>"
-                                alt="" class="profileImage" />
+                            <img src="<?= $base ?>/static/img/perfil/<?= $perfil ?>"
+                                alt="Imagem de perfil do usuário <?php echo $usuario['nomeUsuario']; ?>"
+                                class="profileImage" />
                         </div>
                         <h4><?php echo $usuario['nomeUsuario'] ?></h4>
                         <p><?php echo $usuario['arroba'] ?></p>
@@ -182,5 +224,63 @@
             </div>
         </div>
     </div>
+    <script>
+
+        const userId = <?= json_encode($_SESSION['userLogado']['id'] ?? null) ?>;
+        const projectId = <?= json_encode($project['id']) ?>;
+        const baseURL = '<?=$base?>';
+
+        document.addEventListener('DOMContentLoaded', function() {
+            checkFav();
+        });
+
+        async function starClick(){
+            const fav = await checkFav();
+            if (fav){
+                removeFav();
+            }else{
+                addFav();
+            }
+            window.location.reload();
+        }
+
+        function addFav(){
+            fetch(`${baseURL}/api/busca-projeto/add/${userId}/${projectId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('favStar').classList.remove('fa-regular');
+                        document.getElementById('favStar').classList.add('fa-solid');
+                    }
+                });
+        }
+
+        function removeFav(){
+            fetch(`${baseURL}/api/busca-projeto/delete/${userId}/${projectId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('favStar').classList.remove('fa-solid');
+                        document.getElementById('favStar').classList.add('fa-regular');
+                    }
+                });
+            
+        }
+        
+        async function checkFav(){
+            if (userId) {
+                const response = await fetch(`${baseURL}/api/busca-projeto/check/${userId}/${projectId}`);
+                const data = await response.json();
+                if (data.favorited) {
+                    document.getElementById('favStar').classList.remove('fa-regular');
+                    document.getElementById('favStar').classList.add('fa-solid');
+                }
+                return data.favorited;
+            }
+            return false;
+        }
+
+    </script>
 </body>
 <?php $render('footer'); ?>
+
